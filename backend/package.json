@@ -1,0 +1,19 @@
+{
+  "name": "earth-guardians-server",
+  "version": "1.0.0",
+  "description": "The web server for the earth guardians",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OfAshAndFire/earth-guardians-web.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/OfAshAndFire/earth-guardians-web/issues"
+  },
+  "homepage": "https://github.com/OfAshAndFire/earth-guardians-web#readme"
+}
