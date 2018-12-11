@@ -14,4 +14,64 @@ type User {
   password: String!
   name: String!
   posts: [Post!]!
+  role: Roles!
+  recent_actions: [EventActions!]!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Roles {
+  id: ID! @unique
+  role_name: String!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type EventActions {
+  id: ID! @unique
+  event: Event!
+  user: User!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+
+type Event {
+  id: ID! @unique
+  title: String!
+  active: Boolean @default(value:false)
+  description: String!
+  schedule: Schedule!
+  category: [Category!]!
+  author: User!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+enum Schedule {
+  ANYTIME
+  DAILY
+  BIWEEKLY
+  WEEKLY
+  TWOWEEKS
+  MONTHLY
+  QUARTERLY
+  SEMIANNUALLY
+  ANNUALLY
+}
+
+type Category {
+  id: ID! @unique
+  name: String!
+  metric: Metric!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Metric {
+  id: ID! @unique
+  name: String!
+  value: Int
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
