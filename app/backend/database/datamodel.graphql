@@ -32,9 +32,6 @@ type ActionCategory {
   id: ID! @unique
   name: String!
   actions: [Action]
-  primary_image: String
-  backgroundColor: String!
-  video_url:String
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -72,6 +69,7 @@ type Action {
   external_url: String
   hasVideo: Boolean! @default(value:false)
   hasGame: Boolean! @default(value:false)
+  isGame: Boolean! @default(value:false)
   related_actions: [Action]
   author: User! @relation(name:"AuthorOnAction")
   createdAt: DateTime!
