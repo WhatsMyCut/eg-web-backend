@@ -3,6 +3,7 @@ const { getUserId } = require('../../utils')
 const post = {
   async createDraft(parent, { title, text }, ctx, info) {
     const userId = getUserId(ctx)
+
     return ctx.db.mutation.createPost(
       {
         data: {

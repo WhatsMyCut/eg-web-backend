@@ -1,55 +1,86 @@
-type Post {
-  id: ID! @unique
-  createdAt: DateTime!
-  updatedAt: DateTime!
-  isPublished: Boolean! @default(value: "false")
-  title: String!
-  text: String!
-  author: User!
-}
-
 type User {
   id: ID! @unique
   email: String! @unique
   password: String!
   name: String!
-  posts: [Post!]!
-  role: Roles!
-  recent_actions: [EventActions!]!
+  phone: String @unique
+  role: Role
+  recent_actions: [EventAction]
+  total_points: Int
+  petitions_signed: [Petition] @relation(name:"PetitionOnUser")
   createdAt: DateTime!
   updatedAt: DateTime!
 }
 
-type Roles {
+type Role {
   id: ID! @unique
   role_name: String!
   createdAt: DateTime!
   updatedAt: DateTime!
 }
 
-type EventActions {
+type EventAction {
   id: ID! @unique
-  event: Event!
+  action: Action!
   user: User!
+  took_action: Boolean! @default(value:false)
   createdAt: DateTime!
   updatedAt: DateTime!
 }
 
+type ActionCategory {
+  id: ID! @unique
+  name: String!
+  actions: [Action]
+  primary_image: String
+  backgroundColor: String!
+  video_url:String
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
 
-type Event {
+type Petition {
   id: ID! @unique
   title: String!
   active: Boolean @default(value:false)
-  description: String!
-  schedule: Schedule!
-  category: [Category!]!
-  author: User!
+  short_description: String!
+  body: String!
+  primary_image: String
+  video_url: String
+  external_url: String
+  hasVideo: Boolean! @default(value:false)
+  users: [User] @relation(name:"PetitionOnUser")
+  author: User! @relation(name:"AuthorOnPetition")
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+type Action {
+  id: ID! @unique
+  category: ActionCategory
+  title: String!
+  body: String!
+  primary_image: String
+  active: Boolean @default(value:false)
+  short_description: String!
+  action_taken_description: String!
+  schedule: Schedule
+  video_url: String
+  carbon_dioxide:Float
+  water: Float
+  waste: Float
+  external_url: String
+  hasVideo: Boolean! @default(value:false)
+  hasGame: Boolean! @default(value:false)
+  related_actions: [Action]
+  author: User! @relation(name:"AuthorOnAction")
   createdAt: DateTime!
   updatedAt: DateTime!
 }
 
 enum Schedule {
   ANYTIME
+  ONCE
   DAILY
   BIWEEKLY
   WEEKLY
@@ -58,20 +89,4 @@ enum Schedule {
   QUARTERLY
   SEMIANNUALLY
   ANNUALLY
-}
-
-type Category {
-  id: ID! @unique
-  name: String!
-  metric: Metric!
-  createdAt: DateTime!
-  updatedAt: DateTime!
-}
-
-type Metric {
-  id: ID! @unique
-  name: String!
-  value: Int
-  createdAt: DateTime!
-  updatedAt: DateTime!
 }
