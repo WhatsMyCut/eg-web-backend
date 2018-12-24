@@ -5,7 +5,10 @@
       "sourceType": "module",
       "ecmaFeatures": {
         "modules": true,
-        "legacyDecorators": true
+        "legacyDecorators": true,
+        "experimentalObjectRestSpread": true,
+        "experimentalDecorators": true,
+        "jsx": true
       }
     },
     "plugins": ["prettier", "import"],

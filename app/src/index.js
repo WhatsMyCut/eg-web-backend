@@ -1,12 +1,20 @@
+import 'semantic-ui-css/semantic.min.css';
+import './assets/line-awesome/css/line-awesome-semantic-font-awesome.css';
+import './index.css';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
+
+import { ApolloProvider } from 'react-apollo';
+import client from './Apollo';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
+import registerServiceWorker from './registerServiceWorker';
+require('dotenv').config('../../.env');
 
-ReactDOM.render(<App />, document.getElementById('root'));
+let Application = (
+  <ApolloProvider client={client}>
+    <App />
+  </ApolloProvider>
+);
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+ReactDOM.render(Application, document.getElementById('root'));
+registerServiceWorker();
