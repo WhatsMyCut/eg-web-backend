@@ -12,3 +12,40 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.third-section.drop:hover{
+  border: 10px solid black;
+  transition: .2s ease-in-out;
+  cursor: pointer;
+}
+
+.third-section{
+  width: calc(100vw / 3);
+  height: 100vh;
+  margin-top: -100vh;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  box-sizing: border-box;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  -webkit-transition: margin-top .5s;
+  -moz-transition: margin-top .5s;
+  -o-transition: margin-top .5s;
+  transition: margin-top .5s;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+}
+
+.third-section.drop{
+  padding-top: 70vh;
+  margin-top: 0;
+}
+
+.third-section.drop:nth-child(odd){
+  padding-top: 25vh;
+}

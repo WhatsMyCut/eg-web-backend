@@ -1,30 +1,25 @@
 import React, { Component } from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
-import Dashboard from "../components/DashboardComponent";
-// import OtherGroupViewComponent from '../components/OtherGroupViewComponent';
-// import GroupItemsView from '../components/GroupItemsViewComponent';
 // import { Navigation } from '../components/NavigationComponent/index';
 import withUser from "../hoc/withUser";
 import PageNotFound from "../components/404";
 import Login from "../components/LoginComponent";
-// import DevicesView from '../components/DeviceComponent';
-// import DeviceDetails from '../components/DeviceDetailsComponent';
+import Home from "../components/HomeComponent";
 // import Settings from '../components/SettingsComponent';
-// import GroupView from '../components/GroupViewComponent';
 
 // @withUser()
 // @withRouter
 
 const MainLayout = (props, { routes }) => {
-    if (!props.user.loading && !props.user.me) {
-      return <Redirect to={{ pathname: '/login', target: props.location }} />;
-    }
-  console.log("Displaying MainLayout");
+    // if (!props.user.loading && !props.user.me) {
+    //   return <Redirect to={{ pathname: '/login', target: props.location }} />;
+    // }
   return [
     // <Navigation {...props} />,
-    <div style={{ marginLeft: "19.125rem" }} className="container">
+    <div style={{ overflow: 'hidden' }} className="container">
       <Switch>
-        <Route exact path={"/"} render={() => <Redirect to="/login" />} />
+        <Route exact path={"/"} render={() => <Redirect to="/home" />} />
+        <Route exact path={"/home"} render={() => <Home {...props} />} />
         <Route exact path={"/login"} render={() => <Login {...props} />} />
         {/* <Route
           exact
