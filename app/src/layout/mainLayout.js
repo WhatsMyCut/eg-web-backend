@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { Route, Redirect, Switch } from "react-router-dom";
 // import { Navigation } from '../components/NavigationComponent/index';
 import withUser from "../hoc/withUser";
@@ -8,7 +8,7 @@ import Home from "../components/HomeComponent";
 import NavBar from "../components/NavigationComponent";
 import Actions from "../components/ActionsComponent";
 import Petitions from "../components/PetitionsComponent";
-import GameItems from "../components/GameItemsComponent";
+import Users from "../components/UsersComponent";
 // import Settings from '../components/SettingsComponent';
 
 // @withUser()
@@ -18,8 +18,7 @@ const MainLayout = (props, { routes }) => {
     // if (!props.user.loading && !props.user.me) {
     //   return <Redirect to={{ pathname: '/login', target: props.location }} />;
     // }
-  return [
-    // <Navigation {...props} />,
+  return (
     <div style={{ overflow: 'hidden', height: '100vh', backgroundColor: 'lightgreen' }} className="container">
       <NavBar {...props} />
       <Switch style={{height: '95vh'}}>
@@ -28,7 +27,7 @@ const MainLayout = (props, { routes }) => {
         <Route exact path={"/login"} render={() => <Login {...props} />} />
         <Route exact path={"/actions"} render={() => <Actions {...props} />} />
         <Route exact path={"/petitions"} render={() => <Petitions {...props} />} />
-        <Route exact path={"/game-items"} render={() => <GameItems {...props} />} />
+        <Route exact path={"/users"} render={() => <Users {...props} />} />
         {/* <Route
           exact
           path={'/dashboard/group/:id'}
@@ -60,6 +59,6 @@ const MainLayout = (props, { routes }) => {
         <Route component={PageNotFound} />
       </Switch>
     </div>
-  ];
+  )
 };
 export default withUser()(MainLayout);

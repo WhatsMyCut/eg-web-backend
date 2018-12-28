@@ -3,14 +3,14 @@ import { withRouter } from 'react-router-dom';
 import styled from 'styled-components';
 import ManagementView from '../shared/ManagementView';
 
-@withRouter class Actions extends Component {
+@withRouter class Users extends Component {
     render(){
       return (
-        <ManagementView title="Actions" entityType="Category">
-            
+        <ManagementView title="Users" entityType="User">
+          
         </ManagementView>
       )
     }
 }
 
-export default Actions;
+export default Users;
