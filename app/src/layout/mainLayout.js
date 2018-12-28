@@ -5,6 +5,10 @@ import withUser from "../hoc/withUser";
 import PageNotFound from "../components/404";
 import Login from "../components/LoginComponent";
 import Home from "../components/HomeComponent";
+import NavBar from "../components/NavigationComponent";
+import Actions from "../components/ActionsComponent";
+import Petitions from "../components/PetitionsComponent";
+import GameItems from "../components/GameItemsComponent";
 // import Settings from '../components/SettingsComponent';
 
 // @withUser()
@@ -16,11 +20,15 @@ const MainLayout = (props, { routes }) => {
     // }
   return [
     // <Navigation {...props} />,
-    <div style={{ overflow: 'hidden' }} className="container">
-      <Switch>
+    <div style={{ overflow: 'hidden', height: '100vh', backgroundColor: 'lightgreen' }} className="container">
+      <NavBar {...props} />
+      <Switch style={{height: '95vh'}}>
         <Route exact path={"/"} render={() => <Redirect to="/home" />} />
         <Route exact path={"/home"} render={() => <Home {...props} />} />
         <Route exact path={"/login"} render={() => <Login {...props} />} />
+        <Route exact path={"/actions"} render={() => <Actions {...props} />} />
+        <Route exact path={"/petitions"} render={() => <Petitions {...props} />} />
+        <Route exact path={"/game-items"} render={() => <GameItems {...props} />} />
         {/* <Route
           exact
           path={'/dashboard/group/:id'}

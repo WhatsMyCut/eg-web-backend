@@ -12,13 +12,13 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-.third-section.drop:hover{
+.home-third-section.drop:hover{
   border: 10px solid black;
   transition: .2s ease-in-out;
   cursor: pointer;
 }
 
-.third-section{
+.home-third-section{
   width: calc(100vw / 3);
   height: 100vh;
   margin-top: -100vh;
@@ -41,11 +41,11 @@ code {
   -webkit-text-stroke-color: white;
 }
 
-.third-section.drop{
+.home-third-section.drop{
   padding-top: 70vh;
   margin-top: 0;
 }
 
-.third-section.drop:nth-child(odd){
+.home-third-section.drop:nth-child(odd){
   padding-top: 25vh;
 }
