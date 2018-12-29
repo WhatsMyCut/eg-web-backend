@@ -30,11 +30,6 @@ class EGModal extends Component {
         <Header icon="archive" content={`Add/Edit ${entityType}`} />
         <Modal.Content>
             {modalContent}
-          {/* <Input label={`${entityType} Name:`} placeholder={`${entityType} Name...`} onChange={event => {
-              if (event.target.value !== "") {
-                this.setState({ value: event.target.value });
-              }
-            }} /> */}
         </Modal.Content>
         <Modal.Actions>
           <Button color="red" onClick={this._onClose}>

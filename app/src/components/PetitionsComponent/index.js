@@ -5,10 +5,11 @@ import ManagementView from '../shared/ManagementView';
 import { maxWidthMediaQuery } from '../../constants/responsive';
 import EGTable from '../shared/Table';
 import {lib} from '../../lib/Lib';
-import PetitionsModal from '../shared/Modals/PetitionsModal';
+import ModalContent from '../shared/Modals/ModalContent';
 
 const petition = {
 	id: '',
+	order: '',
 	title: '',
 	active: false,
 	short_description: '',
@@ -20,7 +21,7 @@ const petition = {
 	author: {
 		name: ''
 	},
-	createdAt: new Date(),
+	createdAt: '',
 	updatedAt: ''
 }
 
@@ -33,25 +34,29 @@ class Petitions extends Component {
   };
 
   render() {
-    const { modal, entity } = this.state;
     return [
       <ManagementView
-		key="petitions-management-view"
+        key="petitions-management-view"
         title="Petitions"
-		entityType="Petition"
-		openModal={() => {this.setState({modalOpen: true})}}
+        entityType="Petition"
+        openModal={() => {
+          this.setState({ modalOpen: true });
+        }}
       >
         <EGTable
           headings={[
+            "Order",
             "Title",
             "Active",
             "Short Description",
             "Author",
-            "Created At"
+            "Created At",
+            "Updated At"
           ]}
           data={items.map(data => {
             return {
               Id: data.id,
+              Order: data.order,
               Title: data.title,
               Active: data.active,
               ShortDescription: data.short_description,
@@ -65,35 +70,52 @@ class Petitions extends Component {
               UpdatedAt: data.updatedAt
             };
           })}
-          leftAlignColumns={[0, 1, 2, 3, 4]}
+          leftAlignColumns={[0, 1, 2, 3, 4, 5]}
           hyperlinkColumns={[0]}
-          hyperlinkFunctions={[{ index: 0, fn: (data) => {this.openModal(items.filter(item => {return item.id === data.Id})[0])} }]}
-          formatColumns={[4]}
+          hyperlinkFunctions={[
+            {
+              index: 0,
+              fn: data => {
+                this.openModal(
+                  items.filter(item => {
+                    return item.id === data.Id;
+                  })[0]
+                );
+              }
+            }
+          ]}
+          formatColumns={[5, 6]}
           formatFunctions={[
             {
-              index: 4,
+              index: 5,
+              fn: value => {
+                return lib.formatTime(value);
+              }
+            },
+            {
+              index: 6,
               fn: value => {
                 return lib.formatTime(value);
               }
             }
           ]}
         />
-	  </ManagementView>,
-	  this._renderModal()
-		];
+      </ManagementView>,
+      this._renderModal()
+    ];
   }
 
-	openModal = (entity) => {
-		this.setState({entity: entity, modalOpen: true})
-	}
+  openModal = entity => {
+    this.setState({ entity: entity, modalOpen: true });
+  };
 
-  	_renderModal() {
-		const { entity, modalOpen } = this.state;
-		if (!modalOpen) {
-		return null;
+  _renderModal() {
+    const { entity, modalOpen } = this.state;
+    if (!modalOpen) {
+      return null;
     }
 
-    return <PetitionsModal key="petitions-modal" entity={entity} entityType='Petition' onClose={this._onCloseModal} />;
+    return <ModalContent key="petitions-modal" mappings={modalMappings} entity={entity} entityType='Petition' onClose={this._onCloseModal} />;
   }
 
   _onCloseModal = () => {
@@ -107,6 +129,7 @@ export default Petitions;
 const items = [
 	{
 		id: 1,
+		order: 1,
 		title: 'Blah',
 		active: true,
 		short_description: 'This is a blaaaah petition.',
@@ -121,4 +144,19 @@ const items = [
 		createdAt: new Date(),
 		updatedAt: new Date()
 	}
+];
+
+const modalMappings = [
+	{props: 'order', 				label: 'Order', inputType: 'textbox'},
+	{props: 'title', 				label: 'Title', inputType: 'textbox'},
+	{props: 'short_description', 	label: 'Short Description', inputType: 'textarea'},
+	{props: 'body', 				label: 'Body', inputType: 'textarea'},
+	{props: 'primary_image', 		label: 'Primary Image', inputType: 'textbox'},
+	{props: 'video_url', 			label: 'Video URL', inputType: 'textbox'},
+	{props: 'external_url', 		label: 'External URL', inputType: 'textbox'},
+	{props: 'active', 				label: 'Active', inputType: 'checkbox'},
+	{props: 'users', 				label: 'Users', inputType: 'list'},
+	{props: 'author.name', 			label: 'Author'},
+	{props: 'createdAt', 			label: 'Created At'},
+	{props: 'updatedAt', 			label: 'Updated At'},
 ];

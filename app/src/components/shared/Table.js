@@ -149,7 +149,6 @@ class EGTable extends React.Component {
   //was passed in.
   getContent = (rowItem, fieldName, index) => {
     const { history } = this.props;
-
     //Is this a hyperlink column?
     if(lib.arrayIncludes(this.props.hyperlinkColumns, index)){
       return (
@@ -176,7 +175,9 @@ class EGTable extends React.Component {
   getText = (rowItem, fieldName, columnIndex) => {
     const value = rowItem[fieldName.replace(/\s/g, '')];
     let formatFunction;
+    
     if (lib.arrayIncludes(this.props.formatColumns, columnIndex)) {
+      
       formatFunction = this.getColumnFunction(
         this.props.formatFunctions,
         columnIndex
@@ -199,6 +200,7 @@ class EGTable extends React.Component {
   //Returns the passed in function for the specific cell index
   //from the array of handlerObjects passed in.
   getColumnFunction = (handlerObjects, cellIndex) => {
+    
     const getHandlerObj = cellObj => {
       return cellObj.index === cellIndex;
     };

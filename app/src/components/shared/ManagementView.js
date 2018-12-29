@@ -3,7 +3,6 @@ import styled from "styled-components";
 import { Header, Container, Button } from "semantic-ui-react/dist/commonjs";
 import MaterialIcon from "../shared/Icon";
 import EGModal from "../shared/Modals/Modal";
-import PetitionsModal from '../shared/Modals/PetitionsModal';
 
 const PageContainer = styled.div`
   width: 100vw;

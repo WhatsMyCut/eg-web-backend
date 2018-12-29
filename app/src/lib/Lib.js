@@ -1,12 +1,17 @@
 export const lib = {
 	formatTime(date) {
-		const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec'];
-		let MM = monthNames[date.getMonth()];
-		let dd = date.getDate();
-		let hh = date.getHours();
-		let mm = date.getMinutes();
-		mm = (mm < 10) ? '0' + mm : mm;
-		return `${MM} ${dd} ${hh}:${mm}`;
+		if(typeof date === 'object'){
+			const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec'];
+			let MM = monthNames[date.getMonth()];
+			let dd = date.getDate();
+			let hh = date.getHours();
+			let mm = date.getMinutes();
+			mm = (mm < 10) ? '0' + mm : mm;
+			return `${MM} ${dd} ${hh}:${mm}`;
+		} else {
+			return '';
+		}
+		
 	  },
 	
 	//Helper function to tell whether a value exists in an
