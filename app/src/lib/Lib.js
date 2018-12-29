@@ -2,12 +2,16 @@ export const lib = {
 	formatTime(date) {
 		if(typeof date === 'object'){
 			const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec'];
-			let MM = monthNames[date.getMonth()];
-			let dd = date.getDate();
+			const yy = date.getFullYear();
+			const MM = monthNames[date.getMonth()];
+			const dd = date.getDate();
 			let hh = date.getHours();
+			const tt = hh >= 12 ? 'PM' : 'AM';
+			hh = hh === 0 ? 12 : hh;
+			hh = hh > 12 ? hh - 12 : hh;
 			let mm = date.getMinutes();
 			mm = (mm < 10) ? '0' + mm : mm;
-			return `${MM} ${dd} ${hh}:${mm}`;
+			return `${MM} ${dd}, ${yy} - ${hh}:${mm} ${tt}`;
 		} else {
 			return '';
 		}

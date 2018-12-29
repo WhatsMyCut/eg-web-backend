@@ -14,6 +14,7 @@ import {
 // import { ADD_GROUP_MUTATION } from '../../../graphql/mutations/add_group';
 import graphql from "../../../hoc/graphql";
 import { withRouter } from "react-router-dom";
+import {lib }from '../../../lib/Lib';
 import EGModal from "./Modal";
 
 class ModalContent extends Component {
@@ -84,7 +85,11 @@ class ModalContent extends Component {
 						/>
 					</div>
 				)
+			case 'date':
+				return <div key={`${mapping.props}-data`}><strong style={{marginRight: '5px'}}>{`${mapping.label}:`}</strong>{`${lib.formatTime(value)}`}</div>;
 			default:
+				console.log(mapping.label)
+				console.log(mapping.inputType);
 				return <div key={`${mapping.props}-data`}><strong style={{marginRight: '5px'}}>{`${mapping.label}:`}</strong>{`${value}`}</div>;
 		}
 	}

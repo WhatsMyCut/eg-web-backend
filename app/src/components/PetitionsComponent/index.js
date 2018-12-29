@@ -45,8 +45,8 @@ class Petitions extends Component {
       >
         <EGTable
           headings={[
-            "Order",
             "Title",
+            "Order",
             "Active",
             "Short Description",
             "Author",
@@ -147,16 +147,16 @@ const items = [
 ];
 
 const modalMappings = [
-	{props: 'order', 				label: 'Order', inputType: 'textbox'},
-	{props: 'title', 				label: 'Title', inputType: 'textbox'},
+	{props: 'order', 				label: 'Order', 			inputType: 'textbox'},
+	{props: 'title', 				label: 'Title', 			inputType: 'textbox'},
 	{props: 'short_description', 	label: 'Short Description', inputType: 'textarea'},
-	{props: 'body', 				label: 'Body', inputType: 'textarea'},
-	{props: 'primary_image', 		label: 'Primary Image', inputType: 'textbox'},
-	{props: 'video_url', 			label: 'Video URL', inputType: 'textbox'},
-	{props: 'external_url', 		label: 'External URL', inputType: 'textbox'},
-	{props: 'active', 				label: 'Active', inputType: 'checkbox'},
-	{props: 'users', 				label: 'Users', inputType: 'list'},
+	{props: 'body', 				label: 'Body', 				inputType: 'textarea'},
+	{props: 'primary_image', 		label: 'Primary Image', 	inputType: 'textbox'},
+	{props: 'video_url', 			label: 'Video URL', 		inputType: 'textbox'},
+	{props: 'external_url', 		label: 'External URL', 		inputType: 'textbox'},
+	{props: 'active', 				label: 'Active', 			inputType: 'checkbox'},
+	{props: 'users', 				label: 'Users', 			inputType: 'list'},
 	{props: 'author.name', 			label: 'Author'},
-	{props: 'createdAt', 			label: 'Created At'},
-	{props: 'updatedAt', 			label: 'Updated At'},
+	{props: 'createdAt', 			label: 'Created At', 		inputType: 'date'},
+	{props: 'updatedAt', 			label: 'Updated At', 		inputType: 'date'},
 ];
