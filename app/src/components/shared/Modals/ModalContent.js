@@ -88,8 +88,6 @@ class ModalContent extends Component {
 			case 'date':
 				return <div key={`${mapping.props}-data`}><strong style={{marginRight: '5px'}}>{`${mapping.label}:`}</strong>{`${lib.formatTime(value)}`}</div>;
 			default:
-				console.log(mapping.label)
-				console.log(mapping.inputType);
 				return <div key={`${mapping.props}-data`}><strong style={{marginRight: '5px'}}>{`${mapping.label}:`}</strong>{`${value}`}</div>;
 		}
 	}

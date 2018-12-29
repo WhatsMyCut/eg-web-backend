@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Header, Container, Button } from "semantic-ui-react/dist/commonjs";
 import MaterialIcon from "../shared/Icon";
 import EGModal from "../shared/Modals/Modal";
+import HeaderWithAddBtn from '../shared/HeaderWithAddBtn';
 
 const PageContainer = styled.div`
   width: 100vw;
@@ -40,7 +41,8 @@ export default class ManagementView extends Component {
     const { children, title, entityType, openModal } = this.props;
     return (
       <PageContainer>
-        <HeaderContainer>
+        <HeaderWithAddBtn title={title} entityType={entityType} openModal={openModal} />
+        {/* <HeaderContainer>
           <Header as="h1" style={{ margin: 0 }}>
             {title}
           </Header>
@@ -60,7 +62,7 @@ export default class ManagementView extends Component {
               New {entityType}
             </Button>
           </AddBtnContainer>
-        </HeaderContainer>
+        </HeaderContainer> */}
         <ContentContainer>
           <hr />
           {children}

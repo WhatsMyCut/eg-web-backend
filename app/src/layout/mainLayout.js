@@ -26,6 +26,7 @@ const MainLayout = (props, { routes }) => {
         <Route exact path={"/home"} render={() => <Home {...props} />} />
         <Route exact path={"/login"} render={() => <Login {...props} />} />
         <Route exact path={"/actions"} render={() => <Actions {...props} />} />
+        <Route exact path={"/games"} render={() => <Actions {...props} />} />
         <Route exact path={"/petitions"} render={() => <Petitions {...props} />} />
         <Route exact path={"/users"} render={() => <Users {...props} />} />
         {/* <Route

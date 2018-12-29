@@ -76,6 +76,11 @@ export default function NavBar(props) {
               <i>Actions</i>
             </Item>
           </NavLink>
+          <NavLink to="/games" style={{ ...styles.navbarLink, ...{ display: props.location.pathname === "/home" ? "none" : "flex" } }}>
+            <Item className="item">
+              <i>Games</i>
+            </Item>
+          </NavLink>
           <NavLink to="/petitions" style={{ ...styles.navbarLink, ...{ display: props.location.pathname === "/home" ? "none" : "flex" } }}>
 		  <Item className="item">
               <i>Petitions</i>

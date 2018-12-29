@@ -36,22 +36,22 @@ class Petitions extends Component {
   render() {
     return [
       <ManagementView
-        key="petitions-management-view"
-        title="Petitions"
-        entityType="Petition"
+        key='petitions-management-view'
+        title='Petitions'
+        entityType='Petition'
         openModal={() => {
           this.setState({ modalOpen: true });
         }}
       >
         <EGTable
           headings={[
-            "Title",
-            "Order",
-            "Active",
-            "Short Description",
-            "Author",
-            "Created At",
-            "Updated At"
+            'Title',
+            'Order',
+            'Active',
+            'Short Description',
+            'Author',
+            'Created At',
+            'Updated At'
           ]}
           data={items.map(data => {
             return {
@@ -147,8 +147,8 @@ const items = [
 ];
 
 const modalMappings = [
-	{props: 'order', 				label: 'Order', 			inputType: 'textbox'},
 	{props: 'title', 				label: 'Title', 			inputType: 'textbox'},
+	{props: 'order', 				label: 'Order', 			inputType: 'textbox'},
 	{props: 'short_description', 	label: 'Short Description', inputType: 'textarea'},
 	{props: 'body', 				label: 'Body', 				inputType: 'textarea'},
 	{props: 'primary_image', 		label: 'Primary Image', 	inputType: 'textbox'},
