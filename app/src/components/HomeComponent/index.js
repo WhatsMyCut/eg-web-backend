@@ -29,7 +29,7 @@ const HomeContainer = styled.div`
     return (
       <HomeContainer>
         <DropdownSection text="Actions" drop={count >= 1} backgroundImage='https://humandesign.com/wp-content/uploads/2018/11/Ladder-Grab-6.jpg' path="/actions"></DropdownSection>
-        <DropdownSection text="Games" drop={count >= 2} backgroundImage='https://humandesign.com/wp-content/uploads/2018/11/Ladder-Grab-6.jpg' path="/games"></DropdownSection>
+        <DropdownSection text="Games" drop={count >= 2} backgroundImage='https://humandesign.com/wp-content/uploads/2018/04/VTS_03.jpg' path="/games"></DropdownSection>
         <DropdownSection text="Petitions" drop={count >= 3} backgroundImage='https://humandesign.com/wp-content/uploads/2018/04/3.jpg' path="/petitions"></DropdownSection>
         <DropdownSection text="Users" drop={count >= 4} backgroundImage='https://humandesign.com/wp-content/uploads/2018/03/BFH_PDP_Hero_01-1.jpg' path="/users"></DropdownSection>
       </HomeContainer>
