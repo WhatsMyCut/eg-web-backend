@@ -14,8 +14,6 @@ module.exports = {
   water: Float
   waste: Float
   external_url: String
-  hasVideo: Boolean!
-  hasGame: Boolean!
   isGame: Boolean!
   related_actions(where: ActionWhereInput, orderBy: ActionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Action!]
   author: User!
@@ -196,8 +194,6 @@ input ActionCreateInput {
   water: Float
   waste: Float
   external_url: String
-  hasVideo: Boolean
-  hasGame: Boolean
   isGame: Boolean
   related_actions: ActionCreateManyInput
   author: UserCreateOneInput!
@@ -231,8 +227,6 @@ input ActionCreateWithoutCategoryInput {
   water: Float
   waste: Float
   external_url: String
-  hasVideo: Boolean
-  hasGame: Boolean
   isGame: Boolean
   related_actions: ActionCreateManyInput
   author: UserCreateOneInput!
@@ -270,10 +264,6 @@ enum ActionOrderByInput {
   waste_DESC
   external_url_ASC
   external_url_DESC
-  hasVideo_ASC
-  hasVideo_DESC
-  hasGame_ASC
-  hasGame_DESC
   isGame_ASC
   isGame_DESC
   createdAt_ASC
@@ -296,8 +286,6 @@ type ActionPreviousValues {
   water: Float
   waste: Float
   external_url: String
-  hasVideo: Boolean!
-  hasGame: Boolean!
   isGame: Boolean!
   createdAt: DateTime!
   updatedAt: DateTime!
@@ -446,10 +434,6 @@ input ActionScalarWhereInput {
   external_url_not_starts_with: String
   external_url_ends_with: String
   external_url_not_ends_with: String
-  hasVideo: Boolean
-  hasVideo_not: Boolean
-  hasGame: Boolean
-  hasGame_not: Boolean
   isGame: Boolean
   isGame_not: Boolean
   createdAt: DateTime
@@ -505,8 +489,6 @@ input ActionUpdateDataInput {
   water: Float
   waste: Float
   external_url: String
-  hasVideo: Boolean
-  hasGame: Boolean
   isGame: Boolean
   related_actions: ActionUpdateManyInput
   author: UserUpdateOneRequiredInput
@@ -526,8 +508,6 @@ input ActionUpdateInput {
   water: Float
   waste: Float
   external_url: String
-  hasVideo: Boolean
-  hasGame: Boolean
   isGame: Boolean
   related_actions: ActionUpdateManyInput
   author: UserUpdateOneRequiredInput
@@ -546,8 +526,6 @@ input ActionUpdateManyDataInput {
   water: Float
   waste: Float
   external_url: String
-  hasVideo: Boolean
-  hasGame: Boolean
   isGame: Boolean
 }
 
@@ -575,8 +553,6 @@ input ActionUpdateManyMutationInput {
   water: Float
   waste: Float
   external_url: String
-  hasVideo: Boolean
-  hasGame: Boolean
   isGame: Boolean
 }
 
@@ -616,8 +592,6 @@ input ActionUpdateWithoutCategoryDataInput {
   water: Float
   waste: Float
   external_url: String
-  hasVideo: Boolean
-  hasGame: Boolean
   isGame: Boolean
   related_actions: ActionUpdateManyInput
   author: UserUpdateOneRequiredInput
@@ -794,10 +768,6 @@ input ActionWhereInput {
   external_url_not_starts_with: String
   external_url_ends_with: String
   external_url_not_ends_with: String
-  hasVideo: Boolean
-  hasVideo_not: Boolean
-  hasGame: Boolean
-  hasGame_not: Boolean
   isGame: Boolean
   isGame_not: Boolean
   related_actions_every: ActionWhereInput
@@ -1750,6 +1720,7 @@ type Subscription {
 
 type User {
   id: ID!
+  username: String
   email: String!
   password: String!
   name: String!
@@ -1769,6 +1740,7 @@ type UserConnection {
 }
 
 input UserCreateInput {
+  username: String
   email: String!
   password: String!
   name: String!
@@ -1795,6 +1767,7 @@ input UserCreateOneWithoutRecent_actionsInput {
 }
 
 input UserCreateWithoutPetitions_signedInput {
+  username: String
   email: String!
   password: String!
   name: String!
@@ -1805,6 +1778,7 @@ input UserCreateWithoutPetitions_signedInput {
 }
 
 input UserCreateWithoutRecent_actionsInput {
+  username: String
   email: String!
   password: String!
   name: String!
@@ -1822,6 +1796,8 @@ type UserEdge {
 enum UserOrderByInput {
   id_ASC
   id_DESC
+  username_ASC
+  username_DESC
   email_ASC
   email_DESC
   password_ASC
@@ -1840,6 +1816,7 @@ enum UserOrderByInput {
 
 type UserPreviousValues {
   id: ID!
+  username: String
   email: String!
   password: String!
   name: String!
@@ -1864,6 +1841,20 @@ input UserScalarWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  username: String
+  username_not: String
+  username_in: [String!]
+  username_not_in: [String!]
+  username_lt: String
+  username_lte: String
+  username_gt: String
+  username_gte: String
+  username_contains: String
+  username_not_contains: String
+  username_starts_with: String
+  username_not_starts_with: String
+  username_ends_with: String
+  username_not_ends_with: String
   email: String
   email_not: String
   email_in: [String!]
@@ -1968,6 +1959,7 @@ input UserSubscriptionWhereInput {
 }
 
 input UserUpdateDataInput {
+  username: String
   email: String
   password: String
   name: String
@@ -1979,6 +1971,7 @@ input UserUpdateDataInput {
 }
 
 input UserUpdateInput {
+  username: String
   email: String
   password: String
   name: String
@@ -1990,6 +1983,7 @@ input UserUpdateInput {
 }
 
 input UserUpdateManyDataInput {
+  username: String
   email: String
   password: String
   name: String
@@ -1998,6 +1992,7 @@ input UserUpdateManyDataInput {
 }
 
 input UserUpdateManyMutationInput {
+  username: String
   email: String
   password: String
   name: String
@@ -2036,6 +2031,7 @@ input UserUpdateOneRequiredWithoutRecent_actionsInput {
 }
 
 input UserUpdateWithoutPetitions_signedDataInput {
+  username: String
   email: String
   password: String
   name: String
@@ -2046,6 +2042,7 @@ input UserUpdateWithoutPetitions_signedDataInput {
 }
 
 input UserUpdateWithoutRecent_actionsDataInput {
+  username: String
   email: String
   password: String
   name: String
@@ -2091,6 +2088,20 @@ input UserWhereInput {
   id_not_starts_with: ID
   id_ends_with: ID
   id_not_ends_with: ID
+  username: String
+  username_not: String
+  username_in: [String!]
+  username_not_in: [String!]
+  username_lt: String
+  username_lte: String
+  username_gt: String
+  username_gte: String
+  username_contains: String
+  username_not_contains: String
+  username_starts_with: String
+  username_not_starts_with: String
+  username_ends_with: String
+  username_not_ends_with: String
   email: String
   email_not: String
   email_in: [String!]
@@ -2185,6 +2196,7 @@ input UserWhereInput {
 
 input UserWhereUniqueInput {
   id: ID
+  username: String
   email: String
   phone: String
 }

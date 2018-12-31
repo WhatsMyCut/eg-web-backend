@@ -9,10 +9,17 @@ datamodel: datamodel.graphql
 seed:
   import: seed.graphql
 
+generate:
+  - generator: graphql-schema
+    output: ../src/generated
+  - generator: javascript-client
+    output: ../src/generated
+
 # Download the GraphQL schema of the Prisma API into 
 # `src/generated/prisma.graphql` (as specfied in `.graphqlconfig.yml`).
 hooks:
   post-deploy:
+    - prisma generate
     - graphql get-schema --project database
     - graphql codegen
     - graphql prepare

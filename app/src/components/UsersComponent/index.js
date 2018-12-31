@@ -5,7 +5,9 @@ import ManagementView from '../shared/ManagementView';
 import { maxWidthMediaQuery } from '../../constants/responsive';
 import EGTable from '../shared/Table';
 import {lib} from '../../lib/Lib';
+import graphql from '../../hoc/graphql';
 import ModalContent from '../shared/Modals/ModalContent';
+import { GET_ALL_USERS } from '../../graphql/queries/allUsers';
 
 const user = {
 	id: '',
@@ -33,6 +35,9 @@ const user = {
 	updatedAt: ''
 }
 
+@graphql(GET_ALL_USERS,{
+	name:'all_users'
+})
 @withRouter
 class Users extends Component {
   state = {
@@ -42,7 +47,12 @@ class Users extends Component {
   };
 
   render() {
-    const { modal, entity } = this.state;
+	const { modal, entity } = this.state;
+	if(this.props.all_users.loading){
+		console.log('users are loading');
+	} else{
+		console.log('this.props.all_users', this.props.all_users.users);
+	}
     return [
       	<ManagementView
 			key='users-management-view'

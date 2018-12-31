@@ -13,7 +13,7 @@ import { AUTH_TOKEN_NAME } from './consts';
 require('dotenv').config('../../.env');
 
 const httpLink = new HttpLink({
-  uri: process.env.REACT_APP_GRAPHQL_URL
+  uri: 'http://localhost:4000'
 });
 
 const retryLink = new RetryLink({
