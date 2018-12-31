@@ -1,6 +1,5 @@
-# source: https://us1.prisma.sh/daniel-ashcraft-a99d55/earth_guardians/dev
-# timestamp: Mon Dec 10 2018 20:32:11 GMT-0600 (Central Standard Time)
-type Action {
+module.exports = {
+        typeDefs: /* GraphQL */ `type Action {
   id: ID!
   category: ActionCategory
   title: String!
@@ -2189,3 +2188,6 @@ input UserWhereUniqueInput {
   email: String
   phone: String
 }
+`
+      }
+    
