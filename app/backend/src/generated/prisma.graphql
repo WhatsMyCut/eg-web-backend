@@ -24,6 +24,8 @@ type ActionCategory {
   id: ID!
   name: String!
   actions(where: ActionWhereInput, orderBy: ActionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Action!]
+  primary_image: String
+  video_id: String
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -37,6 +39,8 @@ type ActionCategoryConnection {
 input ActionCategoryCreateInput {
   name: String!
   actions: ActionCreateManyWithoutCategoryInput
+  primary_image: String
+  video_id: String
 }
 
 input ActionCategoryCreateOneWithoutActionsInput {
@@ -46,6 +50,8 @@ input ActionCategoryCreateOneWithoutActionsInput {
 
 input ActionCategoryCreateWithoutActionsInput {
   name: String!
+  primary_image: String
+  video_id: String
 }
 
 type ActionCategoryEdge {
@@ -58,6 +64,10 @@ enum ActionCategoryOrderByInput {
   id_DESC
   name_ASC
   name_DESC
+  primary_image_ASC
+  primary_image_DESC
+  video_id_ASC
+  video_id_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -67,6 +77,8 @@ enum ActionCategoryOrderByInput {
 type ActionCategoryPreviousValues {
   id: ID!
   name: String!
+  primary_image: String
+  video_id: String
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -92,10 +104,14 @@ input ActionCategorySubscriptionWhereInput {
 input ActionCategoryUpdateInput {
   name: String
   actions: ActionUpdateManyWithoutCategoryInput
+  primary_image: String
+  video_id: String
 }
 
 input ActionCategoryUpdateManyMutationInput {
   name: String
+  primary_image: String
+  video_id: String
 }
 
 input ActionCategoryUpdateOneWithoutActionsInput {
@@ -109,6 +125,8 @@ input ActionCategoryUpdateOneWithoutActionsInput {
 
 input ActionCategoryUpdateWithoutActionsDataInput {
   name: String
+  primary_image: String
+  video_id: String
 }
 
 input ActionCategoryUpsertWithoutActionsInput {
@@ -148,6 +166,34 @@ input ActionCategoryWhereInput {
   actions_every: ActionWhereInput
   actions_some: ActionWhereInput
   actions_none: ActionWhereInput
+  primary_image: String
+  primary_image_not: String
+  primary_image_in: [String!]
+  primary_image_not_in: [String!]
+  primary_image_lt: String
+  primary_image_lte: String
+  primary_image_gt: String
+  primary_image_gte: String
+  primary_image_contains: String
+  primary_image_not_contains: String
+  primary_image_starts_with: String
+  primary_image_not_starts_with: String
+  primary_image_ends_with: String
+  primary_image_not_ends_with: String
+  video_id: String
+  video_id_not: String
+  video_id_in: [String!]
+  video_id_not_in: [String!]
+  video_id_lt: String
+  video_id_lte: String
+  video_id_gt: String
+  video_id_gte: String
+  video_id_contains: String
+  video_id_not_contains: String
+  video_id_starts_with: String
+  video_id_not_starts_with: String
+  video_id_ends_with: String
+  video_id_not_ends_with: String
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
