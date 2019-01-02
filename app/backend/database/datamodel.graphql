@@ -32,6 +32,8 @@ type ActionCategory {
   id: ID! @unique
   name: String!
   actions: [Action]
+  primary_image: String
+  video_id: String
   createdAt: DateTime!
   updatedAt: DateTime!
 }
