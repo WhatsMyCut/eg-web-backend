@@ -4,13 +4,8 @@ export const GET_CURRENT_USER_QUERY = gql`
   {
     me {
       name
-      company {
-        id
-        name
-        nickname
-      }
       role {
-        name
+        role_name
       }
     }
   }

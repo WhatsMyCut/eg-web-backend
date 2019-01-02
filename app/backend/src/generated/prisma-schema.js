@@ -1,11 +1,5 @@
-const { makePrismaBindingClass } = require('prisma-binding')
-
-
-/**
- * Type Defs
-*/
-
-const typeDefs = `type Action {
+module.exports = {
+        typeDefs: /* GraphQL */ `type Action {
   id: ID!
   category: ActionCategory
   title: String!
@@ -2207,6 +2201,5 @@ input UserWhereUniqueInput {
   phone: String
 }
 `
-
-const Prisma = makePrismaBindingClass({ typeDefs })
-module.exports = { Prisma }
+      }
+    
