@@ -1,12 +1,19 @@
 {
   "name": "backend",
   "scripts": {
-    "start": "nodemon -e js,graphql -x node -r dotenv/config src/index.js",
+    "start": "node -r dotenv/config src/index.js",
+<<<<<<< HEAD
+    "dev-start":"nodemon -e js,graphql -x node -r dotenv/config src/index.j",
     "debug": "nodemon -e js,graphql -x node --inspect -r dotenv/config src/index.js",
+=======
+    "debug": "nodemon -e js,graphql -x node --inspect -r dotenv/config src/index.js",
+    "dev-start": "nodemon -e js,graphql -x node -r dotenv/config src/index.js",
+>>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
     "playground": "graphql playground",
     "dev": "npm-run-all --parallel start playground"
   },
   "dependencies": {
+    "dotenv": "6.1.0",
     "bcryptjs": "2.4.3",
     "graphql-yoga": "1.16.7",
     "jsonwebtoken": "8.4.0",

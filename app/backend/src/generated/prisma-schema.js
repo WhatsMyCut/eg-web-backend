@@ -25,6 +25,11 @@ type ActionCategory {
   id: ID!
   name: String!
   actions(where: ActionWhereInput, orderBy: ActionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Action!]
+<<<<<<< HEAD
+=======
+  primary_image: String
+  video_id: String
+>>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -38,6 +43,11 @@ type ActionCategoryConnection {
 input ActionCategoryCreateInput {
   name: String!
   actions: ActionCreateManyWithoutCategoryInput
+<<<<<<< HEAD
+=======
+  primary_image: String
+  video_id: String
+>>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
 }
 
 input ActionCategoryCreateOneWithoutActionsInput {
@@ -47,6 +57,11 @@ input ActionCategoryCreateOneWithoutActionsInput {
 
 input ActionCategoryCreateWithoutActionsInput {
   name: String!
+<<<<<<< HEAD
+=======
+  primary_image: String
+  video_id: String
+>>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
 }
 
 type ActionCategoryEdge {
@@ -59,6 +74,13 @@ enum ActionCategoryOrderByInput {
   id_DESC
   name_ASC
   name_DESC
+<<<<<<< HEAD
+=======
+  primary_image_ASC
+  primary_image_DESC
+  video_id_ASC
+  video_id_DESC
+>>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -68,6 +90,11 @@ enum ActionCategoryOrderByInput {
 type ActionCategoryPreviousValues {
   id: ID!
   name: String!
+<<<<<<< HEAD
+=======
+  primary_image: String
+  video_id: String
+>>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -93,10 +120,20 @@ input ActionCategorySubscriptionWhereInput {
 input ActionCategoryUpdateInput {
   name: String
   actions: ActionUpdateManyWithoutCategoryInput
+<<<<<<< HEAD
+=======
+  primary_image: String
+  video_id: String
+>>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
 }
 
 input ActionCategoryUpdateManyMutationInput {
   name: String
+<<<<<<< HEAD
+=======
+  primary_image: String
+  video_id: String
+>>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
 }
 
 input ActionCategoryUpdateOneWithoutActionsInput {
@@ -110,6 +147,11 @@ input ActionCategoryUpdateOneWithoutActionsInput {
 
 input ActionCategoryUpdateWithoutActionsDataInput {
   name: String
+<<<<<<< HEAD
+=======
+  primary_image: String
+  video_id: String
+>>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
 }
 
 input ActionCategoryUpsertWithoutActionsInput {
@@ -149,6 +191,37 @@ input ActionCategoryWhereInput {
   actions_every: ActionWhereInput
   actions_some: ActionWhereInput
   actions_none: ActionWhereInput
+<<<<<<< HEAD
+=======
+  primary_image: String
+  primary_image_not: String
+  primary_image_in: [String!]
+  primary_image_not_in: [String!]
+  primary_image_lt: String
+  primary_image_lte: String
+  primary_image_gt: String
+  primary_image_gte: String
+  primary_image_contains: String
+  primary_image_not_contains: String
+  primary_image_starts_with: String
+  primary_image_not_starts_with: String
+  primary_image_ends_with: String
+  primary_image_not_ends_with: String
+  video_id: String
+  video_id_not: String
+  video_id_in: [String!]
+  video_id_not_in: [String!]
+  video_id_lt: String
+  video_id_lte: String
+  video_id_gt: String
+  video_id_gte: String
+  video_id_contains: String
+  video_id_not_contains: String
+  video_id_starts_with: String
+  video_id_not_starts_with: String
+  video_id_ends_with: String
+  video_id_not_ends_with: String
+>>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
