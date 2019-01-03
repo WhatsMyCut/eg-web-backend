@@ -22,7 +22,7 @@ hooks:
     - prisma generate
     - graphql get-schema --project database
     - graphql codegen
-    - graphql prepare
+    - graphql prepare 
 
 # If specified, the `secret` must be used to generate a JWT which is attached
 # to the `Authorization` header of HTTP requests made against the Prisma API.

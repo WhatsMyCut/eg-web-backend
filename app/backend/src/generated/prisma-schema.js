@@ -11,6 +11,7 @@ module.exports = {
   schedule: Schedule
   video_url: String
   carbon_dioxide: Float
+  order: Int
   water: Float
   waste: Float
   external_url: String
@@ -237,6 +238,7 @@ input ActionCreateInput {
   schedule: Schedule
   video_url: String
   carbon_dioxide: Float
+  order: Int
   water: Float
   waste: Float
   external_url: String
@@ -270,6 +272,7 @@ input ActionCreateWithoutCategoryInput {
   schedule: Schedule
   video_url: String
   carbon_dioxide: Float
+  order: Int
   water: Float
   waste: Float
   external_url: String
@@ -304,6 +307,8 @@ enum ActionOrderByInput {
   video_url_DESC
   carbon_dioxide_ASC
   carbon_dioxide_DESC
+  order_ASC
+  order_DESC
   water_ASC
   water_DESC
   waste_ASC
@@ -329,6 +334,7 @@ type ActionPreviousValues {
   schedule: Schedule
   video_url: String
   carbon_dioxide: Float
+  order: Int
   water: Float
   waste: Float
   external_url: String
@@ -450,6 +456,14 @@ input ActionScalarWhereInput {
   carbon_dioxide_lte: Float
   carbon_dioxide_gt: Float
   carbon_dioxide_gte: Float
+  order: Int
+  order_not: Int
+  order_in: [Int!]
+  order_not_in: [Int!]
+  order_lt: Int
+  order_lte: Int
+  order_gt: Int
+  order_gte: Int
   water: Float
   water_not: Float
   water_in: [Float!]
@@ -532,6 +546,7 @@ input ActionUpdateDataInput {
   schedule: Schedule
   video_url: String
   carbon_dioxide: Float
+  order: Int
   water: Float
   waste: Float
   external_url: String
@@ -551,6 +566,7 @@ input ActionUpdateInput {
   schedule: Schedule
   video_url: String
   carbon_dioxide: Float
+  order: Int
   water: Float
   waste: Float
   external_url: String
@@ -569,6 +585,7 @@ input ActionUpdateManyDataInput {
   schedule: Schedule
   video_url: String
   carbon_dioxide: Float
+  order: Int
   water: Float
   waste: Float
   external_url: String
@@ -596,6 +613,7 @@ input ActionUpdateManyMutationInput {
   schedule: Schedule
   video_url: String
   carbon_dioxide: Float
+  order: Int
   water: Float
   waste: Float
   external_url: String
@@ -635,6 +653,7 @@ input ActionUpdateWithoutCategoryDataInput {
   schedule: Schedule
   video_url: String
   carbon_dioxide: Float
+  order: Int
   water: Float
   waste: Float
   external_url: String
@@ -784,6 +803,14 @@ input ActionWhereInput {
   carbon_dioxide_lte: Float
   carbon_dioxide_gt: Float
   carbon_dioxide_gte: Float
+  order: Int
+  order_not: Int
+  order_in: [Int!]
+  order_not_in: [Int!]
+  order_lt: Int
+  order_lte: Int
+  order_gt: Int
+  order_gte: Int
   water: Float
   water_not: Float
   water_in: [Float!]
@@ -1139,6 +1166,7 @@ type Petition {
   active: Boolean
   short_description: String!
   body: String!
+  order: Int
   primary_image: String
   video_url: String
   external_url: String
@@ -1160,6 +1188,7 @@ input PetitionCreateInput {
   active: Boolean
   short_description: String!
   body: String!
+  order: Int
   primary_image: String
   video_url: String
   external_url: String
@@ -1178,6 +1207,7 @@ input PetitionCreateWithoutUsersInput {
   active: Boolean
   short_description: String!
   body: String!
+  order: Int
   primary_image: String
   video_url: String
   external_url: String
@@ -1201,6 +1231,8 @@ enum PetitionOrderByInput {
   short_description_DESC
   body_ASC
   body_DESC
+  order_ASC
+  order_DESC
   primary_image_ASC
   primary_image_DESC
   video_url_ASC
@@ -1221,6 +1253,7 @@ type PetitionPreviousValues {
   active: Boolean
   short_description: String!
   body: String!
+  order: Int
   primary_image: String
   video_url: String
   external_url: String
@@ -1288,6 +1321,14 @@ input PetitionScalarWhereInput {
   body_not_starts_with: String
   body_ends_with: String
   body_not_ends_with: String
+  order: Int
+  order_not: Int
+  order_in: [Int!]
+  order_not_in: [Int!]
+  order_lt: Int
+  order_lte: Int
+  order_gt: Int
+  order_gte: Int
   primary_image: String
   primary_image_not: String
   primary_image_in: [String!]
@@ -1376,6 +1417,7 @@ input PetitionUpdateInput {
   active: Boolean
   short_description: String
   body: String
+  order: Int
   primary_image: String
   video_url: String
   external_url: String
@@ -1389,6 +1431,7 @@ input PetitionUpdateManyDataInput {
   active: Boolean
   short_description: String
   body: String
+  order: Int
   primary_image: String
   video_url: String
   external_url: String
@@ -1400,6 +1443,7 @@ input PetitionUpdateManyMutationInput {
   active: Boolean
   short_description: String
   body: String
+  order: Int
   primary_image: String
   video_url: String
   external_url: String
@@ -1427,6 +1471,7 @@ input PetitionUpdateWithoutUsersDataInput {
   active: Boolean
   short_description: String
   body: String
+  order: Int
   primary_image: String
   video_url: String
   external_url: String
@@ -1504,6 +1549,14 @@ input PetitionWhereInput {
   body_not_starts_with: String
   body_ends_with: String
   body_not_ends_with: String
+  order: Int
+  order_not: Int
+  order_in: [Int!]
+  order_not_in: [Int!]
+  order_lt: Int
+  order_lte: Int
+  order_gt: Int
+  order_gte: Int
   primary_image: String
   primary_image_not: String
   primary_image_in: [String!]
@@ -1767,7 +1820,7 @@ type Subscription {
 type User {
   id: ID!
   username: String
-  email: String!
+  email: String
   password: String!
   name: String!
   phone: String
@@ -1787,7 +1840,7 @@ type UserConnection {
 
 input UserCreateInput {
   username: String
-  email: String!
+  email: String
   password: String!
   name: String!
   phone: String
@@ -1814,7 +1867,7 @@ input UserCreateOneWithoutRecent_actionsInput {
 
 input UserCreateWithoutPetitions_signedInput {
   username: String
-  email: String!
+  email: String
   password: String!
   name: String!
   phone: String
@@ -1825,7 +1878,7 @@ input UserCreateWithoutPetitions_signedInput {
 
 input UserCreateWithoutRecent_actionsInput {
   username: String
-  email: String!
+  email: String
   password: String!
   name: String!
   phone: String
@@ -1863,7 +1916,7 @@ enum UserOrderByInput {
 type UserPreviousValues {
   id: ID!
   username: String
-  email: String!
+  email: String
   password: String!
   name: String!
   phone: String

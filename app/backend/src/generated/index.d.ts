@@ -366,6 +366,8 @@ export type ActionOrderByInput =
   | "video_url_DESC"
   | "carbon_dioxide_ASC"
   | "carbon_dioxide_DESC"
+  | "order_ASC"
+  | "order_DESC"
   | "water_ASC"
   | "water_DESC"
   | "waste_ASC"
@@ -400,6 +402,8 @@ export type PetitionOrderByInput =
   | "short_description_DESC"
   | "body_ASC"
   | "body_DESC"
+  | "order_ASC"
+  | "order_DESC"
   | "primary_image_ASC"
   | "primary_image_DESC"
   | "video_url_ASC"
@@ -577,6 +581,14 @@ export interface ActionWhereInput {
   carbon_dioxide_lte?: Float;
   carbon_dioxide_gt?: Float;
   carbon_dioxide_gte?: Float;
+  order?: Int;
+  order_not?: Int;
+  order_in?: Int[] | Int;
+  order_not_in?: Int[] | Int;
+  order_lt?: Int;
+  order_lte?: Int;
+  order_gt?: Int;
+  order_gte?: Int;
   water?: Float;
   water_not?: Float;
   water_in?: Float[] | Float;
@@ -985,6 +997,14 @@ export interface PetitionWhereInput {
   body_not_starts_with?: String;
   body_ends_with?: String;
   body_not_ends_with?: String;
+  order?: Int;
+  order_not?: Int;
+  order_in?: Int[] | Int;
+  order_not_in?: Int[] | Int;
+  order_lt?: Int;
+  order_lte?: Int;
+  order_gt?: Int;
+  order_gte?: Int;
   primary_image?: String;
   primary_image_not?: String;
   primary_image_in?: String[] | String;
@@ -1088,6 +1108,7 @@ export interface ActionCreateInput {
   schedule?: Schedule;
   video_url?: String;
   carbon_dioxide?: Float;
+  order?: Int;
   water?: Float;
   waste?: Float;
   external_url?: String;
@@ -1119,7 +1140,7 @@ export interface UserCreateOneInput {
 
 export interface UserCreateInput {
   username?: String;
-  email: String;
+  email?: String;
   password: String;
   name: String;
   phone?: String;
@@ -1165,6 +1186,7 @@ export interface PetitionCreateWithoutUsersInput {
   active?: Boolean;
   short_description: String;
   body: String;
+  order?: Int;
   primary_image?: String;
   video_url?: String;
   external_url?: String;
@@ -1183,6 +1205,7 @@ export interface ActionUpdateInput {
   schedule?: Schedule;
   video_url?: String;
   carbon_dioxide?: Float;
+  order?: Int;
   water?: Float;
   waste?: Float;
   external_url?: String;
@@ -1244,6 +1267,7 @@ export interface ActionUpdateDataInput {
   schedule?: Schedule;
   video_url?: String;
   carbon_dioxide?: Float;
+  order?: Int;
   water?: Float;
   waste?: Float;
   external_url?: String;
@@ -1410,6 +1434,7 @@ export interface PetitionUpdateWithoutUsersDataInput {
   active?: Boolean;
   short_description?: String;
   body?: String;
+  order?: Int;
   primary_image?: String;
   video_url?: String;
   external_url?: String;
@@ -1482,6 +1507,14 @@ export interface PetitionScalarWhereInput {
   body_not_starts_with?: String;
   body_ends_with?: String;
   body_not_ends_with?: String;
+  order?: Int;
+  order_not?: Int;
+  order_in?: Int[] | Int;
+  order_not_in?: Int[] | Int;
+  order_lt?: Int;
+  order_lte?: Int;
+  order_gt?: Int;
+  order_gte?: Int;
   primary_image?: String;
   primary_image_not?: String;
   primary_image_in?: String[] | String;
@@ -1557,6 +1590,7 @@ export interface PetitionUpdateManyDataInput {
   active?: Boolean;
   short_description?: String;
   body?: String;
+  order?: Int;
   primary_image?: String;
   video_url?: String;
   external_url?: String;
@@ -1687,6 +1721,14 @@ export interface ActionScalarWhereInput {
   carbon_dioxide_lte?: Float;
   carbon_dioxide_gt?: Float;
   carbon_dioxide_gte?: Float;
+  order?: Int;
+  order_not?: Int;
+  order_in?: Int[] | Int;
+  order_not_in?: Int[] | Int;
+  order_lt?: Int;
+  order_lte?: Int;
+  order_gt?: Int;
+  order_gte?: Int;
   water?: Float;
   water_not?: Float;
   water_in?: Float[] | Float;
@@ -1755,6 +1797,7 @@ export interface ActionUpdateManyDataInput {
   schedule?: Schedule;
   video_url?: String;
   carbon_dioxide?: Float;
+  order?: Int;
   water?: Float;
   waste?: Float;
   external_url?: String;
@@ -1771,6 +1814,7 @@ export interface ActionUpdateManyMutationInput {
   schedule?: Schedule;
   video_url?: String;
   carbon_dioxide?: Float;
+  order?: Int;
   water?: Float;
   waste?: Float;
   external_url?: String;
@@ -1801,6 +1845,7 @@ export interface ActionCreateWithoutCategoryInput {
   schedule?: Schedule;
   video_url?: String;
   carbon_dioxide?: Float;
+  order?: Int;
   water?: Float;
   waste?: Float;
   external_url?: String;
@@ -1850,6 +1895,7 @@ export interface ActionUpdateWithoutCategoryDataInput {
   schedule?: Schedule;
   video_url?: String;
   carbon_dioxide?: Float;
+  order?: Int;
   water?: Float;
   waste?: Float;
   external_url?: String;
@@ -1883,7 +1929,7 @@ export interface UserCreateOneWithoutRecent_actionsInput {
 
 export interface UserCreateWithoutRecent_actionsInput {
   username?: String;
-  email: String;
+  email?: String;
   password: String;
   name: String;
   phone?: String;
@@ -1930,6 +1976,7 @@ export interface PetitionCreateInput {
   active?: Boolean;
   short_description: String;
   body: String;
+  order?: Int;
   primary_image?: String;
   video_url?: String;
   external_url?: String;
@@ -1947,7 +1994,7 @@ export interface UserCreateManyWithoutPetitions_signedInput {
 
 export interface UserCreateWithoutPetitions_signedInput {
   username?: String;
-  email: String;
+  email?: String;
   password: String;
   name: String;
   phone?: String;
@@ -1961,6 +2008,7 @@ export interface PetitionUpdateInput {
   active?: Boolean;
   short_description?: String;
   body?: String;
+  order?: Int;
   primary_image?: String;
   video_url?: String;
   external_url?: String;
@@ -2143,6 +2191,7 @@ export interface PetitionUpdateManyMutationInput {
   active?: Boolean;
   short_description?: String;
   body?: String;
+  order?: Int;
   primary_image?: String;
   video_url?: String;
   external_url?: String;
@@ -2265,6 +2314,7 @@ export interface Action {
   schedule?: Schedule;
   video_url?: String;
   carbon_dioxide?: Float;
+  order?: Int;
   water?: Float;
   waste?: Float;
   external_url?: String;
@@ -2285,6 +2335,7 @@ export interface ActionPromise extends Promise<Action>, Fragmentable {
   schedule: () => Promise<Schedule>;
   video_url: () => Promise<String>;
   carbon_dioxide: () => Promise<Float>;
+  order: () => Promise<Int>;
   water: () => Promise<Float>;
   waste: () => Promise<Float>;
   external_url: () => Promise<String>;
@@ -2319,6 +2370,7 @@ export interface ActionSubscription
   schedule: () => Promise<AsyncIterator<Schedule>>;
   video_url: () => Promise<AsyncIterator<String>>;
   carbon_dioxide: () => Promise<AsyncIterator<Float>>;
+  order: () => Promise<AsyncIterator<Int>>;
   water: () => Promise<AsyncIterator<Float>>;
   waste: () => Promise<AsyncIterator<Float>>;
   external_url: () => Promise<AsyncIterator<String>>;
@@ -2395,7 +2447,7 @@ export interface ActionCategorySubscription
 export interface User {
   id: ID_Output;
   username?: String;
-  email: String;
+  email?: String;
   password: String;
   name: String;
   phone?: String;
@@ -2532,6 +2584,7 @@ export interface Petition {
   active?: Boolean;
   short_description: String;
   body: String;
+  order?: Int;
   primary_image?: String;
   video_url?: String;
   external_url?: String;
@@ -2546,6 +2599,7 @@ export interface PetitionPromise extends Promise<Petition>, Fragmentable {
   active: () => Promise<Boolean>;
   short_description: () => Promise<String>;
   body: () => Promise<String>;
+  order: () => Promise<Int>;
   primary_image: () => Promise<String>;
   video_url: () => Promise<String>;
   external_url: () => Promise<String>;
@@ -2574,6 +2628,7 @@ export interface PetitionSubscription
   active: () => Promise<AsyncIterator<Boolean>>;
   short_description: () => Promise<AsyncIterator<String>>;
   body: () => Promise<AsyncIterator<String>>;
+  order: () => Promise<AsyncIterator<Int>>;
   primary_image: () => Promise<AsyncIterator<String>>;
   video_url: () => Promise<AsyncIterator<String>>;
   external_url: () => Promise<AsyncIterator<String>>;
@@ -2973,6 +3028,7 @@ export interface ActionPreviousValues {
   schedule?: Schedule;
   video_url?: String;
   carbon_dioxide?: Float;
+  order?: Int;
   water?: Float;
   waste?: Float;
   external_url?: String;
@@ -2994,6 +3050,7 @@ export interface ActionPreviousValuesPromise
   schedule: () => Promise<Schedule>;
   video_url: () => Promise<String>;
   carbon_dioxide: () => Promise<Float>;
+  order: () => Promise<Int>;
   water: () => Promise<Float>;
   waste: () => Promise<Float>;
   external_url: () => Promise<String>;
@@ -3015,6 +3072,7 @@ export interface ActionPreviousValuesSubscription
   schedule: () => Promise<AsyncIterator<Schedule>>;
   video_url: () => Promise<AsyncIterator<String>>;
   carbon_dioxide: () => Promise<AsyncIterator<Float>>;
+  order: () => Promise<AsyncIterator<Int>>;
   water: () => Promise<AsyncIterator<Float>>;
   waste: () => Promise<AsyncIterator<Float>>;
   external_url: () => Promise<AsyncIterator<String>>;
@@ -3154,6 +3212,7 @@ export interface PetitionPreviousValues {
   active?: Boolean;
   short_description: String;
   body: String;
+  order?: Int;
   primary_image?: String;
   video_url?: String;
   external_url?: String;
@@ -3170,6 +3229,7 @@ export interface PetitionPreviousValuesPromise
   active: () => Promise<Boolean>;
   short_description: () => Promise<String>;
   body: () => Promise<String>;
+  order: () => Promise<Int>;
   primary_image: () => Promise<String>;
   video_url: () => Promise<String>;
   external_url: () => Promise<String>;
@@ -3186,6 +3246,7 @@ export interface PetitionPreviousValuesSubscription
   active: () => Promise<AsyncIterator<Boolean>>;
   short_description: () => Promise<AsyncIterator<String>>;
   body: () => Promise<AsyncIterator<String>>;
+  order: () => Promise<AsyncIterator<Int>>;
   primary_image: () => Promise<AsyncIterator<String>>;
   video_url: () => Promise<AsyncIterator<String>>;
   external_url: () => Promise<AsyncIterator<String>>;
@@ -3268,7 +3329,7 @@ export interface UserSubscriptionPayloadSubscription
 export interface UserPreviousValues {
   id: ID_Output;
   username?: String;
-  email: String;
+  email?: String;
   password: String;
   name: String;
   phone?: String;
