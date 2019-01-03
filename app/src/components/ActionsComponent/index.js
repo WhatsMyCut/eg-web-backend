@@ -18,7 +18,8 @@ import {
 	Segment,
 	Dimmer
   } from 'semantic-ui-react';
-
+import graphql from '../../hoc/graphql';
+import { GET_ALL_ACTIONS_CATEGORIES} from '../../graphql/queries/allActions';
 const category = {
   id: '',
   name: '',
@@ -59,6 +60,9 @@ const action = {
 }
 
 @withRouter
+@graphql(GET_ALL_ACTIONS_CATEGORIES, {
+	name:"all_actions_by_category"
+})
 class Actions extends Component {
   state = {
     modal: null,
@@ -69,7 +73,11 @@ class Actions extends Component {
 
   render() {
 	const { modal, entity } = this.state;
-	const { match } = this.props;
+	const { all_actions_by_category, match } = this.props;
+	if(all_actions_by_category.loading){
+		return <Segment loading style={{height:'100vh', width:'100vw'}}></Segment>
+	}
+	console.log('all categories', all_actions_by_category.actionCategories)
     return [
       	<ManagementView
 			key='actions-management-view'
@@ -78,7 +86,7 @@ class Actions extends Component {
 			openModal={() => {this.setState({modalOpen: true, entity: category, entityType: 'Category'})}}
       	>
 		  {
-			  categories.map(cat => {
+			  all_actions_by_category.actionCategories.map(cat => {
 					if(this.isGameView()){
 						action.isGame = true;
 					}
@@ -131,9 +139,11 @@ class Actions extends Component {
   };
 
   getTable = (cat) => {
+		console.log('cat', cat.actions);
 	  	function gamesFilter(action){return action.isGame === true;}
 		function actionsFilter(action){return action.isGame === false;}
 		if(this.isGameView()){
+			console.log('data inside of table', cat.actions);
 			return (
 				<EGTable
 					headings={[
@@ -147,6 +157,7 @@ class Actions extends Component {
 						'Updated At'
 					]}
 					data={cat.actions.filter(gamesFilter).map(data => {
+						
 						return {
 							Id: data.id,
 							Category: data.category,
@@ -164,7 +175,7 @@ class Actions extends Component {
 							Waste: data.waste,
 							ExternalURL: data.external_url,
 							IsGame: data.isGame,
-							RelatedActions: data.related_actions.map(act => {return act.title}).join(', '),
+							RelatedActions: data.related_actions ? data.related_actions.map(act => {return act.title}).join(', ') : null,
 							Author: data.author.name,
 							CreatedAt: data.createdAt,
 							UpdatedAt: data.updatedAt
@@ -199,6 +210,7 @@ class Actions extends Component {
 				/>
 			)
 		} else{
+			console.log('not games');
 			return (
 				<EGTable
 					headings={[
@@ -212,6 +224,7 @@ class Actions extends Component {
 						'Updated At'
 					]}
 					data={cat.actions.filter(actionsFilter).map(data => {
+						console.log('data inside of table', cat.actions, data);
 						return {
 							Id: data.id,
 							Category: data.category,
@@ -229,7 +242,7 @@ class Actions extends Component {
 							Waste: data.waste,
 							ExternalURL: data.external_url,
 							IsGame: data.isGame,
-							RelatedActions: data.related_actions.map(act => {return act.title}).join(', '),
+							RelatedActions: data.related_actions ? data.related_actions.map(act => {return act.title}).join(', ') : null,
 							Author: data.author.name,
 							CreatedAt: data.createdAt,
 							UpdatedAt: data.updatedAt

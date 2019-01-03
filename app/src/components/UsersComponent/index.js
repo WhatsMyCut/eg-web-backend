@@ -5,7 +5,11 @@ import ManagementView from '../shared/ManagementView';
 import { maxWidthMediaQuery } from '../../constants/responsive';
 import EGTable from '../shared/Table';
 import {lib} from '../../lib/Lib';
+import graphql from '../../hoc/graphql';
+import ModalContent from '../shared/Modals/ModalContent';
 import UserModal from './UserModal';
+import { GET_ALL_USERS } from '../../graphql/queries/allUsers';
+import {Segment } from 'semantic-ui-react';
 
 const user = {
 	id: '',
@@ -33,6 +37,9 @@ const user = {
 	updatedAt: ''
 }
 
+@graphql(GET_ALL_USERS,{
+	name:'all_users'
+})
 @withRouter
 class Users extends Component {
   state = {
@@ -43,6 +50,12 @@ class Users extends Component {
 
   render() {
     const { modal, entity } = this.state;
+	if(this.props.all_users.loading){
+		console.log('users are loading');
+		return <Segment loading style={{height:'100vh', width:"100vw"}}></Segment>
+	} else{
+		console.log('this.props.all_users', this.props.all_users.users);
+	}
     return [
       	<ManagementView
 			key='users-management-view'
@@ -59,17 +72,17 @@ class Users extends Component {
 					'Created At',
 					'Updated At'
 				]}
-				data={items.map(data => {
+				data={this.props.all_users.users.map(data => {
 					return {
 						Id: data.id,
 						Email: data.email,
 						Password: data.password,
 						Name: data.name,
 						Phone: data.phone,
-						Role: data.role.role_name,
+						Role: data.role ? data.role.role_name : null,
 						RecentActions: data.recent_actions,
 						TotalPoints: data.total_points,
-						PetitionsSigned: data.petitions_signed.map(petition => {return petition.title}).join(', '),
+						PetitionsSigned: data.petitions_signed ? data.petitions_signed.map(petition => {return petition.title}).join(', ') : null,
 						CreatedAt: data.createdAt,
 						UpdatedAt: data.updatedAt
 					};
