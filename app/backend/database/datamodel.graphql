@@ -1,5 +1,6 @@
 type User {
   id: ID! @unique
+  username: String @unique
   email: String! @unique
   password: String!
   name: String!
@@ -67,8 +68,6 @@ type Action {
   water: Float
   waste: Float
   external_url: String
-  hasVideo: Boolean! @default(value:false)
-  hasGame: Boolean! @default(value:false)
   isGame: Boolean! @default(value:false)
   related_actions: [Action]
   author: User! @relation(name:"AuthorOnAction")
