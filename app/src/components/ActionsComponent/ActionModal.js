@@ -46,7 +46,7 @@ class ActionModal extends Component {
             <EGTextBox  key={'primary-image-input'}  value={entity.primary_image}     label={'Primary Image'}     onChange={(event) => {this.updateEntity(event, 'primary_image')}} />,
             <EGTextBox  key={'video-input'}          value={entity.video}             label={'Video'}             onChange={(event) => {this.updateEntity(event, 'video')}} />,
             <EGTextBox  key={'external-url-input'}   value={entity.external_url}      label={'External URL'}      onChange={(event) => {this.updateEntity(event, 'external_url')}} />,
-            <EGDropdown key={'related-actions-input'} currentValues={entity.related_actions.map(action => {return action.id})} label={'Related Actions'} multiple={true} options={this.toDropdownOptions(relatedActionsOptions, 'title')} onChange={(event) => {
+            <EGDropdown key={'related-actions-input'} currentValues={entity.related_actions ? entity.related_actions.map(action => {return action.id}) : []} label={'Related Actions'} multiple={true} options={this.toDropdownOptions(relatedActionsOptions, 'title')} onChange={(event) => {
                 this.updateRelatedActions(event);
             }} />,
             <EGCheckbox key={'isGame-input'}         value={entity.isGame}            label={'Game'}              onChange={(event) => {this.updateEntityBoolean(event, 'isGame')}} />,

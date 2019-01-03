@@ -6,7 +6,6 @@ import { maxWidthMediaQuery } from '../../constants/responsive';
 import EGTable from '../shared/Table';
 import {lib} from '../../lib/Lib';
 import graphql from '../../hoc/graphql';
-import ModalContent from '../shared/Modals/ModalContent';
 import UserModal from './UserModal';
 import { GET_ALL_USERS } from '../../graphql/queries/allUsers';
 import {Segment } from 'semantic-ui-react';

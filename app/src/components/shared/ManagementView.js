@@ -7,13 +7,16 @@ import HeaderWithAddBtn from '../shared/HeaderWithAddBtn';
 
 const PageContainer = styled.div`
   width: 100vw;
-  height: 95vh;
+  height: auto;
+  min-height: 95vh;
+  max-height: 95vh;
   margin-top: 5vh;
   padding: 20px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   background-color: white;
+  overflow-y: auto;
 `;
 
 const HeaderContainer = styled.div`
@@ -33,7 +36,7 @@ const AddBtnContainer = styled.div`
 `;
 
 const ContentContainer = styled.div`
-  flex: 1;
+  overflow-y: auto;
 `;
 
 export default class ManagementView extends Component {
@@ -42,29 +45,8 @@ export default class ManagementView extends Component {
     return (
       <PageContainer>
         <HeaderWithAddBtn title={title} entityType={entityType} openModal={openModal} />
-        {/* <HeaderContainer>
-          <Header as="h1" style={{ margin: 0 }}>
-            {title}
-          </Header>
-          <AddBtnContainer>
-            <Button
-              primary
-              onClick={openModal}
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "center",
-                justifyContent: "space-between",
-                fontSize: "16px"
-              }}
-            >
-              <MaterialIcon name="add" />
-              New {entityType}
-            </Button>
-          </AddBtnContainer>
-        </HeaderContainer> */}
-        <ContentContainer>
           <hr />
+        <ContentContainer>
           {children}
         </ContentContainer>
       </PageContainer>

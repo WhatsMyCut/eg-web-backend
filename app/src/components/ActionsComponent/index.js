@@ -72,18 +72,18 @@ class Actions extends Component {
   };
 
   render() {
-	const { modal, entity } = this.state;
-	const { all_actions_by_category, match } = this.props;
+	const { all_actions_by_category } = this.props;
 	if(all_actions_by_category.loading){
 		return <Segment loading style={{height:'100vh', width:'100vw'}}></Segment>
 	}
-	console.log('all categories', all_actions_by_category.actionCategories)
+	// console.log('all categories', all_actions_by_category.actionCategories)
     return [
       	<ManagementView
 			key='actions-management-view'
       		title={this.isGameView() ? 'Games' : "Actions"} 
       		entityType="Category"
 			openModal={() => {this.setState({modalOpen: true, entity: category, entityType: 'Category'})}}
+			style={{overflowY: 'auto'}}
       	>
 		  {
 			  all_actions_by_category.actionCategories.map(cat => {
@@ -139,7 +139,7 @@ class Actions extends Component {
   };
 
   getTable = (cat) => {
-		console.log('cat', cat.actions);
+		// console.log('cat', cat.actions);
 	  	function gamesFilter(action){return action.isGame === true;}
 		function actionsFilter(action){return action.isGame === false;}
 		if(this.isGameView()){
@@ -210,7 +210,7 @@ class Actions extends Component {
 				/>
 			)
 		} else{
-			console.log('not games');
+			// console.log('not games');
 			return (
 				<EGTable
 					headings={[
@@ -224,7 +224,7 @@ class Actions extends Component {
 						'Updated At'
 					]}
 					data={cat.actions.filter(actionsFilter).map(data => {
-						console.log('data inside of table', cat.actions, data);
+						// console.log('data inside of table', cat.actions, data);
 						return {
 							Id: data.id,
 							Category: data.category,
