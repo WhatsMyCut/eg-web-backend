@@ -7,6 +7,8 @@ export const GET_ALL_USERS = gql`
       phone
       username
       email
+      createdAt
+      updatedAt
       role {
         role_name
       }

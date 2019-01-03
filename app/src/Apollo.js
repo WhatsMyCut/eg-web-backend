@@ -13,7 +13,7 @@ import { AUTH_TOKEN_NAME } from './consts';
 require('dotenv').config('../../.env');
 
 const httpLink = new HttpLink({
-  uri: 'http://localhost:4000'
+  uri: 'https://egdemobackend.herokuapp.com/'
 });
 
 const retryLink = new RetryLink({

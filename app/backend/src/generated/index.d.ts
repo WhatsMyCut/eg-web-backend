@@ -438,13 +438,10 @@ export type ActionCategoryOrderByInput =
   | "id_DESC"
   | "name_ASC"
   | "name_DESC"
-<<<<<<< HEAD
-=======
   | "primary_image_ASC"
   | "primary_image_DESC"
   | "video_id_ASC"
   | "video_id_DESC"
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
@@ -462,7 +459,6 @@ export type RoleOrderByInput =
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
-<<<<<<< HEAD
 export interface EventActionUpdateManyWithoutUserInput {
   create?:
     | EventActionCreateWithoutUserInput[]
@@ -482,13 +478,10 @@ export interface EventActionUpdateManyWithoutUserInput {
     | EventActionUpdateManyWithWhereNestedInput;
 }
 
-=======
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
 export type ActionWhereUniqueInput = AtLeastOne<{
   id: ID_Input;
 }>;
 
-<<<<<<< HEAD
 export interface EventActionCreateManyWithoutUserInput {
   create?:
     | EventActionCreateWithoutUserInput[]
@@ -564,9 +557,6 @@ export interface PetitionCreateManyWithoutUsersInput {
 }
 
 export interface PetitionWhereInput {
-=======
-export interface ActionWhereInput {
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
   id?: ID_Input;
   id_not?: ID_Input;
   id_in?: ID_Input[] | ID_Input;
@@ -581,10 +571,6 @@ export interface ActionWhereInput {
   id_not_starts_with?: ID_Input;
   id_ends_with?: ID_Input;
   id_not_ends_with?: ID_Input;
-<<<<<<< HEAD
-=======
-  category?: ActionCategoryWhereInput;
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
   title?: String;
   title_not?: String;
   title_in?: String[] | String;
@@ -599,7 +585,6 @@ export interface ActionWhereInput {
   title_not_starts_with?: String;
   title_ends_with?: String;
   title_not_ends_with?: String;
-<<<<<<< HEAD
   active?: Boolean;
   active_not?: Boolean;
   short_description?: String;
@@ -616,8 +601,6 @@ export interface ActionWhereInput {
   short_description_not_starts_with?: String;
   short_description_ends_with?: String;
   short_description_not_ends_with?: String;
-=======
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
   body?: String;
   body_not?: String;
   body_in?: String[] | String;
@@ -646,43 +629,6 @@ export interface ActionWhereInput {
   primary_image_not_starts_with?: String;
   primary_image_ends_with?: String;
   primary_image_not_ends_with?: String;
-<<<<<<< HEAD
-=======
-  active?: Boolean;
-  active_not?: Boolean;
-  short_description?: String;
-  short_description_not?: String;
-  short_description_in?: String[] | String;
-  short_description_not_in?: String[] | String;
-  short_description_lt?: String;
-  short_description_lte?: String;
-  short_description_gt?: String;
-  short_description_gte?: String;
-  short_description_contains?: String;
-  short_description_not_contains?: String;
-  short_description_starts_with?: String;
-  short_description_not_starts_with?: String;
-  short_description_ends_with?: String;
-  short_description_not_ends_with?: String;
-  action_taken_description?: String;
-  action_taken_description_not?: String;
-  action_taken_description_in?: String[] | String;
-  action_taken_description_not_in?: String[] | String;
-  action_taken_description_lt?: String;
-  action_taken_description_lte?: String;
-  action_taken_description_gt?: String;
-  action_taken_description_gte?: String;
-  action_taken_description_contains?: String;
-  action_taken_description_not_contains?: String;
-  action_taken_description_starts_with?: String;
-  action_taken_description_not_starts_with?: String;
-  action_taken_description_ends_with?: String;
-  action_taken_description_not_ends_with?: String;
-  schedule?: Schedule;
-  schedule_not?: Schedule;
-  schedule_in?: Schedule[] | Schedule;
-  schedule_not_in?: Schedule[] | Schedule;
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
   video_url?: String;
   video_url_not?: String;
   video_url_in?: String[] | String;
@@ -697,33 +643,6 @@ export interface ActionWhereInput {
   video_url_not_starts_with?: String;
   video_url_ends_with?: String;
   video_url_not_ends_with?: String;
-<<<<<<< HEAD
-=======
-  carbon_dioxide?: Float;
-  carbon_dioxide_not?: Float;
-  carbon_dioxide_in?: Float[] | Float;
-  carbon_dioxide_not_in?: Float[] | Float;
-  carbon_dioxide_lt?: Float;
-  carbon_dioxide_lte?: Float;
-  carbon_dioxide_gt?: Float;
-  carbon_dioxide_gte?: Float;
-  water?: Float;
-  water_not?: Float;
-  water_in?: Float[] | Float;
-  water_not_in?: Float[] | Float;
-  water_lt?: Float;
-  water_lte?: Float;
-  water_gt?: Float;
-  water_gte?: Float;
-  waste?: Float;
-  waste_not?: Float;
-  waste_in?: Float[] | Float;
-  waste_not_in?: Float[] | Float;
-  waste_lt?: Float;
-  waste_lte?: Float;
-  waste_gt?: Float;
-  waste_gte?: Float;
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
   external_url?: String;
   external_url_not?: String;
   external_url_in?: String[] | String;
@@ -738,19 +657,11 @@ export interface ActionWhereInput {
   external_url_not_starts_with?: String;
   external_url_ends_with?: String;
   external_url_not_ends_with?: String;
-<<<<<<< HEAD
   hasVideo?: Boolean;
   hasVideo_not?: Boolean;
   users_every?: UserWhereInput;
   users_some?: UserWhereInput;
   users_none?: UserWhereInput;
-=======
-  isGame?: Boolean;
-  isGame_not?: Boolean;
-  related_actions_every?: ActionWhereInput;
-  related_actions_some?: ActionWhereInput;
-  related_actions_none?: ActionWhereInput;
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
   author?: UserWhereInput;
   createdAt?: DateTimeInput;
   createdAt_not?: DateTimeInput;
@@ -768,7 +679,6 @@ export interface ActionWhereInput {
   updatedAt_lte?: DateTimeInput;
   updatedAt_gt?: DateTimeInput;
   updatedAt_gte?: DateTimeInput;
-<<<<<<< HEAD
   AND?: PetitionWhereInput[] | PetitionWhereInput;
   OR?: PetitionWhereInput[] | PetitionWhereInput;
   NOT?: PetitionWhereInput[] | PetitionWhereInput;
@@ -840,11 +750,6 @@ export interface ActionCategoryUpdateOneWithoutActionsInput {
   delete?: Boolean;
   disconnect?: Boolean;
   connect?: ActionCategoryWhereUniqueInput;
-=======
-  AND?: ActionWhereInput[] | ActionWhereInput;
-  OR?: ActionWhereInput[] | ActionWhereInput;
-  NOT?: ActionWhereInput[] | ActionWhereInput;
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
 }
 
 export interface ActionCategoryWhereInput {
@@ -879,7 +784,34 @@ export interface ActionCategoryWhereInput {
   actions_every?: ActionWhereInput;
   actions_some?: ActionWhereInput;
   actions_none?: ActionWhereInput;
-<<<<<<< HEAD
+  primary_image?: String;
+  primary_image_not?: String;
+  primary_image_in?: String[] | String;
+  primary_image_not_in?: String[] | String;
+  primary_image_lt?: String;
+  primary_image_lte?: String;
+  primary_image_gt?: String;
+  primary_image_gte?: String;
+  primary_image_contains?: String;
+  primary_image_not_contains?: String;
+  primary_image_starts_with?: String;
+  primary_image_not_starts_with?: String;
+  primary_image_ends_with?: String;
+  primary_image_not_ends_with?: String;
+  video_id?: String;
+  video_id_not?: String;
+  video_id_in?: String[] | String;
+  video_id_not_in?: String[] | String;
+  video_id_lt?: String;
+  video_id_lte?: String;
+  video_id_gt?: String;
+  video_id_gte?: String;
+  video_id_contains?: String;
+  video_id_not_contains?: String;
+  video_id_starts_with?: String;
+  video_id_not_starts_with?: String;
+  video_id_ends_with?: String;
+  video_id_not_ends_with?: String;
   createdAt?: DateTimeInput;
   createdAt_not?: DateTimeInput;
   createdAt_in?: DateTimeInput[] | DateTimeInput;
@@ -903,6 +835,8 @@ export interface ActionCategoryWhereInput {
 
 export interface ActionCategoryUpdateWithoutActionsDataInput {
   name?: String;
+  primary_image?: String;
+  video_id?: String;
 }
 
 export interface ActionWhereInput {
@@ -949,8 +883,6 @@ export interface ActionWhereInput {
   body_not_starts_with?: String;
   body_ends_with?: String;
   body_not_ends_with?: String;
-=======
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
   primary_image?: String;
   primary_image_not?: String;
   primary_image_in?: String[] | String;
@@ -965,7 +897,6 @@ export interface ActionWhereInput {
   primary_image_not_starts_with?: String;
   primary_image_ends_with?: String;
   primary_image_not_ends_with?: String;
-<<<<<<< HEAD
   active?: Boolean;
   active_not?: Boolean;
   short_description?: String;
@@ -1058,22 +989,6 @@ export interface ActionWhereInput {
   related_actions_some?: ActionWhereInput;
   related_actions_none?: ActionWhereInput;
   author?: UserWhereInput;
-=======
-  video_id?: String;
-  video_id_not?: String;
-  video_id_in?: String[] | String;
-  video_id_not_in?: String[] | String;
-  video_id_lt?: String;
-  video_id_lte?: String;
-  video_id_gt?: String;
-  video_id_gte?: String;
-  video_id_contains?: String;
-  video_id_not_contains?: String;
-  video_id_starts_with?: String;
-  video_id_not_starts_with?: String;
-  video_id_ends_with?: String;
-  video_id_not_ends_with?: String;
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
   createdAt?: DateTimeInput;
   createdAt_not?: DateTimeInput;
   createdAt_in?: DateTimeInput[] | DateTimeInput;
@@ -1090,7 +1005,6 @@ export interface ActionWhereInput {
   updatedAt_lte?: DateTimeInput;
   updatedAt_gt?: DateTimeInput;
   updatedAt_gte?: DateTimeInput;
-<<<<<<< HEAD
   AND?: ActionWhereInput[] | ActionWhereInput;
   OR?: ActionWhereInput[] | ActionWhereInput;
   NOT?: ActionWhereInput[] | ActionWhereInput;
@@ -1167,14 +1081,6 @@ export interface ActionUpdateDataInput {
 }
 
 export interface UserScalarWhereInput {
-=======
-  AND?: ActionCategoryWhereInput[] | ActionCategoryWhereInput;
-  OR?: ActionCategoryWhereInput[] | ActionCategoryWhereInput;
-  NOT?: ActionCategoryWhereInput[] | ActionCategoryWhereInput;
-}
-
-export interface UserWhereInput {
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
   id?: ID_Input;
   id_not?: ID_Input;
   id_in?: ID_Input[] | ID_Input;
@@ -1259,13 +1165,6 @@ export interface UserWhereInput {
   phone_not_starts_with?: String;
   phone_ends_with?: String;
   phone_not_ends_with?: String;
-<<<<<<< HEAD
-=======
-  role?: RoleWhereInput;
-  recent_actions_every?: EventActionWhereInput;
-  recent_actions_some?: EventActionWhereInput;
-  recent_actions_none?: EventActionWhereInput;
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
   total_points?: Int;
   total_points_not?: Int;
   total_points_in?: Int[] | Int;
@@ -1274,12 +1173,6 @@ export interface UserWhereInput {
   total_points_lte?: Int;
   total_points_gt?: Int;
   total_points_gte?: Int;
-<<<<<<< HEAD
-=======
-  petitions_signed_every?: PetitionWhereInput;
-  petitions_signed_some?: PetitionWhereInput;
-  petitions_signed_none?: PetitionWhereInput;
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
   createdAt?: DateTimeInput;
   createdAt_not?: DateTimeInput;
   createdAt_in?: DateTimeInput[] | DateTimeInput;
@@ -1296,7 +1189,6 @@ export interface UserWhereInput {
   updatedAt_lte?: DateTimeInput;
   updatedAt_gt?: DateTimeInput;
   updatedAt_gte?: DateTimeInput;
-<<<<<<< HEAD
   AND?: UserScalarWhereInput[] | UserScalarWhereInput;
   OR?: UserScalarWhereInput[] | UserScalarWhereInput;
   NOT?: UserScalarWhereInput[] | UserScalarWhereInput;
@@ -1349,7 +1241,7 @@ export interface RoleUpdateDataInput {
 
 export interface UserCreateWithoutPetitions_signedInput {
   username?: String;
-  email: String;
+  email?: String;
   password: String;
   name: String;
   phone?: String;
@@ -1413,7 +1305,7 @@ export interface ActionUpdateOneRequiredInput {
 
 export interface UserCreateWithoutRecent_actionsInput {
   username?: String;
-  email: String;
+  email?: String;
   password: String;
   name: String;
   phone?: String;
@@ -1447,14 +1339,6 @@ export interface ActionCreateInput {
 }
 
 export interface UserWhereInput {
-=======
-  AND?: UserWhereInput[] | UserWhereInput;
-  OR?: UserWhereInput[] | UserWhereInput;
-  NOT?: UserWhereInput[] | UserWhereInput;
-}
-
-export interface RoleWhereInput {
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
   id?: ID_Input;
   id_not?: ID_Input;
   id_in?: ID_Input[] | ID_Input;
@@ -1469,7 +1353,6 @@ export interface RoleWhereInput {
   id_not_starts_with?: ID_Input;
   id_ends_with?: ID_Input;
   id_not_ends_with?: ID_Input;
-<<<<<<< HEAD
   username?: String;
   username_not?: String;
   username_in?: String[] | String;
@@ -1555,22 +1438,6 @@ export interface RoleWhereInput {
   petitions_signed_every?: PetitionWhereInput;
   petitions_signed_some?: PetitionWhereInput;
   petitions_signed_none?: PetitionWhereInput;
-=======
-  role_name?: String;
-  role_name_not?: String;
-  role_name_in?: String[] | String;
-  role_name_not_in?: String[] | String;
-  role_name_lt?: String;
-  role_name_lte?: String;
-  role_name_gt?: String;
-  role_name_gte?: String;
-  role_name_contains?: String;
-  role_name_not_contains?: String;
-  role_name_starts_with?: String;
-  role_name_not_starts_with?: String;
-  role_name_ends_with?: String;
-  role_name_not_ends_with?: String;
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
   createdAt?: DateTimeInput;
   createdAt_not?: DateTimeInput;
   createdAt_in?: DateTimeInput[] | DateTimeInput;
@@ -1587,7 +1454,6 @@ export interface RoleWhereInput {
   updatedAt_lte?: DateTimeInput;
   updatedAt_gt?: DateTimeInput;
   updatedAt_gte?: DateTimeInput;
-<<<<<<< HEAD
   AND?: UserWhereInput[] | UserWhereInput;
   OR?: UserWhereInput[] | UserWhereInput;
   NOT?: UserWhereInput[] | UserWhereInput;
@@ -1595,17 +1461,11 @@ export interface RoleWhereInput {
 
 export interface ActionCategoryCreateWithoutActionsInput {
   name: String;
+  primary_image?: String;
+  video_id?: String;
 }
 
 export interface EventActionScalarWhereInput {
-=======
-  AND?: RoleWhereInput[] | RoleWhereInput;
-  OR?: RoleWhereInput[] | RoleWhereInput;
-  NOT?: RoleWhereInput[] | RoleWhereInput;
-}
-
-export interface EventActionWhereInput {
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
   id?: ID_Input;
   id_not?: ID_Input;
   id_in?: ID_Input[] | ID_Input;
@@ -1620,11 +1480,6 @@ export interface EventActionWhereInput {
   id_not_starts_with?: ID_Input;
   id_ends_with?: ID_Input;
   id_not_ends_with?: ID_Input;
-<<<<<<< HEAD
-=======
-  action?: ActionWhereInput;
-  user?: UserWhereInput;
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
   took_action?: Boolean;
   took_action_not?: Boolean;
   createdAt?: DateTimeInput;
@@ -1643,7 +1498,6 @@ export interface EventActionWhereInput {
   updatedAt_lte?: DateTimeInput;
   updatedAt_gt?: DateTimeInput;
   updatedAt_gte?: DateTimeInput;
-<<<<<<< HEAD
   AND?: EventActionScalarWhereInput[] | EventActionScalarWhereInput;
   OR?: EventActionScalarWhereInput[] | EventActionScalarWhereInput;
   NOT?: EventActionScalarWhereInput[] | EventActionScalarWhereInput;
@@ -1797,14 +1651,6 @@ export type ActionCategoryWhereUniqueInput = AtLeastOne<{
 }>;
 
 export interface PetitionScalarWhereInput {
-=======
-  AND?: EventActionWhereInput[] | EventActionWhereInput;
-  OR?: EventActionWhereInput[] | EventActionWhereInput;
-  NOT?: EventActionWhereInput[] | EventActionWhereInput;
-}
-
-export interface PetitionWhereInput {
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
   id?: ID_Input;
   id_not?: ID_Input;
   id_in?: ID_Input[] | ID_Input;
@@ -1907,13 +1753,6 @@ export interface PetitionWhereInput {
   external_url_not_ends_with?: String;
   hasVideo?: Boolean;
   hasVideo_not?: Boolean;
-<<<<<<< HEAD
-=======
-  users_every?: UserWhereInput;
-  users_some?: UserWhereInput;
-  users_none?: UserWhereInput;
-  author?: UserWhereInput;
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
   createdAt?: DateTimeInput;
   createdAt_not?: DateTimeInput;
   createdAt_in?: DateTimeInput[] | DateTimeInput;
@@ -1930,7 +1769,6 @@ export interface PetitionWhereInput {
   updatedAt_lte?: DateTimeInput;
   updatedAt_gt?: DateTimeInput;
   updatedAt_gte?: DateTimeInput;
-<<<<<<< HEAD
   AND?: PetitionScalarWhereInput[] | PetitionScalarWhereInput;
   OR?: PetitionScalarWhereInput[] | PetitionScalarWhereInput;
   NOT?: PetitionScalarWhereInput[] | PetitionScalarWhereInput;
@@ -2004,631 +1842,6 @@ export interface EventActionUpdateInput {
   action?: ActionUpdateOneRequiredInput;
   user?: UserUpdateOneRequiredWithoutRecent_actionsInput;
   took_action?: Boolean;
-}
-
-export interface ActionScalarWhereInput {
-=======
-  AND?: PetitionWhereInput[] | PetitionWhereInput;
-  OR?: PetitionWhereInput[] | PetitionWhereInput;
-  NOT?: PetitionWhereInput[] | PetitionWhereInput;
-}
-
-export type ActionCategoryWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
-
-export type EventActionWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
-
-export type PetitionWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
-
-export type RoleWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
-
-export type UserWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-  username?: String;
-  email?: String;
-  phone?: String;
-}>;
-
-export interface ActionCreateInput {
-  category?: ActionCategoryCreateOneWithoutActionsInput;
-  title: String;
-  body: String;
-  primary_image?: String;
-  active?: Boolean;
-  short_description: String;
-  action_taken_description: String;
-  schedule?: Schedule;
-  video_url?: String;
-  carbon_dioxide?: Float;
-  water?: Float;
-  waste?: Float;
-  external_url?: String;
-  isGame?: Boolean;
-  related_actions?: ActionCreateManyInput;
-  author: UserCreateOneInput;
-}
-
-export interface ActionCategoryCreateOneWithoutActionsInput {
-  create?: ActionCategoryCreateWithoutActionsInput;
-  connect?: ActionCategoryWhereUniqueInput;
-}
-
-export interface ActionCategoryCreateWithoutActionsInput {
-  name: String;
-  primary_image?: String;
-  video_id?: String;
-}
-
-export interface ActionCreateManyInput {
-  create?: ActionCreateInput[] | ActionCreateInput;
-  connect?: ActionWhereUniqueInput[] | ActionWhereUniqueInput;
-}
-
-export interface UserCreateOneInput {
-  create?: UserCreateInput;
-  connect?: UserWhereUniqueInput;
-}
-
-export interface UserCreateInput {
-  username?: String;
-  email: String;
-  password: String;
-  name: String;
-  phone?: String;
-  role?: RoleCreateOneInput;
-  recent_actions?: EventActionCreateManyWithoutUserInput;
-  total_points?: Int;
-  petitions_signed?: PetitionCreateManyWithoutUsersInput;
-}
-
-export interface RoleCreateOneInput {
-  create?: RoleCreateInput;
-  connect?: RoleWhereUniqueInput;
-}
-
-export interface RoleCreateInput {
-  role_name: String;
-}
-
-export interface EventActionCreateManyWithoutUserInput {
-  create?:
-    | EventActionCreateWithoutUserInput[]
-    | EventActionCreateWithoutUserInput;
-  connect?: EventActionWhereUniqueInput[] | EventActionWhereUniqueInput;
-}
-
-export interface EventActionCreateWithoutUserInput {
-  action: ActionCreateOneInput;
-  took_action?: Boolean;
-}
-
-export interface ActionCreateOneInput {
-  create?: ActionCreateInput;
-  connect?: ActionWhereUniqueInput;
-}
-
-export interface PetitionCreateManyWithoutUsersInput {
-  create?: PetitionCreateWithoutUsersInput[] | PetitionCreateWithoutUsersInput;
-  connect?: PetitionWhereUniqueInput[] | PetitionWhereUniqueInput;
-}
-
-export interface PetitionCreateWithoutUsersInput {
-  title: String;
-  active?: Boolean;
-  short_description: String;
-  body: String;
-  primary_image?: String;
-  video_url?: String;
-  external_url?: String;
-  hasVideo?: Boolean;
-  author: UserCreateOneInput;
-}
-
-export interface ActionUpdateInput {
-  category?: ActionCategoryUpdateOneWithoutActionsInput;
-  title?: String;
-  body?: String;
-  primary_image?: String;
-  active?: Boolean;
-  short_description?: String;
-  action_taken_description?: String;
-  schedule?: Schedule;
-  video_url?: String;
-  carbon_dioxide?: Float;
-  water?: Float;
-  waste?: Float;
-  external_url?: String;
-  isGame?: Boolean;
-  related_actions?: ActionUpdateManyInput;
-  author?: UserUpdateOneRequiredInput;
-}
-
-export interface ActionCategoryUpdateOneWithoutActionsInput {
-  create?: ActionCategoryCreateWithoutActionsInput;
-  update?: ActionCategoryUpdateWithoutActionsDataInput;
-  upsert?: ActionCategoryUpsertWithoutActionsInput;
-  delete?: Boolean;
-  disconnect?: Boolean;
-  connect?: ActionCategoryWhereUniqueInput;
-}
-
-export interface ActionCategoryUpdateWithoutActionsDataInput {
-  name?: String;
-  primary_image?: String;
-  video_id?: String;
-}
-
-export interface ActionCategoryUpsertWithoutActionsInput {
-  update: ActionCategoryUpdateWithoutActionsDataInput;
-  create: ActionCategoryCreateWithoutActionsInput;
-}
-
-export interface ActionUpdateManyInput {
-  create?: ActionCreateInput[] | ActionCreateInput;
-  update?:
-    | ActionUpdateWithWhereUniqueNestedInput[]
-    | ActionUpdateWithWhereUniqueNestedInput;
-  upsert?:
-    | ActionUpsertWithWhereUniqueNestedInput[]
-    | ActionUpsertWithWhereUniqueNestedInput;
-  delete?: ActionWhereUniqueInput[] | ActionWhereUniqueInput;
-  connect?: ActionWhereUniqueInput[] | ActionWhereUniqueInput;
-  disconnect?: ActionWhereUniqueInput[] | ActionWhereUniqueInput;
-  deleteMany?: ActionScalarWhereInput[] | ActionScalarWhereInput;
-  updateMany?:
-    | ActionUpdateManyWithWhereNestedInput[]
-    | ActionUpdateManyWithWhereNestedInput;
-}
-
-export interface ActionUpdateWithWhereUniqueNestedInput {
-  where: ActionWhereUniqueInput;
-  data: ActionUpdateDataInput;
-}
-
-export interface ActionUpdateDataInput {
-  category?: ActionCategoryUpdateOneWithoutActionsInput;
-  title?: String;
-  body?: String;
-  primary_image?: String;
-  active?: Boolean;
-  short_description?: String;
-  action_taken_description?: String;
-  schedule?: Schedule;
-  video_url?: String;
-  carbon_dioxide?: Float;
-  water?: Float;
-  waste?: Float;
-  external_url?: String;
-  isGame?: Boolean;
-  related_actions?: ActionUpdateManyInput;
-  author?: UserUpdateOneRequiredInput;
-}
-
-export interface UserUpdateOneRequiredInput {
-  create?: UserCreateInput;
-  update?: UserUpdateDataInput;
-  upsert?: UserUpsertNestedInput;
-  connect?: UserWhereUniqueInput;
-}
-
-export interface UserUpdateDataInput {
-  username?: String;
-  email?: String;
-  password?: String;
-  name?: String;
-  phone?: String;
-  role?: RoleUpdateOneInput;
-  recent_actions?: EventActionUpdateManyWithoutUserInput;
-  total_points?: Int;
-  petitions_signed?: PetitionUpdateManyWithoutUsersInput;
-}
-
-export interface RoleUpdateOneInput {
-  create?: RoleCreateInput;
-  update?: RoleUpdateDataInput;
-  upsert?: RoleUpsertNestedInput;
-  delete?: Boolean;
-  disconnect?: Boolean;
-  connect?: RoleWhereUniqueInput;
-}
-
-export interface RoleUpdateDataInput {
-  role_name?: String;
-}
-
-export interface RoleUpsertNestedInput {
-  update: RoleUpdateDataInput;
-  create: RoleCreateInput;
-}
-
-export interface EventActionUpdateManyWithoutUserInput {
-  create?:
-    | EventActionCreateWithoutUserInput[]
-    | EventActionCreateWithoutUserInput;
-  delete?: EventActionWhereUniqueInput[] | EventActionWhereUniqueInput;
-  connect?: EventActionWhereUniqueInput[] | EventActionWhereUniqueInput;
-  disconnect?: EventActionWhereUniqueInput[] | EventActionWhereUniqueInput;
-  update?:
-    | EventActionUpdateWithWhereUniqueWithoutUserInput[]
-    | EventActionUpdateWithWhereUniqueWithoutUserInput;
-  upsert?:
-    | EventActionUpsertWithWhereUniqueWithoutUserInput[]
-    | EventActionUpsertWithWhereUniqueWithoutUserInput;
-  deleteMany?: EventActionScalarWhereInput[] | EventActionScalarWhereInput;
-  updateMany?:
-    | EventActionUpdateManyWithWhereNestedInput[]
-    | EventActionUpdateManyWithWhereNestedInput;
-}
-
-export interface EventActionUpdateWithWhereUniqueWithoutUserInput {
-  where: EventActionWhereUniqueInput;
-  data: EventActionUpdateWithoutUserDataInput;
-}
-
-export interface EventActionUpdateWithoutUserDataInput {
-  action?: ActionUpdateOneRequiredInput;
-  took_action?: Boolean;
-}
-
-export interface ActionUpdateOneRequiredInput {
-  create?: ActionCreateInput;
-  update?: ActionUpdateDataInput;
-  upsert?: ActionUpsertNestedInput;
-  connect?: ActionWhereUniqueInput;
-}
-
-export interface ActionUpsertNestedInput {
-  update: ActionUpdateDataInput;
-  create: ActionCreateInput;
-}
-
-export interface EventActionUpsertWithWhereUniqueWithoutUserInput {
-  where: EventActionWhereUniqueInput;
-  update: EventActionUpdateWithoutUserDataInput;
-  create: EventActionCreateWithoutUserInput;
-}
-
-export interface EventActionScalarWhereInput {
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-<<<<<<< HEAD
-  title?: String;
-  title_not?: String;
-  title_in?: String[] | String;
-  title_not_in?: String[] | String;
-  title_lt?: String;
-  title_lte?: String;
-  title_gt?: String;
-  title_gte?: String;
-  title_contains?: String;
-  title_not_contains?: String;
-  title_starts_with?: String;
-  title_not_starts_with?: String;
-  title_ends_with?: String;
-  title_not_ends_with?: String;
-  body?: String;
-  body_not?: String;
-  body_in?: String[] | String;
-  body_not_in?: String[] | String;
-  body_lt?: String;
-  body_lte?: String;
-  body_gt?: String;
-  body_gte?: String;
-  body_contains?: String;
-  body_not_contains?: String;
-  body_starts_with?: String;
-  body_not_starts_with?: String;
-  body_ends_with?: String;
-  body_not_ends_with?: String;
-  primary_image?: String;
-  primary_image_not?: String;
-  primary_image_in?: String[] | String;
-  primary_image_not_in?: String[] | String;
-  primary_image_lt?: String;
-  primary_image_lte?: String;
-  primary_image_gt?: String;
-  primary_image_gte?: String;
-  primary_image_contains?: String;
-  primary_image_not_contains?: String;
-  primary_image_starts_with?: String;
-  primary_image_not_starts_with?: String;
-  primary_image_ends_with?: String;
-  primary_image_not_ends_with?: String;
-=======
-  took_action?: Boolean;
-  took_action_not?: Boolean;
-  createdAt?: DateTimeInput;
-  createdAt_not?: DateTimeInput;
-  createdAt_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_lt?: DateTimeInput;
-  createdAt_lte?: DateTimeInput;
-  createdAt_gt?: DateTimeInput;
-  createdAt_gte?: DateTimeInput;
-  updatedAt?: DateTimeInput;
-  updatedAt_not?: DateTimeInput;
-  updatedAt_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_lt?: DateTimeInput;
-  updatedAt_lte?: DateTimeInput;
-  updatedAt_gt?: DateTimeInput;
-  updatedAt_gte?: DateTimeInput;
-  AND?: EventActionScalarWhereInput[] | EventActionScalarWhereInput;
-  OR?: EventActionScalarWhereInput[] | EventActionScalarWhereInput;
-  NOT?: EventActionScalarWhereInput[] | EventActionScalarWhereInput;
-}
-
-export interface EventActionUpdateManyWithWhereNestedInput {
-  where: EventActionScalarWhereInput;
-  data: EventActionUpdateManyDataInput;
-}
-
-export interface EventActionUpdateManyDataInput {
-  took_action?: Boolean;
-}
-
-export interface PetitionUpdateManyWithoutUsersInput {
-  create?: PetitionCreateWithoutUsersInput[] | PetitionCreateWithoutUsersInput;
-  delete?: PetitionWhereUniqueInput[] | PetitionWhereUniqueInput;
-  connect?: PetitionWhereUniqueInput[] | PetitionWhereUniqueInput;
-  disconnect?: PetitionWhereUniqueInput[] | PetitionWhereUniqueInput;
-  update?:
-    | PetitionUpdateWithWhereUniqueWithoutUsersInput[]
-    | PetitionUpdateWithWhereUniqueWithoutUsersInput;
-  upsert?:
-    | PetitionUpsertWithWhereUniqueWithoutUsersInput[]
-    | PetitionUpsertWithWhereUniqueWithoutUsersInput;
-  deleteMany?: PetitionScalarWhereInput[] | PetitionScalarWhereInput;
-  updateMany?:
-    | PetitionUpdateManyWithWhereNestedInput[]
-    | PetitionUpdateManyWithWhereNestedInput;
-}
-
-export interface PetitionUpdateWithWhereUniqueWithoutUsersInput {
-  where: PetitionWhereUniqueInput;
-  data: PetitionUpdateWithoutUsersDataInput;
-}
-
-export interface PetitionUpdateWithoutUsersDataInput {
-  title?: String;
-  active?: Boolean;
-  short_description?: String;
-  body?: String;
-  primary_image?: String;
-  video_url?: String;
-  external_url?: String;
-  hasVideo?: Boolean;
-  author?: UserUpdateOneRequiredInput;
-}
-
-export interface PetitionUpsertWithWhereUniqueWithoutUsersInput {
-  where: PetitionWhereUniqueInput;
-  update: PetitionUpdateWithoutUsersDataInput;
-  create: PetitionCreateWithoutUsersInput;
-}
-
-export interface PetitionScalarWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  title?: String;
-  title_not?: String;
-  title_in?: String[] | String;
-  title_not_in?: String[] | String;
-  title_lt?: String;
-  title_lte?: String;
-  title_gt?: String;
-  title_gte?: String;
-  title_contains?: String;
-  title_not_contains?: String;
-  title_starts_with?: String;
-  title_not_starts_with?: String;
-  title_ends_with?: String;
-  title_not_ends_with?: String;
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
-  active?: Boolean;
-  active_not?: Boolean;
-  short_description?: String;
-  short_description_not?: String;
-  short_description_in?: String[] | String;
-  short_description_not_in?: String[] | String;
-  short_description_lt?: String;
-  short_description_lte?: String;
-  short_description_gt?: String;
-  short_description_gte?: String;
-  short_description_contains?: String;
-  short_description_not_contains?: String;
-  short_description_starts_with?: String;
-  short_description_not_starts_with?: String;
-  short_description_ends_with?: String;
-  short_description_not_ends_with?: String;
-<<<<<<< HEAD
-  action_taken_description?: String;
-  action_taken_description_not?: String;
-  action_taken_description_in?: String[] | String;
-  action_taken_description_not_in?: String[] | String;
-  action_taken_description_lt?: String;
-  action_taken_description_lte?: String;
-  action_taken_description_gt?: String;
-  action_taken_description_gte?: String;
-  action_taken_description_contains?: String;
-  action_taken_description_not_contains?: String;
-  action_taken_description_starts_with?: String;
-  action_taken_description_not_starts_with?: String;
-  action_taken_description_ends_with?: String;
-  action_taken_description_not_ends_with?: String;
-  schedule?: Schedule;
-  schedule_not?: Schedule;
-  schedule_in?: Schedule[] | Schedule;
-  schedule_not_in?: Schedule[] | Schedule;
-=======
-  body?: String;
-  body_not?: String;
-  body_in?: String[] | String;
-  body_not_in?: String[] | String;
-  body_lt?: String;
-  body_lte?: String;
-  body_gt?: String;
-  body_gte?: String;
-  body_contains?: String;
-  body_not_contains?: String;
-  body_starts_with?: String;
-  body_not_starts_with?: String;
-  body_ends_with?: String;
-  body_not_ends_with?: String;
-  primary_image?: String;
-  primary_image_not?: String;
-  primary_image_in?: String[] | String;
-  primary_image_not_in?: String[] | String;
-  primary_image_lt?: String;
-  primary_image_lte?: String;
-  primary_image_gt?: String;
-  primary_image_gte?: String;
-  primary_image_contains?: String;
-  primary_image_not_contains?: String;
-  primary_image_starts_with?: String;
-  primary_image_not_starts_with?: String;
-  primary_image_ends_with?: String;
-  primary_image_not_ends_with?: String;
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
-  video_url?: String;
-  video_url_not?: String;
-  video_url_in?: String[] | String;
-  video_url_not_in?: String[] | String;
-  video_url_lt?: String;
-  video_url_lte?: String;
-  video_url_gt?: String;
-  video_url_gte?: String;
-  video_url_contains?: String;
-  video_url_not_contains?: String;
-  video_url_starts_with?: String;
-  video_url_not_starts_with?: String;
-  video_url_ends_with?: String;
-  video_url_not_ends_with?: String;
-<<<<<<< HEAD
-  carbon_dioxide?: Float;
-  carbon_dioxide_not?: Float;
-  carbon_dioxide_in?: Float[] | Float;
-  carbon_dioxide_not_in?: Float[] | Float;
-  carbon_dioxide_lt?: Float;
-  carbon_dioxide_lte?: Float;
-  carbon_dioxide_gt?: Float;
-  carbon_dioxide_gte?: Float;
-  water?: Float;
-  water_not?: Float;
-  water_in?: Float[] | Float;
-  water_not_in?: Float[] | Float;
-  water_lt?: Float;
-  water_lte?: Float;
-  water_gt?: Float;
-  water_gte?: Float;
-  waste?: Float;
-  waste_not?: Float;
-  waste_in?: Float[] | Float;
-  waste_not_in?: Float[] | Float;
-  waste_lt?: Float;
-  waste_lte?: Float;
-  waste_gt?: Float;
-  waste_gte?: Float;
-=======
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
-  external_url?: String;
-  external_url_not?: String;
-  external_url_in?: String[] | String;
-  external_url_not_in?: String[] | String;
-  external_url_lt?: String;
-  external_url_lte?: String;
-  external_url_gt?: String;
-  external_url_gte?: String;
-  external_url_contains?: String;
-  external_url_not_contains?: String;
-  external_url_starts_with?: String;
-  external_url_not_starts_with?: String;
-  external_url_ends_with?: String;
-  external_url_not_ends_with?: String;
-<<<<<<< HEAD
-  isGame?: Boolean;
-  isGame_not?: Boolean;
-=======
-  hasVideo?: Boolean;
-  hasVideo_not?: Boolean;
-  createdAt?: DateTimeInput;
-  createdAt_not?: DateTimeInput;
-  createdAt_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_lt?: DateTimeInput;
-  createdAt_lte?: DateTimeInput;
-  createdAt_gt?: DateTimeInput;
-  createdAt_gte?: DateTimeInput;
-  updatedAt?: DateTimeInput;
-  updatedAt_not?: DateTimeInput;
-  updatedAt_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_lt?: DateTimeInput;
-  updatedAt_lte?: DateTimeInput;
-  updatedAt_gt?: DateTimeInput;
-  updatedAt_gte?: DateTimeInput;
-  AND?: PetitionScalarWhereInput[] | PetitionScalarWhereInput;
-  OR?: PetitionScalarWhereInput[] | PetitionScalarWhereInput;
-  NOT?: PetitionScalarWhereInput[] | PetitionScalarWhereInput;
-}
-
-export interface PetitionUpdateManyWithWhereNestedInput {
-  where: PetitionScalarWhereInput;
-  data: PetitionUpdateManyDataInput;
-}
-
-export interface PetitionUpdateManyDataInput {
-  title?: String;
-  active?: Boolean;
-  short_description?: String;
-  body?: String;
-  primary_image?: String;
-  video_url?: String;
-  external_url?: String;
-  hasVideo?: Boolean;
-}
-
-export interface UserUpsertNestedInput {
-  update: UserUpdateDataInput;
-  create: UserCreateInput;
-}
-
-export interface ActionUpsertWithWhereUniqueNestedInput {
-  where: ActionWhereUniqueInput;
-  update: ActionUpdateDataInput;
-  create: ActionCreateInput;
 }
 
 export interface ActionScalarWhereInput {
@@ -2797,392 +2010,6 @@ export interface ActionScalarWhereInput {
   NOT?: ActionScalarWhereInput[] | ActionScalarWhereInput;
 }
 
-export interface ActionUpdateManyWithWhereNestedInput {
-  where: ActionScalarWhereInput;
-  data: ActionUpdateManyDataInput;
-}
-
-export interface ActionUpdateManyDataInput {
-  title?: String;
-  body?: String;
-  primary_image?: String;
-  active?: Boolean;
-  short_description?: String;
-  action_taken_description?: String;
-  schedule?: Schedule;
-  video_url?: String;
-  carbon_dioxide?: Float;
-  water?: Float;
-  waste?: Float;
-  external_url?: String;
-  isGame?: Boolean;
-}
-
-export interface ActionUpdateManyMutationInput {
-  title?: String;
-  body?: String;
-  primary_image?: String;
-  active?: Boolean;
-  short_description?: String;
-  action_taken_description?: String;
-  schedule?: Schedule;
-  video_url?: String;
-  carbon_dioxide?: Float;
-  water?: Float;
-  waste?: Float;
-  external_url?: String;
-  isGame?: Boolean;
-}
-
-export interface ActionCategoryCreateInput {
-  name: String;
-  actions?: ActionCreateManyWithoutCategoryInput;
-  primary_image?: String;
-  video_id?: String;
-}
-
-export interface ActionCreateManyWithoutCategoryInput {
-  create?:
-    | ActionCreateWithoutCategoryInput[]
-    | ActionCreateWithoutCategoryInput;
-  connect?: ActionWhereUniqueInput[] | ActionWhereUniqueInput;
-}
-
-export interface ActionCreateWithoutCategoryInput {
-  title: String;
-  body: String;
-  primary_image?: String;
-  active?: Boolean;
-  short_description: String;
-  action_taken_description: String;
-  schedule?: Schedule;
-  video_url?: String;
-  carbon_dioxide?: Float;
-  water?: Float;
-  waste?: Float;
-  external_url?: String;
-  isGame?: Boolean;
-  related_actions?: ActionCreateManyInput;
-  author: UserCreateOneInput;
-}
-
-export interface ActionCategoryUpdateInput {
-  name?: String;
-  actions?: ActionUpdateManyWithoutCategoryInput;
-  primary_image?: String;
-  video_id?: String;
-}
-
-export interface ActionUpdateManyWithoutCategoryInput {
-  create?:
-    | ActionCreateWithoutCategoryInput[]
-    | ActionCreateWithoutCategoryInput;
-  delete?: ActionWhereUniqueInput[] | ActionWhereUniqueInput;
-  connect?: ActionWhereUniqueInput[] | ActionWhereUniqueInput;
-  disconnect?: ActionWhereUniqueInput[] | ActionWhereUniqueInput;
-  update?:
-    | ActionUpdateWithWhereUniqueWithoutCategoryInput[]
-    | ActionUpdateWithWhereUniqueWithoutCategoryInput;
-  upsert?:
-    | ActionUpsertWithWhereUniqueWithoutCategoryInput[]
-    | ActionUpsertWithWhereUniqueWithoutCategoryInput;
-  deleteMany?: ActionScalarWhereInput[] | ActionScalarWhereInput;
-  updateMany?:
-    | ActionUpdateManyWithWhereNestedInput[]
-    | ActionUpdateManyWithWhereNestedInput;
-}
-
-export interface ActionUpdateWithWhereUniqueWithoutCategoryInput {
-  where: ActionWhereUniqueInput;
-  data: ActionUpdateWithoutCategoryDataInput;
-}
-
-export interface ActionUpdateWithoutCategoryDataInput {
-  title?: String;
-  body?: String;
-  primary_image?: String;
-  active?: Boolean;
-  short_description?: String;
-  action_taken_description?: String;
-  schedule?: Schedule;
-  video_url?: String;
-  carbon_dioxide?: Float;
-  water?: Float;
-  waste?: Float;
-  external_url?: String;
-  isGame?: Boolean;
-  related_actions?: ActionUpdateManyInput;
-  author?: UserUpdateOneRequiredInput;
-}
-
-export interface ActionUpsertWithWhereUniqueWithoutCategoryInput {
-  where: ActionWhereUniqueInput;
-  update: ActionUpdateWithoutCategoryDataInput;
-  create: ActionCreateWithoutCategoryInput;
-}
-
-export interface ActionCategoryUpdateManyMutationInput {
-  name?: String;
-  primary_image?: String;
-  video_id?: String;
-}
-
-export interface EventActionCreateInput {
-  action: ActionCreateOneInput;
-  user: UserCreateOneWithoutRecent_actionsInput;
-  took_action?: Boolean;
-}
-
-export interface UserCreateOneWithoutRecent_actionsInput {
-  create?: UserCreateWithoutRecent_actionsInput;
-  connect?: UserWhereUniqueInput;
-}
-
-export interface UserCreateWithoutRecent_actionsInput {
-  username?: String;
-  email: String;
-  password: String;
-  name: String;
-  phone?: String;
-  role?: RoleCreateOneInput;
-  total_points?: Int;
-  petitions_signed?: PetitionCreateManyWithoutUsersInput;
-}
-
-export interface EventActionUpdateInput {
-  action?: ActionUpdateOneRequiredInput;
-  user?: UserUpdateOneRequiredWithoutRecent_actionsInput;
-  took_action?: Boolean;
-}
-
-export interface UserUpdateOneRequiredWithoutRecent_actionsInput {
-  create?: UserCreateWithoutRecent_actionsInput;
-  update?: UserUpdateWithoutRecent_actionsDataInput;
-  upsert?: UserUpsertWithoutRecent_actionsInput;
-  connect?: UserWhereUniqueInput;
-}
-
-export interface UserUpdateWithoutRecent_actionsDataInput {
-  username?: String;
-  email?: String;
-  password?: String;
-  name?: String;
-  phone?: String;
-  role?: RoleUpdateOneInput;
-  total_points?: Int;
-  petitions_signed?: PetitionUpdateManyWithoutUsersInput;
-}
-
-export interface UserUpsertWithoutRecent_actionsInput {
-  update: UserUpdateWithoutRecent_actionsDataInput;
-  create: UserCreateWithoutRecent_actionsInput;
-}
-
-export interface EventActionUpdateManyMutationInput {
-  took_action?: Boolean;
-}
-
-export interface PetitionCreateInput {
-  title: String;
-  active?: Boolean;
-  short_description: String;
-  body: String;
-  primary_image?: String;
-  video_url?: String;
-  external_url?: String;
-  hasVideo?: Boolean;
-  users?: UserCreateManyWithoutPetitions_signedInput;
-  author: UserCreateOneInput;
-}
-
-export interface UserCreateManyWithoutPetitions_signedInput {
-  create?:
-    | UserCreateWithoutPetitions_signedInput[]
-    | UserCreateWithoutPetitions_signedInput;
-  connect?: UserWhereUniqueInput[] | UserWhereUniqueInput;
-}
-
-export interface UserCreateWithoutPetitions_signedInput {
-  username?: String;
-  email: String;
-  password: String;
-  name: String;
-  phone?: String;
-  role?: RoleCreateOneInput;
-  recent_actions?: EventActionCreateManyWithoutUserInput;
-  total_points?: Int;
-}
-
-export interface PetitionUpdateInput {
-  title?: String;
-  active?: Boolean;
-  short_description?: String;
-  body?: String;
-  primary_image?: String;
-  video_url?: String;
-  external_url?: String;
-  hasVideo?: Boolean;
-  users?: UserUpdateManyWithoutPetitions_signedInput;
-  author?: UserUpdateOneRequiredInput;
-}
-
-export interface UserUpdateManyWithoutPetitions_signedInput {
-  create?:
-    | UserCreateWithoutPetitions_signedInput[]
-    | UserCreateWithoutPetitions_signedInput;
-  delete?: UserWhereUniqueInput[] | UserWhereUniqueInput;
-  connect?: UserWhereUniqueInput[] | UserWhereUniqueInput;
-  disconnect?: UserWhereUniqueInput[] | UserWhereUniqueInput;
-  update?:
-    | UserUpdateWithWhereUniqueWithoutPetitions_signedInput[]
-    | UserUpdateWithWhereUniqueWithoutPetitions_signedInput;
-  upsert?:
-    | UserUpsertWithWhereUniqueWithoutPetitions_signedInput[]
-    | UserUpsertWithWhereUniqueWithoutPetitions_signedInput;
-  deleteMany?: UserScalarWhereInput[] | UserScalarWhereInput;
-  updateMany?:
-    | UserUpdateManyWithWhereNestedInput[]
-    | UserUpdateManyWithWhereNestedInput;
-}
-
-export interface UserUpdateWithWhereUniqueWithoutPetitions_signedInput {
-  where: UserWhereUniqueInput;
-  data: UserUpdateWithoutPetitions_signedDataInput;
-}
-
-export interface UserUpdateWithoutPetitions_signedDataInput {
-  username?: String;
-  email?: String;
-  password?: String;
-  name?: String;
-  phone?: String;
-  role?: RoleUpdateOneInput;
-  recent_actions?: EventActionUpdateManyWithoutUserInput;
-  total_points?: Int;
-}
-
-export interface UserUpsertWithWhereUniqueWithoutPetitions_signedInput {
-  where: UserWhereUniqueInput;
-  update: UserUpdateWithoutPetitions_signedDataInput;
-  create: UserCreateWithoutPetitions_signedInput;
-}
-
-export interface UserScalarWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  username?: String;
-  username_not?: String;
-  username_in?: String[] | String;
-  username_not_in?: String[] | String;
-  username_lt?: String;
-  username_lte?: String;
-  username_gt?: String;
-  username_gte?: String;
-  username_contains?: String;
-  username_not_contains?: String;
-  username_starts_with?: String;
-  username_not_starts_with?: String;
-  username_ends_with?: String;
-  username_not_ends_with?: String;
-  email?: String;
-  email_not?: String;
-  email_in?: String[] | String;
-  email_not_in?: String[] | String;
-  email_lt?: String;
-  email_lte?: String;
-  email_gt?: String;
-  email_gte?: String;
-  email_contains?: String;
-  email_not_contains?: String;
-  email_starts_with?: String;
-  email_not_starts_with?: String;
-  email_ends_with?: String;
-  email_not_ends_with?: String;
-  password?: String;
-  password_not?: String;
-  password_in?: String[] | String;
-  password_not_in?: String[] | String;
-  password_lt?: String;
-  password_lte?: String;
-  password_gt?: String;
-  password_gte?: String;
-  password_contains?: String;
-  password_not_contains?: String;
-  password_starts_with?: String;
-  password_not_starts_with?: String;
-  password_ends_with?: String;
-  password_not_ends_with?: String;
-  name?: String;
-  name_not?: String;
-  name_in?: String[] | String;
-  name_not_in?: String[] | String;
-  name_lt?: String;
-  name_lte?: String;
-  name_gt?: String;
-  name_gte?: String;
-  name_contains?: String;
-  name_not_contains?: String;
-  name_starts_with?: String;
-  name_not_starts_with?: String;
-  name_ends_with?: String;
-  name_not_ends_with?: String;
-  phone?: String;
-  phone_not?: String;
-  phone_in?: String[] | String;
-  phone_not_in?: String[] | String;
-  phone_lt?: String;
-  phone_lte?: String;
-  phone_gt?: String;
-  phone_gte?: String;
-  phone_contains?: String;
-  phone_not_contains?: String;
-  phone_starts_with?: String;
-  phone_not_starts_with?: String;
-  phone_ends_with?: String;
-  phone_not_ends_with?: String;
-  total_points?: Int;
-  total_points_not?: Int;
-  total_points_in?: Int[] | Int;
-  total_points_not_in?: Int[] | Int;
-  total_points_lt?: Int;
-  total_points_lte?: Int;
-  total_points_gt?: Int;
-  total_points_gte?: Int;
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
-  createdAt?: DateTimeInput;
-  createdAt_not?: DateTimeInput;
-  createdAt_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_lt?: DateTimeInput;
-  createdAt_lte?: DateTimeInput;
-  createdAt_gt?: DateTimeInput;
-  createdAt_gte?: DateTimeInput;
-  updatedAt?: DateTimeInput;
-  updatedAt_not?: DateTimeInput;
-  updatedAt_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_lt?: DateTimeInput;
-  updatedAt_lte?: DateTimeInput;
-  updatedAt_gt?: DateTimeInput;
-  updatedAt_gte?: DateTimeInput;
-<<<<<<< HEAD
-  AND?: ActionScalarWhereInput[] | ActionScalarWhereInput;
-  OR?: ActionScalarWhereInput[] | ActionScalarWhereInput;
-  NOT?: ActionScalarWhereInput[] | ActionScalarWhereInput;
-}
-
 export interface ActionCategoryCreateOneWithoutActionsInput {
   create?: ActionCategoryCreateWithoutActionsInput;
   connect?: ActionCategoryWhereUniqueInput;
@@ -3195,7 +2022,7 @@ export interface ActionUpdateManyWithWhereNestedInput {
 
 export interface UserCreateInput {
   username?: String;
-  email: String;
+  email?: String;
   password: String;
   name: String;
   phone?: String;
@@ -3249,53 +2076,11 @@ export interface ActionUpdateManyMutationInput {
 }
 
 export interface UserUpdateManyMutationInput {
-=======
-  AND?: UserScalarWhereInput[] | UserScalarWhereInput;
-  OR?: UserScalarWhereInput[] | UserScalarWhereInput;
-  NOT?: UserScalarWhereInput[] | UserScalarWhereInput;
-}
-
-export interface UserUpdateManyWithWhereNestedInput {
-  where: UserScalarWhereInput;
-  data: UserUpdateManyDataInput;
-}
-
-export interface UserUpdateManyDataInput {
   username?: String;
   email?: String;
   password?: String;
   name?: String;
   phone?: String;
-  total_points?: Int;
-}
-
-export interface PetitionUpdateManyMutationInput {
-  title?: String;
-  active?: Boolean;
-  short_description?: String;
-  body?: String;
-  primary_image?: String;
-  video_url?: String;
-  external_url?: String;
-  hasVideo?: Boolean;
-}
-
-export interface RoleUpdateInput {
-  role_name?: String;
-}
-
-export interface RoleUpdateManyMutationInput {
-  role_name?: String;
-}
-
-export interface UserUpdateInput {
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
-  username?: String;
-  email?: String;
-  password?: String;
-  name?: String;
-  phone?: String;
-<<<<<<< HEAD
   total_points?: Int;
 }
 
@@ -3312,6 +2097,8 @@ export interface UserUpdateManyWithWhereNestedInput {
 
 export interface ActionCategoryUpdateManyMutationInput {
   name?: String;
+  primary_image?: String;
+  video_id?: String;
 }
 
 export interface PetitionUpdateInput {
@@ -3330,6 +2117,8 @@ export interface PetitionUpdateInput {
 export interface ActionCategoryCreateInput {
   name: String;
   actions?: ActionCreateManyWithoutCategoryInput;
+  primary_image?: String;
+  video_id?: String;
 }
 
 export type UserWhereUniqueInput = AtLeastOne<{
@@ -3367,49 +2156,6 @@ export interface ActionCreateWithoutCategoryInput {
   isGame?: Boolean;
   related_actions?: ActionCreateManyInput;
   author: UserCreateOneInput;
-=======
-  role?: RoleUpdateOneInput;
-  recent_actions?: EventActionUpdateManyWithoutUserInput;
-  total_points?: Int;
-  petitions_signed?: PetitionUpdateManyWithoutUsersInput;
-}
-
-export interface UserUpdateManyMutationInput {
-  username?: String;
-  email?: String;
-  password?: String;
-  name?: String;
-  phone?: String;
-  total_points?: Int;
-}
-
-export interface ActionSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: ActionWhereInput;
-  AND?: ActionSubscriptionWhereInput[] | ActionSubscriptionWhereInput;
-  OR?: ActionSubscriptionWhereInput[] | ActionSubscriptionWhereInput;
-  NOT?: ActionSubscriptionWhereInput[] | ActionSubscriptionWhereInput;
-}
-
-export interface ActionCategorySubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: ActionCategoryWhereInput;
-  AND?:
-    | ActionCategorySubscriptionWhereInput[]
-    | ActionCategorySubscriptionWhereInput;
-  OR?:
-    | ActionCategorySubscriptionWhereInput[]
-    | ActionCategorySubscriptionWhereInput;
-  NOT?:
-    | ActionCategorySubscriptionWhereInput[]
-    | ActionCategorySubscriptionWhereInput;
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
 }
 
 export interface EventActionSubscriptionWhereInput {
@@ -3423,7 +2169,6 @@ export interface EventActionSubscriptionWhereInput {
   NOT?: EventActionSubscriptionWhereInput[] | EventActionSubscriptionWhereInput;
 }
 
-<<<<<<< HEAD
 export interface UserUpdateWithoutPetitions_signedDataInput {
   username?: String;
   email?: String;
@@ -3480,6 +2225,8 @@ export interface ActionUpdateManyWithoutCategoryInput {
 export interface ActionCategoryUpdateInput {
   name?: String;
   actions?: ActionUpdateManyWithoutCategoryInput;
+  primary_image?: String;
+  video_id?: String;
 }
 
 export interface PetitionCreateInput {
@@ -3508,83 +2255,283 @@ export interface NodeNode {
 }
 
 export interface UserPreviousValues {
-=======
-export interface PetitionSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: PetitionWhereInput;
-  AND?: PetitionSubscriptionWhereInput[] | PetitionSubscriptionWhereInput;
-  OR?: PetitionSubscriptionWhereInput[] | PetitionSubscriptionWhereInput;
-  NOT?: PetitionSubscriptionWhereInput[] | PetitionSubscriptionWhereInput;
-}
-
-export interface RoleSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: RoleWhereInput;
-  AND?: RoleSubscriptionWhereInput[] | RoleSubscriptionWhereInput;
-  OR?: RoleSubscriptionWhereInput[] | RoleSubscriptionWhereInput;
-  NOT?: RoleSubscriptionWhereInput[] | RoleSubscriptionWhereInput;
-}
-
-export interface UserSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: UserWhereInput;
-  AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-  OR?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-  NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-}
-
-export interface NodeNode {
   id: ID_Output;
-}
-
-export interface Action {
-  id: ID_Output;
-  title: String;
-  body: String;
-  primary_image?: String;
-  active?: Boolean;
-  short_description: String;
-  action_taken_description: String;
-  schedule?: Schedule;
-  video_url?: String;
-  carbon_dioxide?: Float;
-  water?: Float;
-  waste?: Float;
-  external_url?: String;
-  isGame: Boolean;
+  username?: String;
+  email?: String;
+  password: String;
+  name: String;
+  phone?: String;
+  total_points?: Int;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
 
-export interface ActionPromise extends Promise<Action>, Fragmentable {
+export interface UserPreviousValuesPromise
+  extends Promise<UserPreviousValues>,
+    Fragmentable {
   id: () => Promise<ID_Output>;
-  category: <T = ActionCategoryPromise>() => T;
+  username: () => Promise<String>;
+  email: () => Promise<String>;
+  password: () => Promise<String>;
+  name: () => Promise<String>;
+  phone: () => Promise<String>;
+  total_points: () => Promise<Int>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface UserPreviousValuesSubscription
+  extends Promise<AsyncIterator<UserPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  username: () => Promise<AsyncIterator<String>>;
+  email: () => Promise<AsyncIterator<String>>;
+  password: () => Promise<AsyncIterator<String>>;
+  name: () => Promise<AsyncIterator<String>>;
+  phone: () => Promise<AsyncIterator<String>>;
+  total_points: () => Promise<AsyncIterator<Int>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface RolePreviousValues {
+  id: ID_Output;
+  role_name: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface RolePreviousValuesPromise
+  extends Promise<RolePreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  role_name: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface RolePreviousValuesSubscription
+  extends Promise<AsyncIterator<RolePreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  role_name: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface PetitionPreviousValues {
+  id: ID_Output;
+  title: String;
+  active?: Boolean;
+  short_description: String;
+  body: String;
+  primary_image?: String;
+  video_url?: String;
+  external_url?: String;
+  hasVideo: Boolean;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface PetitionPreviousValuesPromise
+  extends Promise<PetitionPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
   title: () => Promise<String>;
-  body: () => Promise<String>;
-  primary_image: () => Promise<String>;
   active: () => Promise<Boolean>;
   short_description: () => Promise<String>;
-  action_taken_description: () => Promise<String>;
-  schedule: () => Promise<Schedule>;
+  body: () => Promise<String>;
+  primary_image: () => Promise<String>;
   video_url: () => Promise<String>;
-  carbon_dioxide: () => Promise<Float>;
-  water: () => Promise<Float>;
-  waste: () => Promise<Float>;
   external_url: () => Promise<String>;
-  isGame: () => Promise<Boolean>;
-  related_actions: <T = FragmentableArray<Action>>(
+  hasVideo: () => Promise<Boolean>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface PetitionPreviousValuesSubscription
+  extends Promise<AsyncIterator<PetitionPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  active: () => Promise<AsyncIterator<Boolean>>;
+  short_description: () => Promise<AsyncIterator<String>>;
+  body: () => Promise<AsyncIterator<String>>;
+  primary_image: () => Promise<AsyncIterator<String>>;
+  video_url: () => Promise<AsyncIterator<String>>;
+  external_url: () => Promise<AsyncIterator<String>>;
+  hasVideo: () => Promise<AsyncIterator<Boolean>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface AggregateAction {
+  count: Int;
+}
+
+export interface AggregateActionPromise
+  extends Promise<AggregateAction>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateActionSubscription
+  extends Promise<AsyncIterator<AggregateAction>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface PageInfo {
+  hasNextPage: Boolean;
+  hasPreviousPage: Boolean;
+  startCursor?: String;
+  endCursor?: String;
+}
+
+export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
+  hasNextPage: () => Promise<Boolean>;
+  hasPreviousPage: () => Promise<Boolean>;
+  startCursor: () => Promise<String>;
+  endCursor: () => Promise<String>;
+}
+
+export interface PageInfoSubscription
+  extends Promise<AsyncIterator<PageInfo>>,
+    Fragmentable {
+  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
+  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
+  startCursor: () => Promise<AsyncIterator<String>>;
+  endCursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface ActionEdge {
+  cursor: String;
+}
+
+export interface ActionEdgePromise extends Promise<ActionEdge>, Fragmentable {
+  node: <T = ActionPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface ActionEdgeSubscription
+  extends Promise<AsyncIterator<ActionEdge>>,
+    Fragmentable {
+  node: <T = ActionSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateUser {
+  count: Int;
+}
+
+export interface AggregateUserPromise
+  extends Promise<AggregateUser>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateUserSubscription
+  extends Promise<AsyncIterator<AggregateUser>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface BatchPayload {
+  count: Long;
+}
+
+export interface BatchPayloadPromise
+  extends Promise<BatchPayload>,
+    Fragmentable {
+  count: () => Promise<Long>;
+}
+
+export interface BatchPayloadSubscription
+  extends Promise<AsyncIterator<BatchPayload>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Long>>;
+}
+
+export interface UserConnection {}
+
+export interface UserConnectionPromise
+  extends Promise<UserConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<UserEdge>>() => T;
+  aggregate: <T = AggregateUserPromise>() => T;
+}
+
+export interface UserConnectionSubscription
+  extends Promise<AsyncIterator<UserConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateUserSubscription>() => T;
+}
+
+export interface ActionConnection {}
+
+export interface ActionConnectionPromise
+  extends Promise<ActionConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<ActionEdge>>() => T;
+  aggregate: <T = AggregateActionPromise>() => T;
+}
+
+export interface ActionConnectionSubscription
+  extends Promise<AsyncIterator<ActionConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<ActionEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateActionSubscription>() => T;
+}
+
+export interface RoleEdge {
+  cursor: String;
+}
+
+export interface RoleEdgePromise extends Promise<RoleEdge>, Fragmentable {
+  node: <T = RolePromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface RoleEdgeSubscription
+  extends Promise<AsyncIterator<RoleEdge>>,
+    Fragmentable {
+  node: <T = RoleSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface Petition {
+  id: ID_Output;
+  title: String;
+  active?: Boolean;
+  short_description: String;
+  body: String;
+  primary_image?: String;
+  video_url?: String;
+  external_url?: String;
+  hasVideo: Boolean;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface PetitionPromise extends Promise<Petition>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  active: () => Promise<Boolean>;
+  short_description: () => Promise<String>;
+  body: () => Promise<String>;
+  primary_image: () => Promise<String>;
+  video_url: () => Promise<String>;
+  external_url: () => Promise<String>;
+  hasVideo: () => Promise<Boolean>;
+  users: <T = FragmentableArray<User>>(
     args?: {
-      where?: ActionWhereInput;
-      orderBy?: ActionOrderByInput;
+      where?: UserWhereInput;
+      orderBy?: UserOrderByInput;
       skip?: Int;
       after?: String;
       before?: String;
@@ -3597,28 +2544,22 @@ export interface ActionPromise extends Promise<Action>, Fragmentable {
   updatedAt: () => Promise<DateTimeOutput>;
 }
 
-export interface ActionSubscription
-  extends Promise<AsyncIterator<Action>>,
+export interface PetitionSubscription
+  extends Promise<AsyncIterator<Petition>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
-  category: <T = ActionCategorySubscription>() => T;
   title: () => Promise<AsyncIterator<String>>;
-  body: () => Promise<AsyncIterator<String>>;
-  primary_image: () => Promise<AsyncIterator<String>>;
   active: () => Promise<AsyncIterator<Boolean>>;
   short_description: () => Promise<AsyncIterator<String>>;
-  action_taken_description: () => Promise<AsyncIterator<String>>;
-  schedule: () => Promise<AsyncIterator<Schedule>>;
+  body: () => Promise<AsyncIterator<String>>;
+  primary_image: () => Promise<AsyncIterator<String>>;
   video_url: () => Promise<AsyncIterator<String>>;
-  carbon_dioxide: () => Promise<AsyncIterator<Float>>;
-  water: () => Promise<AsyncIterator<Float>>;
-  waste: () => Promise<AsyncIterator<Float>>;
   external_url: () => Promise<AsyncIterator<String>>;
-  isGame: () => Promise<AsyncIterator<Boolean>>;
-  related_actions: <T = Promise<AsyncIterator<ActionSubscription>>>(
+  hasVideo: () => Promise<AsyncIterator<Boolean>>;
+  users: <T = Promise<AsyncIterator<UserSubscription>>>(
     args?: {
-      where?: ActionWhereInput;
-      orderBy?: ActionOrderByInput;
+      where?: UserWhereInput;
+      orderBy?: UserOrderByInput;
       skip?: Int;
       after?: String;
       before?: String;
@@ -3684,151 +2625,6 @@ export interface ActionCategorySubscription
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface User {
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
-  id: ID_Output;
-  username?: String;
-  email: String;
-  password: String;
-  name: String;
-  phone?: String;
-  total_points?: Int;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-<<<<<<< HEAD
-export interface UserPreviousValuesPromise
-  extends Promise<UserPreviousValues>,
-    Fragmentable {
-=======
-export interface UserPromise extends Promise<User>, Fragmentable {
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
-  id: () => Promise<ID_Output>;
-  username: () => Promise<String>;
-  email: () => Promise<String>;
-  password: () => Promise<String>;
-  name: () => Promise<String>;
-  phone: () => Promise<String>;
-<<<<<<< HEAD
-  total_points: () => Promise<Int>;
-=======
-  role: <T = RolePromise>() => T;
-  recent_actions: <T = FragmentableArray<EventAction>>(
-    args?: {
-      where?: EventActionWhereInput;
-      orderBy?: EventActionOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
-  total_points: () => Promise<Int>;
-  petitions_signed: <T = FragmentableArray<Petition>>(
-    args?: {
-      where?: PetitionWhereInput;
-      orderBy?: PetitionOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-<<<<<<< HEAD
-export interface UserPreviousValuesSubscription
-  extends Promise<AsyncIterator<UserPreviousValues>>,
-=======
-export interface UserSubscription
-  extends Promise<AsyncIterator<User>>,
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  username: () => Promise<AsyncIterator<String>>;
-  email: () => Promise<AsyncIterator<String>>;
-  password: () => Promise<AsyncIterator<String>>;
-  name: () => Promise<AsyncIterator<String>>;
-  phone: () => Promise<AsyncIterator<String>>;
-<<<<<<< HEAD
-  total_points: () => Promise<AsyncIterator<Int>>;
-=======
-  role: <T = RoleSubscription>() => T;
-  recent_actions: <T = Promise<AsyncIterator<EventActionSubscription>>>(
-    args?: {
-      where?: EventActionWhereInput;
-      orderBy?: EventActionOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
-  total_points: () => Promise<AsyncIterator<Int>>;
-  petitions_signed: <T = Promise<AsyncIterator<PetitionSubscription>>>(
-    args?: {
-      where?: PetitionWhereInput;
-      orderBy?: PetitionOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-<<<<<<< HEAD
-export interface RolePreviousValues {
-=======
-export interface Role {
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
-  id: ID_Output;
-  role_name: String;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-<<<<<<< HEAD
-export interface RolePreviousValuesPromise
-  extends Promise<RolePreviousValues>,
-    Fragmentable {
-=======
-export interface RolePromise extends Promise<Role>, Fragmentable {
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
-  id: () => Promise<ID_Output>;
-  role_name: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-<<<<<<< HEAD
-export interface RolePreviousValuesSubscription
-  extends Promise<AsyncIterator<RolePreviousValues>>,
-=======
-export interface RoleSubscription
-  extends Promise<AsyncIterator<Role>>,
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  role_name: () => Promise<AsyncIterator<String>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-<<<<<<< HEAD
-export interface PetitionPreviousValues {
-=======
 export interface EventAction {
   id: ID_Output;
   took_action: Boolean;
@@ -3854,529 +2650,6 @@ export interface EventActionSubscription
   took_action: () => Promise<AsyncIterator<Boolean>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface Petition {
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
-  id: ID_Output;
-  title: String;
-  active?: Boolean;
-  short_description: String;
-  body: String;
-  primary_image?: String;
-  video_url?: String;
-  external_url?: String;
-  hasVideo: Boolean;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-<<<<<<< HEAD
-export interface PetitionPreviousValuesPromise
-  extends Promise<PetitionPreviousValues>,
-    Fragmentable {
-=======
-export interface PetitionPromise extends Promise<Petition>, Fragmentable {
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
-  id: () => Promise<ID_Output>;
-  title: () => Promise<String>;
-  active: () => Promise<Boolean>;
-  short_description: () => Promise<String>;
-  body: () => Promise<String>;
-  primary_image: () => Promise<String>;
-  video_url: () => Promise<String>;
-  external_url: () => Promise<String>;
-  hasVideo: () => Promise<Boolean>;
-<<<<<<< HEAD
-=======
-  users: <T = FragmentableArray<User>>(
-    args?: {
-      where?: UserWhereInput;
-      orderBy?: UserOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
-  author: <T = UserPromise>() => T;
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-<<<<<<< HEAD
-export interface PetitionPreviousValuesSubscription
-  extends Promise<AsyncIterator<PetitionPreviousValues>>,
-=======
-export interface PetitionSubscription
-  extends Promise<AsyncIterator<Petition>>,
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  title: () => Promise<AsyncIterator<String>>;
-  active: () => Promise<AsyncIterator<Boolean>>;
-  short_description: () => Promise<AsyncIterator<String>>;
-  body: () => Promise<AsyncIterator<String>>;
-  primary_image: () => Promise<AsyncIterator<String>>;
-  video_url: () => Promise<AsyncIterator<String>>;
-  external_url: () => Promise<AsyncIterator<String>>;
-  hasVideo: () => Promise<AsyncIterator<Boolean>>;
-<<<<<<< HEAD
-=======
-  users: <T = Promise<AsyncIterator<UserSubscription>>>(
-    args?: {
-      where?: UserWhereInput;
-      orderBy?: UserOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
-  author: <T = UserSubscription>() => T;
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-<<<<<<< HEAD
-export interface AggregateAction {
-  count: Int;
-}
-
-export interface AggregateActionPromise
-  extends Promise<AggregateAction>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateActionSubscription
-  extends Promise<AsyncIterator<AggregateAction>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-=======
-export interface ActionConnection {}
-
-export interface ActionConnectionPromise
-  extends Promise<ActionConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<ActionEdge>>() => T;
-  aggregate: <T = AggregateActionPromise>() => T;
-}
-
-export interface ActionConnectionSubscription
-  extends Promise<AsyncIterator<ActionConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<ActionEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateActionSubscription>() => T;
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
-}
-
-export interface PageInfo {
-  hasNextPage: Boolean;
-  hasPreviousPage: Boolean;
-  startCursor?: String;
-  endCursor?: String;
-}
-
-export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
-  hasNextPage: () => Promise<Boolean>;
-  hasPreviousPage: () => Promise<Boolean>;
-  startCursor: () => Promise<String>;
-  endCursor: () => Promise<String>;
-}
-
-export interface PageInfoSubscription
-  extends Promise<AsyncIterator<PageInfo>>,
-    Fragmentable {
-  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
-  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
-  startCursor: () => Promise<AsyncIterator<String>>;
-  endCursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface ActionEdge {
-  cursor: String;
-}
-
-export interface ActionEdgePromise extends Promise<ActionEdge>, Fragmentable {
-  node: <T = ActionPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface ActionEdgeSubscription
-  extends Promise<AsyncIterator<ActionEdge>>,
-    Fragmentable {
-  node: <T = ActionSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-<<<<<<< HEAD
-export interface AggregateUser {
-  count: Int;
-}
-
-export interface AggregateUserPromise
-  extends Promise<AggregateUser>,
-=======
-export interface AggregateAction {
-  count: Int;
-}
-
-export interface AggregateActionPromise
-  extends Promise<AggregateAction>,
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-<<<<<<< HEAD
-export interface AggregateUserSubscription
-  extends Promise<AsyncIterator<AggregateUser>>,
-=======
-export interface AggregateActionSubscription
-  extends Promise<AsyncIterator<AggregateAction>>,
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-<<<<<<< HEAD
-export interface BatchPayload {
-  count: Long;
-}
-
-export interface BatchPayloadPromise
-  extends Promise<BatchPayload>,
-    Fragmentable {
-  count: () => Promise<Long>;
-}
-
-export interface BatchPayloadSubscription
-  extends Promise<AsyncIterator<BatchPayload>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Long>>;
-}
-
-export interface UserConnection {}
-
-export interface UserConnectionPromise
-  extends Promise<UserConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<UserEdge>>() => T;
-  aggregate: <T = AggregateUserPromise>() => T;
-}
-
-export interface UserConnectionSubscription
-  extends Promise<AsyncIterator<UserConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateUserSubscription>() => T;
-}
-
-export interface ActionConnection {}
-
-export interface ActionConnectionPromise
-  extends Promise<ActionConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<ActionEdge>>() => T;
-  aggregate: <T = AggregateActionPromise>() => T;
-}
-
-export interface ActionConnectionSubscription
-  extends Promise<AsyncIterator<ActionConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<ActionEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateActionSubscription>() => T;
-}
-
-export interface RoleEdge {
-  cursor: String;
-}
-
-export interface RoleEdgePromise extends Promise<RoleEdge>, Fragmentable {
-  node: <T = RolePromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface RoleEdgeSubscription
-  extends Promise<AsyncIterator<RoleEdge>>,
-    Fragmentable {
-  node: <T = RoleSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface Petition {
-  id: ID_Output;
-  title: String;
-  active?: Boolean;
-  short_description: String;
-  body: String;
-  primary_image?: String;
-  video_url?: String;
-  external_url?: String;
-  hasVideo: Boolean;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface PetitionPromise extends Promise<Petition>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  title: () => Promise<String>;
-  active: () => Promise<Boolean>;
-  short_description: () => Promise<String>;
-  body: () => Promise<String>;
-  primary_image: () => Promise<String>;
-  video_url: () => Promise<String>;
-  external_url: () => Promise<String>;
-  hasVideo: () => Promise<Boolean>;
-  users: <T = FragmentableArray<User>>(
-    args?: {
-      where?: UserWhereInput;
-      orderBy?: UserOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
-  author: <T = UserPromise>() => T;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface PetitionSubscription
-  extends Promise<AsyncIterator<Petition>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  title: () => Promise<AsyncIterator<String>>;
-  active: () => Promise<AsyncIterator<Boolean>>;
-  short_description: () => Promise<AsyncIterator<String>>;
-  body: () => Promise<AsyncIterator<String>>;
-  primary_image: () => Promise<AsyncIterator<String>>;
-  video_url: () => Promise<AsyncIterator<String>>;
-  external_url: () => Promise<AsyncIterator<String>>;
-  hasVideo: () => Promise<AsyncIterator<Boolean>>;
-  users: <T = Promise<AsyncIterator<UserSubscription>>>(
-    args?: {
-      where?: UserWhereInput;
-      orderBy?: UserOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
-  author: <T = UserSubscription>() => T;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface ActionCategory {
-  id: ID_Output;
-  name: String;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface ActionCategoryPromise
-  extends Promise<ActionCategory>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  actions: <T = FragmentableArray<Action>>(
-    args?: {
-      where?: ActionWhereInput;
-      orderBy?: ActionOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface ActionCategorySubscription
-  extends Promise<AsyncIterator<ActionCategory>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  actions: <T = Promise<AsyncIterator<ActionSubscription>>>(
-    args?: {
-      where?: ActionWhereInput;
-      orderBy?: ActionOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface EventAction {
-  id: ID_Output;
-  took_action: Boolean;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface EventActionPromise extends Promise<EventAction>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  action: <T = ActionPromise>() => T;
-  user: <T = UserPromise>() => T;
-  took_action: () => Promise<Boolean>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface EventActionSubscription
-  extends Promise<AsyncIterator<EventAction>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  action: <T = ActionSubscription>() => T;
-  user: <T = UserSubscription>() => T;
-  took_action: () => Promise<AsyncIterator<Boolean>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-=======
-export interface ActionCategoryConnection {}
-
-export interface ActionCategoryConnectionPromise
-  extends Promise<ActionCategoryConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<ActionCategoryEdge>>() => T;
-  aggregate: <T = AggregateActionCategoryPromise>() => T;
-}
-
-export interface ActionCategoryConnectionSubscription
-  extends Promise<AsyncIterator<ActionCategoryConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<ActionCategoryEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateActionCategorySubscription>() => T;
-}
-
-export interface ActionCategoryEdge {
-  cursor: String;
-}
-
-export interface ActionCategoryEdgePromise
-  extends Promise<ActionCategoryEdge>,
-    Fragmentable {
-  node: <T = ActionCategoryPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface ActionCategoryEdgeSubscription
-  extends Promise<AsyncIterator<ActionCategoryEdge>>,
-    Fragmentable {
-  node: <T = ActionCategorySubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateActionCategory {
-  count: Int;
-}
-
-export interface AggregateActionCategoryPromise
-  extends Promise<AggregateActionCategory>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateActionCategorySubscription
-  extends Promise<AsyncIterator<AggregateActionCategory>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface EventActionConnection {}
-
-export interface EventActionConnectionPromise
-  extends Promise<EventActionConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<EventActionEdge>>() => T;
-  aggregate: <T = AggregateEventActionPromise>() => T;
-}
-
-export interface EventActionConnectionSubscription
-  extends Promise<AsyncIterator<EventActionConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<EventActionEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateEventActionSubscription>() => T;
-}
-
-export interface EventActionEdge {
-  cursor: String;
-}
-
-export interface EventActionEdgePromise
-  extends Promise<EventActionEdge>,
-    Fragmentable {
-  node: <T = EventActionPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface EventActionEdgeSubscription
-  extends Promise<AsyncIterator<EventActionEdge>>,
-    Fragmentable {
-  node: <T = EventActionSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateEventAction {
-  count: Int;
-}
-
-export interface AggregateEventActionPromise
-  extends Promise<AggregateEventAction>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateEventActionSubscription
-  extends Promise<AsyncIterator<AggregateEventAction>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface PetitionConnection {}
-
-export interface PetitionConnectionPromise
-  extends Promise<PetitionConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<PetitionEdge>>() => T;
-  aggregate: <T = AggregatePetitionPromise>() => T;
-}
-
-export interface PetitionConnectionSubscription
-  extends Promise<AsyncIterator<PetitionConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<PetitionEdgeSubscription>>>() => T;
-  aggregate: <T = AggregatePetitionSubscription>() => T;
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
 }
 
 export interface PetitionEdge {
@@ -4397,7 +2670,6 @@ export interface PetitionEdgeSubscription
   cursor: () => Promise<AsyncIterator<String>>;
 }
 
-<<<<<<< HEAD
 export interface Action {
   id: ID_Output;
   title: String;
@@ -4489,80 +2761,16 @@ export interface AggregateEventAction {
 
 export interface AggregateEventActionPromise
   extends Promise<AggregateEventAction>,
-=======
-export interface AggregatePetition {
-  count: Int;
-}
-
-export interface AggregatePetitionPromise
-  extends Promise<AggregatePetition>,
     Fragmentable {
   count: () => Promise<Int>;
 }
 
-export interface AggregatePetitionSubscription
-  extends Promise<AsyncIterator<AggregatePetition>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface RoleConnection {}
-
-export interface RoleConnectionPromise
-  extends Promise<RoleConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<RoleEdge>>() => T;
-  aggregate: <T = AggregateRolePromise>() => T;
-}
-
-export interface RoleConnectionSubscription
-  extends Promise<AsyncIterator<RoleConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<RoleEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateRoleSubscription>() => T;
-}
-
-export interface RoleEdge {
-  cursor: String;
-}
-
-export interface RoleEdgePromise extends Promise<RoleEdge>, Fragmentable {
-  node: <T = RolePromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface RoleEdgeSubscription
-  extends Promise<AsyncIterator<RoleEdge>>,
-    Fragmentable {
-  node: <T = RoleSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateRole {
-  count: Int;
-}
-
-export interface AggregateRolePromise
-  extends Promise<AggregateRole>,
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-<<<<<<< HEAD
 export interface AggregateEventActionSubscription
   extends Promise<AsyncIterator<AggregateEventAction>>,
-=======
-export interface AggregateRoleSubscription
-  extends Promise<AsyncIterator<AggregateRole>>,
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
     Fragmentable {
   count: () => Promise<AsyncIterator<Int>>;
 }
 
-<<<<<<< HEAD
 export interface ActionSubscriptionPayload {
   mutation: MutationType;
   updatedFields?: String[];
@@ -4602,95 +2810,6 @@ export interface EventActionConnectionSubscription
   pageInfo: <T = PageInfoSubscription>() => T;
   edges: <T = Promise<AsyncIterator<EventActionEdgeSubscription>>>() => T;
   aggregate: <T = AggregateEventActionSubscription>() => T;
-=======
-export interface UserConnection {}
-
-export interface UserConnectionPromise
-  extends Promise<UserConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<UserEdge>>() => T;
-  aggregate: <T = AggregateUserPromise>() => T;
-}
-
-export interface UserConnectionSubscription
-  extends Promise<AsyncIterator<UserConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateUserSubscription>() => T;
-}
-
-export interface UserEdge {
-  cursor: String;
-}
-
-export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
-  node: <T = UserPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface UserEdgeSubscription
-  extends Promise<AsyncIterator<UserEdge>>,
-    Fragmentable {
-  node: <T = UserSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateUser {
-  count: Int;
-}
-
-export interface AggregateUserPromise
-  extends Promise<AggregateUser>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateUserSubscription
-  extends Promise<AsyncIterator<AggregateUser>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface BatchPayload {
-  count: Long;
-}
-
-export interface BatchPayloadPromise
-  extends Promise<BatchPayload>,
-    Fragmentable {
-  count: () => Promise<Long>;
-}
-
-export interface BatchPayloadSubscription
-  extends Promise<AsyncIterator<BatchPayload>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Long>>;
-}
-
-export interface ActionSubscriptionPayload {
-  mutation: MutationType;
-  updatedFields?: String[];
-}
-
-export interface ActionSubscriptionPayloadPromise
-  extends Promise<ActionSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = ActionPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = ActionPreviousValuesPromise>() => T;
-}
-
-export interface ActionSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<ActionSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = ActionSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = ActionPreviousValuesSubscription>() => T;
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
 }
 
 export interface ActionPreviousValues {
@@ -4754,7 +2873,6 @@ export interface ActionPreviousValuesSubscription
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-<<<<<<< HEAD
 export interface ActionCategoryEdge {
   cursor: String;
 }
@@ -4819,8 +2937,6 @@ export interface UserSubscriptionPayloadSubscription
   previousValues: <T = UserPreviousValuesSubscription>() => T;
 }
 
-=======
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
 export interface ActionCategorySubscriptionPayload {
   mutation: MutationType;
   updatedFields?: String[];
@@ -4844,7 +2960,6 @@ export interface ActionCategorySubscriptionPayloadSubscription
   previousValues: <T = ActionCategoryPreviousValuesSubscription>() => T;
 }
 
-<<<<<<< HEAD
 export interface AggregateRole {
   count: Int;
 }
@@ -4864,13 +2979,8 @@ export interface AggregateRoleSubscription
 export interface ActionCategoryPreviousValues {
   id: ID_Output;
   name: String;
-=======
-export interface ActionCategoryPreviousValues {
-  id: ID_Output;
-  name: String;
   primary_image?: String;
   video_id?: String;
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
@@ -4880,21 +2990,19 @@ export interface ActionCategoryPreviousValuesPromise
     Fragmentable {
   id: () => Promise<ID_Output>;
   name: () => Promise<String>;
-<<<<<<< HEAD
-=======
   primary_image: () => Promise<String>;
   video_id: () => Promise<String>;
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
 
 export interface ActionCategoryPreviousValuesSubscription
   extends Promise<AsyncIterator<ActionCategoryPreviousValues>>,
-<<<<<<< HEAD
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   name: () => Promise<AsyncIterator<String>>;
+  primary_image: () => Promise<AsyncIterator<String>>;
+  video_id: () => Promise<AsyncIterator<String>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
@@ -5000,7 +3108,7 @@ export interface PetitionSubscriptionPayloadSubscription
 export interface User {
   id: ID_Output;
   username?: String;
-  email: String;
+  email?: String;
   password: String;
   name: String;
   phone?: String;
@@ -5077,43 +3185,10 @@ export interface UserSubscription
       last?: Int;
     }
   ) => T;
-=======
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  primary_image: () => Promise<AsyncIterator<String>>;
-  video_id: () => Promise<AsyncIterator<String>>;
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-<<<<<<< HEAD
-=======
-export interface EventActionSubscriptionPayload {
-  mutation: MutationType;
-  updatedFields?: String[];
-}
-
-export interface EventActionSubscriptionPayloadPromise
-  extends Promise<EventActionSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = EventActionPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = EventActionPreviousValuesPromise>() => T;
-}
-
-export interface EventActionSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<EventActionSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = EventActionSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = EventActionPreviousValuesSubscription>() => T;
-}
-
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
 export interface EventActionPreviousValues {
   id: ID_Output;
   took_action: Boolean;
@@ -5139,16 +3214,11 @@ export interface EventActionPreviousValuesSubscription
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-<<<<<<< HEAD
 export interface EventActionSubscriptionPayload {
-=======
-export interface PetitionSubscriptionPayload {
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
   mutation: MutationType;
   updatedFields?: String[];
 }
 
-<<<<<<< HEAD
 export interface EventActionSubscriptionPayloadPromise
   extends Promise<EventActionSubscriptionPayload>,
     Fragmentable {
@@ -5241,182 +3311,6 @@ The `Float` scalar type represents signed double-precision fractional values as 
 export type Float = number;
 
 export type Long = string;
-=======
-export interface PetitionSubscriptionPayloadPromise
-  extends Promise<PetitionSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = PetitionPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = PetitionPreviousValuesPromise>() => T;
-}
-
-export interface PetitionSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<PetitionSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = PetitionSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = PetitionPreviousValuesSubscription>() => T;
-}
-
-export interface PetitionPreviousValues {
-  id: ID_Output;
-  title: String;
-  active?: Boolean;
-  short_description: String;
-  body: String;
-  primary_image?: String;
-  video_url?: String;
-  external_url?: String;
-  hasVideo: Boolean;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface PetitionPreviousValuesPromise
-  extends Promise<PetitionPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  title: () => Promise<String>;
-  active: () => Promise<Boolean>;
-  short_description: () => Promise<String>;
-  body: () => Promise<String>;
-  primary_image: () => Promise<String>;
-  video_url: () => Promise<String>;
-  external_url: () => Promise<String>;
-  hasVideo: () => Promise<Boolean>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface PetitionPreviousValuesSubscription
-  extends Promise<AsyncIterator<PetitionPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  title: () => Promise<AsyncIterator<String>>;
-  active: () => Promise<AsyncIterator<Boolean>>;
-  short_description: () => Promise<AsyncIterator<String>>;
-  body: () => Promise<AsyncIterator<String>>;
-  primary_image: () => Promise<AsyncIterator<String>>;
-  video_url: () => Promise<AsyncIterator<String>>;
-  external_url: () => Promise<AsyncIterator<String>>;
-  hasVideo: () => Promise<AsyncIterator<Boolean>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface RoleSubscriptionPayload {
-  mutation: MutationType;
-  updatedFields?: String[];
-}
-
-export interface RoleSubscriptionPayloadPromise
-  extends Promise<RoleSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = RolePromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = RolePreviousValuesPromise>() => T;
-}
-
-export interface RoleSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<RoleSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = RoleSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = RolePreviousValuesSubscription>() => T;
-}
-
-export interface RolePreviousValues {
-  id: ID_Output;
-  role_name: String;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface RolePreviousValuesPromise
-  extends Promise<RolePreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  role_name: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface RolePreviousValuesSubscription
-  extends Promise<AsyncIterator<RolePreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  role_name: () => Promise<AsyncIterator<String>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface UserSubscriptionPayload {
-  mutation: MutationType;
-  updatedFields?: String[];
-}
-
-export interface UserSubscriptionPayloadPromise
-  extends Promise<UserSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = UserPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = UserPreviousValuesPromise>() => T;
-}
-
-export interface UserSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<UserSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = UserSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = UserPreviousValuesSubscription>() => T;
-}
-
-export interface UserPreviousValues {
-  id: ID_Output;
-  username?: String;
-  email: String;
-  password: String;
-  name: String;
-  phone?: String;
-  total_points?: Int;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface UserPreviousValuesPromise
-  extends Promise<UserPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  username: () => Promise<String>;
-  email: () => Promise<String>;
-  password: () => Promise<String>;
-  name: () => Promise<String>;
-  phone: () => Promise<String>;
-  total_points: () => Promise<Int>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface UserPreviousValuesSubscription
-  extends Promise<AsyncIterator<UserPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  username: () => Promise<AsyncIterator<String>>;
-  email: () => Promise<AsyncIterator<String>>;
-  password: () => Promise<AsyncIterator<String>>;
-  name: () => Promise<AsyncIterator<String>>;
-  phone: () => Promise<AsyncIterator<String>>;
-  total_points: () => Promise<AsyncIterator<Int>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
 
 /*
 The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
@@ -5425,14 +3319,11 @@ export type ID_Input = string | number;
 export type ID_Output = string;
 
 /*
-<<<<<<< HEAD
 The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
 */
 export type Int = number;
 
 /*
-=======
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
 The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
 */
 export type String = string;
@@ -5452,21 +3343,6 @@ The `Boolean` scalar type represents `true` or `false`.
 */
 export type Boolean = boolean;
 
-<<<<<<< HEAD
-=======
-/*
-The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point). 
-*/
-export type Float = number;
-
-/*
-The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
-*/
-export type Int = number;
-
-export type Long = string;
-
->>>>>>> 753387f07ec0ea3eafc20266d6474ec98fc33d9c
 /**
  * Model Metadata
  */
