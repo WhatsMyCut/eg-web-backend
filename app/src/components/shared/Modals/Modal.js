@@ -4,19 +4,8 @@ import {
   Header,
   Button,
   Icon,
-  Label,
-  Input,
-  Segment,
-  Dimmer
 } from 'semantic-ui-react';
-// import { ADD_GROUP_MUTATION } from '../../../graphql/mutations/add_group';
-import graphql from '../../../hoc/graphql';
-import { withRouter } from 'react-router-dom';
 
-@withRouter
-// @graphql(ADD_GROUP_MUTATION, {
-//   name: 'add_group'
-// })
 class EGModal extends Component {
   state = {
     loading: false,

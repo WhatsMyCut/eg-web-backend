@@ -5,7 +5,7 @@ import ManagementView from '../shared/ManagementView';
 import { maxWidthMediaQuery } from '../../constants/responsive';
 import EGTable from '../shared/Table';
 import {lib} from '../../lib/Lib';
-import ModalContent from '../shared/Modals/ModalContent';
+import PetitionModal from './PetitionModal';
 
 const petition = {
 	id: '',
@@ -114,8 +114,8 @@ class Petitions extends Component {
     if (!modalOpen) {
       return null;
     }
-
-    return <ModalContent key="petitions-modal" mappings={modalMappings} entity={entity} entityType='Petition' onClose={this._onCloseModal} />;
+	
+	return <PetitionModal key='petitions-modal' entity={entity} onClose={this._onCloseModal} />
   }
 
   _onCloseModal = () => {
@@ -144,19 +144,4 @@ const items = [
 		createdAt: new Date(),
 		updatedAt: new Date()
 	}
-];
-
-const modalMappings = [
-	{props: 'title', 				label: 'Title', 			inputType: 'textbox'},
-	{props: 'order', 				label: 'Order', 			inputType: 'textbox'},
-	{props: 'short_description', 	label: 'Short Description', inputType: 'textarea'},
-	{props: 'body', 				label: 'Body', 				inputType: 'textarea'},
-	{props: 'primary_image', 		label: 'Primary Image', 	inputType: 'textbox'},
-	{props: 'video_url', 			label: 'Video URL', 		inputType: 'textbox'},
-	{props: 'external_url', 		label: 'External URL', 		inputType: 'textbox'},
-	{props: 'active', 				label: 'Active', 			inputType: 'checkbox'},
-	{props: 'users', 				label: 'Users', 			inputType: 'list'},
-	{props: 'author.name', 			label: 'Author'},
-	{props: 'createdAt', 			label: 'Created At', 		inputType: 'date'},
-	{props: 'updatedAt', 			label: 'Updated At', 		inputType: 'date'},
 ];

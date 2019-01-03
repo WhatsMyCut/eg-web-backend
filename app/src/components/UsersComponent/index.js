@@ -5,7 +5,7 @@ import ManagementView from '../shared/ManagementView';
 import { maxWidthMediaQuery } from '../../constants/responsive';
 import EGTable from '../shared/Table';
 import {lib} from '../../lib/Lib';
-import ModalContent from '../shared/Modals/ModalContent';
+import UserModal from './UserModal';
 
 const user = {
 	id: '',
@@ -109,7 +109,7 @@ class Users extends Component {
 		return null;
     }
 
-	return <ModalContent key="users-modal" mappings={modalMappings} entity={entity} entityType='User' onClose={this._onCloseModal} />;
+	return <UserModal key='user-moda' entity={entity} onClose={this._onCloseModal} />;
   }
 
   _onCloseModal = () => {
@@ -168,17 +168,4 @@ const items = [
 		createdAt: new Date(),
 		updatedAt: new Date()
 	}
-];
-
-const modalMappings = [
-	{props: 'email', 						label: 'Email', 			inputType: 'textbox'},
-	{props: 'password', 					label: 'Password', 			inputType: 'textbox'},
-	{props: 'name', 						label: 'Name', 				inputType: 'textbox'},
-	{props: 'phone', 						label: 'Phone', 			inputType: 'textbox'},
-	{props: 'role.role_name', 				label: 'Role', 				inputType: 'textbox'},
-	{props: 'total_points', 				label: 'Total Points', 		inputType: 'textbox'},
-	{props: 'recent_actions.action.title', 	label: 'Recent Actions', 	inputType: 'list'},
-	{props: 'petitions_signed.title', 		label: 'Petitions Signed', 	inputType: 'list'},
-	{props: 'createdAt', 					label: 'Created At'},
-	{props: 'updatedAt', 					label: 'Updated At'},
 ];
