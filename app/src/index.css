@@ -49,3 +49,14 @@ code {
 .home-third-section.drop:nth-child(odd){
   padding-top: 25vh;
 }
+
+.ql-toolbar.ql-snow{
+  border: none;
+  border-bottom: 1px solid rgba(34,36,38,.15);
+}
+
+.ql-container.ql-snow{
+  border: none;
+  font-size: 100%;
+  font-family: sans-serif;
+}

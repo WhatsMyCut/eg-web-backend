@@ -42,14 +42,14 @@ class UserModal extends Component {
     getContent = () => {
         const { entity } = this.state;
         return [
-            <EGTextBox key={'email-input'} value={entity.email} label={'Email'} onChange={(event) => {this.updateEntity(event, 'email')}} />,
-            <EGTextBox key={'password-input'} value={entity.password} label={'Password'} onChange={(event) => {this.updateEntity(event, 'password')}} />,
-            <EGTextBox key={'name-input'} value={entity.name} label={'Name'} onChange={(event) => {this.updateEntity(event, 'name')}} />,
-            <EGTextBox key={'phone-input'} value={entity.phone} label={'Phone'} onChange={(event) => {this.updateEntity(event, 'phone')}} />,
-            <EGTextBox key={'role-input'} value={entity.role.role_name} label={'Role'} onChange={(event) => {this.updateEntity(event, 'role.role_name')}} />,
-            <EGTextBox key={'total-points-input'} value={entity.total_points} label={'Total Points'} onChange={(event) => {this.updateEntity(event, 'total_points')}} />,
-            <div key='recent-actions'><strong style={{marginRight: '5px'}}>Recent Actions:</strong>{entity.recent_actions.map(action => {return action.action.title}).join(', ')}</div>,
-            <div key='petitions-signed'><strong style={{marginRight: '5px'}}>Petitions Signed:</strong>{entity.petitions_signed.map(petition => {return petition.title}).join(', ')}</div>,
+            <EGTextBox key={'email-input'} value={entity.email || ''} label={'Email'} onChange={(event) => {this.updateEntity(event, 'email')}} />,
+            <EGTextBox key={'password-input'} value={entity.password || ''} label={'Password'} onChange={(event) => {this.updateEntity(event, 'password')}} />,
+            <EGTextBox key={'name-input'} value={entity.name || ''} label={'Name'} onChange={(event) => {this.updateEntity(event, 'name')}} />,
+            <EGTextBox key={'phone-input'} value={entity.phone || ''} label={'Phone'} onChange={(event) => {this.updateEntity(event, 'phone')}} />,
+            <EGTextBox key={'role-input'} value={entity.role.role_name || ''} label={'Role'} onChange={(event) => {this.updateEntity(event, 'role.role_name')}} />,
+            <EGTextBox key={'total-points-input'} value={entity.total_points || ''} label={'Total Points'} onChange={(event) => {this.updateEntity(event, 'total_points')}} />,
+            <div key='recent-actions'><strong style={{marginRight: '5px'}}>Recent Actions:</strong>{entity.recent_actions ? entity.recent_actions.map(action => {return action.action.title}).join(', ') : []}</div>,
+            <div key='petitions-signed'><strong style={{marginRight: '5px'}}>Petitions Signed:</strong>{entity.petitions_signed ? entity.petitions_signed.map(petition => {return petition.title}).join(', ') : []}</div>,
             <div key='created-at'><strong style={{marginRight: '5px'}}>Created At:</strong>{`${lib.formatTime(entity.createdAt)}`}</div>,
             <div key='updated-at'><strong style={{marginRight: '5px'}}>Updated At:</strong>{`${lib.formatTime(entity.updatedAt)}`}</div>
         ]
