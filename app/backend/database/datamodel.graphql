@@ -45,6 +45,7 @@ type Petition {
   active: Boolean @default(value:false)
   short_description: String!
   body: String!
+  order: Int
   primary_image: String
   video_url: String
   external_url: String
@@ -67,6 +68,7 @@ type Action {
   schedule: Schedule
   video_url: String
   carbon_dioxide:Float
+  order: Int
   water: Float
   waste: Float
   external_url: String
