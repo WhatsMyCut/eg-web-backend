@@ -50,7 +50,7 @@ class PetitionModal extends Component {
     updateEntity = (event, propName) => {
         const { entity } = this.state;
         console.log(event.target.value);
-        if (event.target.value !== "") {
+        if (event.target.value !== entity[propName]) {
             let newEntity = Object.assign({}, entity);
             newEntity[propName] = event.target.value;
             this.setState({ entity: newEntity });

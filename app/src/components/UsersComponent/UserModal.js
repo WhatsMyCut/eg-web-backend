@@ -58,7 +58,7 @@ class UserModal extends Component {
 
     updateEntity = (event, propName) => {
         const { entity } = this.state;
-        if (event.target.value !== '') {
+        if (event.target.value !== entity[propName]) {
                 let newEntity = Object.assign({}, entity);
             if(propName === 'role.role_name'){
                 newEntity.role.role_name = event.target.value;

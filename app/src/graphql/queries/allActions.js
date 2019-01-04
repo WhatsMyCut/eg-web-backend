@@ -8,8 +8,6 @@ export const GET_ALL_ACTIONS_CATEGORIES = gql`
       video_id
       actions {
         id
-        title
-        body
         primary_image
         active
         short_description

@@ -23,6 +23,8 @@ import { GET_ALL_ACTIONS_CATEGORIES} from '../../graphql/queries/allActions';
 const category = {
   id: '',
   name: '',
+  primary_image: '',
+  video_id: '',
   actions: [],
   createdAt: '',
   updatedAt: ''
@@ -38,17 +40,16 @@ const action = {
     updatedAt: ''
   },
   order: '',
-  title: '',
-  body: '',
   primary_image: '',
   active: false,
   short_description: '',
   action_taken_description: '',
-  schedule: '',
+  schedule: 'ANYTIME',
   video: '',
-  carbon_dioxide: 0.0,
-  water: 0.0,
-  waste: 0.0,
+  carbon_dioxide: '0.0',
+  water: '0.0',
+  waste: '0.0',
+  points: '0',
   external_url: '',
   isGame: false,
   related_actions: [],
@@ -129,18 +130,18 @@ class Actions extends Component {
 		case 'Category':
 			return <CategoryModal key="category-modal" entity={entity} onClose={this._onCloseModal} />;
 		case 'Game':
-			return <ActionModal key="game-modal" entity={entity} entityType='Game' onClose={this._onCloseModal}/>
+			return <ActionModal key="game-modal" entity={entity} entityType='Game' onClose={this._onCloseModal} newOrder={selectedCategory.actions.length + 1}/>
 		case 'Action':
 			const relatedActionsoptions = selectedCategory ? selectedCategory.actions.filter(action => { return action.isGame === true }) : [];
 			entity.category_id = selectedCategory.id;
-			return <ActionModal key="action-modal" entity={entity} entityType='Action' onClose={this._onCloseModal} relatedActionsOptions={relatedActionsoptions} />
+			return <ActionModal key="action-modal" entity={entity} entityType='Action' onClose={this._onCloseModal} relatedActionsOptions={relatedActionsoptions} newOrder={selectedCategory.actions.length + 1} />
 		default:
 			return null;
 	}
   }
 
   _onCloseModal = () => {
-    // this.props.groups.refetch();
+    this.props.all_actions_by_category.refetch();
     this.setState({ modalOpen: null, entity: category });
   };
 
@@ -153,10 +154,9 @@ class Actions extends Component {
 			return (
 				<EGTable
 					headings={[
-						'Title',
+						'Short Description',
 						'Order',
 						'Active',
-						'Short Description',
 						'Related Actions',
 						'Author',
 						'Created At',
@@ -167,12 +167,10 @@ class Actions extends Component {
 						return {
 							Id: data.id,
 							Category: data.category,
-							Title: data.title,
 							Order: data.order,
-							Body: data.body,
 							PrimaryImage: data.primary_image,
 							Active: data.active,
-							ShortDescription: data.short_description,
+							ShortDescription: data.short_description !== '' ? data.short_description : 'No Description',
 							ActionTakenDescription: data.action_taken_description,
 							Schedule: data.schedule,
 							VideoURL: data.video,
@@ -187,7 +185,7 @@ class Actions extends Component {
 							UpdatedAt: data.updatedAt
 						};
 					})}
-					leftAlignColumns={[0, 1, 2, 3, 4, 5, 6, 7]}
+					leftAlignColumns={[0, 1, 2, 3, 4, 5, 6]}
 					hyperlinkColumns={[0]}
 					hyperlinkFunctions={[
 						{ 
@@ -198,16 +196,16 @@ class Actions extends Component {
 							} 
 						}
 					]}
-					formatColumns={[6, 7]}
+					formatColumns={[5, 6]}
 					formatFunctions={[
 						{
-							index: 6,
+							index: 5,
 							fn: value => {
 								return lib.formatTime(value);
 							}
 						},
 						{
-							index: 7,
+							index: 6,
 							fn: value => {
 								return lib.formatTime(value);
 							}
@@ -220,10 +218,9 @@ class Actions extends Component {
 			return (
 				<EGTable
 					headings={[
-						'Title',
+						'Short Description',
 						'Order',
 						'Active',
-						'Short Description',
 						'Related Actions',
 						'Author',
 						'Created At',
@@ -234,12 +231,10 @@ class Actions extends Component {
 						return {
 							Id: data.id,
 							Category: data.category,
-							Title: data.title,
 							Order: data.order,
-							Body: data.body,
 							PrimaryImage: data.primary_image,
 							Active: data.active,
-							ShortDescription: data.short_description,
+							ShortDescription: data.short_description !== '' ? data.short_description : 'No Description',
 							ActionTakenDescription: data.action_taken_description,
 							Schedule: data.schedule,
 							VideoURL: data.video,
@@ -250,11 +245,11 @@ class Actions extends Component {
 							IsGame: data.isGame,
 							RelatedActions: data.related_actions ? data.related_actions.map(act => {return act.title}).join(', ') : null,
 							Author: data.author.name,
-							CreatedAt: data.createdAt,
-							UpdatedAt: data.updatedAt
+							CreatedAt: new Date(data.createdAt),
+							UpdatedAt: new Date(data.updatedAt)
 						};
 					})}
-					leftAlignColumns={[0, 1, 2, 3, 4, 5, 6, 7]}
+					leftAlignColumns={[0, 1, 2, 3, 4, 5, 6]}
 					hyperlinkColumns={[0]}
 					hyperlinkFunctions={[
 						{ 
@@ -265,16 +260,16 @@ class Actions extends Component {
 							} 
 						}
 					]}
-					formatColumns={[6, 7]}
+					formatColumns={[5, 6]}
 					formatFunctions={[
 						{
-							index: 6,
+							index: 5,
 							fn: value => {
 								return lib.formatTime(value);
 							}
 						},
 						{
-							index: 7,
+							index: 6,
 							fn: value => {
 								return lib.formatTime(value);
 							}

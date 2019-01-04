@@ -2,8 +2,6 @@ import gql from '../../../node_modules/graphql-tag';
 
 export const CreateActionMutation = gql`
   mutation CreateAction(
-      $title: String!, 
-      $body: String!,
       $primary_image: String,
       $active: Boolean,
       $short_description: String!,
@@ -13,14 +11,13 @@ export const CreateActionMutation = gql`
       $carbon_dioxide: Float,
       $water: Float,
       $waste: Float,
+      $points: Int,
       $external_url: String,
       $isGame: Boolean,
       $author_id: ID!,
       $category_id: ID!
       ) {
     createAction(data: {
-		title: $title, 
-		body: $body,
 		primary_image: $primary_image,
 		active: $active,
 		short_description: $short_description,
@@ -30,6 +27,7 @@ export const CreateActionMutation = gql`
 		carbon_dioxide: $carbon_dioxide,
 		water: $water,
 		waste: $waste,
+    points: $points,
 		external_url: $external_url,
 		isGame: $isGame,
     author: {
