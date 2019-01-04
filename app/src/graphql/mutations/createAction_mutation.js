@@ -15,7 +15,6 @@ export const CreateActionMutation = gql`
       $waste: Float,
       $external_url: String,
       $isGame: Boolean,
-      $related_actions: [Action!],
       $author_id: ID!,
       $category_id: ID!
       ) {
@@ -33,7 +32,6 @@ export const CreateActionMutation = gql`
 		waste: $waste,
 		external_url: $external_url,
 		isGame: $isGame,
-    related_actions: $related_actions,
     author: {
       connect: {
             id: $author_id

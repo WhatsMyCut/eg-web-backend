@@ -26,16 +26,17 @@ class ActionModal extends Component {
 	}
 
 	save = () =>{
-        const {onClose} = this.props;
+        const {onClose, createAction} = this.props;
         const {entity} = this.state;
+
+        console.log('Saving Entity: ', entity);
         if(entity.id){
 
         } else{
-            this.props.createAction(entity).then(res => {
+            createAction({entity}).then(res => {
                 console.log(JSON.stringify(res));
             })
         }
-        console.log(`Saving entity: ${JSON.stringify(this.state.entity)}`)
         
         //Call mutation here.
 

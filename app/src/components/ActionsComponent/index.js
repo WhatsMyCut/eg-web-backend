@@ -33,7 +33,7 @@ const action = {
   category: {
     id: '',
     name: '',
-    actions: [{title: '',}],
+    actions: [],
     createdAt: '',
     updatedAt: ''
   },
@@ -51,7 +51,7 @@ const action = {
   waste: 0.0,
   external_url: '',
   isGame: false,
-  related_actions: [{title: ''}],
+  related_actions: [],
   author: {
 	  name: ''
   },
@@ -72,8 +72,7 @@ class Actions extends Component {
   };
 
   render() {
-	  console.log('user', this.props.user);
-	const { all_actions_by_category } = this.props;
+	const { all_actions_by_category, user } = this.props;
 	if(all_actions_by_category.loading){
 		return <Segment loading style={{height:'100vh', width:'100vw'}}></Segment>
 	}
@@ -100,7 +99,8 @@ class Actions extends Component {
 							entityType={this.isGameView() ? 'Game' : 'Action'}
 							openModal={() => {
 								action.category_id = cat.id;
-								action.author_id = 
+								action.author_id = user.me.id;
+								action.category = cat;
 								this.setState({modalOpen: true, entity: action, entityType: this.isGameView() ? 'Game' : 'Action', selectedCategory: cat})
 							}} 
 							style={{marginBottom: '10px'}} 
@@ -116,6 +116,8 @@ class Actions extends Component {
   }
 
 	openModal = (entity, entityType, cat) => {
+		console.log('cat', cat);
+		entity.category_id = cat.id;
 		this.setState({entity: entity, modalOpen: true, entityType: entityType ? entityType : this.state.entityType, selectedCategory: cat})
 	}
 

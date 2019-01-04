@@ -3,6 +3,7 @@ import gql from 'graphql-tag';
 export const GET_ALL_ACTIONS_CATEGORIES = gql`
   {
     actionCategories{
+      id
       name
       video_id
       actions {
