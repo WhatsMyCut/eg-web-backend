@@ -25,14 +25,11 @@ const LoginContainer = styled.div`
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  padding: 10px;
+	padding: 10px;
+	background-color: lightgray;
 
   & > div {
     padding-bottom: 16px;
-  }
-
-  div:last-of-type {
-    padding-bottom: 0;
   }
 
   ${minWidthMediaQuery.laptopL`
@@ -66,14 +63,19 @@ LoginMenu.TextHeader = styled.h2`
   font-family: ${layout.fontFamily};
   font-weight: 300;
   display: flex;
-  align-items: center;
+	align-items: center;
 `;
 
 LoginMenu.LoginForm = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  height: 80%;
+	height: auto;
+	border: 10px solid black;
+	padding: 20px;
+	background-color: ${colors.darkGray};
+	color: white;
+	box-shadow: 0 10px 6px -6px rgba(0,0,0,0.40);
 `;
 
 const { LoginForm } = LoginMenu;
@@ -88,6 +90,7 @@ LoginForm.InputContainer = styled.div`
 
 LoginForm.Input = styled(Input)`
   border-radius: 3 !important;
+	border: 1px solid ${colors.lightGray};
   width: 80%;
   font-family: ${layout.fontFamily};
 
@@ -117,7 +120,7 @@ class Login extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-		email: "",
+		username: "",
 		password: "",
 		rememberMe: false,
 		loading: false,
@@ -134,10 +137,10 @@ class Login extends Component {
 				</LoginMenu.TextHeader>
 				<LoginForm.InputContainer>
 					<LoginForm.Input
-					type="email"
-					name="email"
-					placeholder="Email"
-					value={this.state.email}
+					type="username"
+					name="username"
+					placeholder="username"
+					value={this.state.username}
 					onChange={this.handleInputChange}
 					/>
 					<LoginForm.Input
@@ -152,14 +155,16 @@ class Login extends Component {
 					Log In
 				</LoginForm.LoginButton>
 
-				<Checkbox
-					type="checkbox"
-					id="rememberMe"
-					checked={this.state.rememberMe}
-					onChange={this.toggleRememberMe}
-					style={{ paddingTop: "7px", paddingBottom: "20px", fontFamily: layout.fontFamily }}
-					label="Remember Me"
-				/>
+				<div style={{display: 'flex', flexDirection: 'row', alignItems: 'center'}}>
+					<Checkbox
+						type="checkbox"
+						id="rememberMe"
+						checked={this.state.rememberMe}
+						onChange={this.toggleRememberMe}
+						style={{ paddingTop: "7px", paddingBottom: "20px", fontFamily: layout.fontFamily }}
+					/>
+					<label style={{color: 'white', fontSize: '14px', fontFamily: 'inherit', marginLeft: '5px'}}>Remember Me</label>
+				</div>
 				<a style={styles.linkText}>Forgot your password?</a>
 				<a style={styles.linkText}>Need to create an account?</a>
 			</LoginMenu.LoginForm>
@@ -169,9 +174,9 @@ class Login extends Component {
 
 	//Saves the username and password input to the component's state.
 	handleInputChange = event => {
-		if (event.target.name === 'email') {
+		if (event.target.name === 'username') {
 		  this.setState({
-			email: event.target.value
+			username: event.target.value
 		  });
 		} else {
 		  this.setState({
@@ -192,16 +197,17 @@ class Login extends Component {
 		const { loading } = this.state;
 		this.setState({ loading: !loading });
 		const variables = {
-		  email: this.state.email,
+		  username: this.state.username,
 		  password: this.state.password
 		};
 		login({ variables })
 		  .then(res => {
+				console.log('res', res);
 			if (res.data.login.token) {
 			  let token = res.data.login.token;
 			  localStorage.setItem(AUTH_TOKEN_NAME, token);
-			  history.push('/dashboard');
-			  console.error('there was an error inside then and token');
+			  history.push('/home');
+			  // console.error('there was an error inside then and token');
 			} else {
 			  console.error('there was an error inside .then');
 			  this.setState({ loading: !false });

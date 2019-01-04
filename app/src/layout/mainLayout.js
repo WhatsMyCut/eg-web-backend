@@ -15,9 +15,9 @@ import Users from "../components/UsersComponent";
 // @withRouter
 
 const MainLayout = (props, { routes }) => {
-    // if (!props.user.loading && !props.user.me) {
-    //   return <Redirect to={{ pathname: '/login', target: props.location }} />;
-    // }
+    if (!props.user.loading && !props.user.me) {
+      return <Redirect to={{ pathname: '/login', target: props.location }} />;
+    }
   return (
     <div style={{ overflow: 'hidden', height: '100vh', backgroundColor: 'lightgreen' }} className="container">
       <NavBar {...props} />

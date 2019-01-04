@@ -9,7 +9,11 @@ import EGTextArea from '../shared/Inputs/EGTextArea';
 import EGCheckbox from '../shared/Inputs/EGCheckbox';
 import EGDropdown from '../shared/Inputs/EGDropdown';
 import EGQuill from '../shared/Inputs/EGQuill';
+import { CreateActionMutation } from '../../graphql/mutations/createAction_mutation';
 
+@graphql(CreateActionMutation, {
+	name: 'createAction'
+  })
 class ActionModal extends Component {
 	state = {
 		entity: this.props.entity
@@ -22,7 +26,15 @@ class ActionModal extends Component {
 	}
 
 	save = () =>{
-		const {onClose} = this.props;
+        const {onClose} = this.props;
+        const {entity} = this.state;
+        if(entity.id){
+
+        } else{
+            this.props.createAction(entity).then(res => {
+                console.log(JSON.stringify(res));
+            })
+        }
         console.log(`Saving entity: ${JSON.stringify(this.state.entity)}`)
         
         //Call mutation here.

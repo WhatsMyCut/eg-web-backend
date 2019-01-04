@@ -72,6 +72,7 @@ class Actions extends Component {
   };
 
   render() {
+	  console.log('user', this.props.user);
 	const { all_actions_by_category } = this.props;
 	if(all_actions_by_category.loading){
 		return <Segment loading style={{height:'100vh', width:'100vw'}}></Segment>
@@ -98,6 +99,8 @@ class Actions extends Component {
 							onClick={() => {this.setState({modalOpen: true, entity: cat, entityType: 'Category'})}}
 							entityType={this.isGameView() ? 'Game' : 'Action'}
 							openModal={() => {
+								action.category_id = cat.id;
+								action.author_id = 
 								this.setState({modalOpen: true, entity: action, entityType: this.isGameView() ? 'Game' : 'Action', selectedCategory: cat})
 							}} 
 							style={{marginBottom: '10px'}} 
@@ -127,6 +130,7 @@ class Actions extends Component {
 			return <ActionModal key="game-modal" entity={entity} entityType='Game' onClose={this._onCloseModal}/>
 		case 'Action':
 			const relatedActionsoptions = selectedCategory ? selectedCategory.actions.filter(action => { return action.isGame === true }) : [];
+			entity.category_id = selectedCategory.id;
 			return <ActionModal key="action-modal" entity={entity} entityType='Action' onClose={this._onCloseModal} relatedActionsOptions={relatedActionsoptions} />
 		default:
 			return null;

@@ -8,16 +8,16 @@ export const CreateActionMutation = gql`
       $active: Boolean,
       $short_description: String!,
       $action_taken_description: String!,
-      $schedule: String,
+      $schedule: Schedule,
       $video_url: String,
       $carbon_dioxide: Float,
       $water: Float,
       $waste: Float,
       $external_url: String,
-      $hasVideo: Boolean,
-      $hasGame: Boolean,
       $isGame: Boolean,
-      $category: {}
+      $related_actions: [Action!],
+      $author_id: ID!,
+      $category_id: ID!
       ) {
     createAction(data: {
 		title: $title, 
@@ -32,10 +32,18 @@ export const CreateActionMutation = gql`
 		water: $water,
 		waste: $waste,
 		external_url: $external_url,
-		hasVideo: $hasVideo,
-		hasGame: $hasGame,
 		isGame: $isGame,
-		category: $category
+    related_actions: $related_actions,
+    author: {
+      connect: {
+            id: $author_id
+        }
+    },
+		category: {
+      connect: {
+            id: $category_id
+        }
+    }
     }) {
         id
         title
