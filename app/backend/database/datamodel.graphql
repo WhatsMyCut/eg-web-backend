@@ -31,8 +31,11 @@ type EventAction {
 }
 
 type CommunityEvents {
+  id: ID!
   type: String!
   number_of_people: Int!
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type ActionCategory {
