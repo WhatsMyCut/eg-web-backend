@@ -29,6 +29,11 @@ type EventAction {
   updatedAt: DateTime!
 }
 
+type CommunityEvents {
+  type: String!
+  number_of_people: Int!
+}
+
 type ActionCategory {
   id: ID! @unique
   name: String!
@@ -59,8 +64,6 @@ type Petition {
 type Action {
   id: ID! @unique
   category: ActionCategory
-  title: String!
-  body: String!
   primary_image: String
   active: Boolean @default(value:false)
   short_description: String!
@@ -71,6 +74,7 @@ type Action {
   order: Int
   water: Float
   waste: Float
+  points: Int
   external_url: String
   isGame: Boolean! @default(value:false)
   related_actions: [Action]
