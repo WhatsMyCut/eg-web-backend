@@ -8,9 +8,13 @@ import EGTextArea from '../shared/Inputs/EGTextArea';
 import EGCheckbox from '../shared/Inputs/EGCheckbox';
 import EGDropdown from '../shared/Inputs/EGDropdown';
 import { CreateActionMutation } from '../../graphql/mutations/createAction_mutation';
+import { UpdateActionMutation } from '../../graphql/mutations/updateAction_mutation';
 
 @graphql(CreateActionMutation, {
 	name: 'createAction'
+  })
+@graphql(UpdateActionMutation, {
+	name: 'updateAction'
   })
 class ActionModal extends Component {
 	state = {
@@ -24,7 +28,7 @@ class ActionModal extends Component {
 	}
 
 	save = () =>{
-        const {onClose, createAction} = this.props;
+        const {onClose, createAction, updateAction} = this.props;
         const {entity} = this.state;
         const variables = entity;
         variables.water = parseFloat(variables.water);
@@ -34,7 +38,10 @@ class ActionModal extends Component {
 
         console.log('Saving Entity: ', entity);
         if(entity.id){
-            onClose();
+            variables.relatedActionIds = variables.related_actions.map(action => {return {id: action.id}});
+            updateAction({variables}).then(res => {
+                onClose();
+            })
         } else{
             createAction({variables}).then(res => {
                 onClose();
@@ -58,7 +65,7 @@ class ActionModal extends Component {
             <EGTextBox  key={'primary-image-input'}  value={entity.primary_image || ''}     label={'Primary Image'}     onChange={(event) => {this.updateEntity(event, 'primary_image')}} />,
             <EGTextBox  key={'video-input'}          value={entity.video || ''}             label={'Video'}             onChange={(event) => {this.updateEntity(event, 'video')}} />,
             <EGTextBox  key={'external-url-input'}   value={entity.external_url || ''}      label={'External URL'}      onChange={(event) => {this.updateEntity(event, 'external_url')}} />,
-            <EGDropdown key={'related-actions-input'} currentValues={entity.related_actions ? entity.related_actions.map(action => {return action.id}) : []} label={'Related Actions'} multiple={true} options={this.toDropdownOptions(relatedActionsOptions, 'title')} onChange={(event) => { this.updateRelatedActions(event);}} />,
+            <EGDropdown key={'related-actions-input'} currentValues={entity.related_actions ? entity.related_actions.map(action => {return action.id}) : []} label={'Related Actions'} multiple={true} options={this.toDropdownOptions(relatedActionsOptions, 'short_description')} onChange={(event) => { this.updateRelatedActions(event);}} />,
             <EGCheckbox key={'isGame-input'}         value={entity.isGame}            label={'Game'}              onChange={(event) => {this.updateEntityBoolean(event, 'isGame')}} />,
             <EGCheckbox key={'active-input'}         value={entity.active}            label={'Active'}            onChange={(event) => {this.updateEntityBoolean(event, 'active')}} />,
             <div key='author'><strong style={{marginRight: '5px'}}>Author:</strong>{entity.author.name || ''}</div>,
@@ -106,7 +113,7 @@ class ActionModal extends Component {
         let newEntity = Object.assign({}, entity);
         if(event.action === 'add'){
             const selectedAction = relatedActionsOptions.filter(action => { return action.id === event.value})[0];
-            const actionPreviouslySelected = entity.related_actions.some(action => {return action.id === event.value;})
+            const actionPreviouslySelected = entity.related_actions ? entity.related_actions.some(action => {return action.id === event.value;}) : false;
             if(!actionPreviouslySelected){
                 newEntity.related_actions.push(selectedAction);
             }

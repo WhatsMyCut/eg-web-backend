@@ -18,11 +18,16 @@ export const GET_ALL_ACTIONS_CATEGORIES = gql`
         schedule
         video_url
         carbon_dioxide
+        order
         water
         waste
         external_url
         author {
           name
+        }
+        related_actions{
+          id
+          short_description
         }
         isGame
         createdAt

@@ -77,7 +77,7 @@ class Actions extends Component {
 	if(all_actions_by_category.loading){
 		return <Segment loading style={{height:'100vh', width:'100vw'}}></Segment>
 	}
-	// console.log('all categories', all_actions_by_category.actionCategories)
+	console.log('all categories', all_actions_by_category.actionCategories)
     return [
       	<ManagementView
 			key='actions-management-view'
@@ -130,12 +130,14 @@ class Actions extends Component {
 		case 'Category':
 			return <CategoryModal key="category-modal" entity={entity} onClose={this._onCloseModal} />;
 		case 'Game':
-			entity.order = entity.order !== undefined && entity.order !== '' ? entity.order : selectedCategory.actions.length + 1;
+			entity.order = entity.order !== undefined && entity.order !== null && entity.order !== '' ? entity.order : selectedCategory.actions.length + 1;
 			return <ActionModal key="game-modal" entity={entity} entityType='Game' onClose={this._onCloseModal}/>
 		case 'Action':
 			const relatedActionsoptions = selectedCategory ? selectedCategory.actions.filter(action => { return action.isGame === true }) : [];
 			entity.category_id = selectedCategory.id;
-			entity.order = entity.order !== undefined && entity.order !== '' ? entity.order : selectedCategory.actions.length + 1;
+			entity.order = entity.order !== undefined && entity.order !== null && entity.order !== '' ? entity.order : selectedCategory.actions.length + 1;
+			entity.related_actions = entity.related_actions || [];
+			entity.isGame = false;
 			return <ActionModal key="action-modal" entity={entity} entityType='Action' onClose={this._onCloseModal} relatedActionsOptions={relatedActionsoptions} />
 		default:
 			return null;
@@ -159,7 +161,6 @@ class Actions extends Component {
 						'Short Description',
 						'Order',
 						'Active',
-						'Related Actions',
 						'Author',
 						'Created At',
 						'Updated At'
@@ -181,13 +182,12 @@ class Actions extends Component {
 							Waste: data.waste,
 							ExternalURL: data.external_url,
 							IsGame: data.isGame,
-							RelatedActions: data.related_actions ? data.related_actions.map(act => {return act.title}).join(', ') : null,
 							Author: data.author.name,
 							CreatedAt: new Date(data.createdAt),
 							UpdatedAt: new Date(data.updatedAt)
 						};
 					})}
-					leftAlignColumns={[0, 1, 2, 3, 4, 5, 6]}
+					leftAlignColumns={[0, 1, 2, 3, 4, 5]}
 					hyperlinkColumns={[0]}
 					hyperlinkFunctions={[
 						{ 
@@ -198,16 +198,16 @@ class Actions extends Component {
 							} 
 						}
 					]}
-					formatColumns={[5, 6]}
+					formatColumns={[4, 5]}
 					formatFunctions={[
 						{
-							index: 5,
+							index: 4,
 							fn: value => {
 								return lib.formatTime(value);
 							}
 						},
 						{
-							index: 6,
+							index: 5,
 							fn: value => {
 								return lib.formatTime(value);
 							}

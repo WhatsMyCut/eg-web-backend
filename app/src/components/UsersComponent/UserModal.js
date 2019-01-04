@@ -17,8 +17,7 @@ import { UpdateUserMutation } from '../../graphql/mutations/updateUser_mutation'
   })
 class UserModal extends Component {
 	state = {
-        entity: this.props.entity,
-        initialRoleId: this.props.entity.role.id
+        entity: this.props.entity
 	}
 	render() {
 		const { entity } = this.state;
@@ -29,7 +28,7 @@ class UserModal extends Component {
 
 	save = () =>{
 		const {onClose, createUser, updateUser, roles} = this.props;
-        const {entity, initialRoleId} = this.state;
+        const {entity} = this.state;
         const variables = entity;
         
         variables.role_id = variables.role ? variables.role.id : roles[0].id;
