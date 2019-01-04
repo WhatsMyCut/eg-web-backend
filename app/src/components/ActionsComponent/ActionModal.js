@@ -1,14 +1,12 @@
 import React, { Component } from "react";
 // import { ADD_GROUP_MUTATION } from '../../../graphql/mutations/add_group';
 import graphql from "../../hoc/graphql";
-import { withRouter } from "react-router-dom";
 import { lib }from '../../lib/Lib';
 import EGModal from "../shared/Modals/Modal";
 import EGTextBox from '../shared/Inputs/EGTextBox';
 import EGTextArea from '../shared/Inputs/EGTextArea';
 import EGCheckbox from '../shared/Inputs/EGCheckbox';
 import EGDropdown from '../shared/Inputs/EGDropdown';
-import EGQuill from '../shared/Inputs/EGQuill';
 import { CreateActionMutation } from '../../graphql/mutations/createAction_mutation';
 
 @graphql(CreateActionMutation, {
@@ -29,6 +27,10 @@ class ActionModal extends Component {
         const {onClose, createAction} = this.props;
         const {entity} = this.state;
         const variables = entity;
+        variables.water = parseFloat(variables.water);
+        variables.waste = parseFloat(variables.waste);
+        variables.carbon_dioxide = parseFloat(variables.carbon_dioxide);
+        variables.points = parseInt(variables.points);
 
         console.log('Saving Entity: ', entity);
         if(entity.id){
@@ -46,11 +48,11 @@ class ActionModal extends Component {
     
     getContent = () => {
         const { entity } = this.state;
-        const { relatedActionsOptions, entityType, newOrder } = this.props;
+        const { relatedActionsOptions, entityType} = this.props;
         return entityType === 'Action' ? 
         [
             <EGTextArea key={'short-desc-input'}     value={entity.short_description || ''} label={'Short Description'} onChange={(event) => {this.updateEntity(event, 'short_description')}} />, 
-            <EGTextBox  key={'order-input'}          value={entity.order || newOrder || ''}             label={'Order'}             onChange={(event) => {this.updateEntity(event, 'order')}} />,
+            <EGTextBox  key={'order-input'}          value={entity.order}                   label={'Order'}             onChange={(event) => {this.updateEntity(event, 'order')}} />,
             <EGDropdown key={'schedule-input'} currentValues={entity.schedule || scheduleOptions[0]} options={scheduleOptions} label={'Schedule'} onChange={(event) => {this.updateSchedule(event)}} />,
             <EGTextBox  key={'carbon_dioxide-input'} value={entity.carbon_dioxide || ''}    label={'Carbon Dioxide'}    onChange={(event) => {this.updateEntity(event, 'carbon_dioxide')}}/>, 
             <EGTextBox  key={'water-input'}          value={entity.water || ''}             label={'Water'}             onChange={(event) => {this.updateEntity(event, 'water')}} />,
@@ -69,7 +71,7 @@ class ActionModal extends Component {
         ] :
         [
             <EGTextArea key={'short-desc-input'}     value={entity.short_description || ''} label={'Short Description'} onChange={(event) => {this.updateEntity(event, 'short_description')}} />, 
-            <EGTextBox  key={'order-input'}          value={entity.order || newOrder || ''}             label={'Order'}             onChange={(event) => {this.updateEntity(event, 'order')}} />,
+            <EGTextBox  key={'order-input'}          value={entity.order}                   label={'Order'}             onChange={(event) => {this.updateEntity(event, 'order')}} />,
             <EGDropdown key={'schedule-input'} currentValues={entity.schedule || scheduleOptions[0]} options={scheduleOptions} label={'Schedule'} onChange={(event) => {this.updateSchedule(event)}} />,
             <EGTextBox  key={'carbon_dioxide-input'} value={entity.carbon_dioxide || ''}    label={'Carbon Dioxide'}    onChange={(event) => {this.updateEntity(event, 'carbon_dioxide')}} />, 
             <EGTextBox  key={'water-input'}          value={entity.water || ''}             label={'Water'}             onChange={(event) => {this.updateEntity(event, 'water')}} />,

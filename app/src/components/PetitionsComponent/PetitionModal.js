@@ -8,7 +8,15 @@ import EGTextBox from '../shared/Inputs/EGTextBox';
 import EGTextArea from '../shared/Inputs/EGTextArea';
 import EGCheckbox from '../shared/Inputs/EGCheckbox';
 import EGQuill from '../shared/Inputs/EGQuill';
+import { CreatePetitionMutation } from '../../graphql/mutations/createPetition_mutation';
+import { UpdatePetitionMutation } from '../../graphql/mutations/updatePetition_mutation';
 
+@graphql(CreatePetitionMutation, {
+	name: 'createPetition'
+  })
+@graphql(UpdatePetitionMutation, {
+	name: 'updatePetition'
+  })
 class PetitionModal extends Component {
 	state = {
 		entity: this.props.entity
@@ -21,19 +29,25 @@ class PetitionModal extends Component {
 	}
 
 	save = () =>{
-		const {onClose} = this.props;
-        console.log(`Saving entity: ${JSON.stringify(this.state.entity)}`)
+		const {onClose, createPetition, updatePetition} = this.props;
+        const {entity} = this.state;
+        const variables = entity;
         
-        //Call mutation here.
+        // console.log('Saving Entity: ', entity);
+        if(entity.id){
+            updatePetition({variables});
+        } else{
+            createPetition({variables});
+        }
 
-		onClose();
+        onClose();
     }
     
     getContent = () => {
         const { entity } = this.state;
         return [
             <EGTextBox  key={'title-input'}          value={entity.title || ''}             label={'Title'}             onChange={(event) => {this.updateEntity(event, 'title')}} />,
-            <EGTextBox  key={'order-input'}          value={entity.order || ''}             label={'Order'}             onChange={(event) => {this.updateEntity(event, 'order')}} />,
+            <EGTextBox  key={'order-input'}          value={entity.order}                   label={'Order'}             onChange={(event) => {this.updateEntity(event, 'order')}} />,
             <EGTextArea key={'short-desc-input'}     value={entity.short_description || ''} label={'Short Description'} onChange={(event) => {this.updateEntity(event, 'short_description')}} />, 
             <EGQuill key={'body-input'}              value={entity.body || ''}              label={'Body'}              onChange={(event) => { this.updateEntity(event, 'body')}} />,
             <EGTextBox  key={'primary-image-input'}  value={entity.primary_image || ''}     label={'Primary Image'}     onChange={(event) => {this.updateEntity(event, 'primary_image')}} />,
@@ -49,7 +63,6 @@ class PetitionModal extends Component {
 
     updateEntity = (event, propName) => {
         const { entity } = this.state;
-        console.log(event.target.value);
         if (event.target.value !== entity[propName]) {
             let newEntity = Object.assign({}, entity);
             newEntity[propName] = event.target.value;

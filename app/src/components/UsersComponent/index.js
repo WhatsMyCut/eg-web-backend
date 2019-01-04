@@ -8,6 +8,7 @@ import {lib} from '../../lib/Lib';
 import graphql from '../../hoc/graphql';
 import UserModal from './UserModal';
 import { GET_ALL_USERS } from '../../graphql/queries/allUsers';
+import { GET_ALL_ROLES } from '../../graphql/queries/allRoles';
 import {Segment } from 'semantic-ui-react';
 
 const user = {
@@ -16,9 +17,6 @@ const user = {
 	password: '',
 	name: '',
 	phone: '',
-	role: {
-		role_name: ''
-	},
 	recent_actions: [
 		{
 			action: {
@@ -39,6 +37,9 @@ const user = {
 @graphql(GET_ALL_USERS,{
 	name:'all_users'
 })
+@graphql(GET_ALL_ROLES,{
+	name:'all_roles'
+})
 @withRouter
 class Users extends Component {
   state = {
@@ -48,12 +49,13 @@ class Users extends Component {
   };
 
   render() {
-    const { modal, entity } = this.state;
-	if(this.props.all_users.loading){
-		console.log('users are loading');
+	const { all_users, all_roles } = this.props;
+	if(all_users.loading){
+		// console.log('users and roles are loading');
 		return <Segment loading style={{height:'100vh', width:"100vw"}}></Segment>
 	} else{
-		console.log('this.props.all_users', this.props.all_users.users);
+		// console.log('all_roles', all_roles.roles);
+		console.log('all_users', all_users.users);
 	}
     return [
       	<ManagementView
@@ -71,7 +73,7 @@ class Users extends Component {
 					'Created At',
 					'Updated At'
 				]}
-				data={this.props.all_users.users.map(data => {
+				data={all_users.users.map(data => {
 					return {
 						Id: data.id,
 						Email: data.email,
@@ -88,7 +90,7 @@ class Users extends Component {
 				})}
 				leftAlignColumns={[0, 1, 2, 3, 4, 5]}
 				hyperlinkColumns={[0]}
-				hyperlinkFunctions={[{ index: 0, fn: (data) => {this.openModal(items.filter(item => {return item.id === data.Id})[0])} }]}
+				hyperlinkFunctions={[{ index: 0, fn: (data) => {this.openModal(all_users.users.filter(user => { return user.id === data.Id})[0])} }]}
 				formatColumns={[4, 5]}
 				formatFunctions={[
 					{
@@ -109,7 +111,7 @@ class Users extends Component {
 	  </ManagementView>,
 	  this._renderModal()
 		];
-  }
+  	}
 
 	openModal = (entity) => {
 		this.setState({entity: entity, modalOpen: true})
@@ -117,15 +119,14 @@ class Users extends Component {
 
   	_renderModal() {
 		const { entity, modalOpen } = this.state;
-		if (!modalOpen) {
-		return null;
-    }
+		if (!modalOpen) { return null; }
 
-	return <UserModal key='user-moda' entity={entity} onClose={this._onCloseModal} />;
-  }
+		const { all_roles } = this.props;
+		return <UserModal key='user-modal' entity={entity} onClose={this._onCloseModal} roles={all_roles.roles}/>;
+  	}
 
   _onCloseModal = () => {
-    // this.props.groups.refetch();
+    this.props.all_users.refetch();
     this.setState({ modalOpen: null, entity: user });
   };
 }

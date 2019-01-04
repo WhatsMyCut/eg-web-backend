@@ -45,11 +45,11 @@ const action = {
   short_description: '',
   action_taken_description: '',
   schedule: 'ANYTIME',
-  video: '',
-  carbon_dioxide: '0.0',
-  water: '0.0',
-  waste: '0.0',
-  points: '0',
+  video_url: '',
+  carbon_dioxide: 0.0,
+  water: 0.0,
+  waste: 0.0,
+  points: 0,
   external_url: '',
   isGame: false,
   related_actions: [],
@@ -130,11 +130,13 @@ class Actions extends Component {
 		case 'Category':
 			return <CategoryModal key="category-modal" entity={entity} onClose={this._onCloseModal} />;
 		case 'Game':
-			return <ActionModal key="game-modal" entity={entity} entityType='Game' onClose={this._onCloseModal} newOrder={selectedCategory.actions.length + 1}/>
+			entity.order = entity.order !== undefined && entity.order !== '' ? entity.order : selectedCategory.actions.length + 1;
+			return <ActionModal key="game-modal" entity={entity} entityType='Game' onClose={this._onCloseModal}/>
 		case 'Action':
 			const relatedActionsoptions = selectedCategory ? selectedCategory.actions.filter(action => { return action.isGame === true }) : [];
 			entity.category_id = selectedCategory.id;
-			return <ActionModal key="action-modal" entity={entity} entityType='Action' onClose={this._onCloseModal} relatedActionsOptions={relatedActionsoptions} newOrder={selectedCategory.actions.length + 1} />
+			entity.order = entity.order !== undefined && entity.order !== '' ? entity.order : selectedCategory.actions.length + 1;
+			return <ActionModal key="action-modal" entity={entity} entityType='Action' onClose={this._onCloseModal} relatedActionsOptions={relatedActionsoptions} />
 		default:
 			return null;
 	}
@@ -173,7 +175,7 @@ class Actions extends Component {
 							ShortDescription: data.short_description !== '' ? data.short_description : 'No Description',
 							ActionTakenDescription: data.action_taken_description,
 							Schedule: data.schedule,
-							VideoURL: data.video,
+							VideoURL: data.video_url,
 							CarbonDioxide: data.carbon_dioxide,
 							Water: data.water,
 							Waste: data.waste,
@@ -237,7 +239,7 @@ class Actions extends Component {
 							ShortDescription: data.short_description !== '' ? data.short_description : 'No Description',
 							ActionTakenDescription: data.action_taken_description,
 							Schedule: data.schedule,
-							VideoURL: data.video,
+							VideoURL: data.video_url,
 							CarbonDioxide: data.carbon_dioxide,
 							Water: data.water,
 							Waste: data.waste,
@@ -305,7 +307,7 @@ const categories = [
       short_description: 'fd gsdfgre gsrgs',
       action_taken_description: 'sdfg ergfd gsdf gsdf',
       schedule: 'ANYTIME',
-      video: 'faweeioa.com',
+      video_url: 'faweeioa.com',
       carbon_dioxide: 10.0,
       water: 20.0,
       waste: 30.0,
@@ -336,7 +338,7 @@ const categories = [
       short_description: 'adsaf sdf dsf sadfsadf',
       action_taken_description: 'sdafsa dfdsaf asdfdsf',
       schedule: 'DAILY',
-      video: 'asadfsdafasdfdsaf',
+      video_url: 'asadfsdafasdfdsaf',
       carbon_dioxide: 20.0,
       water: 30.0,
       waste: 50.0,

@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-// import { ADD_GROUP_MUTATION } from '../../../graphql/mutations/add_group';
 import graphql from "../../hoc/graphql";
-import { withRouter } from "react-router-dom";
 import { lib }from '../../lib/Lib';
 import EGModal from "../shared/Modals/Modal";
 import EGTextBox from '../shared/Inputs/EGTextBox';
@@ -30,8 +28,11 @@ class CategoryModal extends Component {
         const {entity} = this.state;
         const variables = entity;
         
+        console.log('Saving Entity: ', entity);
         if(entity.id){
-            updateCategory({variables});
+            updateCategory({variables}).then(res => {
+                console.log('res: ', res);
+            });
         } else{
             createCategory({variables});
         }
@@ -42,9 +43,9 @@ class CategoryModal extends Component {
     getContent = () => {
         const { entity } = this.state;
         return [
-            <EGTextBox key={'name-input'} value={entity.name} label={'Name'} onChange={(event) => {this.updateEntity(event, 'name')}} />,
-            <EGTextBox key={'primary-image-input'} value={entity.primary_image} label={'Primary Image'} onChange={(event) => {this.updateEntity(event, 'primary_image')}} />,
-            <EGTextBox key={'video-id-input'} value={entity.video_id} label={'Video Id'} onChange={(event) => {this.updateEntity(event, 'video_id')}} />,
+            <EGTextBox key={'name-input'}           value={entity.name || ''}             label={'Name'}          onChange={(event) => {this.updateEntity(event, 'name')}} />,
+            <EGTextBox key={'primary-image-input'}  value={entity.primary_image || ''}    label={'Primary Image'} onChange={(event) => {this.updateEntity(event, 'primary_image')}} />,
+            <EGTextBox key={'video-id-input'}       value={entity.video_id || ''}         label={'Video Id'}      onChange={(event) => {this.updateEntity(event, 'video_id')}} />,
             <div key='actions'><strong style={{marginRight: '5px'}}>Actions:</strong>{entity.actions.filter(action => {return action.isGame === false}).map(action => {return action.title}).join(', ')}</div>,
             <div key='games'><strong style={{marginRight: '5px'}}>Games:</strong>{entity.actions.filter(action => {return action.isGame === true}).map(action => {return action.title}).join(', ')}</div>,
             <div key='created-at'><strong style={{marginRight: '5px'}}>Created At:</strong>{`${lib.formatTime(entity.createdAt)}`}</div>,
@@ -58,7 +59,7 @@ class CategoryModal extends Component {
         if (event.target.value !== entity[propName]) {
             let newEntity = Object.assign({}, entity);
             newEntity[propName] = event.target.value;
-        this.setState({ entity: newEntity });
+            this.setState({ entity: newEntity });
         }
     }
 }

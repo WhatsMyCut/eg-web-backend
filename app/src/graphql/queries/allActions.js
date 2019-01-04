@@ -5,6 +5,7 @@ export const GET_ALL_ACTIONS_CATEGORIES = gql`
     actionCategories{
       id
       name
+      primary_image
       video_id
       actions {
         id
