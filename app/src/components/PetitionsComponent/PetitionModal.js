@@ -35,12 +35,14 @@ class PetitionModal extends Component {
         
         // console.log('Saving Entity: ', entity);
         if(entity.id){
-            updatePetition({variables});
+            updatePetition({variables}).then(res => {
+                onClose();
+            });
         } else{
-            createPetition({variables});
+            createPetition({variables}).then(res => {
+                onClose();
+            });
         }
-
-        onClose();
     }
     
     getContent = () => {

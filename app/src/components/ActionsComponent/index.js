@@ -183,8 +183,8 @@ class Actions extends Component {
 							IsGame: data.isGame,
 							RelatedActions: data.related_actions ? data.related_actions.map(act => {return act.title}).join(', ') : null,
 							Author: data.author.name,
-							CreatedAt: data.createdAt,
-							UpdatedAt: data.updatedAt
+							CreatedAt: new Date(data.createdAt),
+							UpdatedAt: new Date(data.updatedAt)
 						};
 					})}
 					leftAlignColumns={[0, 1, 2, 3, 4, 5, 6]}
@@ -194,7 +194,7 @@ class Actions extends Component {
 							index: 0, 
 							fn: (data) => {
 								const entityType = this.isGameView() ? 'Game' : 'Action';
-								this.openModal(cat.actions.filter(item => {return item.id === data.Id})[0], entityType)
+								this.openModal(cat.actions.filter(item => {return item.id === data.Id})[0], entityType, cat)
 							} 
 						}
 					]}

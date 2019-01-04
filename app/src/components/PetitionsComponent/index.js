@@ -43,7 +43,7 @@ class Petitions extends Component {
 		if(all_petitions.loading){
 			return <Segment loading style={{height:'100vh', width:'100vw'}}></Segment>
 		}
-		// console.log('data inside of table', all_petitions.petitions);
+		console.log('data inside of table', all_petitions.petitions);
 		return [
 		<ManagementView
 			key='petitions-management-view'
@@ -76,11 +76,11 @@ class Petitions extends Component {
 				ExternalURL: data.external_url,
 				Users: data.users,
 				Author: data.author.name,
-				CreatedAt: data.createdAt,
-				UpdatedAt: data.updatedAt
+				CreatedAt: new Date(data.createdAt),
+				UpdatedAt: new Date(data.updatedAt)
 				};
 			})}
-			leftAlignColumns={[0, 1, 2, 3, 4, 5]}
+			leftAlignColumns={[0, 1, 2, 3, 4, 5, 6]}
 			hyperlinkColumns={[0]}
 			hyperlinkFunctions={[
 				{

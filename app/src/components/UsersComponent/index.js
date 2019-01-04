@@ -84,8 +84,8 @@ class Users extends Component {
 						RecentActions: data.recent_actions,
 						TotalPoints: data.total_points,
 						PetitionsSigned: data.petitions_signed ? data.petitions_signed.map(petition => {return petition.title}).join(', ') : null,
-						CreatedAt: data.createdAt,
-						UpdatedAt: data.updatedAt
+						CreatedAt: new Date(data.createdAt),
+						UpdatedAt: new Date(data.updatedAt)
 					};
 				})}
 				leftAlignColumns={[0, 1, 2, 3, 4, 5]}

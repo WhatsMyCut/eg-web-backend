@@ -46,8 +46,8 @@ class CategoryModal extends Component {
             <EGTextBox key={'name-input'}           value={entity.name || ''}             label={'Name'}          onChange={(event) => {this.updateEntity(event, 'name')}} />,
             <EGTextBox key={'primary-image-input'}  value={entity.primary_image || ''}    label={'Primary Image'} onChange={(event) => {this.updateEntity(event, 'primary_image')}} />,
             <EGTextBox key={'video-id-input'}       value={entity.video_id || ''}         label={'Video Id'}      onChange={(event) => {this.updateEntity(event, 'video_id')}} />,
-            <div key='actions'><strong style={{marginRight: '5px'}}>Actions:</strong>{entity.actions.filter(action => {return action.isGame === false}).map(action => {return action.title}).join(', ')}</div>,
-            <div key='games'><strong style={{marginRight: '5px'}}>Games:</strong>{entity.actions.filter(action => {return action.isGame === true}).map(action => {return action.title}).join(', ')}</div>,
+            <div key='actions'><strong style={{marginRight: '5px'}}>Actions:</strong>{entity.actions.filter(action => {return action.isGame === false}).map(action => {return lib.truncateText(action.short_description, 50)}).join(', ')}</div>,
+            <div key='games'><strong style={{marginRight: '5px'}}>Games:</strong>{entity.actions.filter(action => {return action.isGame === true}).map(action => {return lib.truncateText(action.short_description, 50)}).join(', ')}</div>,
             <div key='created-at'><strong style={{marginRight: '5px'}}>Created At:</strong>{`${lib.formatTime(entity.createdAt)}`}</div>,
             <div key='updated-at'><strong style={{marginRight: '5px'}}>Updated At:</strong>{`${lib.formatTime(entity.updatedAt)}`}</div>
         ]

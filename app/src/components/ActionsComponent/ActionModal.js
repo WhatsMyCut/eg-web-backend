@@ -34,16 +34,12 @@ class ActionModal extends Component {
 
         console.log('Saving Entity: ', entity);
         if(entity.id){
-
+            onClose();
         } else{
             createAction({variables}).then(res => {
-                console.log(JSON.stringify(res));
+                onClose();
             })
         }
-        
-        //Call mutation here.
-
-		onClose();
     }
     
     getContent = () => {
