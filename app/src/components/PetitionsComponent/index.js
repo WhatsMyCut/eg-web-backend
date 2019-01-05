@@ -132,23 +132,3 @@ class Petitions extends Component {
 }
 
 export default Petitions;
-
-const items = [
-	{
-		id: 1,
-		order: 1,
-		title: 'Blah',
-		active: true,
-		short_description: 'This is a blaaaah petition.',
-		body: 'mooooooore text about this petition.',
-		primary_image: 'primary_image string',
-		video_url: 'video url...',
-		external_url: 'external url',
-		users: [],
-		author: {
-			name: 'David Garrett'
-		},
-		createdAt: new Date(),
-		updatedAt: new Date()
-	}
-];
