@@ -9,8 +9,9 @@ type User {
   recent_actions: [EventAction]
   total_points: Int
   petitions_signed: [Petition] @relation(name:"PetitionOnUser")
-  community_events : [CommunityEvents] @relation(name:"CommunityEventsOnUser")
+  community_events : [CommunityEvent] @relation(name:"CommunityEventsOnUser")
   device_id: String
+  crew: String
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -31,7 +32,7 @@ type EventAction {
   updatedAt: DateTime!
 }
 
-type CommunityEvents {
+type CommunityEvent {
   id: ID!
   type: String!
   number_of_people: Int!

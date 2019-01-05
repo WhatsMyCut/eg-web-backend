@@ -221,7 +221,7 @@ class Actions extends Component {
 						'Short Description',
 						'Order',
 						'Active',
-						'Related Actions',
+						'Games',
 						'Author',
 						'Created At',
 						'Updated At'

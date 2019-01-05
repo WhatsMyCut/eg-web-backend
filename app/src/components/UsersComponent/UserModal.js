@@ -54,8 +54,8 @@ class UserModal extends Component {
             <EGTextBox key={'name-input'} value={entity.name || ''} label={'Name'} onChange={(event) => {this.updateEntity(event, 'name')}} />,
             <EGTextBox key={'phone-input'} value={entity.phone || ''} label={'Phone'} onChange={(event) => {this.updateEntity(event, 'phone')}} />,
             <EGDropdown key={'role-input'} currentValues={entity.role ? entity.role.id : roles[0].id} options={this.toDropdownOptions(roles, 'role_name')} label={'Role'} onChange={(event) => {this.updateRole(event)}} />,
-            <div key='recent-actions'><strong style={{marginRight: '5px'}}>Recent Actions:</strong>{entity.recent_actions ? entity.recent_actions.map(action => {return lib.truncateText(action.action.short_description, 50)}).join(', ') : []}</div>,
-            <div key='petitions-signed'><strong style={{marginRight: '5px'}}>Petitions Signed:</strong>{entity.petitions_signed ? entity.petitions_signed.map(petition => {return petition.title}).join(', ') : []}</div>,
+            // <div key='recent-actions'><strong style={{marginRight: '5px'}}>Recent Actions:</strong>{entity.recent_actions ? entity.recent_actions.map(action => { return lib.truncateText(action.action.short_description, 50)}).join(', ') : []}</div>,
+            // <div key='petitions-signed'><strong style={{marginRight: '5px'}}>Petitions Signed:</strong>{entity.petitions_signed ? entity.petitions_signed.map(petition => {return petition.title}).join(', ') : []}</div>,
             <div key='total-points'><strong style={{marginRight: '5px'}}>Total Points:</strong>{`${entity.total_points || 0}`}</div>,
             <div key='created-at'><strong style={{marginRight: '5px'}}>Created At:</strong>{`${lib.formatTime(entity.createdAt)}`}</div>,
             <div key='updated-at'><strong style={{marginRight: '5px'}}>Updated At:</strong>{`${lib.formatTime(entity.updatedAt)}`}</div>

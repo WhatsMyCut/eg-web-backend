@@ -18,94 +18,33 @@ import { colors } from "../../constants/colors";
 import { layout } from '../../constants/layout';
 
 const LoginContainer = styled.div`
-  width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-	padding: 10px;
-	background-color: lightgray;
-
-  & > div {
-    padding-bottom: 16px;
-  }
-
-  ${minWidthMediaQuery.laptopL`
-    flex-direction: row;
-    font-size: 250% !important;
-  `}
+  
 `;
 
 const LoginMenu = styled.div`
-  width: 300px;
-  height: 350px;
-  display: flex;
-  box-shadow: 0 10px 6px -6px rgba(0,0,0,0.40);
-
-  ${minWidthMediaQuery.mobileM`width: 350px;`}
-  ${minWidthMediaQuery.mobileL`width: 420px;`}
-  ${minWidthMediaQuery.phablet`width: 500px;`}
-  ${minWidthMediaQuery.tablet`width: 550px;`}
-  ${minWidthMediaQuery.laptop`width: 600px;`}
-  ${minWidthMediaQuery.laptopL`width: 700px;`}
-  ${minWidthMediaQuery.desktop`width: 1250px;`}
-
-  @media (max-height: 420px) and (orientation: landscape) {
-    height: 320px;
-  }
+ 
 `;
 
 LoginMenu.TextHeader = styled.h2`
-  height: 20%;
-  margin: 0;
-  font-family: ${layout.fontFamily};
-  font-weight: 300;
-  display: flex;
-	align-items: center;
+ 
 `;
 
 LoginMenu.LoginForm = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-	height: auto;
-	border: 10px solid black;
-	padding: 20px;
-	background-color: ${colors.darkGray};
-	color: white;
-	box-shadow: 0 10px 6px -6px rgba(0,0,0,0.40);
+  
 `;
 
 const { LoginForm } = LoginMenu;
 
 LoginForm.InputContainer = styled.div`
-  margin: 16px 0px;
 
-  div:nth-of-type(1) {
-    margin-bottom: 16px;
-  }
 `;
 
 LoginForm.Input = styled(Input)`
-  border-radius: 3 !important;
-	border: 1px solid ${colors.lightGray};
-  width: 80%;
-  font-family: ${layout.fontFamily};
-
-  input {
-    background-color: ${colors.darkGray} !important;
-	color: ${colors.lightGray} !important;
-	font-family: ${layout.fontFamily} !important;
-  }
+ 
 `;
 
 LoginForm.LoginButton = styled(Button)`
-  font-family: ${layout.fontFamily};
-  border-color: ${colors.darkGray};
-  color: ${colors.darkGray};
-  padding: 0.5em 2em;
+ 
 `;
 
 @graphql(LoginMutation, {
