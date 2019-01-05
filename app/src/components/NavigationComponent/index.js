@@ -32,14 +32,14 @@ function AccountCircleMenuItem({ name, history }) {
         history.push('/login');
       }
     },
-    {
-      key: 'profile_info',
-      text: 'Profile',
-      icon: 'user',
-      onClick: () => {
-        history.push('/settings/profile');
-      }
-    }
+    // {
+    //   key: 'profile_info',
+    //   text: 'Profile',
+    //   icon: 'user',
+    //   onClick: () => {
+    //     history.push('/settings/profile');
+    //   }
+    // }
   ];
 
   return (

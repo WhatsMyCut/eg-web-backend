@@ -1,5 +1,6 @@
 export const lib = {
 	formatTime(date) {
+		date = date && date.toString().substring(date.length - 1) === 'Z' ? new Date(date) : date;
 		if(typeof date === 'object'){
 			const monthNames = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sept','Oct','Nov','Dec'];
 			const yy = date.getFullYear();
@@ -33,5 +34,13 @@ export const lib = {
 
 	trueFalseToYesNo(value){
 		return value ? 'Yes' : 'No';
+	},
+
+	truncateText(text, length){
+		if(text.length > length){
+			return `${text.substring(0, length - 1)}...`;
+		} else{
+			return text;
+		}
 	}
 };

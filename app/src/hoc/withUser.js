@@ -68,7 +68,7 @@ export default function withUser(options = {}) {
             return null;
           }
 
-          const path = user.user ? 'dashboard' : 'login';
+          const path = user.user ? 'home' : 'login';
 
           return (
             <Redirect

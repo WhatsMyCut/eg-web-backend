@@ -5,8 +5,9 @@ import ManagementView from '../shared/ManagementView';
 import { maxWidthMediaQuery } from '../../constants/responsive';
 import EGTable from '../shared/Table';
 import {lib} from '../../lib/Lib';
-import ModalContent from '../shared/Modals/ModalContent';
 import HeaderWithAddBtn from '../shared/HeaderWithAddBtn';
+import ActionModal from './ActionModal';
+import CategoryModal from './CategoryModal';
 import {
 	Modal,
 	Header,
@@ -22,6 +23,8 @@ import { GET_ALL_ACTIONS_CATEGORIES} from '../../graphql/queries/allActions';
 const category = {
   id: '',
   name: '',
+  primary_image: '',
+  video_id: '',
   actions: [],
   createdAt: '',
   updatedAt: ''
@@ -32,26 +35,27 @@ const action = {
   category: {
     id: '',
     name: '',
-    actions: [{title: '',}],
+    actions: [],
     createdAt: '',
     updatedAt: ''
   },
   order: '',
-  title: '',
-  body: '',
   primary_image: '',
   active: false,
   short_description: '',
   action_taken_description: '',
-  schedule: '',
+  schedule: 'ANYTIME',
   video_url: '',
   carbon_dioxide: 0.0,
   water: 0.0,
   waste: 0.0,
+  points: 0,
   external_url: '',
   isGame: false,
-  related_actions: [{title: ''}],
-  author: {},
+  related_actions: [],
+  author: {
+	  name: ''
+  },
   createdAt: '',
   updatedAt: ''
 }
@@ -69,29 +73,37 @@ class Actions extends Component {
   };
 
   render() {
-	const { modal, entity } = this.state;
-	const { all_actions_by_category } = this.props;
+	const { all_actions_by_category, user } = this.props;
 	if(all_actions_by_category.loading){
 		return <Segment loading style={{height:'100vh', width:'100vw'}}></Segment>
 	}
-	console.log('all categories', all_actions_by_category.actionCategories)
+	// console.log('all categories', all_actions_by_category.actionCategories)
     return [
       	<ManagementView
 			key='actions-management-view'
-      		title="Actions" 
+      		title={this.isGameView() ? 'Games' : "Actions"} 
       		entityType="Category"
 			openModal={() => {this.setState({modalOpen: true, entity: category, entityType: 'Category'})}}
+			style={{overflowY: 'auto'}}
       	>
 		  {
 			  all_actions_by_category.actionCategories.map(cat => {
+					if(this.isGameView()){
+						action.isGame = true;
+					}
 				return(
 					<Segment key={`${cat.name.replace(/\s/g, '')}-category`}>
 						<HeaderWithAddBtn
 							title={cat.name}
 							clickable={true}
 							onClick={() => {this.setState({modalOpen: true, entity: cat, entityType: 'Category'})}}
-							entityType="Action" 
-							openModal={() => {this.setState({modalOpen: true, entity: action, entityType: 'Action'})}} 
+							entityType={this.isGameView() ? 'Game' : 'Action'}
+							openModal={() => {
+								action.category_id = cat.id;
+								action.author_id = user.me.id;
+								action.category = cat;
+								this.setState({modalOpen: true, entity: action, entityType: this.isGameView() ? 'Game' : 'Action', selectedCategory: cat})
+							}} 
 							style={{marginBottom: '10px'}} 
 						/>
 						{this.getTable(cat)}
@@ -104,47 +116,49 @@ class Actions extends Component {
 		];
   }
 
-	openModal = (entity, entityType) => {
-		this.setState({entity: entity, modalOpen: true, entityType: entityType ? entityType : this.state.entityType})
+	openModal = (entity, entityType, cat) => {
+		entity.category_id = cat.id;
+		this.setState({entity: entity, modalOpen: true, entityType: entityType ? entityType : this.state.entityType, selectedCategory: cat})
 	}
 
   	_renderModal() {
-		const { entity, modalOpen, entityType } = this.state;
-		if (!modalOpen) {
-		return null;
-	}
-	
+		const { entity, modalOpen, entityType, selectedCategory } = this.state;
+		if (!modalOpen) { return null }
+
 	switch(entityType){
 		case 'Category':
-			return <ModalContent key="categories-modal" mappings={modalMappings.category} entity={entity} entityType='Category' onClose={this._onCloseModal} />;
-		case 'Action':
-			return <ModalContent key="actions-modal" mappings={modalMappings.action} entity={entity} entityType='Action' onClose={this._onCloseModal} />;
+			return <CategoryModal key="category-modal" entity={entity} onClose={this._onCloseModal} />;
 		case 'Game':
-			return <ModalContent key="games-modal" mappings={modalMappings.game} entity={entity} entityType='Game' onClose={this._onCloseModal} />;
+			entity.order = entity.order !== undefined && entity.order !== null && entity.order !== '' ? entity.order : selectedCategory.actions.length + 1;
+			return <ActionModal key="game-modal" entity={entity} entityType='Game' onClose={this._onCloseModal}/>
+		case 'Action':
+			const relatedActionsoptions = selectedCategory ? selectedCategory.actions.filter(action => { return action.isGame === true }) : [];
+			entity.category_id = selectedCategory.id;
+			entity.order = entity.order !== undefined && entity.order !== null && entity.order !== '' ? entity.order : selectedCategory.actions.length + 1;
+			entity.related_actions = entity.related_actions || [];
+			entity.isGame = false;
+			return <ActionModal key="action-modal" entity={entity} entityType='Action' onClose={this._onCloseModal} relatedActionsOptions={relatedActionsoptions} />
 		default:
 			return null;
 	}
   }
 
   _onCloseModal = () => {
-    // this.props.groups.refetch();
+    this.props.all_actions_by_category.refetch();
     this.setState({ modalOpen: null, entity: category });
   };
 
   getTable = (cat) => {
-		console.log('cat', cat.actions);
 	  	function gamesFilter(action){return action.isGame === true;}
 		function actionsFilter(action){return action.isGame === false;}
-		if(this.props.match.path === '/games'){
-			console.log('data inside of table', cat.actions);
+		if(this.isGameView()){
+			// console.log('data inside of table', cat.actions);
 			return (
 				<EGTable
 					headings={[
-						'Title',
+						'Short Description',
 						'Order',
 						'Active',
-						'Short Description',
-						'Related Actions',
 						'Author',
 						'Created At',
 						'Updated At'
@@ -154,12 +168,10 @@ class Actions extends Component {
 						return {
 							Id: data.id,
 							Category: data.category,
-							Title: data.title,
 							Order: data.order,
-							Body: data.body,
 							PrimaryImage: data.primary_image,
 							Active: data.active,
-							ShortDescription: data.short_description,
+							ShortDescription: data.short_description !== '' ? data.short_description : 'No Description',
 							ActionTakenDescription: data.action_taken_description,
 							Schedule: data.schedule,
 							VideoURL: data.video_url,
@@ -168,33 +180,32 @@ class Actions extends Component {
 							Waste: data.waste,
 							ExternalURL: data.external_url,
 							IsGame: data.isGame,
-							RelatedActions: data.related_actions ? data.related_actions.map(act => {return act.title}).join(', ') : null,
 							Author: data.author.name,
-							CreatedAt: data.createdAt,
-							UpdatedAt: data.updatedAt
+							CreatedAt: new Date(data.createdAt),
+							UpdatedAt: new Date(data.updatedAt)
 						};
 					})}
-					leftAlignColumns={[0, 1, 2, 3, 4, 5, 6, 7]}
+					leftAlignColumns={[0, 1, 2, 3, 4, 5]}
 					hyperlinkColumns={[0]}
 					hyperlinkFunctions={[
 						{ 
 							index: 0, 
 							fn: (data) => {
-								const entityType = this.props.match.path === '/games' ? 'Game' : 'Action';
-								this.openModal(cat.actions.filter(item => {return item.id === data.Id})[0], entityType)
+								const entityType = this.isGameView() ? 'Game' : 'Action';
+								this.openModal(cat.actions.filter(item => {return item.id === data.Id})[0], entityType, cat)
 							} 
 						}
 					]}
-					formatColumns={[6, 7]}
+					formatColumns={[4, 5]}
 					formatFunctions={[
 						{
-							index: 6,
+							index: 4,
 							fn: value => {
 								return lib.formatTime(value);
 							}
 						},
 						{
-							index: 7,
+							index: 5,
 							fn: value => {
 								return lib.formatTime(value);
 							}
@@ -203,30 +214,27 @@ class Actions extends Component {
 				/>
 			)
 		} else{
-			console.log('not games');
+			// console.log('not games');
 			return (
 				<EGTable
 					headings={[
-						'Title',
+						'Short Description',
 						'Order',
 						'Active',
-						'Short Description',
 						'Related Actions',
 						'Author',
 						'Created At',
 						'Updated At'
 					]}
 					data={cat.actions.filter(actionsFilter).map(data => {
-						console.log('data inside of table', cat.actions, data);
+						// console.log('data inside of table', cat.actions, data);
 						return {
 							Id: data.id,
 							Category: data.category,
-							Title: data.title,
 							Order: data.order,
-							Body: data.body,
 							PrimaryImage: data.primary_image,
 							Active: data.active,
-							ShortDescription: data.short_description,
+							ShortDescription: data.short_description !== '' ? data.short_description : 'No Description',
 							ActionTakenDescription: data.action_taken_description,
 							Schedule: data.schedule,
 							VideoURL: data.video_url,
@@ -235,25 +243,33 @@ class Actions extends Component {
 							Waste: data.waste,
 							ExternalURL: data.external_url,
 							IsGame: data.isGame,
-							RelatedActions: data.related_actions ? data.related_actions.map(act => {return act.title}).join(', ') : null,
+							RelatedActions: data.related_actions ? data.related_actions.map(act => {return lib.truncateText(act.short_description, 50)}).join(', ') : null,
 							Author: data.author.name,
-							CreatedAt: data.createdAt,
-							UpdatedAt: data.updatedAt
+							CreatedAt: new Date(data.createdAt),
+							UpdatedAt: new Date(data.updatedAt)
 						};
 					})}
-					leftAlignColumns={[0, 1, 2, 3, 4, 5, 6, 7]}
+					leftAlignColumns={[0, 1, 2, 3, 4, 5, 6]}
 					hyperlinkColumns={[0]}
-					hyperlinkFunctions={[{ index: 0, fn: (data) => {this.openModal(cat.actions.filter(item => {return item.id === data.Id})[0])} }]}
-					formatColumns={[6, 7]}
+					hyperlinkFunctions={[
+						{ 
+							index: 0, 
+							fn: (data) => {
+								const entityType = this.isGameView() ? 'Game' : 'Action';
+								this.openModal(cat.actions.filter(item => {return item.id === data.Id})[0], entityType, cat)
+							} 
+						}
+					]}
+					formatColumns={[5, 6]}
 					formatFunctions={[
 						{
-							index: 6,
+							index: 5,
 							fn: value => {
 								return lib.formatTime(value);
 							}
 						},
 						{
-							index: 7,
+							index: 6,
 							fn: value => {
 								return lib.formatTime(value);
 							}
@@ -262,154 +278,11 @@ class Actions extends Component {
 				/>
 			)
 		}
-  	}
+	  }
+	  
+	  isGameView = () => {
+		  return this.props.match.path === '/games';
+	  }
 }
 
 export default Actions;
-
-const categories = [
-  {
-    id: '1',
-	name: 'Cat-1',
-    actions: [{
-      id: '8',
-      category: {
-        id: '1',
-        name: 'Cat-1',
-      },
-      title: 'Action 1',
-	  order: 2,
-      body: 'asdfsdaf a asdff dsf sdaf ',
-      primary_image: 'asfd f ds afsda',
-      active: false,
-      short_description: 'fd gsdfgre gsrgs',
-      action_taken_description: 'sdfg ergfd gsdf gsdf',
-      schedule: 'ANYTIME',
-      video_url: 'faweeioa.com',
-      carbon_dioxide: 10.0,
-      water: 20.0,
-      waste: 30.0,
-      external_url: 'asdffsdafjsdf.net',
-      isGame: false,
-      related_actions: [{title: 'dump'}, {title: 'aLump'}],
-      author: {
-        name: 'David Garrett'
-      },
-      createdAt: new Date(),
-      updatedAt: new Date()
-    },
-    {
-      id: '9',
-      category: {
-        id: '1',
-        name: 'Cat-1',
-      },
-	  title: 'Water Savings',
-	  order: 3,
-      body: 'watta watta',
-      primary_image: 'adsfas d f',
-      active: false,
-      short_description: 'adsaf sdf dsf sadfsadf',
-      action_taken_description: 'sdafsa dfdsaf asdfdsf',
-      schedule: 'DAILY',
-      video_url: 'asadfsdafasdfdsaf',
-      carbon_dioxide: 20.0,
-      water: 30.0,
-      waste: 50.0,
-      external_url: 'asdfsda fsdaf ds',
-      isGame: true,
-      related_actions: [{title: ''}],
-      author: {
-        name: 'David Garrett'
-      },
-      createdAt: new Date(),
-      updatedAt: new Date()
-    }
-  ],
-    createdAt: new Date(),
-    updatedAt: new Date()
-  },
-  {
-    id: '2',
-    name: 'Cat-2',
-    actions: [],
-    createdAt: new Date(),
-    updatedAt: new Date()
-  },
-  {
-    id: '3',
-    name: 'Cat-3',
-    actions: [],
-    createdAt: new Date(),
-    updatedAt: new Date()
-  },
-  {
-    id: '4',
-    name: 'Cat-4',
-    actions: [],
-    createdAt: new Date(),
-    updatedAt: new Date()
-  }
-]
-
-const modalMappings = {
-	category: [
-		{props: 'name', 		label: 'Name', 			inputType: 'textbox'},
-		{props: 'actions.title', label: 'Actions', 		inputType: 'list'},
-		{props: 'createdAt', 	label: 'Created At', 	inputType: 'date'},
-		{props: 'updatedAt', 	label: 'Updated At', 	inputType: 'date'},
-	],
-	action: [
-		{props: 'title', 					label: 'Title', 			inputType: 'textbox'},
-		{props: 'order', 					label: 'Order', 			inputType: 'textbox'},
-		{props: 'schedule', 				label: 'Schedule', 			inputType: 'textbox'},
-		{props: 'carbon_dioxide', 			label: 'Carbon Dioxide', 	inputType: 'textbox'},
-		{props: 'water', 					label: 'Water', 			inputType: 'textbox'},
-		{props: 'waste', 					label: 'Waste', 			inputType: 'textbox'},
-		{props: 'short_description', 		label: 'Short Description', inputType: 'textarea'},
-		{props: 'body', 					label: 'Body', 				inputType: 'textarea'},
-		{props: 'action_taken_description', label: 'Action Taken', 		inputType: 'textarea'},
-		{props: 'primary_image', 			label: 'Primary Image', 	inputType: 'textbox'},
-		{props: 'video_url', 				label: 'Video URL', 		inputType: 'textbox'},
-		{props: 'external_url', 			label: 'External URL', 		inputType: 'textbox'},
-		{props: 'isGame', 					label: 'Game', 				inputType: 'checkbox'},
-		{props: 'active', 					label: 'Active', 			inputType: 'checkbox'},
-		{props: 'related_actions.title', 	label: 'Actions', 			inputType: 'list'},
-		{props: 'author.name', 				label: 'Author'},
-		{props: 'createdAt', 				label: 'Created At', 		inputType: 'date'},
-		{props: 'updatedAt', 				label: 'Updated At', 		inputType: 'date'},
-	],
-	game: [
-		{props: 'title', 					label: 'Title', 			inputType: 'textbox'},
-		{props: 'order', 					label: 'Order', 			inputType: 'textbox'},
-		{props: 'schedule', 				label: 'Schedule', 			inputType: 'textbox'},
-		{props: 'carbon_dioxide', 			label: 'Carbon Dioxide', 	inputType: 'textbox'},
-		{props: 'water', 					label: 'Water', 			inputType: 'textbox'},
-		{props: 'waste', 					label: 'Waste', 			inputType: 'textbox'},
-		{props: 'short_description', 		label: 'Short Description', inputType: 'textarea'},
-		{props: 'body', 					label: 'Body', 				inputType: 'textarea'},
-		{props: 'action_taken_description', label: 'Action Taken', 		inputType: 'textarea'},
-		{props: 'primary_image', 			label: 'Primary Image', 	inputType: 'textbox'},
-		{props: 'video_url', 				label: 'Video URL', 		inputType: 'textbox'},
-		{props: 'external_url', 			label: 'External URL', 		inputType: 'textbox'},
-		{props: 'isGame', 					label: 'Game', 				inputType: 'checkbox'},
-		{props: 'active', 					label: 'Active', 			inputType: 'checkbox'},
-		{props: 'related_actions.title', 	label: 'Actions', 			inputType: 'list'},
-		{props: 'author.name', 				label: 'Author'},
-		{props: 'createdAt', 				label: 'Created At', 		inputType: 'date'},
-		{props: 'updatedAt', 				label: 'Updated At', 		inputType: 'date'},
-	]
-}
-
-// enum Schedule {
-//   ANYTIME
-//   ONCE
-//   DAILY
-//   BIWEEKLY
-//   WEEKLY
-//   TWOWEEKS
-//   MONTHLY
-//   QUARTERLY
-//   SEMIANNUALLY
-//   ANNUALLY
-// }

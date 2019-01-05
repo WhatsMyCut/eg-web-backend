@@ -1,20 +1,13 @@
-import gql from '../../../node_modules/graphql-tag';
+import gql from "../../../node_modules/graphql-tag";
 
 export const LoginMutation = gql`
-  mutation Login($username: String!, $password: String!) {
-    login(username: $username, password: $password) {
-      token
-      user {
-        name
-        username
-        phone
-        company {
-          name
-        }
-        role {
-          name
-        }
-      }
-    }
-  }
+	mutation Login($username: String!, $password: String!) {
+		login(username: $username, password: $password) {
+		token
+		user {
+			id
+			name
+		}
+		}
+	}
 `;
