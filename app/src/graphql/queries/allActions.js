@@ -21,6 +21,7 @@ export const GET_ALL_ACTIONS_CATEGORIES = gql`
         order
         water
         waste
+        points
         external_url
         author {
           name

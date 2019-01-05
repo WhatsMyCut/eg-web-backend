@@ -77,7 +77,7 @@ class Actions extends Component {
 	if(all_actions_by_category.loading){
 		return <Segment loading style={{height:'100vh', width:'100vw'}}></Segment>
 	}
-	console.log('all categories', all_actions_by_category.actionCategories)
+	// console.log('all categories', all_actions_by_category.actionCategories)
     return [
       	<ManagementView
 			key='actions-management-view'
@@ -117,7 +117,6 @@ class Actions extends Component {
   }
 
 	openModal = (entity, entityType, cat) => {
-		console.log('cat', cat);
 		entity.category_id = cat.id;
 		this.setState({entity: entity, modalOpen: true, entityType: entityType ? entityType : this.state.entityType, selectedCategory: cat})
 	}
@@ -150,11 +149,10 @@ class Actions extends Component {
   };
 
   getTable = (cat) => {
-		// console.log('cat', cat.actions);
 	  	function gamesFilter(action){return action.isGame === true;}
 		function actionsFilter(action){return action.isGame === false;}
 		if(this.isGameView()){
-			console.log('data inside of table', cat.actions);
+			// console.log('data inside of table', cat.actions);
 			return (
 				<EGTable
 					headings={[
@@ -245,7 +243,7 @@ class Actions extends Component {
 							Waste: data.waste,
 							ExternalURL: data.external_url,
 							IsGame: data.isGame,
-							RelatedActions: data.related_actions ? data.related_actions.map(act => {return act.title}).join(', ') : null,
+							RelatedActions: data.related_actions ? data.related_actions.map(act => {return lib.truncateText(act.short_description, 50)}).join(', ') : null,
 							Author: data.author.name,
 							CreatedAt: new Date(data.createdAt),
 							UpdatedAt: new Date(data.updatedAt)

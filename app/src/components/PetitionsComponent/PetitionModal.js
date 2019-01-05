@@ -32,7 +32,7 @@ class PetitionModal extends Component {
 		const {onClose, createPetition, updatePetition} = this.props;
         const {entity} = this.state;
         const variables = entity;
-        
+        variables.order = parseInt(variables.order);
         // console.log('Saving Entity: ', entity);
         if(entity.id){
             updatePetition({variables}).then(res => {
@@ -53,7 +53,7 @@ class PetitionModal extends Component {
             <EGTextArea key={'short-desc-input'}     value={entity.short_description || ''} label={'Short Description'} onChange={(event) => {this.updateEntity(event, 'short_description')}} />, 
             <EGQuill key={'body-input'}              value={entity.body || ''}              label={'Body'}              onChange={(event) => { this.updateEntity(event, 'body')}} />,
             <EGTextBox  key={'primary-image-input'}  value={entity.primary_image || ''}     label={'Primary Image'}     onChange={(event) => {this.updateEntity(event, 'primary_image')}} />,
-            <EGTextBox  key={'video-input'}          value={entity.video || ''}             label={'Video'}             onChange={(event) => {this.updateEntity(event, 'video')}} />,
+            <EGTextBox  key={'video-input'}          value={entity.video_url || ''}             label={'Video'}             onChange={(event) => {this.updateEntity(event, 'video_url')}} />,
             <EGTextBox  key={'external-url-input'}   value={entity.external_url || ''}      label={'External URL'}      onChange={(event) => {this.updateEntity(event, 'external_url')}} />,
             <EGCheckbox key={'active-input'}         value={entity.active}                  label={'Active'}            onChange={(event) => {this.updateEntityBoolean(event, 'active')}} />,
             <div key='users'><strong style={{marginRight: '5px'}}>Users:</strong>{entity.users ? entity.users.map(user => {return user.name}).join(', ') : []}</div>,

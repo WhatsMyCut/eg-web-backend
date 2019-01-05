@@ -28,16 +28,17 @@ class CategoryModal extends Component {
         const {entity} = this.state;
         const variables = entity;
         
-        console.log('Saving Entity: ', entity);
+        variables.order = parseInt(variables.order);
+        // console.log('Saving Entity: ', entity);
         if(entity.id){
             updateCategory({variables}).then(res => {
-                console.log('res: ', res);
+                onClose();
             });
         } else{
-            createCategory({variables});
+            createCategory({variables}).then(res => {
+                onClose();
+            });
         }
-
-        onClose();
     }
     
     getContent = () => {

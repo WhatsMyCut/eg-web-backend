@@ -18,7 +18,8 @@ import { UpdateActionMutation } from '../../graphql/mutations/updateAction_mutat
   })
 class ActionModal extends Component {
 	state = {
-		entity: this.props.entity
+        entity: this.props.entity,
+        initialRelatedActionIds: this.props.entity.related_actions.map(action => { return action.id })
 	}
 	render() {
 		const { entity } = this.state;
@@ -29,15 +30,20 @@ class ActionModal extends Component {
 
 	save = () =>{
         const {onClose, createAction, updateAction} = this.props;
-        const {entity} = this.state;
+        const {entity, initialRelatedActionIds} = this.state;
         const variables = entity;
         variables.water = parseFloat(variables.water);
         variables.waste = parseFloat(variables.waste);
         variables.carbon_dioxide = parseFloat(variables.carbon_dioxide);
         variables.points = parseInt(variables.points);
+        variables.order = parseInt(variables.order);
 
-        console.log('Saving Entity: ', entity);
+        // console.log('Saving Entity: ', entity);
         if(entity.id){
+            const selectedIds = variables.related_actions.map(action => {return action.id});
+            variables.relatedActionIdsToRemove = initialRelatedActionIds.filter(initialActionId => {
+                return !lib.arrayIncludes(selectedIds, initialActionId);
+            }).map(actionId => {return {id: actionId}});
             variables.relatedActionIds = variables.related_actions.map(action => {return {id: action.id}});
             updateAction({variables}).then(res => {
                 onClose();
@@ -63,7 +69,7 @@ class ActionModal extends Component {
             <EGTextBox  key={'points-input'}         value={entity.points || ''}            label={'Points'}            onChange={(event) => {this.updateEntity(event, 'points')}} />,
             <EGTextArea key={'action-taken-input'}   value={entity.action_taken_description || ''}      label={'Action Taken'}      onChange={(event) => {this.updateEntity(event, 'action_taken_description')}} />,
             <EGTextBox  key={'primary-image-input'}  value={entity.primary_image || ''}     label={'Primary Image'}     onChange={(event) => {this.updateEntity(event, 'primary_image')}} />,
-            <EGTextBox  key={'video-input'}          value={entity.video || ''}             label={'Video'}             onChange={(event) => {this.updateEntity(event, 'video')}} />,
+            <EGTextBox  key={'video-input'}          value={entity.video_url || ''}             label={'Video'}             onChange={(event) => {this.updateEntity(event, 'video_url')}} />,
             <EGTextBox  key={'external-url-input'}   value={entity.external_url || ''}      label={'External URL'}      onChange={(event) => {this.updateEntity(event, 'external_url')}} />,
             <EGDropdown key={'related-actions-input'} currentValues={entity.related_actions ? entity.related_actions.map(action => {return action.id}) : []} label={'Related Actions'} multiple={true} options={this.toDropdownOptions(relatedActionsOptions, 'short_description')} onChange={(event) => { this.updateRelatedActions(event);}} />,
             <EGCheckbox key={'isGame-input'}         value={entity.isGame}            label={'Game'}              onChange={(event) => {this.updateEntityBoolean(event, 'isGame')}} />,
@@ -82,8 +88,9 @@ class ActionModal extends Component {
             <EGTextBox  key={'points-input'}         value={entity.points || ''}            label={'Points'}            onChange={(event) => {this.updateEntity(event, 'points')}} />,
             <EGTextArea key={'action-taken-input'}   value={entity.action_taken_description || ''}      label={'Action Taken'}      onChange={(event) => {this.updateEntity(event, 'action_taken_description')}} />,
             <EGTextBox  key={'primary-image-input'}  value={entity.primary_image || ''}     label={'Primary Image'}     onChange={(event) => {this.updateEntity(event, 'primary_image')}} />,
-            <EGTextBox  key={'video-input'}          value={entity.video || ''}             label={'Video'}             onChange={(event) => {this.updateEntity(event, 'video')}} />,
+            <EGTextBox  key={'video-input'}          value={entity.video_url || ''}             label={'Video'}             onChange={(event) => {this.updateEntity(event, 'video_url')}} />,
             <EGTextBox  key={'external-url-input'}   value={entity.external_url || ''}      label={'External URL'}      onChange={(event) => {this.updateEntity(event, 'external_url')}} />,
+            <EGCheckbox key={'isGame-input'}         value={entity.isGame}            label={'Game'}              onChange={(event) => {this.updateEntityBoolean(event, 'isGame')}} />,
             <EGCheckbox key={'active-input'}         value={entity.active}            label={'Active'}            onChange={(event) => {this.updateEntityBoolean(event, 'active')}} />,
             <div key='author'><strong style={{marginRight: '5px'}}>Author:</strong>{entity.author.name || ''    }</div>,
             <div key='created-at'><strong style={{marginRight: '5px'}}>Created At:</strong>{`${lib.formatTime(entity.createdAt)}`}</div>,

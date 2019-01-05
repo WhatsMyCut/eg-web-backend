@@ -202,7 +202,6 @@ class Login extends Component {
 		};
 		login({ variables })
 		  .then(res => {
-				console.log('res', res);
 			if (res.data.login.token) {
 			  let token = res.data.login.token;
 			  localStorage.setItem(AUTH_TOKEN_NAME, token);

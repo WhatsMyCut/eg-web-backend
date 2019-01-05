@@ -43,7 +43,7 @@ class Petitions extends Component {
 		if(all_petitions.loading){
 			return <Segment loading style={{height:'100vh', width:'100vw'}}></Segment>
 		}
-		console.log('data inside of table', all_petitions.petitions);
+		// console.log('data inside of table', all_petitions.petitions);
 		return [
 		<ManagementView
 			key='petitions-management-view'
@@ -115,13 +115,13 @@ class Petitions extends Component {
 
   _renderModal() {
     const { entity, modalOpen } = this.state;
-	const { user } = this.props;
+	const { user, all_petitions } = this.props;
     if (!modalOpen) {
       return null;
     }
 	
 	entity.author_id = entity.author.name ? entity.author.name : user.me.id;
-	entity.order = entity.order !== undefined && entity.order !== '' ? entity.order : items.length + 1;
+	entity.order = entity.order !== undefined && entity.order !== '' ? entity.order : all_petitions.petitions.length + 1;
 	return <PetitionModal key='petitions-modal' entity={entity} onClose={this._onCloseModal} />
   }
 

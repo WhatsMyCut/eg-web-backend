@@ -17,6 +17,7 @@ export const UpdateActionMutation = gql`
         $external_url: String
         $isGame: Boolean
         $relatedActionIds: [ActionWhereUniqueInput!]
+        $relatedActionIdsToRemove: [ActionWhereUniqueInput!]
     ) {
     updateAction(
         where: {
@@ -38,6 +39,7 @@ export const UpdateActionMutation = gql`
             isGame: $isGame
             related_actions: {
                 connect: $relatedActionIds
+                disconnect: $relatedActionIdsToRemove
             }
         }
     ) {

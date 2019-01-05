@@ -55,7 +55,7 @@ class Users extends Component {
 		return <Segment loading style={{height:'100vh', width:"100vw"}}></Segment>
 	} else{
 		// console.log('all_roles', all_roles.roles);
-		console.log('all_users', all_users.users);
+		// console.log('all_users', all_users.users);
 	}
     return [
       	<ManagementView
