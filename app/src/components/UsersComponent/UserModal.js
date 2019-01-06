@@ -38,6 +38,7 @@ class UserModal extends Component {
                 onClose();
             });
         } else{
+            variables.username = entity.phone;
             createUser({variables}).then(res => {
                 onClose();
             });
