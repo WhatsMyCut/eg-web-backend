@@ -6,8 +6,8 @@ endpoint: https://us1.prisma.sh/daniel-ashcraft-a99d55/earth_guardians/dev
 datamodel: datamodel.graphql
 
 # Seed your service with initial data based on `seed.graphql`.
-seed:
-  import: seed.graphql
+# seed:
+#   import: seed.graphql
 
 generate:
   - generator: graphql-schema

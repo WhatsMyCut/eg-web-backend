@@ -10,6 +10,7 @@
 type Query {
   me: User
   myAvailableActions: [EventAction]
+  sectorActionsByName(name:String!): [ActionCategory]
   action(where: ActionWhereUniqueInput!): Action
   actions(where: ActionWhereInput, orderBy: ActionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Action]!
   actionsConnection(where: ActionWhereInput, orderBy: ActionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ActionConnection!

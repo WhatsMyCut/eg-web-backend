@@ -46,7 +46,76 @@ const ActionsQuery = {
         let uniqueactions = await returnUniqueActions(recent_actions);
         // console.log('unique actions', uniqueactions);
         return uniqueactions.filter(event =>filterUnreadyActions(event.action, event.createdAt));
-    }
+    },
+    async sectorActionsByName(parent, args, ctx, info){
+        const id = getUserId(ctx)
+        if(!args.name){
+            return [];
+        }
+
+        let queryData=`{
+            recent_actions(where:{action:{active:true, isGame:false, category:{name:"${args.name}"}}}, orderBy:createdAt_DESC){
+                id
+                action{
+                    id
+                    primary_image
+                    active
+                    short_description
+                    action_taken_description
+                    schedule
+                    video_url
+                    carbon_dioxide
+                    order
+                    water
+                    waste
+                    points
+                    external_url
+                    isGame
+                    createdAt
+                    updatedAt
+                }
+                createdAt
+            }
+        }`
+
+        let myActions = await ctx.db.query.user({ where: { id } }, queryData);
+        
+        
+        let recent_actions = myActions.recent_actions;
+        
+        let uniqueactions = await returnUniqueActions(recent_actions);
+        // console.log('unique actions', uniqueactions);
+        let ids = uniqueactions.filter(event =>filterUnreadyActions(event.action, event.createdAt)).map(item => `"${item.id}"`);
+
+        let actionCategoryInfo=
+        `
+            {
+                id
+                name
+                primary_image
+                video_id
+                actions(
+                    where:{
+                        id_not_in:[${ids}]
+                    }){
+                        id
+                        primary_image
+                        short_description
+                        carbon_dioxide
+                        water
+                        waste
+                        video_url
+                        related_actions {
+                            id
+                            primary_image
+                            short_description
+                        }
+                }
+            }
+        `
+
+        return await ctx.db.query.actionCategories({where:{name:args.name}}, actionCategoryInfo);
+    },
 }
 
 
