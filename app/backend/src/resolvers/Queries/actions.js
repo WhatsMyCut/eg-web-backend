@@ -1,3 +1,5 @@
+const moment = require('moment');
+
 const { getUserId } = require('../../utils')
 const { forwardTo } = require('prisma-binding');
 
@@ -7,9 +9,109 @@ const ActionsQuery = {
     actionsConnection: forwardTo('db'),
     actionCategory : forwardTo('db'),
     actionCategories: forwardTo('db'),
-    actionCategoriesConnection : forwardTo('db')
+    actionCategoriesConnection : forwardTo('db'),
+    async myAvailableActions(parent, args, ctx, info){
+        const id = getUserId(ctx)
+
+        let queryData=`{
+            recent_actions(where:{action:{active:true, isGame:false}}, orderBy:createdAt_DESC){
+                id
+                action{
+                    id
+                    primary_image
+                    active
+                    short_description
+                    action_taken_description
+                    schedule
+                    video_url
+                    carbon_dioxide
+                    order
+                    water
+                    waste
+                    points
+                    external_url
+                    isGame
+                    createdAt
+                    updatedAt
+                }
+                createdAt
+            }
+        }`
+
+        let myActions = await ctx.db.query.user({ where: { id } }, queryData);
+        
+        
+        let recent_actions = myActions.recent_actions;
+        
+        let uniqueactions = await returnUniqueActions(recent_actions);
+        // console.log('unique actions', uniqueactions);
+        return uniqueactions.filter(event =>filterUnreadyActions(event.action, event.createdAt));
+
+            
+      
+    }
 }
 
+
+function filterUnreadyActions(action, createdAt){
+    let momentDate = moment(createdAt);
+    let today = moment(new Date());
+    let canGoThrough = false;
+    switch(action.schedule){
+        case 'ANNUALLY' :
+            if(momentDate.diff(today,'years') > 0) canGoThrough = true;
+            break;
+        case 'ANYTIME' :
+            canGoThrough = true;
+            break;
+        case 'ONCE' :
+            canGoThrough = false;
+            break;
+        case 'DAILY' :
+            if(momentDate.diff(today,'days') > 0) canGoThrough = true;
+            break;
+        case 'BIWEEKLY' :
+            if(momentDate.diff(today,'days') > 3) canGoThrough = true;
+            break;
+        case 'WEEKLY' :
+            if(momentDate.diff(today,'days') > 6) canGoThrough = true;
+            break;
+        case 'TWOWEEKS' :
+            if(momentDate.diff(today,'days') > 13) canGoThrough = true;
+            break;
+        case 'MONTHLY' :
+            if(momentDate.diff(today,'months') > 0) canGoThrough = true;
+            break;
+        case 'QUARTERLY' :
+            if(momentDate.diff(today,'months') > 3) canGoThrough = true;
+            break;
+        case 'SEMIANNUALLY' :
+            if(momentDate.diff(today,'months') > 5) canGoThrough = true;
+            break;
+    }
+
+    return canGoThrough;
+}
+
+async function returnUniqueActions(recent_actions){
+    let indexMap = {};
+    let ids = [];
+    for(let i = 0; i < recent_actions.length; i++){
+        if(!indexMap.hasOwnProperty(recent_actions[i].action.id)){
+            ids.push(recent_actions[i].action.id);
+            indexMap[recent_actions[i].action.id] = {
+                action : recent_actions[i].action,
+                createdAt:recent_actions[i].createdAt
+            }
+        }
+    }
+
+    let mostRecentActions = ids.map( async (id) => {
+        return {id:id , action : indexMap[id].action, createdAt:indexMap[id].createdAt };
+    })
+    return Promise.all(mostRecentActions)
+    
+}
 
 
 
