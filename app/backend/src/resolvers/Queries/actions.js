@@ -46,9 +46,6 @@ const ActionsQuery = {
         let uniqueactions = await returnUniqueActions(recent_actions);
         // console.log('unique actions', uniqueactions);
         return uniqueactions.filter(event =>filterUnreadyActions(event.action, event.createdAt));
-
-            
-      
     }
 }
 
@@ -103,6 +100,11 @@ async function returnUniqueActions(recent_actions){
                 action : recent_actions[i].action,
                 createdAt:recent_actions[i].createdAt
             }
+        } else{
+            indexMap[recent_actions[i].action.id].action.points += recent_actions[i].action.points;
+            indexMap[recent_actions[i].action.id].action.waste += recent_actions[i].action.waste;
+            indexMap[recent_actions[i].action.id].action.water += recent_actions[i].action.water;
+            indexMap[recent_actions[i].action.id].action.carbon_dioxide += recent_actions[i].action.carbon_dioxide;
         }
     }
 
