@@ -181,7 +181,6 @@ async function returnUniqueActions(recent_actions){
         return {id:id , action : indexMap[id].action, createdAt:indexMap[id].createdAt };
     })
     return Promise.all(mostRecentActions)
-    
 }
 
 

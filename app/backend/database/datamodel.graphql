@@ -6,6 +6,7 @@ type User {
   name: String
   phone: String @unique
   role: Role
+  zipcode: String
   recent_actions: [EventAction]
   total_points: Int
   petitions_signed: [Petition] @relation(name:"PetitionOnUser")
