@@ -55,7 +55,13 @@ module.exports = {
     updateManyUsers: forwardTo('db'),
     upsertUser: forwardTo('db'),
     deleteUser: forwardTo('db'),
-    deleteManyUsers: forwardTo('db')
+    deleteManyUsers: forwardTo('db'),
+    createCommunityEvent: forwardTo('db'),
+  updateCommunityEvent: forwardTo('db'),
+  updateManyCommunityEvents: forwardTo('db'),
+  upsertCommunityEvent: forwardTo('db'),
+  deleteCommunityEvent: forwardTo('db'),
+  deleteManyCommunityEvents: forwardTo('db')
   },
   // Subscription,
   AuthPayload,

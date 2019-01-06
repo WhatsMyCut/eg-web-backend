@@ -26,6 +26,7 @@ const UsersQuery = {
   users: forwardTo('db'),
   user: forwardTo('db'),
   usersConnection: forwardTo('db'),
+  
   node: forwardTo('db'),
   me(parent, args, ctx, info) {
     const id = getUserId(ctx)
