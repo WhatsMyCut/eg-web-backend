@@ -3,7 +3,7 @@ type User {
   username: String @unique
   email: String @unique
   password: String!
-  name: String!
+  name: String
   phone: String @unique
   role: Role
   recent_actions: [EventAction]

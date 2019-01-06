@@ -2020,7 +2020,7 @@ type User {
   username: String
   email: String
   password: String!
-  name: String!
+  name: String
   phone: String
   role: Role
   recent_actions(where: EventActionWhereInput, orderBy: EventActionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [EventAction!]
@@ -2043,7 +2043,7 @@ input UserCreateInput {
   username: String
   email: String
   password: String!
-  name: String!
+  name: String
   phone: String
   role: RoleCreateOneInput
   recent_actions: EventActionCreateManyWithoutUserInput
@@ -2073,7 +2073,7 @@ input UserCreateWithoutPetitions_signedInput {
   username: String
   email: String
   password: String!
-  name: String!
+  name: String
   phone: String
   role: RoleCreateOneInput
   recent_actions: EventActionCreateManyWithoutUserInput
@@ -2087,7 +2087,7 @@ input UserCreateWithoutRecent_actionsInput {
   username: String
   email: String
   password: String!
-  name: String!
+  name: String
   phone: String
   role: RoleCreateOneInput
   total_points: Int
@@ -2132,7 +2132,7 @@ type UserPreviousValues {
   username: String
   email: String
   password: String!
-  name: String!
+  name: String
   phone: String
   total_points: Int
   device_id: String

@@ -1138,7 +1138,7 @@ export interface UserCreateWithoutPetitions_signedInput {
   username?: String;
   email?: String;
   password: String;
-  name: String;
+  name?: String;
   phone?: String;
   role?: RoleCreateOneInput;
   recent_actions?: EventActionCreateManyWithoutUserInput;
@@ -1212,7 +1212,7 @@ export interface UserCreateWithoutRecent_actionsInput {
   username?: String;
   email?: String;
   password: String;
-  name: String;
+  name?: String;
   phone?: String;
   role?: RoleCreateOneInput;
   total_points?: Int;
@@ -2014,7 +2014,7 @@ export interface UserCreateInput {
   username?: String;
   email?: String;
   password: String;
-  name: String;
+  name?: String;
   phone?: String;
   role?: RoleCreateOneInput;
   recent_actions?: EventActionCreateManyWithoutUserInput;
@@ -2624,7 +2624,7 @@ export interface UserPreviousValues {
   username?: String;
   email?: String;
   password: String;
-  name: String;
+  name?: String;
   phone?: String;
   total_points?: Int;
   device_id?: String;
@@ -3562,7 +3562,7 @@ export interface User {
   username?: String;
   email?: String;
   password: String;
-  name: String;
+  name?: String;
   phone?: String;
   total_points?: Int;
   device_id?: String;
