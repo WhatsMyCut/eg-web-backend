@@ -85,7 +85,7 @@ const ActionsQuery = {
         
         let uniqueactions = await returnUniqueActions(recent_actions);
         // console.log('unique actions', uniqueactions);
-        let ids = uniqueactions.filter(event =>filterUnreadyActions(event.action, event.createdAt)).map(item => `"${item.id}"`);
+        let ids = uniqueactions.filter(event =>filterUnreadyActions(event.action, event.createdAt)).map(item => `"${item.action.id}"`);
 
         let actionCategoryInfo=
         `
@@ -168,6 +168,7 @@ async function returnUniqueActions(recent_actions){
         if(!indexMap.hasOwnProperty(recent_actions[i].action.id)){
             ids.push(recent_actions[i].action.id);
             indexMap[recent_actions[i].action.id] = {
+                id: recent_actions[i].id,
                 action : recent_actions[i].action,
                 createdAt:recent_actions[i].createdAt
             }
@@ -180,7 +181,7 @@ async function returnUniqueActions(recent_actions){
     }
 
     let mostRecentActions = ids.map( async (id) => {
-        return {id:id , action : indexMap[id].action, createdAt:indexMap[id].createdAt };
+        return {id:indexMap[id].id , action : indexMap[id].action, createdAt:indexMap[id].createdAt };
     })
     return Promise.all(mostRecentActions)
 }

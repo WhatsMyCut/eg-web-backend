@@ -10,6 +10,7 @@ export const UpdateActionMutation = gql`
         $schedule: Schedule
         $video_url: String
         $carbon_dioxide: Float
+        $game_title:String
         $order: Int
         $water: Float
         $waste: Float
@@ -35,6 +36,7 @@ export const UpdateActionMutation = gql`
             water: $water
             waste: $waste
             points: $points
+            game_title :$game_title
             external_url: $external_url
             isGame: $isGame
             related_actions: {

@@ -69,6 +69,7 @@ class ActionModal extends Component {
             <EGTextBox  key={'points-input'}         value={entity.points || ''}            label={'Points'}            onChange={(event) => {this.updateEntity(event, 'points')}} />,
             <EGTextBox  key={'primary-image-input'}  value={entity.primary_image || ''}     label={'Primary Image'}     onChange={(event) => {this.updateEntity(event, 'primary_image')}} />,
             <EGTextBox  key={'video-input'}          value={entity.video_url || ''}             label={'Video'}             onChange={(event) => {this.updateEntity(event, 'video_url')}} />,
+            <EGTextBox  key={'external-game-tital'}   value={entity.game_title || ''}      label={'Game Title'}      onChange={(event) => {this.updateEntity(event, 'game_title')}} />,
             <EGTextBox  key={'external-url-input'}   value={entity.external_url || ''}      label={'External URL'}      onChange={(event) => {this.updateEntity(event, 'external_url')}} />,
             <EGDropdown key={'related-actions-input'} currentValues={entity.related_actions ? entity.related_actions.map(action => {return action.id}) : []} label={'Games'} multiple={true} options={this.toDropdownOptions(relatedActionsOptions, 'short_description')} onChange={(event) => { this.updateRelatedActions(event);}} />,
             <EGCheckbox key={'isGame-input'}         value={entity.isGame}            label={'Game'}              onChange={(event) => {this.updateEntityBoolean(event, 'isGame')}} />,
