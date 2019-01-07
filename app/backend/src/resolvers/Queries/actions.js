@@ -94,7 +94,6 @@ const ActionsQuery = {
                 name
                 primary_image
                 video_id
-                game_title
                 actions(
                     where:{
                         id_not_in:[${ids}],
