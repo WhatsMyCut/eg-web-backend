@@ -6,11 +6,11 @@ type User {
   name: String
   phone: String @unique
   role: Role
-  zipcode: String
   recent_actions: [EventAction]
+  zipcode:String
   total_points: Int
   petitions_signed: [Petition] @relation(name:"PetitionOnUser")
-  community_events : [CommunityEvent] @relation(name:"CommunityEventsOnUser")
+  community_events: [CommunityEvent] @relation(name:"CommunityEventsOnUser")
   device_id: String
   crew: String
   createdAt: DateTime!
@@ -34,7 +34,7 @@ type EventAction {
 }
 
 type CommunityEvent {
-  id: ID!
+  id: ID! @unique
   type: String!
   number_of_people: Int!
   createdAt: DateTime!
