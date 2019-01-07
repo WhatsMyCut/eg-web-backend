@@ -2024,6 +2024,7 @@ type User {
   phone: String
   role: Role
   recent_actions(where: EventActionWhereInput, orderBy: EventActionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [EventAction!]
+  zipcode: String
   total_points: Int
   petitions_signed(where: PetitionWhereInput, orderBy: PetitionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Petition!]
   community_events(where: CommunityEventWhereInput, orderBy: CommunityEventOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CommunityEvent!]
@@ -2047,6 +2048,7 @@ input UserCreateInput {
   phone: String
   role: RoleCreateOneInput
   recent_actions: EventActionCreateManyWithoutUserInput
+  zipcode: String
   total_points: Int
   petitions_signed: PetitionCreateManyWithoutUsersInput
   community_events: CommunityEventCreateManyInput
@@ -2077,6 +2079,7 @@ input UserCreateWithoutPetitions_signedInput {
   phone: String
   role: RoleCreateOneInput
   recent_actions: EventActionCreateManyWithoutUserInput
+  zipcode: String
   total_points: Int
   community_events: CommunityEventCreateManyInput
   device_id: String
@@ -2090,6 +2093,7 @@ input UserCreateWithoutRecent_actionsInput {
   name: String
   phone: String
   role: RoleCreateOneInput
+  zipcode: String
   total_points: Int
   petitions_signed: PetitionCreateManyWithoutUsersInput
   community_events: CommunityEventCreateManyInput
@@ -2115,6 +2119,8 @@ enum UserOrderByInput {
   name_DESC
   phone_ASC
   phone_DESC
+  zipcode_ASC
+  zipcode_DESC
   total_points_ASC
   total_points_DESC
   device_id_ASC
@@ -2134,6 +2140,7 @@ type UserPreviousValues {
   password: String!
   name: String
   phone: String
+  zipcode: String
   total_points: Int
   device_id: String
   crew: String
@@ -2226,6 +2233,20 @@ input UserScalarWhereInput {
   phone_not_starts_with: String
   phone_ends_with: String
   phone_not_ends_with: String
+  zipcode: String
+  zipcode_not: String
+  zipcode_in: [String!]
+  zipcode_not_in: [String!]
+  zipcode_lt: String
+  zipcode_lte: String
+  zipcode_gt: String
+  zipcode_gte: String
+  zipcode_contains: String
+  zipcode_not_contains: String
+  zipcode_starts_with: String
+  zipcode_not_starts_with: String
+  zipcode_ends_with: String
+  zipcode_not_ends_with: String
   total_points: Int
   total_points_not: Int
   total_points_in: [Int!]
@@ -2309,6 +2330,7 @@ input UserUpdateDataInput {
   phone: String
   role: RoleUpdateOneInput
   recent_actions: EventActionUpdateManyWithoutUserInput
+  zipcode: String
   total_points: Int
   petitions_signed: PetitionUpdateManyWithoutUsersInput
   community_events: CommunityEventUpdateManyInput
@@ -2324,6 +2346,7 @@ input UserUpdateInput {
   phone: String
   role: RoleUpdateOneInput
   recent_actions: EventActionUpdateManyWithoutUserInput
+  zipcode: String
   total_points: Int
   petitions_signed: PetitionUpdateManyWithoutUsersInput
   community_events: CommunityEventUpdateManyInput
@@ -2337,6 +2360,7 @@ input UserUpdateManyDataInput {
   password: String
   name: String
   phone: String
+  zipcode: String
   total_points: Int
   device_id: String
   crew: String
@@ -2348,6 +2372,7 @@ input UserUpdateManyMutationInput {
   password: String
   name: String
   phone: String
+  zipcode: String
   total_points: Int
   device_id: String
   crew: String
@@ -2391,6 +2416,7 @@ input UserUpdateWithoutPetitions_signedDataInput {
   phone: String
   role: RoleUpdateOneInput
   recent_actions: EventActionUpdateManyWithoutUserInput
+  zipcode: String
   total_points: Int
   community_events: CommunityEventUpdateManyInput
   device_id: String
@@ -2404,6 +2430,7 @@ input UserUpdateWithoutRecent_actionsDataInput {
   name: String
   phone: String
   role: RoleUpdateOneInput
+  zipcode: String
   total_points: Int
   petitions_signed: PetitionUpdateManyWithoutUsersInput
   community_events: CommunityEventUpdateManyInput
@@ -2521,6 +2548,20 @@ input UserWhereInput {
   recent_actions_every: EventActionWhereInput
   recent_actions_some: EventActionWhereInput
   recent_actions_none: EventActionWhereInput
+  zipcode: String
+  zipcode_not: String
+  zipcode_in: [String!]
+  zipcode_not_in: [String!]
+  zipcode_lt: String
+  zipcode_lte: String
+  zipcode_gt: String
+  zipcode_gte: String
+  zipcode_contains: String
+  zipcode_not_contains: String
+  zipcode_starts_with: String
+  zipcode_not_starts_with: String
+  zipcode_ends_with: String
+  zipcode_not_ends_with: String
   total_points: Int
   total_points_not: Int
   total_points_in: [Int!]
