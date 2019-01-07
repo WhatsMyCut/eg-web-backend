@@ -84,6 +84,7 @@ type Action {
   points: Int @default(value: 0)
   external_url: String
   isGame: Boolean! @default(value:false)
+  game_title: String
   related_actions: [Action]
   author: User! @relation(name:"AuthorOnAction")
   createdAt: DateTime!

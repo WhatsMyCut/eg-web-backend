@@ -241,6 +241,7 @@ class Actions extends Component {
 							CarbonDioxide: data.carbon_dioxide,
 							Water: data.water,
 							Waste: data.waste,
+							GameTitle: data.game_title,
 							ExternalURL: data.external_url,
 							IsGame: data.isGame,
 							RelatedActions: data.related_actions ? data.related_actions.map(act => {return lib.truncateText(act.short_description, 50)}).join(', ') : null,
