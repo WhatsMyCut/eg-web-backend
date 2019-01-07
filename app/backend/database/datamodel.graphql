@@ -6,6 +6,7 @@ type User {
   name: String
   phone: String @unique
   role: Role
+  zipcode: String
   recent_actions: [EventAction]
   zipcode:String
   total_points: Int
@@ -77,11 +78,11 @@ type Action {
   action_taken_description: String!
   schedule: Schedule
   video_url: String
-  carbon_dioxide:Float
+  carbon_dioxide:Float @default(value:0.0)
   order: Int
-  water: Float
-  waste: Float
-  points: Int
+  water: Float @default(value:0.0)
+  waste: Float @default(value:0.0)
+  points: Int @default(value: 0)
   external_url: String
   isGame: Boolean! @default(value:false)
   related_actions: [Action]

@@ -96,7 +96,9 @@ const ActionsQuery = {
                 video_id
                 actions(
                     where:{
-                        id_not_in:[${ids}]
+                        id_not_in:[${ids}],
+                        active: true,
+                        isGame:false
                     }){
                         id
                         primary_image
@@ -181,7 +183,6 @@ async function returnUniqueActions(recent_actions){
         return {id:id , action : indexMap[id].action, createdAt:indexMap[id].createdAt };
     })
     return Promise.all(mostRecentActions)
-    
 }
 
 
