@@ -96,7 +96,9 @@ const ActionsQuery = {
                 video_id
                 actions(
                     where:{
-                        id_not_in:[${ids}]
+                        id_not_in:[${ids}],
+                        active: true,
+                        isGame:false
                     }){
                         id
                         primary_image
