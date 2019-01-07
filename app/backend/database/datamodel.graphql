@@ -6,7 +6,6 @@ type User {
   name: String
   phone: String @unique
   role: Role
-  zipcode: String
   recent_actions: [EventAction]
   zipcode:String
   total_points: Int

@@ -15,6 +15,7 @@ module.exports = {
   points: Int
   external_url: String
   isGame: Boolean!
+  game_title: String
   related_actions(where: ActionWhereInput, orderBy: ActionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Action!]
   author: User!
   createdAt: DateTime!
@@ -241,6 +242,7 @@ input ActionCreateInput {
   points: Int
   external_url: String
   isGame: Boolean
+  game_title: String
   related_actions: ActionCreateManyInput
   author: UserCreateOneInput!
 }
@@ -274,6 +276,7 @@ input ActionCreateWithoutCategoryInput {
   points: Int
   external_url: String
   isGame: Boolean
+  game_title: String
   related_actions: ActionCreateManyInput
   author: UserCreateOneInput!
 }
@@ -312,6 +315,8 @@ enum ActionOrderByInput {
   external_url_DESC
   isGame_ASC
   isGame_DESC
+  game_title_ASC
+  game_title_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -333,162 +338,9 @@ type ActionPreviousValues {
   points: Int
   external_url: String
   isGame: Boolean!
+  game_title: String
   createdAt: DateTime!
   updatedAt: DateTime!
-}
-
-input ActionScalarWhereInput {
-  id: ID
-  id_not: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_gt: ID
-  id_gte: ID
-  id_contains: ID
-  id_not_contains: ID
-  id_starts_with: ID
-  id_not_starts_with: ID
-  id_ends_with: ID
-  id_not_ends_with: ID
-  primary_image: String
-  primary_image_not: String
-  primary_image_in: [String!]
-  primary_image_not_in: [String!]
-  primary_image_lt: String
-  primary_image_lte: String
-  primary_image_gt: String
-  primary_image_gte: String
-  primary_image_contains: String
-  primary_image_not_contains: String
-  primary_image_starts_with: String
-  primary_image_not_starts_with: String
-  primary_image_ends_with: String
-  primary_image_not_ends_with: String
-  active: Boolean
-  active_not: Boolean
-  short_description: String
-  short_description_not: String
-  short_description_in: [String!]
-  short_description_not_in: [String!]
-  short_description_lt: String
-  short_description_lte: String
-  short_description_gt: String
-  short_description_gte: String
-  short_description_contains: String
-  short_description_not_contains: String
-  short_description_starts_with: String
-  short_description_not_starts_with: String
-  short_description_ends_with: String
-  short_description_not_ends_with: String
-  action_taken_description: String
-  action_taken_description_not: String
-  action_taken_description_in: [String!]
-  action_taken_description_not_in: [String!]
-  action_taken_description_lt: String
-  action_taken_description_lte: String
-  action_taken_description_gt: String
-  action_taken_description_gte: String
-  action_taken_description_contains: String
-  action_taken_description_not_contains: String
-  action_taken_description_starts_with: String
-  action_taken_description_not_starts_with: String
-  action_taken_description_ends_with: String
-  action_taken_description_not_ends_with: String
-  schedule: Schedule
-  schedule_not: Schedule
-  schedule_in: [Schedule!]
-  schedule_not_in: [Schedule!]
-  video_url: String
-  video_url_not: String
-  video_url_in: [String!]
-  video_url_not_in: [String!]
-  video_url_lt: String
-  video_url_lte: String
-  video_url_gt: String
-  video_url_gte: String
-  video_url_contains: String
-  video_url_not_contains: String
-  video_url_starts_with: String
-  video_url_not_starts_with: String
-  video_url_ends_with: String
-  video_url_not_ends_with: String
-  carbon_dioxide: Float
-  carbon_dioxide_not: Float
-  carbon_dioxide_in: [Float!]
-  carbon_dioxide_not_in: [Float!]
-  carbon_dioxide_lt: Float
-  carbon_dioxide_lte: Float
-  carbon_dioxide_gt: Float
-  carbon_dioxide_gte: Float
-  order: Int
-  order_not: Int
-  order_in: [Int!]
-  order_not_in: [Int!]
-  order_lt: Int
-  order_lte: Int
-  order_gt: Int
-  order_gte: Int
-  water: Float
-  water_not: Float
-  water_in: [Float!]
-  water_not_in: [Float!]
-  water_lt: Float
-  water_lte: Float
-  water_gt: Float
-  water_gte: Float
-  waste: Float
-  waste_not: Float
-  waste_in: [Float!]
-  waste_not_in: [Float!]
-  waste_lt: Float
-  waste_lte: Float
-  waste_gt: Float
-  waste_gte: Float
-  points: Int
-  points_not: Int
-  points_in: [Int!]
-  points_not_in: [Int!]
-  points_lt: Int
-  points_lte: Int
-  points_gt: Int
-  points_gte: Int
-  external_url: String
-  external_url_not: String
-  external_url_in: [String!]
-  external_url_not_in: [String!]
-  external_url_lt: String
-  external_url_lte: String
-  external_url_gt: String
-  external_url_gte: String
-  external_url_contains: String
-  external_url_not_contains: String
-  external_url_starts_with: String
-  external_url_not_starts_with: String
-  external_url_ends_with: String
-  external_url_not_ends_with: String
-  isGame: Boolean
-  isGame_not: Boolean
-  createdAt: DateTime
-  createdAt_not: DateTime
-  createdAt_in: [DateTime!]
-  createdAt_not_in: [DateTime!]
-  createdAt_lt: DateTime
-  createdAt_lte: DateTime
-  createdAt_gt: DateTime
-  createdAt_gte: DateTime
-  updatedAt: DateTime
-  updatedAt_not: DateTime
-  updatedAt_in: [DateTime!]
-  updatedAt_not_in: [DateTime!]
-  updatedAt_lt: DateTime
-  updatedAt_lte: DateTime
-  updatedAt_gt: DateTime
-  updatedAt_gte: DateTime
-  AND: [ActionScalarWhereInput!]
-  OR: [ActionScalarWhereInput!]
-  NOT: [ActionScalarWhereInput!]
 }
 
 type ActionSubscriptionPayload {
@@ -524,6 +376,7 @@ input ActionUpdateDataInput {
   points: Int
   external_url: String
   isGame: Boolean
+  game_title: String
   related_actions: ActionUpdateManyInput
   author: UserUpdateOneRequiredInput
 }
@@ -543,24 +396,9 @@ input ActionUpdateInput {
   points: Int
   external_url: String
   isGame: Boolean
+  game_title: String
   related_actions: ActionUpdateManyInput
   author: UserUpdateOneRequiredInput
-}
-
-input ActionUpdateManyDataInput {
-  primary_image: String
-  active: Boolean
-  short_description: String
-  action_taken_description: String
-  schedule: Schedule
-  video_url: String
-  carbon_dioxide: Float
-  order: Int
-  water: Float
-  waste: Float
-  points: Int
-  external_url: String
-  isGame: Boolean
 }
 
 input ActionUpdateManyInput {
@@ -570,8 +408,6 @@ input ActionUpdateManyInput {
   delete: [ActionWhereUniqueInput!]
   connect: [ActionWhereUniqueInput!]
   disconnect: [ActionWhereUniqueInput!]
-  deleteMany: [ActionScalarWhereInput!]
-  updateMany: [ActionUpdateManyWithWhereNestedInput!]
 }
 
 input ActionUpdateManyMutationInput {
@@ -588,6 +424,7 @@ input ActionUpdateManyMutationInput {
   points: Int
   external_url: String
   isGame: Boolean
+  game_title: String
 }
 
 input ActionUpdateManyWithoutCategoryInput {
@@ -597,13 +434,6 @@ input ActionUpdateManyWithoutCategoryInput {
   disconnect: [ActionWhereUniqueInput!]
   update: [ActionUpdateWithWhereUniqueWithoutCategoryInput!]
   upsert: [ActionUpsertWithWhereUniqueWithoutCategoryInput!]
-  deleteMany: [ActionScalarWhereInput!]
-  updateMany: [ActionUpdateManyWithWhereNestedInput!]
-}
-
-input ActionUpdateManyWithWhereNestedInput {
-  where: ActionScalarWhereInput!
-  data: ActionUpdateManyDataInput!
 }
 
 input ActionUpdateOneRequiredInput {
@@ -627,6 +457,7 @@ input ActionUpdateWithoutCategoryDataInput {
   points: Int
   external_url: String
   isGame: Boolean
+  game_title: String
   related_actions: ActionUpdateManyInput
   author: UserUpdateOneRequiredInput
 }
@@ -792,6 +623,20 @@ input ActionWhereInput {
   external_url_not_ends_with: String
   isGame: Boolean
   isGame_not: Boolean
+  game_title: String
+  game_title_not: String
+  game_title_in: [String!]
+  game_title_not_in: [String!]
+  game_title_lt: String
+  game_title_lte: String
+  game_title_gt: String
+  game_title_gte: String
+  game_title_contains: String
+  game_title_not_contains: String
+  game_title_starts_with: String
+  game_title_not_starts_with: String
+  game_title_ends_with: String
+  game_title_not_ends_with: String
   related_actions_every: ActionWhereInput
   related_actions_some: ActionWhereInput
   related_actions_none: ActionWhereInput
@@ -903,64 +748,6 @@ type CommunityEventPreviousValues {
   updatedAt: DateTime!
 }
 
-input CommunityEventScalarWhereInput {
-  id: ID
-  id_not: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_gt: ID
-  id_gte: ID
-  id_contains: ID
-  id_not_contains: ID
-  id_starts_with: ID
-  id_not_starts_with: ID
-  id_ends_with: ID
-  id_not_ends_with: ID
-  type: String
-  type_not: String
-  type_in: [String!]
-  type_not_in: [String!]
-  type_lt: String
-  type_lte: String
-  type_gt: String
-  type_gte: String
-  type_contains: String
-  type_not_contains: String
-  type_starts_with: String
-  type_not_starts_with: String
-  type_ends_with: String
-  type_not_ends_with: String
-  number_of_people: Int
-  number_of_people_not: Int
-  number_of_people_in: [Int!]
-  number_of_people_not_in: [Int!]
-  number_of_people_lt: Int
-  number_of_people_lte: Int
-  number_of_people_gt: Int
-  number_of_people_gte: Int
-  createdAt: DateTime
-  createdAt_not: DateTime
-  createdAt_in: [DateTime!]
-  createdAt_not_in: [DateTime!]
-  createdAt_lt: DateTime
-  createdAt_lte: DateTime
-  createdAt_gt: DateTime
-  createdAt_gte: DateTime
-  updatedAt: DateTime
-  updatedAt_not: DateTime
-  updatedAt_in: [DateTime!]
-  updatedAt_not_in: [DateTime!]
-  updatedAt_lt: DateTime
-  updatedAt_lte: DateTime
-  updatedAt_gt: DateTime
-  updatedAt_gte: DateTime
-  AND: [CommunityEventScalarWhereInput!]
-  OR: [CommunityEventScalarWhereInput!]
-  NOT: [CommunityEventScalarWhereInput!]
-}
-
 type CommunityEventSubscriptionPayload {
   mutation: MutationType!
   node: CommunityEvent
@@ -989,11 +776,6 @@ input CommunityEventUpdateInput {
   number_of_people: Int
 }
 
-input CommunityEventUpdateManyDataInput {
-  type: String
-  number_of_people: Int
-}
-
 input CommunityEventUpdateManyInput {
   create: [CommunityEventCreateInput!]
   update: [CommunityEventUpdateWithWhereUniqueNestedInput!]
@@ -1001,18 +783,11 @@ input CommunityEventUpdateManyInput {
   delete: [CommunityEventWhereUniqueInput!]
   connect: [CommunityEventWhereUniqueInput!]
   disconnect: [CommunityEventWhereUniqueInput!]
-  deleteMany: [CommunityEventScalarWhereInput!]
-  updateMany: [CommunityEventUpdateManyWithWhereNestedInput!]
 }
 
 input CommunityEventUpdateManyMutationInput {
   type: String
   number_of_people: Int
-}
-
-input CommunityEventUpdateManyWithWhereNestedInput {
-  where: CommunityEventScalarWhereInput!
-  data: CommunityEventUpdateManyDataInput!
 }
 
 input CommunityEventUpdateWithWhereUniqueNestedInput {
@@ -1144,44 +919,6 @@ type EventActionPreviousValues {
   updatedAt: DateTime!
 }
 
-input EventActionScalarWhereInput {
-  id: ID
-  id_not: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_gt: ID
-  id_gte: ID
-  id_contains: ID
-  id_not_contains: ID
-  id_starts_with: ID
-  id_not_starts_with: ID
-  id_ends_with: ID
-  id_not_ends_with: ID
-  took_action: Boolean
-  took_action_not: Boolean
-  createdAt: DateTime
-  createdAt_not: DateTime
-  createdAt_in: [DateTime!]
-  createdAt_not_in: [DateTime!]
-  createdAt_lt: DateTime
-  createdAt_lte: DateTime
-  createdAt_gt: DateTime
-  createdAt_gte: DateTime
-  updatedAt: DateTime
-  updatedAt_not: DateTime
-  updatedAt_in: [DateTime!]
-  updatedAt_not_in: [DateTime!]
-  updatedAt_lt: DateTime
-  updatedAt_lte: DateTime
-  updatedAt_gt: DateTime
-  updatedAt_gte: DateTime
-  AND: [EventActionScalarWhereInput!]
-  OR: [EventActionScalarWhereInput!]
-  NOT: [EventActionScalarWhereInput!]
-}
-
 type EventActionSubscriptionPayload {
   mutation: MutationType!
   node: EventAction
@@ -1206,10 +943,6 @@ input EventActionUpdateInput {
   took_action: Boolean
 }
 
-input EventActionUpdateManyDataInput {
-  took_action: Boolean
-}
-
 input EventActionUpdateManyMutationInput {
   took_action: Boolean
 }
@@ -1221,13 +954,6 @@ input EventActionUpdateManyWithoutUserInput {
   disconnect: [EventActionWhereUniqueInput!]
   update: [EventActionUpdateWithWhereUniqueWithoutUserInput!]
   upsert: [EventActionUpsertWithWhereUniqueWithoutUserInput!]
-  deleteMany: [EventActionScalarWhereInput!]
-  updateMany: [EventActionUpdateManyWithWhereNestedInput!]
-}
-
-input EventActionUpdateManyWithWhereNestedInput {
-  where: EventActionScalarWhereInput!
-  data: EventActionUpdateManyDataInput!
 }
 
 input EventActionUpdateWithoutUserDataInput {
@@ -1456,138 +1182,6 @@ type PetitionPreviousValues {
   updatedAt: DateTime!
 }
 
-input PetitionScalarWhereInput {
-  id: ID
-  id_not: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_gt: ID
-  id_gte: ID
-  id_contains: ID
-  id_not_contains: ID
-  id_starts_with: ID
-  id_not_starts_with: ID
-  id_ends_with: ID
-  id_not_ends_with: ID
-  title: String
-  title_not: String
-  title_in: [String!]
-  title_not_in: [String!]
-  title_lt: String
-  title_lte: String
-  title_gt: String
-  title_gte: String
-  title_contains: String
-  title_not_contains: String
-  title_starts_with: String
-  title_not_starts_with: String
-  title_ends_with: String
-  title_not_ends_with: String
-  active: Boolean
-  active_not: Boolean
-  short_description: String
-  short_description_not: String
-  short_description_in: [String!]
-  short_description_not_in: [String!]
-  short_description_lt: String
-  short_description_lte: String
-  short_description_gt: String
-  short_description_gte: String
-  short_description_contains: String
-  short_description_not_contains: String
-  short_description_starts_with: String
-  short_description_not_starts_with: String
-  short_description_ends_with: String
-  short_description_not_ends_with: String
-  body: String
-  body_not: String
-  body_in: [String!]
-  body_not_in: [String!]
-  body_lt: String
-  body_lte: String
-  body_gt: String
-  body_gte: String
-  body_contains: String
-  body_not_contains: String
-  body_starts_with: String
-  body_not_starts_with: String
-  body_ends_with: String
-  body_not_ends_with: String
-  order: Int
-  order_not: Int
-  order_in: [Int!]
-  order_not_in: [Int!]
-  order_lt: Int
-  order_lte: Int
-  order_gt: Int
-  order_gte: Int
-  primary_image: String
-  primary_image_not: String
-  primary_image_in: [String!]
-  primary_image_not_in: [String!]
-  primary_image_lt: String
-  primary_image_lte: String
-  primary_image_gt: String
-  primary_image_gte: String
-  primary_image_contains: String
-  primary_image_not_contains: String
-  primary_image_starts_with: String
-  primary_image_not_starts_with: String
-  primary_image_ends_with: String
-  primary_image_not_ends_with: String
-  video_url: String
-  video_url_not: String
-  video_url_in: [String!]
-  video_url_not_in: [String!]
-  video_url_lt: String
-  video_url_lte: String
-  video_url_gt: String
-  video_url_gte: String
-  video_url_contains: String
-  video_url_not_contains: String
-  video_url_starts_with: String
-  video_url_not_starts_with: String
-  video_url_ends_with: String
-  video_url_not_ends_with: String
-  external_url: String
-  external_url_not: String
-  external_url_in: [String!]
-  external_url_not_in: [String!]
-  external_url_lt: String
-  external_url_lte: String
-  external_url_gt: String
-  external_url_gte: String
-  external_url_contains: String
-  external_url_not_contains: String
-  external_url_starts_with: String
-  external_url_not_starts_with: String
-  external_url_ends_with: String
-  external_url_not_ends_with: String
-  hasVideo: Boolean
-  hasVideo_not: Boolean
-  createdAt: DateTime
-  createdAt_not: DateTime
-  createdAt_in: [DateTime!]
-  createdAt_not_in: [DateTime!]
-  createdAt_lt: DateTime
-  createdAt_lte: DateTime
-  createdAt_gt: DateTime
-  createdAt_gte: DateTime
-  updatedAt: DateTime
-  updatedAt_not: DateTime
-  updatedAt_in: [DateTime!]
-  updatedAt_not_in: [DateTime!]
-  updatedAt_lt: DateTime
-  updatedAt_lte: DateTime
-  updatedAt_gt: DateTime
-  updatedAt_gte: DateTime
-  AND: [PetitionScalarWhereInput!]
-  OR: [PetitionScalarWhereInput!]
-  NOT: [PetitionScalarWhereInput!]
-}
-
 type PetitionSubscriptionPayload {
   mutation: MutationType!
   node: Petition
@@ -1620,18 +1214,6 @@ input PetitionUpdateInput {
   author: UserUpdateOneRequiredInput
 }
 
-input PetitionUpdateManyDataInput {
-  title: String
-  active: Boolean
-  short_description: String
-  body: String
-  order: Int
-  primary_image: String
-  video_url: String
-  external_url: String
-  hasVideo: Boolean
-}
-
 input PetitionUpdateManyMutationInput {
   title: String
   active: Boolean
@@ -1651,13 +1233,6 @@ input PetitionUpdateManyWithoutUsersInput {
   disconnect: [PetitionWhereUniqueInput!]
   update: [PetitionUpdateWithWhereUniqueWithoutUsersInput!]
   upsert: [PetitionUpsertWithWhereUniqueWithoutUsersInput!]
-  deleteMany: [PetitionScalarWhereInput!]
-  updateMany: [PetitionUpdateManyWithWhereNestedInput!]
-}
-
-input PetitionUpdateManyWithWhereNestedInput {
-  where: PetitionScalarWhereInput!
-  data: PetitionUpdateManyDataInput!
 }
 
 input PetitionUpdateWithoutUsersDataInput {
@@ -2148,162 +1723,6 @@ type UserPreviousValues {
   updatedAt: DateTime!
 }
 
-input UserScalarWhereInput {
-  id: ID
-  id_not: ID
-  id_in: [ID!]
-  id_not_in: [ID!]
-  id_lt: ID
-  id_lte: ID
-  id_gt: ID
-  id_gte: ID
-  id_contains: ID
-  id_not_contains: ID
-  id_starts_with: ID
-  id_not_starts_with: ID
-  id_ends_with: ID
-  id_not_ends_with: ID
-  username: String
-  username_not: String
-  username_in: [String!]
-  username_not_in: [String!]
-  username_lt: String
-  username_lte: String
-  username_gt: String
-  username_gte: String
-  username_contains: String
-  username_not_contains: String
-  username_starts_with: String
-  username_not_starts_with: String
-  username_ends_with: String
-  username_not_ends_with: String
-  email: String
-  email_not: String
-  email_in: [String!]
-  email_not_in: [String!]
-  email_lt: String
-  email_lte: String
-  email_gt: String
-  email_gte: String
-  email_contains: String
-  email_not_contains: String
-  email_starts_with: String
-  email_not_starts_with: String
-  email_ends_with: String
-  email_not_ends_with: String
-  password: String
-  password_not: String
-  password_in: [String!]
-  password_not_in: [String!]
-  password_lt: String
-  password_lte: String
-  password_gt: String
-  password_gte: String
-  password_contains: String
-  password_not_contains: String
-  password_starts_with: String
-  password_not_starts_with: String
-  password_ends_with: String
-  password_not_ends_with: String
-  name: String
-  name_not: String
-  name_in: [String!]
-  name_not_in: [String!]
-  name_lt: String
-  name_lte: String
-  name_gt: String
-  name_gte: String
-  name_contains: String
-  name_not_contains: String
-  name_starts_with: String
-  name_not_starts_with: String
-  name_ends_with: String
-  name_not_ends_with: String
-  phone: String
-  phone_not: String
-  phone_in: [String!]
-  phone_not_in: [String!]
-  phone_lt: String
-  phone_lte: String
-  phone_gt: String
-  phone_gte: String
-  phone_contains: String
-  phone_not_contains: String
-  phone_starts_with: String
-  phone_not_starts_with: String
-  phone_ends_with: String
-  phone_not_ends_with: String
-  zipcode: String
-  zipcode_not: String
-  zipcode_in: [String!]
-  zipcode_not_in: [String!]
-  zipcode_lt: String
-  zipcode_lte: String
-  zipcode_gt: String
-  zipcode_gte: String
-  zipcode_contains: String
-  zipcode_not_contains: String
-  zipcode_starts_with: String
-  zipcode_not_starts_with: String
-  zipcode_ends_with: String
-  zipcode_not_ends_with: String
-  total_points: Int
-  total_points_not: Int
-  total_points_in: [Int!]
-  total_points_not_in: [Int!]
-  total_points_lt: Int
-  total_points_lte: Int
-  total_points_gt: Int
-  total_points_gte: Int
-  device_id: String
-  device_id_not: String
-  device_id_in: [String!]
-  device_id_not_in: [String!]
-  device_id_lt: String
-  device_id_lte: String
-  device_id_gt: String
-  device_id_gte: String
-  device_id_contains: String
-  device_id_not_contains: String
-  device_id_starts_with: String
-  device_id_not_starts_with: String
-  device_id_ends_with: String
-  device_id_not_ends_with: String
-  crew: String
-  crew_not: String
-  crew_in: [String!]
-  crew_not_in: [String!]
-  crew_lt: String
-  crew_lte: String
-  crew_gt: String
-  crew_gte: String
-  crew_contains: String
-  crew_not_contains: String
-  crew_starts_with: String
-  crew_not_starts_with: String
-  crew_ends_with: String
-  crew_not_ends_with: String
-  createdAt: DateTime
-  createdAt_not: DateTime
-  createdAt_in: [DateTime!]
-  createdAt_not_in: [DateTime!]
-  createdAt_lt: DateTime
-  createdAt_lte: DateTime
-  createdAt_gt: DateTime
-  createdAt_gte: DateTime
-  updatedAt: DateTime
-  updatedAt_not: DateTime
-  updatedAt_in: [DateTime!]
-  updatedAt_not_in: [DateTime!]
-  updatedAt_lt: DateTime
-  updatedAt_lte: DateTime
-  updatedAt_gt: DateTime
-  updatedAt_gte: DateTime
-  AND: [UserScalarWhereInput!]
-  OR: [UserScalarWhereInput!]
-  NOT: [UserScalarWhereInput!]
-}
-
 type UserSubscriptionPayload {
   mutation: MutationType!
   node: User
@@ -2354,18 +1773,6 @@ input UserUpdateInput {
   crew: String
 }
 
-input UserUpdateManyDataInput {
-  username: String
-  email: String
-  password: String
-  name: String
-  phone: String
-  zipcode: String
-  total_points: Int
-  device_id: String
-  crew: String
-}
-
 input UserUpdateManyMutationInput {
   username: String
   email: String
@@ -2385,13 +1792,6 @@ input UserUpdateManyWithoutPetitions_signedInput {
   disconnect: [UserWhereUniqueInput!]
   update: [UserUpdateWithWhereUniqueWithoutPetitions_signedInput!]
   upsert: [UserUpsertWithWhereUniqueWithoutPetitions_signedInput!]
-  deleteMany: [UserScalarWhereInput!]
-  updateMany: [UserUpdateManyWithWhereNestedInput!]
-}
-
-input UserUpdateManyWithWhereNestedInput {
-  where: UserScalarWhereInput!
-  data: UserUpdateManyDataInput!
 }
 
 input UserUpdateOneRequiredInput {

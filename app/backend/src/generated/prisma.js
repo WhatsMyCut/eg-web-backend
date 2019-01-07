@@ -21,6 +21,7 @@ const typeDefs = `type Action {
   points: Int
   external_url: String
   isGame: Boolean!
+  game_title: String
   related_actions(where: ActionWhereInput, orderBy: ActionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Action!]
   author: User!
   createdAt: DateTime!
@@ -247,6 +248,7 @@ input ActionCreateInput {
   points: Int
   external_url: String
   isGame: Boolean
+  game_title: String
   related_actions: ActionCreateManyInput
   author: UserCreateOneInput!
 }
@@ -280,6 +282,7 @@ input ActionCreateWithoutCategoryInput {
   points: Int
   external_url: String
   isGame: Boolean
+  game_title: String
   related_actions: ActionCreateManyInput
   author: UserCreateOneInput!
 }
@@ -318,6 +321,8 @@ enum ActionOrderByInput {
   external_url_DESC
   isGame_ASC
   isGame_DESC
+  game_title_ASC
+  game_title_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -339,6 +344,7 @@ type ActionPreviousValues {
   points: Int
   external_url: String
   isGame: Boolean!
+  game_title: String
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -476,6 +482,20 @@ input ActionScalarWhereInput {
   external_url_not_ends_with: String
   isGame: Boolean
   isGame_not: Boolean
+  game_title: String
+  game_title_not: String
+  game_title_in: [String!]
+  game_title_not_in: [String!]
+  game_title_lt: String
+  game_title_lte: String
+  game_title_gt: String
+  game_title_gte: String
+  game_title_contains: String
+  game_title_not_contains: String
+  game_title_starts_with: String
+  game_title_not_starts_with: String
+  game_title_ends_with: String
+  game_title_not_ends_with: String
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
@@ -530,6 +550,7 @@ input ActionUpdateDataInput {
   points: Int
   external_url: String
   isGame: Boolean
+  game_title: String
   related_actions: ActionUpdateManyInput
   author: UserUpdateOneRequiredInput
 }
@@ -549,6 +570,7 @@ input ActionUpdateInput {
   points: Int
   external_url: String
   isGame: Boolean
+  game_title: String
   related_actions: ActionUpdateManyInput
   author: UserUpdateOneRequiredInput
 }
@@ -567,6 +589,7 @@ input ActionUpdateManyDataInput {
   points: Int
   external_url: String
   isGame: Boolean
+  game_title: String
 }
 
 input ActionUpdateManyInput {
@@ -594,6 +617,7 @@ input ActionUpdateManyMutationInput {
   points: Int
   external_url: String
   isGame: Boolean
+  game_title: String
 }
 
 input ActionUpdateManyWithoutCategoryInput {
@@ -633,6 +657,7 @@ input ActionUpdateWithoutCategoryDataInput {
   points: Int
   external_url: String
   isGame: Boolean
+  game_title: String
   related_actions: ActionUpdateManyInput
   author: UserUpdateOneRequiredInput
 }
@@ -798,6 +823,20 @@ input ActionWhereInput {
   external_url_not_ends_with: String
   isGame: Boolean
   isGame_not: Boolean
+  game_title: String
+  game_title_not: String
+  game_title_in: [String!]
+  game_title_not_in: [String!]
+  game_title_lt: String
+  game_title_lte: String
+  game_title_gt: String
+  game_title_gte: String
+  game_title_contains: String
+  game_title_not_contains: String
+  game_title_starts_with: String
+  game_title_not_starts_with: String
+  game_title_ends_with: String
+  game_title_not_ends_with: String
   related_actions_every: ActionWhereInput
   related_actions_some: ActionWhereInput
   related_actions_none: ActionWhereInput
