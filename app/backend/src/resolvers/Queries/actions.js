@@ -108,6 +108,7 @@ const ActionsQuery = {
                         water
                         waste
                         video_url
+                        game_title
                         related_actions {
                             id
                             primary_image
