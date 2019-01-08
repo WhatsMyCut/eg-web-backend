@@ -2075,6 +2075,7 @@ type User {
   community_events(where: CommunityEventWhereInput, orderBy: CommunityEventOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CommunityEvent!]
   device_id: String
   crew: String
+  crew_type: String
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -2099,6 +2100,7 @@ input UserCreateInput {
   community_events: CommunityEventCreateManyInput
   device_id: String
   crew: String
+  crew_type: String
 }
 
 input UserCreateManyWithoutPetitions_signedInput {
@@ -2129,6 +2131,7 @@ input UserCreateWithoutPetitions_signedInput {
   community_events: CommunityEventCreateManyInput
   device_id: String
   crew: String
+  crew_type: String
 }
 
 input UserCreateWithoutRecent_actionsInput {
@@ -2144,6 +2147,7 @@ input UserCreateWithoutRecent_actionsInput {
   community_events: CommunityEventCreateManyInput
   device_id: String
   crew: String
+  crew_type: String
 }
 
 type UserEdge {
@@ -2172,6 +2176,8 @@ enum UserOrderByInput {
   device_id_DESC
   crew_ASC
   crew_DESC
+  crew_type_ASC
+  crew_type_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -2189,6 +2195,7 @@ type UserPreviousValues {
   total_points: Int
   device_id: String
   crew: String
+  crew_type: String
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -2328,6 +2335,20 @@ input UserScalarWhereInput {
   crew_not_starts_with: String
   crew_ends_with: String
   crew_not_ends_with: String
+  crew_type: String
+  crew_type_not: String
+  crew_type_in: [String!]
+  crew_type_not_in: [String!]
+  crew_type_lt: String
+  crew_type_lte: String
+  crew_type_gt: String
+  crew_type_gte: String
+  crew_type_contains: String
+  crew_type_not_contains: String
+  crew_type_starts_with: String
+  crew_type_not_starts_with: String
+  crew_type_ends_with: String
+  crew_type_not_ends_with: String
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
@@ -2381,6 +2402,7 @@ input UserUpdateDataInput {
   community_events: CommunityEventUpdateManyInput
   device_id: String
   crew: String
+  crew_type: String
 }
 
 input UserUpdateInput {
@@ -2397,6 +2419,7 @@ input UserUpdateInput {
   community_events: CommunityEventUpdateManyInput
   device_id: String
   crew: String
+  crew_type: String
 }
 
 input UserUpdateManyDataInput {
@@ -2409,6 +2432,7 @@ input UserUpdateManyDataInput {
   total_points: Int
   device_id: String
   crew: String
+  crew_type: String
 }
 
 input UserUpdateManyMutationInput {
@@ -2421,6 +2445,7 @@ input UserUpdateManyMutationInput {
   total_points: Int
   device_id: String
   crew: String
+  crew_type: String
 }
 
 input UserUpdateManyWithoutPetitions_signedInput {
@@ -2466,6 +2491,7 @@ input UserUpdateWithoutPetitions_signedDataInput {
   community_events: CommunityEventUpdateManyInput
   device_id: String
   crew: String
+  crew_type: String
 }
 
 input UserUpdateWithoutRecent_actionsDataInput {
@@ -2481,6 +2507,7 @@ input UserUpdateWithoutRecent_actionsDataInput {
   community_events: CommunityEventUpdateManyInput
   device_id: String
   crew: String
+  crew_type: String
 }
 
 input UserUpdateWithWhereUniqueWithoutPetitions_signedInput {
@@ -2649,6 +2676,20 @@ input UserWhereInput {
   crew_not_starts_with: String
   crew_ends_with: String
   crew_not_ends_with: String
+  crew_type: String
+  crew_type_not: String
+  crew_type_in: [String!]
+  crew_type_not_in: [String!]
+  crew_type_lt: String
+  crew_type_lte: String
+  crew_type_gt: String
+  crew_type_gte: String
+  crew_type_contains: String
+  crew_type_not_contains: String
+  crew_type_starts_with: String
+  crew_type_not_starts_with: String
+  crew_type_ends_with: String
+  crew_type_not_ends_with: String
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]

@@ -495,6 +495,8 @@ export type UserOrderByInput =
   | "device_id_DESC"
   | "crew_ASC"
   | "crew_DESC"
+  | "crew_type_ASC"
+  | "crew_type_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
@@ -941,6 +943,20 @@ export interface UserWhereInput {
   crew_not_starts_with?: String;
   crew_ends_with?: String;
   crew_not_ends_with?: String;
+  crew_type?: String;
+  crew_type_not?: String;
+  crew_type_in?: String[] | String;
+  crew_type_not_in?: String[] | String;
+  crew_type_lt?: String;
+  crew_type_lte?: String;
+  crew_type_gt?: String;
+  crew_type_gte?: String;
+  crew_type_contains?: String;
+  crew_type_not_contains?: String;
+  crew_type_starts_with?: String;
+  crew_type_not_starts_with?: String;
+  crew_type_ends_with?: String;
+  crew_type_not_ends_with?: String;
   createdAt?: DateTimeInput;
   createdAt_not?: DateTimeInput;
   createdAt_in?: DateTimeInput[] | DateTimeInput;
@@ -1328,6 +1344,7 @@ export interface UserCreateInput {
   community_events?: CommunityEventCreateManyInput;
   device_id?: String;
   crew?: String;
+  crew_type?: String;
 }
 
 export interface RoleCreateOneInput {
@@ -1483,6 +1500,7 @@ export interface UserUpdateDataInput {
   community_events?: CommunityEventUpdateManyInput;
   device_id?: String;
   crew?: String;
+  crew_type?: String;
 }
 
 export interface RoleUpdateOneInput {
@@ -1767,6 +1785,7 @@ export interface UserCreateWithoutRecent_actionsInput {
   community_events?: CommunityEventCreateManyInput;
   device_id?: String;
   crew?: String;
+  crew_type?: String;
 }
 
 export interface EventActionUpdateInput {
@@ -1795,6 +1814,7 @@ export interface UserUpdateWithoutRecent_actionsDataInput {
   community_events?: CommunityEventUpdateManyInput;
   device_id?: String;
   crew?: String;
+  crew_type?: String;
 }
 
 export interface UserUpsertWithoutRecent_actionsInput {
@@ -1840,6 +1860,7 @@ export interface UserCreateWithoutPetitions_signedInput {
   community_events?: CommunityEventCreateManyInput;
   device_id?: String;
   crew?: String;
+  crew_type?: String;
 }
 
 export interface PetitionUpdateInput {
@@ -1889,6 +1910,7 @@ export interface UserUpdateWithoutPetitions_signedDataInput {
   community_events?: CommunityEventUpdateManyInput;
   device_id?: String;
   crew?: String;
+  crew_type?: String;
 }
 
 export interface UserUpsertWithWhereUniqueWithoutPetitions_signedInput {
@@ -1931,6 +1953,7 @@ export interface UserUpdateInput {
   community_events?: CommunityEventUpdateManyInput;
   device_id?: String;
   crew?: String;
+  crew_type?: String;
 }
 
 export interface UserUpdateManyMutationInput {
@@ -1943,6 +1966,7 @@ export interface UserUpdateManyMutationInput {
   total_points?: Int;
   device_id?: String;
   crew?: String;
+  crew_type?: String;
 }
 
 export interface ActionSubscriptionWhereInput {
@@ -2190,6 +2214,7 @@ export interface User {
   total_points?: Int;
   device_id?: String;
   crew?: String;
+  crew_type?: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
@@ -2239,6 +2264,7 @@ export interface UserPromise extends Promise<User>, Fragmentable {
   ) => T;
   device_id: () => Promise<String>;
   crew: () => Promise<String>;
+  crew_type: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -2290,6 +2316,7 @@ export interface UserSubscription
   ) => T;
   device_id: () => Promise<AsyncIterator<String>>;
   crew: () => Promise<AsyncIterator<String>>;
+  crew_type: () => Promise<AsyncIterator<String>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
@@ -3234,6 +3261,7 @@ export interface UserPreviousValues {
   total_points?: Int;
   device_id?: String;
   crew?: String;
+  crew_type?: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
@@ -3251,6 +3279,7 @@ export interface UserPreviousValuesPromise
   total_points: () => Promise<Int>;
   device_id: () => Promise<String>;
   crew: () => Promise<String>;
+  crew_type: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -3268,6 +3297,7 @@ export interface UserPreviousValuesSubscription
   total_points: () => Promise<AsyncIterator<Int>>;
   device_id: () => Promise<AsyncIterator<String>>;
   crew: () => Promise<AsyncIterator<String>>;
+  crew_type: () => Promise<AsyncIterator<String>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
