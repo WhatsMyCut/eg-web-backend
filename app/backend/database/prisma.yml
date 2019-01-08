@@ -1,6 +1,6 @@
 # The endpoint of your Prisma API (deployed to a Prisma Sandbox).
 #endpoint: ${env:PRISMA_ENDPOINT}
-endpoint: https://us1.prisma.sh/daniel-ashcraft-a99d55/earth_guardians/dev
+endpoint: https://eg-production-879cf73477.herokuapp.com/
 
 # The file containing the definition of your data model.
 datamodel: datamodel.graphql
