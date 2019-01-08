@@ -13,6 +13,7 @@ type User {
   community_events: [CommunityEvent] @relation(name:"CommunityEventsOnUser")
   device_id: String
   crew: String
+  crew_type: String
   createdAt: DateTime!
   updatedAt: DateTime!
 }
