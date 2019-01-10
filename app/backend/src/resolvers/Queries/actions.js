@@ -45,7 +45,7 @@ const ActionsQuery = {
         
         let uniqueactions = await returnUniqueActions(recent_actions);
         // console.log('unique actions', uniqueactions);
-        return uniqueactions;
+        return uniqueactions.filter(event =>filterUnreadyActions(event.action, event.createdAt));
     },
     async sectorActionsByName(parent, args, ctx, info){
         const id = getUserId(ctx)
