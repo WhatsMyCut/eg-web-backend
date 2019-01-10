@@ -61,6 +61,8 @@ class ActionModal extends Component {
         return entityType === 'Action' ? 
         [
             <EGTextArea key={'short-desc-input'}     value={entity.short_description || ''} label={'Short Description'} onChange={(event) => {this.updateEntity(event, 'short_description')}} />, 
+
+            <EGTextArea key={'action-taken-input'}     value={entity.action_taken_description || ''} label={'action_taken_description'} onChange={(event) => {this.updateEntity(event, 'action_taken_description')}} />, 
             <EGTextBox  key={'order-input'}          value={entity.order}                   label={'Order'}             onChange={(event) => {this.updateEntity(event, 'order')}} />,
             <EGDropdown key={'schedule-input'} currentValues={entity.schedule || scheduleOptions[0]} options={scheduleOptions} label={'Schedule'} onChange={(event) => {this.updateSchedule(event)}} />,
             <EGTextBox  key={'carbon_dioxide-input'} value={entity.carbon_dioxide || ''}    label={'Carbon Dioxide'}    onChange={(event) => {this.updateEntity(event, 'carbon_dioxide')}}/>, 
@@ -72,6 +74,7 @@ class ActionModal extends Component {
             <EGTextBox  key={'external-game-tital'}   value={entity.game_title || ''}      label={'Game Title'}      onChange={(event) => {this.updateEntity(event, 'game_title')}} />,
             <EGTextBox  key={'external-url-input'}   value={entity.external_url || ''}      label={'External URL'}      onChange={(event) => {this.updateEntity(event, 'external_url')}} />,
             <EGDropdown key={'related-actions-input'} currentValues={entity.related_actions ? entity.related_actions.map(action => {return action.id}) : []} label={'Games'} multiple={true} options={this.toDropdownOptions(relatedActionsOptions, 'short_description')} onChange={(event) => { this.updateRelatedActions(event);}} />,
+
             <EGCheckbox key={'isGame-input'}         value={entity.isGame}            label={'Game'}              onChange={(event) => {this.updateEntityBoolean(event, 'isGame')}} />,
             <EGCheckbox key={'active-input'}         value={entity.active}            label={'Active'}            onChange={(event) => {this.updateEntityBoolean(event, 'active')}} />,
             <div key='author'><strong style={{marginRight: '5px'}}>Author:</strong>{entity.author.name || ''}</div>,
@@ -80,6 +83,8 @@ class ActionModal extends Component {
         ] :
         [
             <EGTextArea key={'short-desc-input'}     value={entity.short_description || ''} label={'Short Description'} onChange={(event) => {this.updateEntity(event, 'short_description')}} />, 
+            <EGTextArea key={'action-taken-input'}     value={entity.action_taken_description || ''} label={'action_taken_description'} onChange={(event) => {this.updateEntity(event, 'action_taken_description')}} />, 
+
             <EGTextBox  key={'order-input'}          value={entity.order}                   label={'Order'}             onChange={(event) => {this.updateEntity(event, 'order')}} />,
             <EGDropdown key={'schedule-input'} currentValues={entity.schedule || scheduleOptions[0]} options={scheduleOptions} label={'Schedule'} onChange={(event) => {this.updateSchedule(event)}} />,
             <EGTextBox  key={'carbon_dioxide-input'} value={entity.carbon_dioxide || ''}    label={'Carbon Dioxide'}    onChange={(event) => {this.updateEntity(event, 'carbon_dioxide')}} />, 
