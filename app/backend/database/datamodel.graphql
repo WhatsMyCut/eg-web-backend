@@ -9,8 +9,8 @@ type User {
   recent_actions: [EventAction]
   zipcode:String
   total_points: Int
-  petitions_signed: [Petition] @relation(name:"PetitionOnUser")
-  community_events: [CommunityEvent] @relation(name:"CommunityEventsOnUser")
+  petitions_signed: [Petition] @relation(name:"PetitionOnUser", cascadeDelete:true)
+  community_events: [CommunityEvent] @relation(name:"CommunityEventsOnUser", cascadeDelete:true)
   device_id: String
   crew: String
   crew_type: String
