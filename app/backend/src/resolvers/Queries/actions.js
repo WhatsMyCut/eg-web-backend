@@ -14,7 +14,7 @@ const ActionsQuery = {
         const id = getUserId(ctx)
 
         let queryData=`{
-            recent_actions(where:{action:{active:true, isGame:false}}, orderBy:createdAt_DESC){
+            recent_actions(where:{action:{active:true}}, orderBy:createdAt_DESC){
                 id
                 action{
                     id
@@ -40,12 +40,13 @@ const ActionsQuery = {
 
         let myActions = await ctx.db.query.user({ where: { id } }, queryData);
         
+        console.log('my_Actions', myActions);
+        let recent_actions = myActions ? myActions.recent_actions : null;
         
-        let recent_actions = myActions.recent_actions;
         
-        let uniqueactions = await returnUniqueActions(recent_actions);
+        let uniqueactions = recent_actions ? await returnUniqueActions(recent_actions) : null;
         // console.log('unique actions', uniqueactions);
-        return uniqueactions;
+        return uniqueactions ? uniqueactions : [];
     },
     async sectorActionsByName(parent, args, ctx, info){
         const id = getUserId(ctx)
@@ -81,11 +82,12 @@ const ActionsQuery = {
         let myActions = await ctx.db.query.user({ where: { id } }, queryData);
         
         
-        let recent_actions = myActions.recent_actions;
+        let recent_actions = myActions ? myActions.recent_actions : null;
         
-        let uniqueactions = await returnUniqueActions(recent_actions);
+        
+        let uniqueactions = recent_actions ? await returnUniqueActions(recent_actions) : null;
         // console.log('unique actions', uniqueactions);
-        let ids = uniqueactions.map(item => `"${item.action.id}"`);
+        let ids = uniqueactions ? uniqueactions.map(item => `"${item.action.id}"`) : null;
 
         let actionCategoryInfo=
         `
@@ -96,10 +98,10 @@ const ActionsQuery = {
                 video_id
                 actions(
                     where:{
-                        id_not_in:[${ids}],
+                        ${ids ? `id_not_in:[${ids}]`: ''}
                         active: true,
                         isGame:false
-                    }){
+                    }, orderBy:order_ASC){
                         id
                         primary_image
                         short_description

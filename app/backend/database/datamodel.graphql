@@ -6,11 +6,11 @@ type User {
   name: String
   phone: String @unique
   role: Role
-  recent_actions: [EventAction]
+  recent_actions: [EventAction] @relation(name:"EventActionToUser")
   zipcode:String
   total_points: Int
-  petitions_signed: [Petition] @relation(name:"PetitionOnUser", cascadeDelete:true)
-  community_events: [CommunityEvent] @relation(name:"CommunityEventsOnUser", cascadeDelete:true)
+  petitions_signed: [Petition] @relation(name:"PetitionOnUser")
+  community_events: [CommunityEvent] @relation(name:"CommunityEventsOnUser")
   device_id: String
   crew: String
   crew_type: String
@@ -28,7 +28,7 @@ type Role {
 type EventAction {
   id: ID! @unique
   action: Action!
-  user: User!
+  user: User! @relation(name:"EventActionToUser" )
   took_action: Boolean! @default(value:false)
   createdAt: DateTime!
   updatedAt: DateTime!

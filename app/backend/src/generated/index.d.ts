@@ -390,6 +390,18 @@ export interface ClientConstructor<T> {
  * Types
  */
 
+export type Schedule =
+  | "ANYTIME"
+  | "ONCE"
+  | "DAILY"
+  | "BIWEEKLY"
+  | "WEEKLY"
+  | "TWOWEEKS"
+  | "MONTHLY"
+  | "QUARTERLY"
+  | "SEMIANNUALLY"
+  | "ANNUALLY";
+
 export type ActionOrderByInput =
   | "id_ASC"
   | "id_DESC"
@@ -425,18 +437,6 @@ export type ActionOrderByInput =
   | "createdAt_DESC"
   | "updatedAt_ASC"
   | "updatedAt_DESC";
-
-export type Schedule =
-  | "ANYTIME"
-  | "ONCE"
-  | "DAILY"
-  | "BIWEEKLY"
-  | "WEEKLY"
-  | "TWOWEEKS"
-  | "MONTHLY"
-  | "QUARTERLY"
-  | "SEMIANNUALLY"
-  | "ANNUALLY";
 
 export type EventActionOrderByInput =
   | "id_ASC"
@@ -540,55 +540,11 @@ export type RoleOrderByInput =
 
 export type MutationType = "CREATED" | "UPDATED" | "DELETED";
 
-export interface EventActionUpdateWithWhereUniqueWithoutUserInput {
-  where: EventActionWhereUniqueInput;
-  data: EventActionUpdateWithoutUserDataInput;
-}
-
 export type ActionWhereUniqueInput = AtLeastOne<{
   id: ID_Input;
 }>;
 
-export interface EventActionCreateWithoutUserInput {
-  action: ActionCreateOneInput;
-  took_action?: Boolean;
-}
-
-export interface ActionUpdateWithoutCategoryDataInput {
-  primary_image?: String;
-  active?: Boolean;
-  short_description?: String;
-  action_taken_description?: String;
-  schedule?: Schedule;
-  video_url?: String;
-  carbon_dioxide?: Float;
-  order?: Int;
-  water?: Float;
-  waste?: Float;
-  points?: Int;
-  external_url?: String;
-  isGame?: Boolean;
-  game_title?: String;
-  related_actions?: ActionUpdateManyInput;
-  author?: UserUpdateOneRequiredInput;
-}
-
-export interface ActionCreateOneInput {
-  create?: ActionCreateInput;
-  connect?: ActionWhereUniqueInput;
-}
-
-export interface EventActionUpdateManyWithWhereNestedInput {
-  where: EventActionScalarWhereInput;
-  data: EventActionUpdateManyDataInput;
-}
-
-export interface PetitionCreateManyWithoutUsersInput {
-  create?: PetitionCreateWithoutUsersInput[] | PetitionCreateWithoutUsersInput;
-  connect?: PetitionWhereUniqueInput[] | PetitionWhereUniqueInput;
-}
-
-export interface EventActionWhereInput {
+export interface ActionWhereInput {
   id?: ID_Input;
   id_not?: ID_Input;
   id_in?: ID_Input[] | ID_Input;
@@ -603,10 +559,143 @@ export interface EventActionWhereInput {
   id_not_starts_with?: ID_Input;
   id_ends_with?: ID_Input;
   id_not_ends_with?: ID_Input;
-  action?: ActionWhereInput;
-  user?: UserWhereInput;
-  took_action?: Boolean;
-  took_action_not?: Boolean;
+  category?: ActionCategoryWhereInput;
+  primary_image?: String;
+  primary_image_not?: String;
+  primary_image_in?: String[] | String;
+  primary_image_not_in?: String[] | String;
+  primary_image_lt?: String;
+  primary_image_lte?: String;
+  primary_image_gt?: String;
+  primary_image_gte?: String;
+  primary_image_contains?: String;
+  primary_image_not_contains?: String;
+  primary_image_starts_with?: String;
+  primary_image_not_starts_with?: String;
+  primary_image_ends_with?: String;
+  primary_image_not_ends_with?: String;
+  active?: Boolean;
+  active_not?: Boolean;
+  short_description?: String;
+  short_description_not?: String;
+  short_description_in?: String[] | String;
+  short_description_not_in?: String[] | String;
+  short_description_lt?: String;
+  short_description_lte?: String;
+  short_description_gt?: String;
+  short_description_gte?: String;
+  short_description_contains?: String;
+  short_description_not_contains?: String;
+  short_description_starts_with?: String;
+  short_description_not_starts_with?: String;
+  short_description_ends_with?: String;
+  short_description_not_ends_with?: String;
+  action_taken_description?: String;
+  action_taken_description_not?: String;
+  action_taken_description_in?: String[] | String;
+  action_taken_description_not_in?: String[] | String;
+  action_taken_description_lt?: String;
+  action_taken_description_lte?: String;
+  action_taken_description_gt?: String;
+  action_taken_description_gte?: String;
+  action_taken_description_contains?: String;
+  action_taken_description_not_contains?: String;
+  action_taken_description_starts_with?: String;
+  action_taken_description_not_starts_with?: String;
+  action_taken_description_ends_with?: String;
+  action_taken_description_not_ends_with?: String;
+  schedule?: Schedule;
+  schedule_not?: Schedule;
+  schedule_in?: Schedule[] | Schedule;
+  schedule_not_in?: Schedule[] | Schedule;
+  video_url?: String;
+  video_url_not?: String;
+  video_url_in?: String[] | String;
+  video_url_not_in?: String[] | String;
+  video_url_lt?: String;
+  video_url_lte?: String;
+  video_url_gt?: String;
+  video_url_gte?: String;
+  video_url_contains?: String;
+  video_url_not_contains?: String;
+  video_url_starts_with?: String;
+  video_url_not_starts_with?: String;
+  video_url_ends_with?: String;
+  video_url_not_ends_with?: String;
+  carbon_dioxide?: Float;
+  carbon_dioxide_not?: Float;
+  carbon_dioxide_in?: Float[] | Float;
+  carbon_dioxide_not_in?: Float[] | Float;
+  carbon_dioxide_lt?: Float;
+  carbon_dioxide_lte?: Float;
+  carbon_dioxide_gt?: Float;
+  carbon_dioxide_gte?: Float;
+  order?: Int;
+  order_not?: Int;
+  order_in?: Int[] | Int;
+  order_not_in?: Int[] | Int;
+  order_lt?: Int;
+  order_lte?: Int;
+  order_gt?: Int;
+  order_gte?: Int;
+  water?: Float;
+  water_not?: Float;
+  water_in?: Float[] | Float;
+  water_not_in?: Float[] | Float;
+  water_lt?: Float;
+  water_lte?: Float;
+  water_gt?: Float;
+  water_gte?: Float;
+  waste?: Float;
+  waste_not?: Float;
+  waste_in?: Float[] | Float;
+  waste_not_in?: Float[] | Float;
+  waste_lt?: Float;
+  waste_lte?: Float;
+  waste_gt?: Float;
+  waste_gte?: Float;
+  points?: Int;
+  points_not?: Int;
+  points_in?: Int[] | Int;
+  points_not_in?: Int[] | Int;
+  points_lt?: Int;
+  points_lte?: Int;
+  points_gt?: Int;
+  points_gte?: Int;
+  external_url?: String;
+  external_url_not?: String;
+  external_url_in?: String[] | String;
+  external_url_not_in?: String[] | String;
+  external_url_lt?: String;
+  external_url_lte?: String;
+  external_url_gt?: String;
+  external_url_gte?: String;
+  external_url_contains?: String;
+  external_url_not_contains?: String;
+  external_url_starts_with?: String;
+  external_url_not_starts_with?: String;
+  external_url_ends_with?: String;
+  external_url_not_ends_with?: String;
+  isGame?: Boolean;
+  isGame_not?: Boolean;
+  game_title?: String;
+  game_title_not?: String;
+  game_title_in?: String[] | String;
+  game_title_not_in?: String[] | String;
+  game_title_lt?: String;
+  game_title_lte?: String;
+  game_title_gt?: String;
+  game_title_gte?: String;
+  game_title_contains?: String;
+  game_title_not_contains?: String;
+  game_title_starts_with?: String;
+  game_title_not_starts_with?: String;
+  game_title_ends_with?: String;
+  game_title_not_ends_with?: String;
+  related_actions_every?: ActionWhereInput;
+  related_actions_some?: ActionWhereInput;
+  related_actions_none?: ActionWhereInput;
+  author?: UserWhereInput;
   createdAt?: DateTimeInput;
   createdAt_not?: DateTimeInput;
   createdAt_in?: DateTimeInput[] | DateTimeInput;
@@ -623,158 +712,9 @@ export interface EventActionWhereInput {
   updatedAt_lte?: DateTimeInput;
   updatedAt_gt?: DateTimeInput;
   updatedAt_gte?: DateTimeInput;
-  AND?: EventActionWhereInput[] | EventActionWhereInput;
-  OR?: EventActionWhereInput[] | EventActionWhereInput;
-  NOT?: EventActionWhereInput[] | EventActionWhereInput;
-}
-
-export interface PetitionCreateWithoutUsersInput {
-  title: String;
-  active?: Boolean;
-  short_description: String;
-  body: String;
-  order?: Int;
-  primary_image?: String;
-  video_url?: String;
-  external_url?: String;
-  hasVideo?: Boolean;
-  author: UserCreateOneInput;
-}
-
-export interface CommunityEventWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  type?: String;
-  type_not?: String;
-  type_in?: String[] | String;
-  type_not_in?: String[] | String;
-  type_lt?: String;
-  type_lte?: String;
-  type_gt?: String;
-  type_gte?: String;
-  type_contains?: String;
-  type_not_contains?: String;
-  type_starts_with?: String;
-  type_not_starts_with?: String;
-  type_ends_with?: String;
-  type_not_ends_with?: String;
-  number_of_people?: Int;
-  number_of_people_not?: Int;
-  number_of_people_in?: Int[] | Int;
-  number_of_people_not_in?: Int[] | Int;
-  number_of_people_lt?: Int;
-  number_of_people_lte?: Int;
-  number_of_people_gt?: Int;
-  number_of_people_gte?: Int;
-  createdAt?: DateTimeInput;
-  createdAt_not?: DateTimeInput;
-  createdAt_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_lt?: DateTimeInput;
-  createdAt_lte?: DateTimeInput;
-  createdAt_gt?: DateTimeInput;
-  createdAt_gte?: DateTimeInput;
-  updatedAt?: DateTimeInput;
-  updatedAt_not?: DateTimeInput;
-  updatedAt_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_lt?: DateTimeInput;
-  updatedAt_lte?: DateTimeInput;
-  updatedAt_gt?: DateTimeInput;
-  updatedAt_gte?: DateTimeInput;
-  AND?: CommunityEventWhereInput[] | CommunityEventWhereInput;
-  OR?: CommunityEventWhereInput[] | CommunityEventWhereInput;
-  NOT?: CommunityEventWhereInput[] | CommunityEventWhereInput;
-}
-
-export interface CommunityEventCreateManyInput {
-  create?: CommunityEventCreateInput[] | CommunityEventCreateInput;
-  connect?: CommunityEventWhereUniqueInput[] | CommunityEventWhereUniqueInput;
-}
-
-export interface RoleSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: RoleWhereInput;
-  AND?: RoleSubscriptionWhereInput[] | RoleSubscriptionWhereInput;
-  OR?: RoleSubscriptionWhereInput[] | RoleSubscriptionWhereInput;
-  NOT?: RoleSubscriptionWhereInput[] | RoleSubscriptionWhereInput;
-}
-
-export interface CommunityEventCreateInput {
-  type: String;
-  number_of_people: Int;
-}
-
-export interface EventActionSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: EventActionWhereInput;
-  AND?: EventActionSubscriptionWhereInput[] | EventActionSubscriptionWhereInput;
-  OR?: EventActionSubscriptionWhereInput[] | EventActionSubscriptionWhereInput;
-  NOT?: EventActionSubscriptionWhereInput[] | EventActionSubscriptionWhereInput;
-}
-
-export interface ActionUpdateInput {
-  category?: ActionCategoryUpdateOneWithoutActionsInput;
-  primary_image?: String;
-  active?: Boolean;
-  short_description?: String;
-  action_taken_description?: String;
-  schedule?: Schedule;
-  video_url?: String;
-  carbon_dioxide?: Float;
-  order?: Int;
-  water?: Float;
-  waste?: Float;
-  points?: Int;
-  external_url?: String;
-  isGame?: Boolean;
-  game_title?: String;
-  related_actions?: ActionUpdateManyInput;
-  author?: UserUpdateOneRequiredInput;
-}
-
-export interface ActionCategorySubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: ActionCategoryWhereInput;
-  AND?:
-    | ActionCategorySubscriptionWhereInput[]
-    | ActionCategorySubscriptionWhereInput;
-  OR?:
-    | ActionCategorySubscriptionWhereInput[]
-    | ActionCategorySubscriptionWhereInput;
-  NOT?:
-    | ActionCategorySubscriptionWhereInput[]
-    | ActionCategorySubscriptionWhereInput;
-}
-
-export interface ActionCategoryUpdateOneWithoutActionsInput {
-  create?: ActionCategoryCreateWithoutActionsInput;
-  update?: ActionCategoryUpdateWithoutActionsDataInput;
-  upsert?: ActionCategoryUpsertWithoutActionsInput;
-  delete?: Boolean;
-  disconnect?: Boolean;
-  connect?: ActionCategoryWhereUniqueInput;
+  AND?: ActionWhereInput[] | ActionWhereInput;
+  OR?: ActionWhereInput[] | ActionWhereInput;
+  NOT?: ActionWhereInput[] | ActionWhereInput;
 }
 
 export interface ActionCategoryWhereInput {
@@ -856,492 +796,6 @@ export interface ActionCategoryWhereInput {
   AND?: ActionCategoryWhereInput[] | ActionCategoryWhereInput;
   OR?: ActionCategoryWhereInput[] | ActionCategoryWhereInput;
   NOT?: ActionCategoryWhereInput[] | ActionCategoryWhereInput;
-}
-
-export interface ActionCategoryUpdateWithoutActionsDataInput {
-  name?: String;
-  primary_image?: String;
-  video_id?: String;
-}
-
-export interface UserUpdateManyMutationInput {
-  username?: String;
-  email?: String;
-  password?: String;
-  name?: String;
-  phone?: String;
-  zipcode?: String;
-  total_points?: Int;
-  device_id?: String;
-  crew?: String;
-  crew_type?: String;
-}
-
-export interface ActionCategoryUpsertWithoutActionsInput {
-  update: ActionCategoryUpdateWithoutActionsDataInput;
-  create: ActionCategoryCreateWithoutActionsInput;
-}
-
-export interface RoleUpdateManyMutationInput {
-  role_name?: String;
-}
-
-export interface ActionUpdateManyInput {
-  create?: ActionCreateInput[] | ActionCreateInput;
-  update?:
-    | ActionUpdateWithWhereUniqueNestedInput[]
-    | ActionUpdateWithWhereUniqueNestedInput;
-  upsert?:
-    | ActionUpsertWithWhereUniqueNestedInput[]
-    | ActionUpsertWithWhereUniqueNestedInput;
-  delete?: ActionWhereUniqueInput[] | ActionWhereUniqueInput;
-  connect?: ActionWhereUniqueInput[] | ActionWhereUniqueInput;
-  disconnect?: ActionWhereUniqueInput[] | ActionWhereUniqueInput;
-  deleteMany?: ActionScalarWhereInput[] | ActionScalarWhereInput;
-  updateMany?:
-    | ActionUpdateManyWithWhereNestedInput[]
-    | ActionUpdateManyWithWhereNestedInput;
-}
-
-export interface PetitionUpdateManyMutationInput {
-  title?: String;
-  active?: Boolean;
-  short_description?: String;
-  body?: String;
-  order?: Int;
-  primary_image?: String;
-  video_url?: String;
-  external_url?: String;
-  hasVideo?: Boolean;
-}
-
-export interface ActionUpdateWithWhereUniqueNestedInput {
-  where: ActionWhereUniqueInput;
-  data: ActionUpdateDataInput;
-}
-
-export interface UserUpdateManyDataInput {
-  username?: String;
-  email?: String;
-  password?: String;
-  name?: String;
-  phone?: String;
-  zipcode?: String;
-  total_points?: Int;
-  device_id?: String;
-  crew?: String;
-  crew_type?: String;
-}
-
-export interface ActionUpdateDataInput {
-  category?: ActionCategoryUpdateOneWithoutActionsInput;
-  primary_image?: String;
-  active?: Boolean;
-  short_description?: String;
-  action_taken_description?: String;
-  schedule?: Schedule;
-  video_url?: String;
-  carbon_dioxide?: Float;
-  order?: Int;
-  water?: Float;
-  waste?: Float;
-  points?: Int;
-  external_url?: String;
-  isGame?: Boolean;
-  game_title?: String;
-  related_actions?: ActionUpdateManyInput;
-  author?: UserUpdateOneRequiredInput;
-}
-
-export interface UserScalarWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  username?: String;
-  username_not?: String;
-  username_in?: String[] | String;
-  username_not_in?: String[] | String;
-  username_lt?: String;
-  username_lte?: String;
-  username_gt?: String;
-  username_gte?: String;
-  username_contains?: String;
-  username_not_contains?: String;
-  username_starts_with?: String;
-  username_not_starts_with?: String;
-  username_ends_with?: String;
-  username_not_ends_with?: String;
-  email?: String;
-  email_not?: String;
-  email_in?: String[] | String;
-  email_not_in?: String[] | String;
-  email_lt?: String;
-  email_lte?: String;
-  email_gt?: String;
-  email_gte?: String;
-  email_contains?: String;
-  email_not_contains?: String;
-  email_starts_with?: String;
-  email_not_starts_with?: String;
-  email_ends_with?: String;
-  email_not_ends_with?: String;
-  password?: String;
-  password_not?: String;
-  password_in?: String[] | String;
-  password_not_in?: String[] | String;
-  password_lt?: String;
-  password_lte?: String;
-  password_gt?: String;
-  password_gte?: String;
-  password_contains?: String;
-  password_not_contains?: String;
-  password_starts_with?: String;
-  password_not_starts_with?: String;
-  password_ends_with?: String;
-  password_not_ends_with?: String;
-  name?: String;
-  name_not?: String;
-  name_in?: String[] | String;
-  name_not_in?: String[] | String;
-  name_lt?: String;
-  name_lte?: String;
-  name_gt?: String;
-  name_gte?: String;
-  name_contains?: String;
-  name_not_contains?: String;
-  name_starts_with?: String;
-  name_not_starts_with?: String;
-  name_ends_with?: String;
-  name_not_ends_with?: String;
-  phone?: String;
-  phone_not?: String;
-  phone_in?: String[] | String;
-  phone_not_in?: String[] | String;
-  phone_lt?: String;
-  phone_lte?: String;
-  phone_gt?: String;
-  phone_gte?: String;
-  phone_contains?: String;
-  phone_not_contains?: String;
-  phone_starts_with?: String;
-  phone_not_starts_with?: String;
-  phone_ends_with?: String;
-  phone_not_ends_with?: String;
-  zipcode?: String;
-  zipcode_not?: String;
-  zipcode_in?: String[] | String;
-  zipcode_not_in?: String[] | String;
-  zipcode_lt?: String;
-  zipcode_lte?: String;
-  zipcode_gt?: String;
-  zipcode_gte?: String;
-  zipcode_contains?: String;
-  zipcode_not_contains?: String;
-  zipcode_starts_with?: String;
-  zipcode_not_starts_with?: String;
-  zipcode_ends_with?: String;
-  zipcode_not_ends_with?: String;
-  total_points?: Int;
-  total_points_not?: Int;
-  total_points_in?: Int[] | Int;
-  total_points_not_in?: Int[] | Int;
-  total_points_lt?: Int;
-  total_points_lte?: Int;
-  total_points_gt?: Int;
-  total_points_gte?: Int;
-  device_id?: String;
-  device_id_not?: String;
-  device_id_in?: String[] | String;
-  device_id_not_in?: String[] | String;
-  device_id_lt?: String;
-  device_id_lte?: String;
-  device_id_gt?: String;
-  device_id_gte?: String;
-  device_id_contains?: String;
-  device_id_not_contains?: String;
-  device_id_starts_with?: String;
-  device_id_not_starts_with?: String;
-  device_id_ends_with?: String;
-  device_id_not_ends_with?: String;
-  crew?: String;
-  crew_not?: String;
-  crew_in?: String[] | String;
-  crew_not_in?: String[] | String;
-  crew_lt?: String;
-  crew_lte?: String;
-  crew_gt?: String;
-  crew_gte?: String;
-  crew_contains?: String;
-  crew_not_contains?: String;
-  crew_starts_with?: String;
-  crew_not_starts_with?: String;
-  crew_ends_with?: String;
-  crew_not_ends_with?: String;
-  crew_type?: String;
-  crew_type_not?: String;
-  crew_type_in?: String[] | String;
-  crew_type_not_in?: String[] | String;
-  crew_type_lt?: String;
-  crew_type_lte?: String;
-  crew_type_gt?: String;
-  crew_type_gte?: String;
-  crew_type_contains?: String;
-  crew_type_not_contains?: String;
-  crew_type_starts_with?: String;
-  crew_type_not_starts_with?: String;
-  crew_type_ends_with?: String;
-  crew_type_not_ends_with?: String;
-  createdAt?: DateTimeInput;
-  createdAt_not?: DateTimeInput;
-  createdAt_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_lt?: DateTimeInput;
-  createdAt_lte?: DateTimeInput;
-  createdAt_gt?: DateTimeInput;
-  createdAt_gte?: DateTimeInput;
-  updatedAt?: DateTimeInput;
-  updatedAt_not?: DateTimeInput;
-  updatedAt_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_lt?: DateTimeInput;
-  updatedAt_lte?: DateTimeInput;
-  updatedAt_gt?: DateTimeInput;
-  updatedAt_gte?: DateTimeInput;
-  AND?: UserScalarWhereInput[] | UserScalarWhereInput;
-  OR?: UserScalarWhereInput[] | UserScalarWhereInput;
-  NOT?: UserScalarWhereInput[] | UserScalarWhereInput;
-}
-
-export interface UserUpdateOneRequiredInput {
-  create?: UserCreateInput;
-  update?: UserUpdateDataInput;
-  upsert?: UserUpsertNestedInput;
-  connect?: UserWhereUniqueInput;
-}
-
-export type CommunityEventWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
-
-export interface UserUpdateDataInput {
-  username?: String;
-  email?: String;
-  password?: String;
-  name?: String;
-  phone?: String;
-  role?: RoleUpdateOneInput;
-  recent_actions?: EventActionUpdateManyWithoutUserInput;
-  zipcode?: String;
-  total_points?: Int;
-  petitions_signed?: PetitionUpdateManyWithoutUsersInput;
-  community_events?: CommunityEventUpdateManyInput;
-  device_id?: String;
-  crew?: String;
-  crew_type?: String;
-}
-
-export interface UserUpdateWithWhereUniqueWithoutPetitions_signedInput {
-  where: UserWhereUniqueInput;
-  data: UserUpdateWithoutPetitions_signedDataInput;
-}
-
-export interface RoleUpdateOneInput {
-  create?: RoleCreateInput;
-  update?: RoleUpdateDataInput;
-  upsert?: RoleUpsertNestedInput;
-  delete?: Boolean;
-  disconnect?: Boolean;
-  connect?: RoleWhereUniqueInput;
-}
-
-export type EventActionWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
-
-export interface RoleUpdateDataInput {
-  role_name?: String;
-}
-
-export interface UserCreateWithoutPetitions_signedInput {
-  username?: String;
-  email?: String;
-  password: String;
-  name?: String;
-  phone?: String;
-  role?: RoleCreateOneInput;
-  recent_actions?: EventActionCreateManyWithoutUserInput;
-  zipcode?: String;
-  total_points?: Int;
-  community_events?: CommunityEventCreateManyInput;
-  device_id?: String;
-  crew?: String;
-  crew_type?: String;
-}
-
-export interface RoleUpsertNestedInput {
-  update: RoleUpdateDataInput;
-  create: RoleCreateInput;
-}
-
-export type PetitionWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
-
-export interface EventActionUpdateManyWithoutUserInput {
-  create?:
-    | EventActionCreateWithoutUserInput[]
-    | EventActionCreateWithoutUserInput;
-  delete?: EventActionWhereUniqueInput[] | EventActionWhereUniqueInput;
-  connect?: EventActionWhereUniqueInput[] | EventActionWhereUniqueInput;
-  disconnect?: EventActionWhereUniqueInput[] | EventActionWhereUniqueInput;
-  update?:
-    | EventActionUpdateWithWhereUniqueWithoutUserInput[]
-    | EventActionUpdateWithWhereUniqueWithoutUserInput;
-  upsert?:
-    | EventActionUpsertWithWhereUniqueWithoutUserInput[]
-    | EventActionUpsertWithWhereUniqueWithoutUserInput;
-  deleteMany?: EventActionScalarWhereInput[] | EventActionScalarWhereInput;
-  updateMany?:
-    | EventActionUpdateManyWithWhereNestedInput[]
-    | EventActionUpdateManyWithWhereNestedInput;
-}
-
-export interface EventActionUpdateManyMutationInput {
-  took_action?: Boolean;
-}
-
-export interface CommunityEventUpdateInput {
-  type?: String;
-  number_of_people?: Int;
-}
-
-export type RoleWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
-
-export interface EventActionUpdateWithoutUserDataInput {
-  action?: ActionUpdateOneRequiredInput;
-  took_action?: Boolean;
-}
-
-export interface UserUpdateOneRequiredWithoutRecent_actionsInput {
-  create?: UserCreateWithoutRecent_actionsInput;
-  update?: UserUpdateWithoutRecent_actionsDataInput;
-  upsert?: UserUpsertWithoutRecent_actionsInput;
-  connect?: UserWhereUniqueInput;
-}
-
-export interface ActionUpdateOneRequiredInput {
-  create?: ActionCreateInput;
-  update?: ActionUpdateDataInput;
-  upsert?: ActionUpsertNestedInput;
-  connect?: ActionWhereUniqueInput;
-}
-
-export interface UserCreateWithoutRecent_actionsInput {
-  username?: String;
-  email?: String;
-  password: String;
-  name?: String;
-  phone?: String;
-  role?: RoleCreateOneInput;
-  zipcode?: String;
-  total_points?: Int;
-  petitions_signed?: PetitionCreateManyWithoutUsersInput;
-  community_events?: CommunityEventCreateManyInput;
-  device_id?: String;
-  crew?: String;
-  crew_type?: String;
-}
-
-export interface ActionUpsertNestedInput {
-  update: ActionUpdateDataInput;
-  create: ActionCreateInput;
-}
-
-export interface UserCreateOneWithoutRecent_actionsInput {
-  create?: UserCreateWithoutRecent_actionsInput;
-  connect?: UserWhereUniqueInput;
-}
-
-export interface EventActionUpsertWithWhereUniqueWithoutUserInput {
-  where: EventActionWhereUniqueInput;
-  update: EventActionUpdateWithoutUserDataInput;
-  create: EventActionCreateWithoutUserInput;
-}
-
-export interface CommunityEventUpdateManyMutationInput {
-  type?: String;
-  number_of_people?: Int;
-}
-
-export interface EventActionScalarWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  took_action?: Boolean;
-  took_action_not?: Boolean;
-  createdAt?: DateTimeInput;
-  createdAt_not?: DateTimeInput;
-  createdAt_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_lt?: DateTimeInput;
-  createdAt_lte?: DateTimeInput;
-  createdAt_gt?: DateTimeInput;
-  createdAt_gte?: DateTimeInput;
-  updatedAt?: DateTimeInput;
-  updatedAt_not?: DateTimeInput;
-  updatedAt_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_lt?: DateTimeInput;
-  updatedAt_lte?: DateTimeInput;
-  updatedAt_gt?: DateTimeInput;
-  updatedAt_gte?: DateTimeInput;
-  AND?: EventActionScalarWhereInput[] | EventActionScalarWhereInput;
-  OR?: EventActionScalarWhereInput[] | EventActionScalarWhereInput;
-  NOT?: EventActionScalarWhereInput[] | EventActionScalarWhereInput;
-}
-
-export interface ActionCreateInput {
-  category?: ActionCategoryCreateOneWithoutActionsInput;
-  primary_image?: String;
-  active?: Boolean;
-  short_description: String;
-  action_taken_description: String;
-  schedule?: Schedule;
-  video_url?: String;
-  carbon_dioxide?: Float;
-  order?: Int;
-  water?: Float;
-  waste?: Float;
-  points?: Int;
-  external_url?: String;
-  isGame?: Boolean;
-  game_title?: String;
-  related_actions?: ActionCreateManyInput;
-  author: UserCreateOneInput;
 }
 
 export interface UserWhereInput {
@@ -1524,66 +978,94 @@ export interface UserWhereInput {
   NOT?: UserWhereInput[] | UserWhereInput;
 }
 
-export interface ActionCategoryCreateWithoutActionsInput {
-  name: String;
-  primary_image?: String;
-  video_id?: String;
+export interface RoleWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  role_name?: String;
+  role_name_not?: String;
+  role_name_in?: String[] | String;
+  role_name_not_in?: String[] | String;
+  role_name_lt?: String;
+  role_name_lte?: String;
+  role_name_gt?: String;
+  role_name_gte?: String;
+  role_name_contains?: String;
+  role_name_not_contains?: String;
+  role_name_starts_with?: String;
+  role_name_not_starts_with?: String;
+  role_name_ends_with?: String;
+  role_name_not_ends_with?: String;
+  createdAt?: DateTimeInput;
+  createdAt_not?: DateTimeInput;
+  createdAt_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_lt?: DateTimeInput;
+  createdAt_lte?: DateTimeInput;
+  createdAt_gt?: DateTimeInput;
+  createdAt_gte?: DateTimeInput;
+  updatedAt?: DateTimeInput;
+  updatedAt_not?: DateTimeInput;
+  updatedAt_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_lt?: DateTimeInput;
+  updatedAt_lte?: DateTimeInput;
+  updatedAt_gt?: DateTimeInput;
+  updatedAt_gte?: DateTimeInput;
+  AND?: RoleWhereInput[] | RoleWhereInput;
+  OR?: RoleWhereInput[] | RoleWhereInput;
+  NOT?: RoleWhereInput[] | RoleWhereInput;
 }
 
-export interface EventActionUpdateManyDataInput {
+export interface EventActionWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  action?: ActionWhereInput;
+  user?: UserWhereInput;
   took_action?: Boolean;
-}
-
-export interface UserCreateOneInput {
-  create?: UserCreateInput;
-  connect?: UserWhereUniqueInput;
-}
-
-export interface PetitionUpdateManyWithoutUsersInput {
-  create?: PetitionCreateWithoutUsersInput[] | PetitionCreateWithoutUsersInput;
-  delete?: PetitionWhereUniqueInput[] | PetitionWhereUniqueInput;
-  connect?: PetitionWhereUniqueInput[] | PetitionWhereUniqueInput;
-  disconnect?: PetitionWhereUniqueInput[] | PetitionWhereUniqueInput;
-  update?:
-    | PetitionUpdateWithWhereUniqueWithoutUsersInput[]
-    | PetitionUpdateWithWhereUniqueWithoutUsersInput;
-  upsert?:
-    | PetitionUpsertWithWhereUniqueWithoutUsersInput[]
-    | PetitionUpsertWithWhereUniqueWithoutUsersInput;
-  deleteMany?: PetitionScalarWhereInput[] | PetitionScalarWhereInput;
-  updateMany?:
-    | PetitionUpdateManyWithWhereNestedInput[]
-    | PetitionUpdateManyWithWhereNestedInput;
-}
-
-export interface RoleCreateOneInput {
-  create?: RoleCreateInput;
-  connect?: RoleWhereUniqueInput;
-}
-
-export interface PetitionUpdateWithWhereUniqueWithoutUsersInput {
-  where: PetitionWhereUniqueInput;
-  data: PetitionUpdateWithoutUsersDataInput;
-}
-
-export interface EventActionCreateManyWithoutUserInput {
-  create?:
-    | EventActionCreateWithoutUserInput[]
-    | EventActionCreateWithoutUserInput;
-  connect?: EventActionWhereUniqueInput[] | EventActionWhereUniqueInput;
-}
-
-export interface PetitionUpdateWithoutUsersDataInput {
-  title?: String;
-  active?: Boolean;
-  short_description?: String;
-  body?: String;
-  order?: Int;
-  primary_image?: String;
-  video_url?: String;
-  external_url?: String;
-  hasVideo?: Boolean;
-  author?: UserUpdateOneRequiredInput;
+  took_action_not?: Boolean;
+  createdAt?: DateTimeInput;
+  createdAt_not?: DateTimeInput;
+  createdAt_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_lt?: DateTimeInput;
+  createdAt_lte?: DateTimeInput;
+  createdAt_gt?: DateTimeInput;
+  createdAt_gte?: DateTimeInput;
+  updatedAt?: DateTimeInput;
+  updatedAt_not?: DateTimeInput;
+  updatedAt_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_lt?: DateTimeInput;
+  updatedAt_lte?: DateTimeInput;
+  updatedAt_gt?: DateTimeInput;
+  updatedAt_gte?: DateTimeInput;
+  AND?: EventActionWhereInput[] | EventActionWhereInput;
+  OR?: EventActionWhereInput[] | EventActionWhereInput;
+  NOT?: EventActionWhereInput[] | EventActionWhereInput;
 }
 
 export interface PetitionWhereInput {
@@ -1722,21 +1204,460 @@ export interface PetitionWhereInput {
   NOT?: PetitionWhereInput[] | PetitionWhereInput;
 }
 
+export interface CommunityEventWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  type?: String;
+  type_not?: String;
+  type_in?: String[] | String;
+  type_not_in?: String[] | String;
+  type_lt?: String;
+  type_lte?: String;
+  type_gt?: String;
+  type_gte?: String;
+  type_contains?: String;
+  type_not_contains?: String;
+  type_starts_with?: String;
+  type_not_starts_with?: String;
+  type_ends_with?: String;
+  type_not_ends_with?: String;
+  number_of_people?: Int;
+  number_of_people_not?: Int;
+  number_of_people_in?: Int[] | Int;
+  number_of_people_not_in?: Int[] | Int;
+  number_of_people_lt?: Int;
+  number_of_people_lte?: Int;
+  number_of_people_gt?: Int;
+  number_of_people_gte?: Int;
+  createdAt?: DateTimeInput;
+  createdAt_not?: DateTimeInput;
+  createdAt_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_lt?: DateTimeInput;
+  createdAt_lte?: DateTimeInput;
+  createdAt_gt?: DateTimeInput;
+  createdAt_gte?: DateTimeInput;
+  updatedAt?: DateTimeInput;
+  updatedAt_not?: DateTimeInput;
+  updatedAt_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_lt?: DateTimeInput;
+  updatedAt_lte?: DateTimeInput;
+  updatedAt_gt?: DateTimeInput;
+  updatedAt_gte?: DateTimeInput;
+  AND?: CommunityEventWhereInput[] | CommunityEventWhereInput;
+  OR?: CommunityEventWhereInput[] | CommunityEventWhereInput;
+  NOT?: CommunityEventWhereInput[] | CommunityEventWhereInput;
+}
+
+export type ActionCategoryWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export type CommunityEventWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export type EventActionWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export type PetitionWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export type RoleWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+}>;
+
+export type UserWhereUniqueInput = AtLeastOne<{
+  id: ID_Input;
+  username?: String;
+  email?: String;
+  phone?: String;
+}>;
+
+export interface ActionCreateInput {
+  category?: ActionCategoryCreateOneWithoutActionsInput;
+  primary_image?: String;
+  active?: Boolean;
+  short_description: String;
+  action_taken_description: String;
+  schedule?: Schedule;
+  video_url?: String;
+  carbon_dioxide?: Float;
+  order?: Int;
+  water?: Float;
+  waste?: Float;
+  points?: Int;
+  external_url?: String;
+  isGame?: Boolean;
+  game_title?: String;
+  related_actions?: ActionCreateManyInput;
+  author: UserCreateOneInput;
+}
+
+export interface ActionCategoryCreateOneWithoutActionsInput {
+  create?: ActionCategoryCreateWithoutActionsInput;
+  connect?: ActionCategoryWhereUniqueInput;
+}
+
+export interface ActionCategoryCreateWithoutActionsInput {
+  name: String;
+  primary_image?: String;
+  video_id?: String;
+}
+
+export interface ActionCreateManyInput {
+  create?: ActionCreateInput[] | ActionCreateInput;
+  connect?: ActionWhereUniqueInput[] | ActionWhereUniqueInput;
+}
+
+export interface UserCreateOneInput {
+  create?: UserCreateInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface UserCreateInput {
+  username?: String;
+  email?: String;
+  password: String;
+  name?: String;
+  phone?: String;
+  role?: RoleCreateOneInput;
+  recent_actions?: EventActionCreateManyWithoutUserInput;
+  zipcode?: String;
+  total_points?: Int;
+  petitions_signed?: PetitionCreateManyWithoutUsersInput;
+  community_events?: CommunityEventCreateManyInput;
+  device_id?: String;
+  crew?: String;
+  crew_type?: String;
+}
+
+export interface RoleCreateOneInput {
+  create?: RoleCreateInput;
+  connect?: RoleWhereUniqueInput;
+}
+
+export interface RoleCreateInput {
+  role_name: String;
+}
+
+export interface EventActionCreateManyWithoutUserInput {
+  create?:
+    | EventActionCreateWithoutUserInput[]
+    | EventActionCreateWithoutUserInput;
+  connect?: EventActionWhereUniqueInput[] | EventActionWhereUniqueInput;
+}
+
+export interface EventActionCreateWithoutUserInput {
+  action: ActionCreateOneInput;
+  took_action?: Boolean;
+}
+
+export interface ActionCreateOneInput {
+  create?: ActionCreateInput;
+  connect?: ActionWhereUniqueInput;
+}
+
+export interface PetitionCreateManyWithoutUsersInput {
+  create?: PetitionCreateWithoutUsersInput[] | PetitionCreateWithoutUsersInput;
+  connect?: PetitionWhereUniqueInput[] | PetitionWhereUniqueInput;
+}
+
+export interface PetitionCreateWithoutUsersInput {
+  title: String;
+  active?: Boolean;
+  short_description: String;
+  body: String;
+  order?: Int;
+  primary_image?: String;
+  video_url?: String;
+  external_url?: String;
+  hasVideo?: Boolean;
+  author: UserCreateOneInput;
+}
+
+export interface CommunityEventCreateManyInput {
+  create?: CommunityEventCreateInput[] | CommunityEventCreateInput;
+  connect?: CommunityEventWhereUniqueInput[] | CommunityEventWhereUniqueInput;
+}
+
+export interface CommunityEventCreateInput {
+  type: String;
+  number_of_people: Int;
+}
+
+export interface ActionUpdateInput {
+  category?: ActionCategoryUpdateOneWithoutActionsInput;
+  primary_image?: String;
+  active?: Boolean;
+  short_description?: String;
+  action_taken_description?: String;
+  schedule?: Schedule;
+  video_url?: String;
+  carbon_dioxide?: Float;
+  order?: Int;
+  water?: Float;
+  waste?: Float;
+  points?: Int;
+  external_url?: String;
+  isGame?: Boolean;
+  game_title?: String;
+  related_actions?: ActionUpdateManyInput;
+  author?: UserUpdateOneRequiredInput;
+}
+
+export interface ActionCategoryUpdateOneWithoutActionsInput {
+  create?: ActionCategoryCreateWithoutActionsInput;
+  update?: ActionCategoryUpdateWithoutActionsDataInput;
+  upsert?: ActionCategoryUpsertWithoutActionsInput;
+  delete?: Boolean;
+  disconnect?: Boolean;
+  connect?: ActionCategoryWhereUniqueInput;
+}
+
+export interface ActionCategoryUpdateWithoutActionsDataInput {
+  name?: String;
+  primary_image?: String;
+  video_id?: String;
+}
+
+export interface ActionCategoryUpsertWithoutActionsInput {
+  update: ActionCategoryUpdateWithoutActionsDataInput;
+  create: ActionCategoryCreateWithoutActionsInput;
+}
+
+export interface ActionUpdateManyInput {
+  create?: ActionCreateInput[] | ActionCreateInput;
+  update?:
+    | ActionUpdateWithWhereUniqueNestedInput[]
+    | ActionUpdateWithWhereUniqueNestedInput;
+  upsert?:
+    | ActionUpsertWithWhereUniqueNestedInput[]
+    | ActionUpsertWithWhereUniqueNestedInput;
+  delete?: ActionWhereUniqueInput[] | ActionWhereUniqueInput;
+  connect?: ActionWhereUniqueInput[] | ActionWhereUniqueInput;
+  disconnect?: ActionWhereUniqueInput[] | ActionWhereUniqueInput;
+  deleteMany?: ActionScalarWhereInput[] | ActionScalarWhereInput;
+  updateMany?:
+    | ActionUpdateManyWithWhereNestedInput[]
+    | ActionUpdateManyWithWhereNestedInput;
+}
+
+export interface ActionUpdateWithWhereUniqueNestedInput {
+  where: ActionWhereUniqueInput;
+  data: ActionUpdateDataInput;
+}
+
+export interface ActionUpdateDataInput {
+  category?: ActionCategoryUpdateOneWithoutActionsInput;
+  primary_image?: String;
+  active?: Boolean;
+  short_description?: String;
+  action_taken_description?: String;
+  schedule?: Schedule;
+  video_url?: String;
+  carbon_dioxide?: Float;
+  order?: Int;
+  water?: Float;
+  waste?: Float;
+  points?: Int;
+  external_url?: String;
+  isGame?: Boolean;
+  game_title?: String;
+  related_actions?: ActionUpdateManyInput;
+  author?: UserUpdateOneRequiredInput;
+}
+
+export interface UserUpdateOneRequiredInput {
+  create?: UserCreateInput;
+  update?: UserUpdateDataInput;
+  upsert?: UserUpsertNestedInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface UserUpdateDataInput {
+  username?: String;
+  email?: String;
+  password?: String;
+  name?: String;
+  phone?: String;
+  role?: RoleUpdateOneInput;
+  recent_actions?: EventActionUpdateManyWithoutUserInput;
+  zipcode?: String;
+  total_points?: Int;
+  petitions_signed?: PetitionUpdateManyWithoutUsersInput;
+  community_events?: CommunityEventUpdateManyInput;
+  device_id?: String;
+  crew?: String;
+  crew_type?: String;
+}
+
+export interface RoleUpdateOneInput {
+  create?: RoleCreateInput;
+  update?: RoleUpdateDataInput;
+  upsert?: RoleUpsertNestedInput;
+  delete?: Boolean;
+  disconnect?: Boolean;
+  connect?: RoleWhereUniqueInput;
+}
+
+export interface RoleUpdateDataInput {
+  role_name?: String;
+}
+
+export interface RoleUpsertNestedInput {
+  update: RoleUpdateDataInput;
+  create: RoleCreateInput;
+}
+
+export interface EventActionUpdateManyWithoutUserInput {
+  create?:
+    | EventActionCreateWithoutUserInput[]
+    | EventActionCreateWithoutUserInput;
+  delete?: EventActionWhereUniqueInput[] | EventActionWhereUniqueInput;
+  connect?: EventActionWhereUniqueInput[] | EventActionWhereUniqueInput;
+  disconnect?: EventActionWhereUniqueInput[] | EventActionWhereUniqueInput;
+  update?:
+    | EventActionUpdateWithWhereUniqueWithoutUserInput[]
+    | EventActionUpdateWithWhereUniqueWithoutUserInput;
+  upsert?:
+    | EventActionUpsertWithWhereUniqueWithoutUserInput[]
+    | EventActionUpsertWithWhereUniqueWithoutUserInput;
+  deleteMany?: EventActionScalarWhereInput[] | EventActionScalarWhereInput;
+  updateMany?:
+    | EventActionUpdateManyWithWhereNestedInput[]
+    | EventActionUpdateManyWithWhereNestedInput;
+}
+
+export interface EventActionUpdateWithWhereUniqueWithoutUserInput {
+  where: EventActionWhereUniqueInput;
+  data: EventActionUpdateWithoutUserDataInput;
+}
+
+export interface EventActionUpdateWithoutUserDataInput {
+  action?: ActionUpdateOneRequiredInput;
+  took_action?: Boolean;
+}
+
+export interface ActionUpdateOneRequiredInput {
+  create?: ActionCreateInput;
+  update?: ActionUpdateDataInput;
+  upsert?: ActionUpsertNestedInput;
+  connect?: ActionWhereUniqueInput;
+}
+
+export interface ActionUpsertNestedInput {
+  update: ActionUpdateDataInput;
+  create: ActionCreateInput;
+}
+
+export interface EventActionUpsertWithWhereUniqueWithoutUserInput {
+  where: EventActionWhereUniqueInput;
+  update: EventActionUpdateWithoutUserDataInput;
+  create: EventActionCreateWithoutUserInput;
+}
+
+export interface EventActionScalarWhereInput {
+  id?: ID_Input;
+  id_not?: ID_Input;
+  id_in?: ID_Input[] | ID_Input;
+  id_not_in?: ID_Input[] | ID_Input;
+  id_lt?: ID_Input;
+  id_lte?: ID_Input;
+  id_gt?: ID_Input;
+  id_gte?: ID_Input;
+  id_contains?: ID_Input;
+  id_not_contains?: ID_Input;
+  id_starts_with?: ID_Input;
+  id_not_starts_with?: ID_Input;
+  id_ends_with?: ID_Input;
+  id_not_ends_with?: ID_Input;
+  took_action?: Boolean;
+  took_action_not?: Boolean;
+  createdAt?: DateTimeInput;
+  createdAt_not?: DateTimeInput;
+  createdAt_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
+  createdAt_lt?: DateTimeInput;
+  createdAt_lte?: DateTimeInput;
+  createdAt_gt?: DateTimeInput;
+  createdAt_gte?: DateTimeInput;
+  updatedAt?: DateTimeInput;
+  updatedAt_not?: DateTimeInput;
+  updatedAt_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
+  updatedAt_lt?: DateTimeInput;
+  updatedAt_lte?: DateTimeInput;
+  updatedAt_gt?: DateTimeInput;
+  updatedAt_gte?: DateTimeInput;
+  AND?: EventActionScalarWhereInput[] | EventActionScalarWhereInput;
+  OR?: EventActionScalarWhereInput[] | EventActionScalarWhereInput;
+  NOT?: EventActionScalarWhereInput[] | EventActionScalarWhereInput;
+}
+
+export interface EventActionUpdateManyWithWhereNestedInput {
+  where: EventActionScalarWhereInput;
+  data: EventActionUpdateManyDataInput;
+}
+
+export interface EventActionUpdateManyDataInput {
+  took_action?: Boolean;
+}
+
+export interface PetitionUpdateManyWithoutUsersInput {
+  create?: PetitionCreateWithoutUsersInput[] | PetitionCreateWithoutUsersInput;
+  delete?: PetitionWhereUniqueInput[] | PetitionWhereUniqueInput;
+  connect?: PetitionWhereUniqueInput[] | PetitionWhereUniqueInput;
+  disconnect?: PetitionWhereUniqueInput[] | PetitionWhereUniqueInput;
+  update?:
+    | PetitionUpdateWithWhereUniqueWithoutUsersInput[]
+    | PetitionUpdateWithWhereUniqueWithoutUsersInput;
+  upsert?:
+    | PetitionUpsertWithWhereUniqueWithoutUsersInput[]
+    | PetitionUpsertWithWhereUniqueWithoutUsersInput;
+  deleteMany?: PetitionScalarWhereInput[] | PetitionScalarWhereInput;
+  updateMany?:
+    | PetitionUpdateManyWithWhereNestedInput[]
+    | PetitionUpdateManyWithWhereNestedInput;
+}
+
+export interface PetitionUpdateWithWhereUniqueWithoutUsersInput {
+  where: PetitionWhereUniqueInput;
+  data: PetitionUpdateWithoutUsersDataInput;
+}
+
+export interface PetitionUpdateWithoutUsersDataInput {
+  title?: String;
+  active?: Boolean;
+  short_description?: String;
+  body?: String;
+  order?: Int;
+  primary_image?: String;
+  video_url?: String;
+  external_url?: String;
+  hasVideo?: Boolean;
+  author?: UserUpdateOneRequiredInput;
+}
+
 export interface PetitionUpsertWithWhereUniqueWithoutUsersInput {
   where: PetitionWhereUniqueInput;
   update: PetitionUpdateWithoutUsersDataInput;
   create: PetitionCreateWithoutUsersInput;
-}
-
-export interface PetitionSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: PetitionWhereInput;
-  AND?: PetitionSubscriptionWhereInput[] | PetitionSubscriptionWhereInput;
-  OR?: PetitionSubscriptionWhereInput[] | PetitionSubscriptionWhereInput;
-  NOT?: PetitionSubscriptionWhereInput[] | PetitionSubscriptionWhereInput;
 }
 
 export interface PetitionScalarWhereInput {
@@ -1871,37 +1792,9 @@ export interface PetitionScalarWhereInput {
   NOT?: PetitionScalarWhereInput[] | PetitionScalarWhereInput;
 }
 
-export interface ActionSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: ActionWhereInput;
-  AND?: ActionSubscriptionWhereInput[] | ActionSubscriptionWhereInput;
-  OR?: ActionSubscriptionWhereInput[] | ActionSubscriptionWhereInput;
-  NOT?: ActionSubscriptionWhereInput[] | ActionSubscriptionWhereInput;
-}
-
 export interface PetitionUpdateManyWithWhereNestedInput {
   where: PetitionScalarWhereInput;
   data: PetitionUpdateManyDataInput;
-}
-
-export interface UserUpdateInput {
-  username?: String;
-  email?: String;
-  password?: String;
-  name?: String;
-  phone?: String;
-  role?: RoleUpdateOneInput;
-  recent_actions?: EventActionUpdateManyWithoutUserInput;
-  zipcode?: String;
-  total_points?: Int;
-  petitions_signed?: PetitionUpdateManyWithoutUsersInput;
-  community_events?: CommunityEventUpdateManyInput;
-  device_id?: String;
-  crew?: String;
-  crew_type?: String;
 }
 
 export interface PetitionUpdateManyDataInput {
@@ -1915,10 +1808,6 @@ export interface PetitionUpdateManyDataInput {
   external_url?: String;
   hasVideo?: Boolean;
 }
-
-export type ActionCategoryWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-}>;
 
 export interface CommunityEventUpdateManyInput {
   create?: CommunityEventCreateInput[] | CommunityEventCreateInput;
@@ -1941,34 +1830,9 @@ export interface CommunityEventUpdateManyInput {
     | CommunityEventUpdateManyWithWhereNestedInput;
 }
 
-export interface UserUpsertWithWhereUniqueWithoutPetitions_signedInput {
-  where: UserWhereUniqueInput;
-  update: UserUpdateWithoutPetitions_signedDataInput;
-  create: UserCreateWithoutPetitions_signedInput;
-}
-
 export interface CommunityEventUpdateWithWhereUniqueNestedInput {
   where: CommunityEventWhereUniqueInput;
   data: CommunityEventUpdateDataInput;
-}
-
-export interface UserUpdateManyWithoutPetitions_signedInput {
-  create?:
-    | UserCreateWithoutPetitions_signedInput[]
-    | UserCreateWithoutPetitions_signedInput;
-  delete?: UserWhereUniqueInput[] | UserWhereUniqueInput;
-  connect?: UserWhereUniqueInput[] | UserWhereUniqueInput;
-  disconnect?: UserWhereUniqueInput[] | UserWhereUniqueInput;
-  update?:
-    | UserUpdateWithWhereUniqueWithoutPetitions_signedInput[]
-    | UserUpdateWithWhereUniqueWithoutPetitions_signedInput;
-  upsert?:
-    | UserUpsertWithWhereUniqueWithoutPetitions_signedInput[]
-    | UserUpsertWithWhereUniqueWithoutPetitions_signedInput;
-  deleteMany?: UserScalarWhereInput[] | UserScalarWhereInput;
-  updateMany?:
-    | UserUpdateManyWithWhereNestedInput[]
-    | UserUpdateManyWithWhereNestedInput;
 }
 
 export interface CommunityEventUpdateDataInput {
@@ -1976,22 +1840,10 @@ export interface CommunityEventUpdateDataInput {
   number_of_people?: Int;
 }
 
-export interface UserCreateManyWithoutPetitions_signedInput {
-  create?:
-    | UserCreateWithoutPetitions_signedInput[]
-    | UserCreateWithoutPetitions_signedInput;
-  connect?: UserWhereUniqueInput[] | UserWhereUniqueInput;
-}
-
 export interface CommunityEventUpsertWithWhereUniqueNestedInput {
   where: CommunityEventWhereUniqueInput;
   update: CommunityEventUpdateDataInput;
   create: CommunityEventCreateInput;
-}
-
-export interface UserUpsertWithoutRecent_actionsInput {
-  update: UserUpdateWithoutRecent_actionsDataInput;
-  create: UserCreateWithoutRecent_actionsInput;
 }
 
 export interface CommunityEventScalarWhereInput {
@@ -2052,21 +1904,9 @@ export interface CommunityEventScalarWhereInput {
   NOT?: CommunityEventScalarWhereInput[] | CommunityEventScalarWhereInput;
 }
 
-export interface EventActionUpdateInput {
-  action?: ActionUpdateOneRequiredInput;
-  user?: UserUpdateOneRequiredWithoutRecent_actionsInput;
-  took_action?: Boolean;
-}
-
 export interface CommunityEventUpdateManyWithWhereNestedInput {
   where: CommunityEventScalarWhereInput;
   data: CommunityEventUpdateManyDataInput;
-}
-
-export interface EventActionCreateInput {
-  action: ActionCreateOneInput;
-  user: UserCreateOneWithoutRecent_actionsInput;
-  took_action?: Boolean;
 }
 
 export interface CommunityEventUpdateManyDataInput {
@@ -2074,87 +1914,15 @@ export interface CommunityEventUpdateManyDataInput {
   number_of_people?: Int;
 }
 
-export interface ActionCategoryCreateOneWithoutActionsInput {
-  create?: ActionCategoryCreateWithoutActionsInput;
-  connect?: ActionCategoryWhereUniqueInput;
-}
-
 export interface UserUpsertNestedInput {
   update: UserUpdateDataInput;
   create: UserCreateInput;
-}
-
-export interface UserCreateInput {
-  username?: String;
-  email?: String;
-  password: String;
-  name?: String;
-  phone?: String;
-  role?: RoleCreateOneInput;
-  recent_actions?: EventActionCreateManyWithoutUserInput;
-  zipcode?: String;
-  total_points?: Int;
-  petitions_signed?: PetitionCreateManyWithoutUsersInput;
-  community_events?: CommunityEventCreateManyInput;
-  device_id?: String;
-  crew?: String;
-  crew_type?: String;
 }
 
 export interface ActionUpsertWithWhereUniqueNestedInput {
   where: ActionWhereUniqueInput;
   update: ActionUpdateDataInput;
   create: ActionCreateInput;
-}
-
-export interface RoleWhereInput {
-  id?: ID_Input;
-  id_not?: ID_Input;
-  id_in?: ID_Input[] | ID_Input;
-  id_not_in?: ID_Input[] | ID_Input;
-  id_lt?: ID_Input;
-  id_lte?: ID_Input;
-  id_gt?: ID_Input;
-  id_gte?: ID_Input;
-  id_contains?: ID_Input;
-  id_not_contains?: ID_Input;
-  id_starts_with?: ID_Input;
-  id_not_starts_with?: ID_Input;
-  id_ends_with?: ID_Input;
-  id_not_ends_with?: ID_Input;
-  role_name?: String;
-  role_name_not?: String;
-  role_name_in?: String[] | String;
-  role_name_not_in?: String[] | String;
-  role_name_lt?: String;
-  role_name_lte?: String;
-  role_name_gt?: String;
-  role_name_gte?: String;
-  role_name_contains?: String;
-  role_name_not_contains?: String;
-  role_name_starts_with?: String;
-  role_name_not_starts_with?: String;
-  role_name_ends_with?: String;
-  role_name_not_ends_with?: String;
-  createdAt?: DateTimeInput;
-  createdAt_not?: DateTimeInput;
-  createdAt_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_not_in?: DateTimeInput[] | DateTimeInput;
-  createdAt_lt?: DateTimeInput;
-  createdAt_lte?: DateTimeInput;
-  createdAt_gt?: DateTimeInput;
-  createdAt_gte?: DateTimeInput;
-  updatedAt?: DateTimeInput;
-  updatedAt_not?: DateTimeInput;
-  updatedAt_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_not_in?: DateTimeInput[] | DateTimeInput;
-  updatedAt_lt?: DateTimeInput;
-  updatedAt_lte?: DateTimeInput;
-  updatedAt_gt?: DateTimeInput;
-  updatedAt_gte?: DateTimeInput;
-  AND?: RoleWhereInput[] | RoleWhereInput;
-  OR?: RoleWhereInput[] | RoleWhereInput;
-  NOT?: RoleWhereInput[] | RoleWhereInput;
 }
 
 export interface ActionScalarWhereInput {
@@ -2325,30 +2093,9 @@ export interface ActionScalarWhereInput {
   NOT?: ActionScalarWhereInput[] | ActionScalarWhereInput;
 }
 
-export interface CommunityEventSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: CommunityEventWhereInput;
-  AND?:
-    | CommunityEventSubscriptionWhereInput[]
-    | CommunityEventSubscriptionWhereInput;
-  OR?:
-    | CommunityEventSubscriptionWhereInput[]
-    | CommunityEventSubscriptionWhereInput;
-  NOT?:
-    | CommunityEventSubscriptionWhereInput[]
-    | CommunityEventSubscriptionWhereInput;
-}
-
 export interface ActionUpdateManyWithWhereNestedInput {
   where: ActionScalarWhereInput;
   data: ActionUpdateManyDataInput;
-}
-
-export interface RoleUpdateInput {
-  role_name?: String;
 }
 
 export interface ActionUpdateManyDataInput {
@@ -2368,22 +2115,6 @@ export interface ActionUpdateManyDataInput {
   game_title?: String;
 }
 
-export interface UserUpdateWithoutPetitions_signedDataInput {
-  username?: String;
-  email?: String;
-  password?: String;
-  name?: String;
-  phone?: String;
-  role?: RoleUpdateOneInput;
-  recent_actions?: EventActionUpdateManyWithoutUserInput;
-  zipcode?: String;
-  total_points?: Int;
-  community_events?: CommunityEventUpdateManyInput;
-  device_id?: String;
-  crew?: String;
-  crew_type?: String;
-}
-
 export interface ActionUpdateManyMutationInput {
   primary_image?: String;
   active?: Boolean;
@@ -2401,44 +2132,6 @@ export interface ActionUpdateManyMutationInput {
   game_title?: String;
 }
 
-export interface PetitionCreateInput {
-  title: String;
-  active?: Boolean;
-  short_description: String;
-  body: String;
-  order?: Int;
-  primary_image?: String;
-  video_url?: String;
-  external_url?: String;
-  hasVideo?: Boolean;
-  users?: UserCreateManyWithoutPetitions_signedInput;
-  author: UserCreateOneInput;
-}
-
-export interface ActionCategoryUpdateManyMutationInput {
-  name?: String;
-  primary_image?: String;
-  video_id?: String;
-}
-
-export type UserWhereUniqueInput = AtLeastOne<{
-  id: ID_Input;
-  username?: String;
-  email?: String;
-  phone?: String;
-}>;
-
-export interface ActionUpsertWithWhereUniqueWithoutCategoryInput {
-  where: ActionWhereUniqueInput;
-  update: ActionUpdateWithoutCategoryDataInput;
-  create: ActionCreateWithoutCategoryInput;
-}
-
-export interface ActionCreateManyInput {
-  create?: ActionCreateInput[] | ActionCreateInput;
-  connect?: ActionWhereUniqueInput[] | ActionWhereUniqueInput;
-}
-
 export interface ActionCategoryCreateInput {
   name: String;
   actions?: ActionCreateManyWithoutCategoryInput;
@@ -2446,74 +2139,11 @@ export interface ActionCategoryCreateInput {
   video_id?: String;
 }
 
-export interface UserSubscriptionWhereInput {
-  mutation_in?: MutationType[] | MutationType;
-  updatedFields_contains?: String;
-  updatedFields_contains_every?: String[] | String;
-  updatedFields_contains_some?: String[] | String;
-  node?: UserWhereInput;
-  AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-  OR?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-  NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
-}
-
 export interface ActionCreateManyWithoutCategoryInput {
   create?:
     | ActionCreateWithoutCategoryInput[]
     | ActionCreateWithoutCategoryInput;
   connect?: ActionWhereUniqueInput[] | ActionWhereUniqueInput;
-}
-
-export interface UserUpdateManyWithWhereNestedInput {
-  where: UserScalarWhereInput;
-  data: UserUpdateManyDataInput;
-}
-
-export interface UserUpdateWithoutRecent_actionsDataInput {
-  username?: String;
-  email?: String;
-  password?: String;
-  name?: String;
-  phone?: String;
-  role?: RoleUpdateOneInput;
-  zipcode?: String;
-  total_points?: Int;
-  petitions_signed?: PetitionUpdateManyWithoutUsersInput;
-  community_events?: CommunityEventUpdateManyInput;
-  device_id?: String;
-  crew?: String;
-  crew_type?: String;
-}
-
-export interface ActionUpdateWithWhereUniqueWithoutCategoryInput {
-  where: ActionWhereUniqueInput;
-  data: ActionUpdateWithoutCategoryDataInput;
-}
-
-export interface ActionUpdateManyWithoutCategoryInput {
-  create?:
-    | ActionCreateWithoutCategoryInput[]
-    | ActionCreateWithoutCategoryInput;
-  delete?: ActionWhereUniqueInput[] | ActionWhereUniqueInput;
-  connect?: ActionWhereUniqueInput[] | ActionWhereUniqueInput;
-  disconnect?: ActionWhereUniqueInput[] | ActionWhereUniqueInput;
-  update?:
-    | ActionUpdateWithWhereUniqueWithoutCategoryInput[]
-    | ActionUpdateWithWhereUniqueWithoutCategoryInput;
-  upsert?:
-    | ActionUpsertWithWhereUniqueWithoutCategoryInput[]
-    | ActionUpsertWithWhereUniqueWithoutCategoryInput;
-  deleteMany?: ActionScalarWhereInput[] | ActionScalarWhereInput;
-  updateMany?:
-    | ActionUpdateManyWithWhereNestedInput[]
-    | ActionUpdateManyWithWhereNestedInput;
-}
-
-export interface ActionCategoryUpdateInput {
-  name?: String;
-  actions?: ActionUpdateManyWithoutCategoryInput;
-  primary_image?: String;
-  video_id?: String;
 }
 
 export interface ActionCreateWithoutCategoryInput {
@@ -2535,6 +2165,180 @@ export interface ActionCreateWithoutCategoryInput {
   author: UserCreateOneInput;
 }
 
+export interface ActionCategoryUpdateInput {
+  name?: String;
+  actions?: ActionUpdateManyWithoutCategoryInput;
+  primary_image?: String;
+  video_id?: String;
+}
+
+export interface ActionUpdateManyWithoutCategoryInput {
+  create?:
+    | ActionCreateWithoutCategoryInput[]
+    | ActionCreateWithoutCategoryInput;
+  delete?: ActionWhereUniqueInput[] | ActionWhereUniqueInput;
+  connect?: ActionWhereUniqueInput[] | ActionWhereUniqueInput;
+  disconnect?: ActionWhereUniqueInput[] | ActionWhereUniqueInput;
+  update?:
+    | ActionUpdateWithWhereUniqueWithoutCategoryInput[]
+    | ActionUpdateWithWhereUniqueWithoutCategoryInput;
+  upsert?:
+    | ActionUpsertWithWhereUniqueWithoutCategoryInput[]
+    | ActionUpsertWithWhereUniqueWithoutCategoryInput;
+  deleteMany?: ActionScalarWhereInput[] | ActionScalarWhereInput;
+  updateMany?:
+    | ActionUpdateManyWithWhereNestedInput[]
+    | ActionUpdateManyWithWhereNestedInput;
+}
+
+export interface ActionUpdateWithWhereUniqueWithoutCategoryInput {
+  where: ActionWhereUniqueInput;
+  data: ActionUpdateWithoutCategoryDataInput;
+}
+
+export interface ActionUpdateWithoutCategoryDataInput {
+  primary_image?: String;
+  active?: Boolean;
+  short_description?: String;
+  action_taken_description?: String;
+  schedule?: Schedule;
+  video_url?: String;
+  carbon_dioxide?: Float;
+  order?: Int;
+  water?: Float;
+  waste?: Float;
+  points?: Int;
+  external_url?: String;
+  isGame?: Boolean;
+  game_title?: String;
+  related_actions?: ActionUpdateManyInput;
+  author?: UserUpdateOneRequiredInput;
+}
+
+export interface ActionUpsertWithWhereUniqueWithoutCategoryInput {
+  where: ActionWhereUniqueInput;
+  update: ActionUpdateWithoutCategoryDataInput;
+  create: ActionCreateWithoutCategoryInput;
+}
+
+export interface ActionCategoryUpdateManyMutationInput {
+  name?: String;
+  primary_image?: String;
+  video_id?: String;
+}
+
+export interface CommunityEventUpdateInput {
+  type?: String;
+  number_of_people?: Int;
+}
+
+export interface CommunityEventUpdateManyMutationInput {
+  type?: String;
+  number_of_people?: Int;
+}
+
+export interface EventActionCreateInput {
+  action: ActionCreateOneInput;
+  user: UserCreateOneWithoutRecent_actionsInput;
+  took_action?: Boolean;
+}
+
+export interface UserCreateOneWithoutRecent_actionsInput {
+  create?: UserCreateWithoutRecent_actionsInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface UserCreateWithoutRecent_actionsInput {
+  username?: String;
+  email?: String;
+  password: String;
+  name?: String;
+  phone?: String;
+  role?: RoleCreateOneInput;
+  zipcode?: String;
+  total_points?: Int;
+  petitions_signed?: PetitionCreateManyWithoutUsersInput;
+  community_events?: CommunityEventCreateManyInput;
+  device_id?: String;
+  crew?: String;
+  crew_type?: String;
+}
+
+export interface EventActionUpdateInput {
+  action?: ActionUpdateOneRequiredInput;
+  user?: UserUpdateOneRequiredWithoutRecent_actionsInput;
+  took_action?: Boolean;
+}
+
+export interface UserUpdateOneRequiredWithoutRecent_actionsInput {
+  create?: UserCreateWithoutRecent_actionsInput;
+  update?: UserUpdateWithoutRecent_actionsDataInput;
+  upsert?: UserUpsertWithoutRecent_actionsInput;
+  connect?: UserWhereUniqueInput;
+}
+
+export interface UserUpdateWithoutRecent_actionsDataInput {
+  username?: String;
+  email?: String;
+  password?: String;
+  name?: String;
+  phone?: String;
+  role?: RoleUpdateOneInput;
+  zipcode?: String;
+  total_points?: Int;
+  petitions_signed?: PetitionUpdateManyWithoutUsersInput;
+  community_events?: CommunityEventUpdateManyInput;
+  device_id?: String;
+  crew?: String;
+  crew_type?: String;
+}
+
+export interface UserUpsertWithoutRecent_actionsInput {
+  update: UserUpdateWithoutRecent_actionsDataInput;
+  create: UserCreateWithoutRecent_actionsInput;
+}
+
+export interface EventActionUpdateManyMutationInput {
+  took_action?: Boolean;
+}
+
+export interface PetitionCreateInput {
+  title: String;
+  active?: Boolean;
+  short_description: String;
+  body: String;
+  order?: Int;
+  primary_image?: String;
+  video_url?: String;
+  external_url?: String;
+  hasVideo?: Boolean;
+  users?: UserCreateManyWithoutPetitions_signedInput;
+  author: UserCreateOneInput;
+}
+
+export interface UserCreateManyWithoutPetitions_signedInput {
+  create?:
+    | UserCreateWithoutPetitions_signedInput[]
+    | UserCreateWithoutPetitions_signedInput;
+  connect?: UserWhereUniqueInput[] | UserWhereUniqueInput;
+}
+
+export interface UserCreateWithoutPetitions_signedInput {
+  username?: String;
+  email?: String;
+  password: String;
+  name?: String;
+  phone?: String;
+  role?: RoleCreateOneInput;
+  recent_actions?: EventActionCreateManyWithoutUserInput;
+  zipcode?: String;
+  total_points?: Int;
+  community_events?: CommunityEventCreateManyInput;
+  device_id?: String;
+  crew?: String;
+  crew_type?: String;
+}
+
 export interface PetitionUpdateInput {
   title?: String;
   active?: Boolean;
@@ -2549,7 +2353,53 @@ export interface PetitionUpdateInput {
   author?: UserUpdateOneRequiredInput;
 }
 
-export interface ActionWhereInput {
+export interface UserUpdateManyWithoutPetitions_signedInput {
+  create?:
+    | UserCreateWithoutPetitions_signedInput[]
+    | UserCreateWithoutPetitions_signedInput;
+  delete?: UserWhereUniqueInput[] | UserWhereUniqueInput;
+  connect?: UserWhereUniqueInput[] | UserWhereUniqueInput;
+  disconnect?: UserWhereUniqueInput[] | UserWhereUniqueInput;
+  update?:
+    | UserUpdateWithWhereUniqueWithoutPetitions_signedInput[]
+    | UserUpdateWithWhereUniqueWithoutPetitions_signedInput;
+  upsert?:
+    | UserUpsertWithWhereUniqueWithoutPetitions_signedInput[]
+    | UserUpsertWithWhereUniqueWithoutPetitions_signedInput;
+  deleteMany?: UserScalarWhereInput[] | UserScalarWhereInput;
+  updateMany?:
+    | UserUpdateManyWithWhereNestedInput[]
+    | UserUpdateManyWithWhereNestedInput;
+}
+
+export interface UserUpdateWithWhereUniqueWithoutPetitions_signedInput {
+  where: UserWhereUniqueInput;
+  data: UserUpdateWithoutPetitions_signedDataInput;
+}
+
+export interface UserUpdateWithoutPetitions_signedDataInput {
+  username?: String;
+  email?: String;
+  password?: String;
+  name?: String;
+  phone?: String;
+  role?: RoleUpdateOneInput;
+  recent_actions?: EventActionUpdateManyWithoutUserInput;
+  zipcode?: String;
+  total_points?: Int;
+  community_events?: CommunityEventUpdateManyInput;
+  device_id?: String;
+  crew?: String;
+  crew_type?: String;
+}
+
+export interface UserUpsertWithWhereUniqueWithoutPetitions_signedInput {
+  where: UserWhereUniqueInput;
+  update: UserUpdateWithoutPetitions_signedDataInput;
+  create: UserCreateWithoutPetitions_signedInput;
+}
+
+export interface UserScalarWhereInput {
   id?: ID_Input;
   id_not?: ID_Input;
   id_in?: ID_Input[] | ID_Input;
@@ -2564,143 +2414,140 @@ export interface ActionWhereInput {
   id_not_starts_with?: ID_Input;
   id_ends_with?: ID_Input;
   id_not_ends_with?: ID_Input;
-  category?: ActionCategoryWhereInput;
-  primary_image?: String;
-  primary_image_not?: String;
-  primary_image_in?: String[] | String;
-  primary_image_not_in?: String[] | String;
-  primary_image_lt?: String;
-  primary_image_lte?: String;
-  primary_image_gt?: String;
-  primary_image_gte?: String;
-  primary_image_contains?: String;
-  primary_image_not_contains?: String;
-  primary_image_starts_with?: String;
-  primary_image_not_starts_with?: String;
-  primary_image_ends_with?: String;
-  primary_image_not_ends_with?: String;
-  active?: Boolean;
-  active_not?: Boolean;
-  short_description?: String;
-  short_description_not?: String;
-  short_description_in?: String[] | String;
-  short_description_not_in?: String[] | String;
-  short_description_lt?: String;
-  short_description_lte?: String;
-  short_description_gt?: String;
-  short_description_gte?: String;
-  short_description_contains?: String;
-  short_description_not_contains?: String;
-  short_description_starts_with?: String;
-  short_description_not_starts_with?: String;
-  short_description_ends_with?: String;
-  short_description_not_ends_with?: String;
-  action_taken_description?: String;
-  action_taken_description_not?: String;
-  action_taken_description_in?: String[] | String;
-  action_taken_description_not_in?: String[] | String;
-  action_taken_description_lt?: String;
-  action_taken_description_lte?: String;
-  action_taken_description_gt?: String;
-  action_taken_description_gte?: String;
-  action_taken_description_contains?: String;
-  action_taken_description_not_contains?: String;
-  action_taken_description_starts_with?: String;
-  action_taken_description_not_starts_with?: String;
-  action_taken_description_ends_with?: String;
-  action_taken_description_not_ends_with?: String;
-  schedule?: Schedule;
-  schedule_not?: Schedule;
-  schedule_in?: Schedule[] | Schedule;
-  schedule_not_in?: Schedule[] | Schedule;
-  video_url?: String;
-  video_url_not?: String;
-  video_url_in?: String[] | String;
-  video_url_not_in?: String[] | String;
-  video_url_lt?: String;
-  video_url_lte?: String;
-  video_url_gt?: String;
-  video_url_gte?: String;
-  video_url_contains?: String;
-  video_url_not_contains?: String;
-  video_url_starts_with?: String;
-  video_url_not_starts_with?: String;
-  video_url_ends_with?: String;
-  video_url_not_ends_with?: String;
-  carbon_dioxide?: Float;
-  carbon_dioxide_not?: Float;
-  carbon_dioxide_in?: Float[] | Float;
-  carbon_dioxide_not_in?: Float[] | Float;
-  carbon_dioxide_lt?: Float;
-  carbon_dioxide_lte?: Float;
-  carbon_dioxide_gt?: Float;
-  carbon_dioxide_gte?: Float;
-  order?: Int;
-  order_not?: Int;
-  order_in?: Int[] | Int;
-  order_not_in?: Int[] | Int;
-  order_lt?: Int;
-  order_lte?: Int;
-  order_gt?: Int;
-  order_gte?: Int;
-  water?: Float;
-  water_not?: Float;
-  water_in?: Float[] | Float;
-  water_not_in?: Float[] | Float;
-  water_lt?: Float;
-  water_lte?: Float;
-  water_gt?: Float;
-  water_gte?: Float;
-  waste?: Float;
-  waste_not?: Float;
-  waste_in?: Float[] | Float;
-  waste_not_in?: Float[] | Float;
-  waste_lt?: Float;
-  waste_lte?: Float;
-  waste_gt?: Float;
-  waste_gte?: Float;
-  points?: Int;
-  points_not?: Int;
-  points_in?: Int[] | Int;
-  points_not_in?: Int[] | Int;
-  points_lt?: Int;
-  points_lte?: Int;
-  points_gt?: Int;
-  points_gte?: Int;
-  external_url?: String;
-  external_url_not?: String;
-  external_url_in?: String[] | String;
-  external_url_not_in?: String[] | String;
-  external_url_lt?: String;
-  external_url_lte?: String;
-  external_url_gt?: String;
-  external_url_gte?: String;
-  external_url_contains?: String;
-  external_url_not_contains?: String;
-  external_url_starts_with?: String;
-  external_url_not_starts_with?: String;
-  external_url_ends_with?: String;
-  external_url_not_ends_with?: String;
-  isGame?: Boolean;
-  isGame_not?: Boolean;
-  game_title?: String;
-  game_title_not?: String;
-  game_title_in?: String[] | String;
-  game_title_not_in?: String[] | String;
-  game_title_lt?: String;
-  game_title_lte?: String;
-  game_title_gt?: String;
-  game_title_gte?: String;
-  game_title_contains?: String;
-  game_title_not_contains?: String;
-  game_title_starts_with?: String;
-  game_title_not_starts_with?: String;
-  game_title_ends_with?: String;
-  game_title_not_ends_with?: String;
-  related_actions_every?: ActionWhereInput;
-  related_actions_some?: ActionWhereInput;
-  related_actions_none?: ActionWhereInput;
-  author?: UserWhereInput;
+  username?: String;
+  username_not?: String;
+  username_in?: String[] | String;
+  username_not_in?: String[] | String;
+  username_lt?: String;
+  username_lte?: String;
+  username_gt?: String;
+  username_gte?: String;
+  username_contains?: String;
+  username_not_contains?: String;
+  username_starts_with?: String;
+  username_not_starts_with?: String;
+  username_ends_with?: String;
+  username_not_ends_with?: String;
+  email?: String;
+  email_not?: String;
+  email_in?: String[] | String;
+  email_not_in?: String[] | String;
+  email_lt?: String;
+  email_lte?: String;
+  email_gt?: String;
+  email_gte?: String;
+  email_contains?: String;
+  email_not_contains?: String;
+  email_starts_with?: String;
+  email_not_starts_with?: String;
+  email_ends_with?: String;
+  email_not_ends_with?: String;
+  password?: String;
+  password_not?: String;
+  password_in?: String[] | String;
+  password_not_in?: String[] | String;
+  password_lt?: String;
+  password_lte?: String;
+  password_gt?: String;
+  password_gte?: String;
+  password_contains?: String;
+  password_not_contains?: String;
+  password_starts_with?: String;
+  password_not_starts_with?: String;
+  password_ends_with?: String;
+  password_not_ends_with?: String;
+  name?: String;
+  name_not?: String;
+  name_in?: String[] | String;
+  name_not_in?: String[] | String;
+  name_lt?: String;
+  name_lte?: String;
+  name_gt?: String;
+  name_gte?: String;
+  name_contains?: String;
+  name_not_contains?: String;
+  name_starts_with?: String;
+  name_not_starts_with?: String;
+  name_ends_with?: String;
+  name_not_ends_with?: String;
+  phone?: String;
+  phone_not?: String;
+  phone_in?: String[] | String;
+  phone_not_in?: String[] | String;
+  phone_lt?: String;
+  phone_lte?: String;
+  phone_gt?: String;
+  phone_gte?: String;
+  phone_contains?: String;
+  phone_not_contains?: String;
+  phone_starts_with?: String;
+  phone_not_starts_with?: String;
+  phone_ends_with?: String;
+  phone_not_ends_with?: String;
+  zipcode?: String;
+  zipcode_not?: String;
+  zipcode_in?: String[] | String;
+  zipcode_not_in?: String[] | String;
+  zipcode_lt?: String;
+  zipcode_lte?: String;
+  zipcode_gt?: String;
+  zipcode_gte?: String;
+  zipcode_contains?: String;
+  zipcode_not_contains?: String;
+  zipcode_starts_with?: String;
+  zipcode_not_starts_with?: String;
+  zipcode_ends_with?: String;
+  zipcode_not_ends_with?: String;
+  total_points?: Int;
+  total_points_not?: Int;
+  total_points_in?: Int[] | Int;
+  total_points_not_in?: Int[] | Int;
+  total_points_lt?: Int;
+  total_points_lte?: Int;
+  total_points_gt?: Int;
+  total_points_gte?: Int;
+  device_id?: String;
+  device_id_not?: String;
+  device_id_in?: String[] | String;
+  device_id_not_in?: String[] | String;
+  device_id_lt?: String;
+  device_id_lte?: String;
+  device_id_gt?: String;
+  device_id_gte?: String;
+  device_id_contains?: String;
+  device_id_not_contains?: String;
+  device_id_starts_with?: String;
+  device_id_not_starts_with?: String;
+  device_id_ends_with?: String;
+  device_id_not_ends_with?: String;
+  crew?: String;
+  crew_not?: String;
+  crew_in?: String[] | String;
+  crew_not_in?: String[] | String;
+  crew_lt?: String;
+  crew_lte?: String;
+  crew_gt?: String;
+  crew_gte?: String;
+  crew_contains?: String;
+  crew_not_contains?: String;
+  crew_starts_with?: String;
+  crew_not_starts_with?: String;
+  crew_ends_with?: String;
+  crew_not_ends_with?: String;
+  crew_type?: String;
+  crew_type_not?: String;
+  crew_type_in?: String[] | String;
+  crew_type_not_in?: String[] | String;
+  crew_type_lt?: String;
+  crew_type_lte?: String;
+  crew_type_gt?: String;
+  crew_type_gte?: String;
+  crew_type_contains?: String;
+  crew_type_not_contains?: String;
+  crew_type_starts_with?: String;
+  crew_type_not_starts_with?: String;
+  crew_type_ends_with?: String;
+  crew_type_not_ends_with?: String;
   createdAt?: DateTimeInput;
   createdAt_not?: DateTimeInput;
   createdAt_in?: DateTimeInput[] | DateTimeInput;
@@ -2717,24 +2564,20 @@ export interface ActionWhereInput {
   updatedAt_lte?: DateTimeInput;
   updatedAt_gt?: DateTimeInput;
   updatedAt_gte?: DateTimeInput;
-  AND?: ActionWhereInput[] | ActionWhereInput;
-  OR?: ActionWhereInput[] | ActionWhereInput;
-  NOT?: ActionWhereInput[] | ActionWhereInput;
+  AND?: UserScalarWhereInput[] | UserScalarWhereInput;
+  OR?: UserScalarWhereInput[] | UserScalarWhereInput;
+  NOT?: UserScalarWhereInput[] | UserScalarWhereInput;
 }
 
-export interface RoleCreateInput {
-  role_name: String;
+export interface UserUpdateManyWithWhereNestedInput {
+  where: UserScalarWhereInput;
+  data: UserUpdateManyDataInput;
 }
 
-export interface NodeNode {
-  id: ID_Output;
-}
-
-export interface UserPreviousValues {
-  id: ID_Output;
+export interface UserUpdateManyDataInput {
   username?: String;
   email?: String;
-  password: String;
+  password?: String;
   name?: String;
   phone?: String;
   zipcode?: String;
@@ -2742,427 +2585,149 @@ export interface UserPreviousValues {
   device_id?: String;
   crew?: String;
   crew_type?: String;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
 }
 
-export interface UserPreviousValuesPromise
-  extends Promise<UserPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  username: () => Promise<String>;
-  email: () => Promise<String>;
-  password: () => Promise<String>;
-  name: () => Promise<String>;
-  phone: () => Promise<String>;
-  zipcode: () => Promise<String>;
-  total_points: () => Promise<Int>;
-  device_id: () => Promise<String>;
-  crew: () => Promise<String>;
-  crew_type: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface UserPreviousValuesSubscription
-  extends Promise<AsyncIterator<UserPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  username: () => Promise<AsyncIterator<String>>;
-  email: () => Promise<AsyncIterator<String>>;
-  password: () => Promise<AsyncIterator<String>>;
-  name: () => Promise<AsyncIterator<String>>;
-  phone: () => Promise<AsyncIterator<String>>;
-  zipcode: () => Promise<AsyncIterator<String>>;
-  total_points: () => Promise<AsyncIterator<Int>>;
-  device_id: () => Promise<AsyncIterator<String>>;
-  crew: () => Promise<AsyncIterator<String>>;
-  crew_type: () => Promise<AsyncIterator<String>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface RolePreviousValues {
-  id: ID_Output;
-  role_name: String;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface RolePreviousValuesPromise
-  extends Promise<RolePreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  role_name: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface RolePreviousValuesSubscription
-  extends Promise<AsyncIterator<RolePreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  role_name: () => Promise<AsyncIterator<String>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface PetitionPreviousValues {
-  id: ID_Output;
-  title: String;
+export interface PetitionUpdateManyMutationInput {
+  title?: String;
   active?: Boolean;
-  short_description: String;
-  body: String;
+  short_description?: String;
+  body?: String;
   order?: Int;
   primary_image?: String;
   video_url?: String;
   external_url?: String;
-  hasVideo: Boolean;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
+  hasVideo?: Boolean;
 }
 
-export interface PetitionPreviousValuesPromise
-  extends Promise<PetitionPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  title: () => Promise<String>;
-  active: () => Promise<Boolean>;
-  short_description: () => Promise<String>;
-  body: () => Promise<String>;
-  order: () => Promise<Int>;
-  primary_image: () => Promise<String>;
-  video_url: () => Promise<String>;
-  external_url: () => Promise<String>;
-  hasVideo: () => Promise<Boolean>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
+export interface RoleUpdateInput {
+  role_name?: String;
 }
 
-export interface PetitionPreviousValuesSubscription
-  extends Promise<AsyncIterator<PetitionPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  title: () => Promise<AsyncIterator<String>>;
-  active: () => Promise<AsyncIterator<Boolean>>;
-  short_description: () => Promise<AsyncIterator<String>>;
-  body: () => Promise<AsyncIterator<String>>;
-  order: () => Promise<AsyncIterator<Int>>;
-  primary_image: () => Promise<AsyncIterator<String>>;
-  video_url: () => Promise<AsyncIterator<String>>;
-  external_url: () => Promise<AsyncIterator<String>>;
-  hasVideo: () => Promise<AsyncIterator<Boolean>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+export interface RoleUpdateManyMutationInput {
+  role_name?: String;
 }
 
-export interface AggregateAction {
-  count: Int;
+export interface UserUpdateInput {
+  username?: String;
+  email?: String;
+  password?: String;
+  name?: String;
+  phone?: String;
+  role?: RoleUpdateOneInput;
+  recent_actions?: EventActionUpdateManyWithoutUserInput;
+  zipcode?: String;
+  total_points?: Int;
+  petitions_signed?: PetitionUpdateManyWithoutUsersInput;
+  community_events?: CommunityEventUpdateManyInput;
+  device_id?: String;
+  crew?: String;
+  crew_type?: String;
 }
 
-export interface AggregateActionPromise
-  extends Promise<AggregateAction>,
-    Fragmentable {
-  count: () => Promise<Int>;
+export interface UserUpdateManyMutationInput {
+  username?: String;
+  email?: String;
+  password?: String;
+  name?: String;
+  phone?: String;
+  zipcode?: String;
+  total_points?: Int;
+  device_id?: String;
+  crew?: String;
+  crew_type?: String;
 }
 
-export interface AggregateActionSubscription
-  extends Promise<AsyncIterator<AggregateAction>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
+export interface ActionSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: ActionWhereInput;
+  AND?: ActionSubscriptionWhereInput[] | ActionSubscriptionWhereInput;
+  OR?: ActionSubscriptionWhereInput[] | ActionSubscriptionWhereInput;
+  NOT?: ActionSubscriptionWhereInput[] | ActionSubscriptionWhereInput;
 }
 
-export interface PageInfo {
-  hasNextPage: Boolean;
-  hasPreviousPage: Boolean;
-  startCursor?: String;
-  endCursor?: String;
+export interface ActionCategorySubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: ActionCategoryWhereInput;
+  AND?:
+    | ActionCategorySubscriptionWhereInput[]
+    | ActionCategorySubscriptionWhereInput;
+  OR?:
+    | ActionCategorySubscriptionWhereInput[]
+    | ActionCategorySubscriptionWhereInput;
+  NOT?:
+    | ActionCategorySubscriptionWhereInput[]
+    | ActionCategorySubscriptionWhereInput;
 }
 
-export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
-  hasNextPage: () => Promise<Boolean>;
-  hasPreviousPage: () => Promise<Boolean>;
-  startCursor: () => Promise<String>;
-  endCursor: () => Promise<String>;
+export interface CommunityEventSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: CommunityEventWhereInput;
+  AND?:
+    | CommunityEventSubscriptionWhereInput[]
+    | CommunityEventSubscriptionWhereInput;
+  OR?:
+    | CommunityEventSubscriptionWhereInput[]
+    | CommunityEventSubscriptionWhereInput;
+  NOT?:
+    | CommunityEventSubscriptionWhereInput[]
+    | CommunityEventSubscriptionWhereInput;
 }
 
-export interface PageInfoSubscription
-  extends Promise<AsyncIterator<PageInfo>>,
-    Fragmentable {
-  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
-  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
-  startCursor: () => Promise<AsyncIterator<String>>;
-  endCursor: () => Promise<AsyncIterator<String>>;
+export interface EventActionSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: EventActionWhereInput;
+  AND?: EventActionSubscriptionWhereInput[] | EventActionSubscriptionWhereInput;
+  OR?: EventActionSubscriptionWhereInput[] | EventActionSubscriptionWhereInput;
+  NOT?: EventActionSubscriptionWhereInput[] | EventActionSubscriptionWhereInput;
 }
 
-export interface ActionEdge {
-  cursor: String;
+export interface PetitionSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: PetitionWhereInput;
+  AND?: PetitionSubscriptionWhereInput[] | PetitionSubscriptionWhereInput;
+  OR?: PetitionSubscriptionWhereInput[] | PetitionSubscriptionWhereInput;
+  NOT?: PetitionSubscriptionWhereInput[] | PetitionSubscriptionWhereInput;
 }
 
-export interface ActionEdgePromise extends Promise<ActionEdge>, Fragmentable {
-  node: <T = ActionPromise>() => T;
-  cursor: () => Promise<String>;
+export interface RoleSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: RoleWhereInput;
+  AND?: RoleSubscriptionWhereInput[] | RoleSubscriptionWhereInput;
+  OR?: RoleSubscriptionWhereInput[] | RoleSubscriptionWhereInput;
+  NOT?: RoleSubscriptionWhereInput[] | RoleSubscriptionWhereInput;
 }
 
-export interface ActionEdgeSubscription
-  extends Promise<AsyncIterator<ActionEdge>>,
-    Fragmentable {
-  node: <T = ActionSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
+export interface UserSubscriptionWhereInput {
+  mutation_in?: MutationType[] | MutationType;
+  updatedFields_contains?: String;
+  updatedFields_contains_every?: String[] | String;
+  updatedFields_contains_some?: String[] | String;
+  node?: UserWhereInput;
+  AND?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
+  OR?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
+  NOT?: UserSubscriptionWhereInput[] | UserSubscriptionWhereInput;
 }
 
-export interface AggregateUser {
-  count: Int;
-}
-
-export interface AggregateUserPromise
-  extends Promise<AggregateUser>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateUserSubscription
-  extends Promise<AsyncIterator<AggregateUser>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface BatchPayload {
-  count: Long;
-}
-
-export interface BatchPayloadPromise
-  extends Promise<BatchPayload>,
-    Fragmentable {
-  count: () => Promise<Long>;
-}
-
-export interface BatchPayloadSubscription
-  extends Promise<AsyncIterator<BatchPayload>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Long>>;
-}
-
-export interface UserConnection {}
-
-export interface UserConnectionPromise
-  extends Promise<UserConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<UserEdge>>() => T;
-  aggregate: <T = AggregateUserPromise>() => T;
-}
-
-export interface UserConnectionSubscription
-  extends Promise<AsyncIterator<UserConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateUserSubscription>() => T;
-}
-
-export interface ActionConnection {}
-
-export interface ActionConnectionPromise
-  extends Promise<ActionConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<ActionEdge>>() => T;
-  aggregate: <T = AggregateActionPromise>() => T;
-}
-
-export interface ActionConnectionSubscription
-  extends Promise<AsyncIterator<ActionConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<ActionEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateActionSubscription>() => T;
-}
-
-export interface RoleEdge {
-  cursor: String;
-}
-
-export interface RoleEdgePromise extends Promise<RoleEdge>, Fragmentable {
-  node: <T = RolePromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface RoleEdgeSubscription
-  extends Promise<AsyncIterator<RoleEdge>>,
-    Fragmentable {
-  node: <T = RoleSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface CommunityEvent {
+export interface NodeNode {
   id: ID_Output;
-  type: String;
-  number_of_people: Int;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface CommunityEventPromise
-  extends Promise<CommunityEvent>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  type: () => Promise<String>;
-  number_of_people: () => Promise<Int>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface CommunityEventSubscription
-  extends Promise<AsyncIterator<CommunityEvent>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  type: () => Promise<AsyncIterator<String>>;
-  number_of_people: () => Promise<AsyncIterator<Int>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface ActionCategory {
-  id: ID_Output;
-  name: String;
-  primary_image?: String;
-  video_id?: String;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface ActionCategoryPromise
-  extends Promise<ActionCategory>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  name: () => Promise<String>;
-  actions: <T = FragmentableArray<Action>>(
-    args?: {
-      where?: ActionWhereInput;
-      orderBy?: ActionOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
-  primary_image: () => Promise<String>;
-  video_id: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface ActionCategorySubscription
-  extends Promise<AsyncIterator<ActionCategory>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  name: () => Promise<AsyncIterator<String>>;
-  actions: <T = Promise<AsyncIterator<ActionSubscription>>>(
-    args?: {
-      where?: ActionWhereInput;
-      orderBy?: ActionOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
-  primary_image: () => Promise<AsyncIterator<String>>;
-  video_id: () => Promise<AsyncIterator<String>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface Petition {
-  id: ID_Output;
-  title: String;
-  active?: Boolean;
-  short_description: String;
-  body: String;
-  order?: Int;
-  primary_image?: String;
-  video_url?: String;
-  external_url?: String;
-  hasVideo: Boolean;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface PetitionPromise extends Promise<Petition>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  title: () => Promise<String>;
-  active: () => Promise<Boolean>;
-  short_description: () => Promise<String>;
-  body: () => Promise<String>;
-  order: () => Promise<Int>;
-  primary_image: () => Promise<String>;
-  video_url: () => Promise<String>;
-  external_url: () => Promise<String>;
-  hasVideo: () => Promise<Boolean>;
-  users: <T = FragmentableArray<User>>(
-    args?: {
-      where?: UserWhereInput;
-      orderBy?: UserOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
-  author: <T = UserPromise>() => T;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface PetitionSubscription
-  extends Promise<AsyncIterator<Petition>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  title: () => Promise<AsyncIterator<String>>;
-  active: () => Promise<AsyncIterator<Boolean>>;
-  short_description: () => Promise<AsyncIterator<String>>;
-  body: () => Promise<AsyncIterator<String>>;
-  order: () => Promise<AsyncIterator<Int>>;
-  primary_image: () => Promise<AsyncIterator<String>>;
-  video_url: () => Promise<AsyncIterator<String>>;
-  external_url: () => Promise<AsyncIterator<String>>;
-  hasVideo: () => Promise<AsyncIterator<Boolean>>;
-  users: <T = Promise<AsyncIterator<UserSubscription>>>(
-    args?: {
-      where?: UserWhereInput;
-      orderBy?: UserOrderByInput;
-      skip?: Int;
-      after?: String;
-      before?: String;
-      first?: Int;
-      last?: Int;
-    }
-  ) => T;
-  author: <T = UserSubscription>() => T;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface PetitionEdge {
-  cursor: String;
-}
-
-export interface PetitionEdgePromise
-  extends Promise<PetitionEdge>,
-    Fragmentable {
-  node: <T = PetitionPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface PetitionEdgeSubscription
-  extends Promise<AsyncIterator<PetitionEdge>>,
-    Fragmentable {
-  node: <T = PetitionSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
 }
 
 export interface Action {
@@ -3253,226 +2818,7 @@ export interface ActionSubscription
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface AggregateEventAction {
-  count: Int;
-}
-
-export interface AggregateEventActionPromise
-  extends Promise<AggregateEventAction>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateEventActionSubscription
-  extends Promise<AsyncIterator<AggregateEventAction>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface ActionSubscriptionPayload {
-  mutation: MutationType;
-  updatedFields?: String[];
-}
-
-export interface ActionSubscriptionPayloadPromise
-  extends Promise<ActionSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = ActionPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = ActionPreviousValuesPromise>() => T;
-}
-
-export interface ActionSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<ActionSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = ActionSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = ActionPreviousValuesSubscription>() => T;
-}
-
-export interface EventActionConnection {}
-
-export interface EventActionConnectionPromise
-  extends Promise<EventActionConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<EventActionEdge>>() => T;
-  aggregate: <T = AggregateEventActionPromise>() => T;
-}
-
-export interface EventActionConnectionSubscription
-  extends Promise<AsyncIterator<EventActionConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<EventActionEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateEventActionSubscription>() => T;
-}
-
-export interface ActionPreviousValues {
-  id: ID_Output;
-  primary_image?: String;
-  active?: Boolean;
-  short_description: String;
-  action_taken_description: String;
-  schedule?: Schedule;
-  video_url?: String;
-  carbon_dioxide?: Float;
-  order?: Int;
-  water?: Float;
-  waste?: Float;
-  points?: Int;
-  external_url?: String;
-  isGame: Boolean;
-  game_title?: String;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface ActionPreviousValuesPromise
-  extends Promise<ActionPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  primary_image: () => Promise<String>;
-  active: () => Promise<Boolean>;
-  short_description: () => Promise<String>;
-  action_taken_description: () => Promise<String>;
-  schedule: () => Promise<Schedule>;
-  video_url: () => Promise<String>;
-  carbon_dioxide: () => Promise<Float>;
-  order: () => Promise<Int>;
-  water: () => Promise<Float>;
-  waste: () => Promise<Float>;
-  points: () => Promise<Int>;
-  external_url: () => Promise<String>;
-  isGame: () => Promise<Boolean>;
-  game_title: () => Promise<String>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface ActionPreviousValuesSubscription
-  extends Promise<AsyncIterator<ActionPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  primary_image: () => Promise<AsyncIterator<String>>;
-  active: () => Promise<AsyncIterator<Boolean>>;
-  short_description: () => Promise<AsyncIterator<String>>;
-  action_taken_description: () => Promise<AsyncIterator<String>>;
-  schedule: () => Promise<AsyncIterator<Schedule>>;
-  video_url: () => Promise<AsyncIterator<String>>;
-  carbon_dioxide: () => Promise<AsyncIterator<Float>>;
-  order: () => Promise<AsyncIterator<Int>>;
-  water: () => Promise<AsyncIterator<Float>>;
-  waste: () => Promise<AsyncIterator<Float>>;
-  points: () => Promise<AsyncIterator<Int>>;
-  external_url: () => Promise<AsyncIterator<String>>;
-  isGame: () => Promise<AsyncIterator<Boolean>>;
-  game_title: () => Promise<AsyncIterator<String>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface CommunityEventEdge {
-  cursor: String;
-}
-
-export interface CommunityEventEdgePromise
-  extends Promise<CommunityEventEdge>,
-    Fragmentable {
-  node: <T = CommunityEventPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface CommunityEventEdgeSubscription
-  extends Promise<AsyncIterator<CommunityEventEdge>>,
-    Fragmentable {
-  node: <T = CommunityEventSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface RoleSubscriptionPayload {
-  mutation: MutationType;
-  updatedFields?: String[];
-}
-
-export interface RoleSubscriptionPayloadPromise
-  extends Promise<RoleSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = RolePromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = RolePreviousValuesPromise>() => T;
-}
-
-export interface RoleSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<RoleSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = RoleSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = RolePreviousValuesSubscription>() => T;
-}
-
-export interface AggregateActionCategory {
-  count: Int;
-}
-
-export interface AggregateActionCategoryPromise
-  extends Promise<AggregateActionCategory>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateActionCategorySubscription
-  extends Promise<AsyncIterator<AggregateActionCategory>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface ActionCategorySubscriptionPayload {
-  mutation: MutationType;
-  updatedFields?: String[];
-}
-
-export interface ActionCategorySubscriptionPayloadPromise
-  extends Promise<ActionCategorySubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = ActionCategoryPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = ActionCategoryPreviousValuesPromise>() => T;
-}
-
-export interface ActionCategorySubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<ActionCategorySubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = ActionCategorySubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = ActionCategoryPreviousValuesSubscription>() => T;
-}
-
-export interface ActionCategoryConnection {}
-
-export interface ActionCategoryConnectionPromise
-  extends Promise<ActionCategoryConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<ActionCategoryEdge>>() => T;
-  aggregate: <T = AggregateActionCategoryPromise>() => T;
-}
-
-export interface ActionCategoryConnectionSubscription
-  extends Promise<AsyncIterator<ActionCategoryConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<ActionCategoryEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateActionCategorySubscription>() => T;
-}
-
-export interface ActionCategoryPreviousValues {
+export interface ActionCategory {
   id: ID_Output;
   name: String;
   primary_image?: String;
@@ -3481,172 +2827,48 @@ export interface ActionCategoryPreviousValues {
   updatedAt: DateTimeOutput;
 }
 
-export interface ActionCategoryPreviousValuesPromise
-  extends Promise<ActionCategoryPreviousValues>,
+export interface ActionCategoryPromise
+  extends Promise<ActionCategory>,
     Fragmentable {
   id: () => Promise<ID_Output>;
   name: () => Promise<String>;
+  actions: <T = FragmentableArray<Action>>(
+    args?: {
+      where?: ActionWhereInput;
+      orderBy?: ActionOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
   primary_image: () => Promise<String>;
   video_id: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
 
-export interface ActionCategoryPreviousValuesSubscription
-  extends Promise<AsyncIterator<ActionCategoryPreviousValues>>,
+export interface ActionCategorySubscription
+  extends Promise<AsyncIterator<ActionCategory>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
   name: () => Promise<AsyncIterator<String>>;
+  actions: <T = Promise<AsyncIterator<ActionSubscription>>>(
+    args?: {
+      where?: ActionWhereInput;
+      orderBy?: ActionOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
   primary_image: () => Promise<AsyncIterator<String>>;
   video_id: () => Promise<AsyncIterator<String>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface UserEdge {
-  cursor: String;
-}
-
-export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
-  node: <T = UserPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface UserEdgeSubscription
-  extends Promise<AsyncIterator<UserEdge>>,
-    Fragmentable {
-  node: <T = UserSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface EventAction {
-  id: ID_Output;
-  took_action: Boolean;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface EventActionPromise extends Promise<EventAction>, Fragmentable {
-  id: () => Promise<ID_Output>;
-  action: <T = ActionPromise>() => T;
-  user: <T = UserPromise>() => T;
-  took_action: () => Promise<Boolean>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface EventActionSubscription
-  extends Promise<AsyncIterator<EventAction>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  action: <T = ActionSubscription>() => T;
-  user: <T = UserSubscription>() => T;
-  took_action: () => Promise<AsyncIterator<Boolean>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface RoleConnection {}
-
-export interface RoleConnectionPromise
-  extends Promise<RoleConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<RoleEdge>>() => T;
-  aggregate: <T = AggregateRolePromise>() => T;
-}
-
-export interface RoleConnectionSubscription
-  extends Promise<AsyncIterator<RoleConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<RoleEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateRoleSubscription>() => T;
-}
-
-export interface CommunityEventSubscriptionPayload {
-  mutation: MutationType;
-  updatedFields?: String[];
-}
-
-export interface CommunityEventSubscriptionPayloadPromise
-  extends Promise<CommunityEventSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = CommunityEventPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = CommunityEventPreviousValuesPromise>() => T;
-}
-
-export interface CommunityEventSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<CommunityEventSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = CommunityEventSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = CommunityEventPreviousValuesSubscription>() => T;
-}
-
-export interface PetitionConnection {}
-
-export interface PetitionConnectionPromise
-  extends Promise<PetitionConnection>,
-    Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<PetitionEdge>>() => T;
-  aggregate: <T = AggregatePetitionPromise>() => T;
-}
-
-export interface PetitionConnectionSubscription
-  extends Promise<AsyncIterator<PetitionConnection>>,
-    Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<PetitionEdgeSubscription>>>() => T;
-  aggregate: <T = AggregatePetitionSubscription>() => T;
-}
-
-export interface CommunityEventPreviousValues {
-  id: ID_Output;
-  type: String;
-  number_of_people: Int;
-  createdAt: DateTimeOutput;
-  updatedAt: DateTimeOutput;
-}
-
-export interface CommunityEventPreviousValuesPromise
-  extends Promise<CommunityEventPreviousValues>,
-    Fragmentable {
-  id: () => Promise<ID_Output>;
-  type: () => Promise<String>;
-  number_of_people: () => Promise<Int>;
-  createdAt: () => Promise<DateTimeOutput>;
-  updatedAt: () => Promise<DateTimeOutput>;
-}
-
-export interface CommunityEventPreviousValuesSubscription
-  extends Promise<AsyncIterator<CommunityEventPreviousValues>>,
-    Fragmentable {
-  id: () => Promise<AsyncIterator<ID_Output>>;
-  type: () => Promise<AsyncIterator<String>>;
-  number_of_people: () => Promise<AsyncIterator<Int>>;
-  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
-}
-
-export interface AggregateCommunityEvent {
-  count: Int;
-}
-
-export interface AggregateCommunityEventPromise
-  extends Promise<AggregateCommunityEvent>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateCommunityEventSubscription
-  extends Promise<AsyncIterator<AggregateCommunityEvent>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
 }
 
 export interface User {
@@ -3767,63 +2989,6 @@ export interface UserSubscription
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface ActionCategoryEdge {
-  cursor: String;
-}
-
-export interface ActionCategoryEdgePromise
-  extends Promise<ActionCategoryEdge>,
-    Fragmentable {
-  node: <T = ActionCategoryPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface ActionCategoryEdgeSubscription
-  extends Promise<AsyncIterator<ActionCategoryEdge>>,
-    Fragmentable {
-  node: <T = ActionCategorySubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-export interface AggregateRole {
-  count: Int;
-}
-
-export interface AggregateRolePromise
-  extends Promise<AggregateRole>,
-    Fragmentable {
-  count: () => Promise<Int>;
-}
-
-export interface AggregateRoleSubscription
-  extends Promise<AsyncIterator<AggregateRole>>,
-    Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
-}
-
-export interface PetitionSubscriptionPayload {
-  mutation: MutationType;
-  updatedFields?: String[];
-}
-
-export interface PetitionSubscriptionPayloadPromise
-  extends Promise<PetitionSubscriptionPayload>,
-    Fragmentable {
-  mutation: () => Promise<MutationType>;
-  node: <T = PetitionPromise>() => T;
-  updatedFields: () => Promise<String[]>;
-  previousValues: <T = PetitionPreviousValuesPromise>() => T;
-}
-
-export interface PetitionSubscriptionPayloadSubscription
-  extends Promise<AsyncIterator<PetitionSubscriptionPayload>>,
-    Fragmentable {
-  mutation: () => Promise<AsyncIterator<MutationType>>;
-  node: <T = PetitionSubscription>() => T;
-  updatedFields: () => Promise<AsyncIterator<String[]>>;
-  previousValues: <T = PetitionPreviousValuesSubscription>() => T;
-}
-
 export interface Role {
   id: ID_Output;
   role_name: String;
@@ -3847,27 +3012,717 @@ export interface RoleSubscription
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
-export interface EventActionPreviousValues {
+export interface EventAction {
   id: ID_Output;
   took_action: Boolean;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
 
-export interface EventActionPreviousValuesPromise
-  extends Promise<EventActionPreviousValues>,
-    Fragmentable {
+export interface EventActionPromise extends Promise<EventAction>, Fragmentable {
   id: () => Promise<ID_Output>;
+  action: <T = ActionPromise>() => T;
+  user: <T = UserPromise>() => T;
   took_action: () => Promise<Boolean>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
 
-export interface EventActionPreviousValuesSubscription
-  extends Promise<AsyncIterator<EventActionPreviousValues>>,
+export interface EventActionSubscription
+  extends Promise<AsyncIterator<EventAction>>,
     Fragmentable {
   id: () => Promise<AsyncIterator<ID_Output>>;
+  action: <T = ActionSubscription>() => T;
+  user: <T = UserSubscription>() => T;
   took_action: () => Promise<AsyncIterator<Boolean>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface Petition {
+  id: ID_Output;
+  title: String;
+  active?: Boolean;
+  short_description: String;
+  body: String;
+  order?: Int;
+  primary_image?: String;
+  video_url?: String;
+  external_url?: String;
+  hasVideo: Boolean;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface PetitionPromise extends Promise<Petition>, Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  active: () => Promise<Boolean>;
+  short_description: () => Promise<String>;
+  body: () => Promise<String>;
+  order: () => Promise<Int>;
+  primary_image: () => Promise<String>;
+  video_url: () => Promise<String>;
+  external_url: () => Promise<String>;
+  hasVideo: () => Promise<Boolean>;
+  users: <T = FragmentableArray<User>>(
+    args?: {
+      where?: UserWhereInput;
+      orderBy?: UserOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  author: <T = UserPromise>() => T;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface PetitionSubscription
+  extends Promise<AsyncIterator<Petition>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  active: () => Promise<AsyncIterator<Boolean>>;
+  short_description: () => Promise<AsyncIterator<String>>;
+  body: () => Promise<AsyncIterator<String>>;
+  order: () => Promise<AsyncIterator<Int>>;
+  primary_image: () => Promise<AsyncIterator<String>>;
+  video_url: () => Promise<AsyncIterator<String>>;
+  external_url: () => Promise<AsyncIterator<String>>;
+  hasVideo: () => Promise<AsyncIterator<Boolean>>;
+  users: <T = Promise<AsyncIterator<UserSubscription>>>(
+    args?: {
+      where?: UserWhereInput;
+      orderBy?: UserOrderByInput;
+      skip?: Int;
+      after?: String;
+      before?: String;
+      first?: Int;
+      last?: Int;
+    }
+  ) => T;
+  author: <T = UserSubscription>() => T;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface CommunityEvent {
+  id: ID_Output;
+  type: String;
+  number_of_people: Int;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface CommunityEventPromise
+  extends Promise<CommunityEvent>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  type: () => Promise<String>;
+  number_of_people: () => Promise<Int>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface CommunityEventSubscription
+  extends Promise<AsyncIterator<CommunityEvent>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  type: () => Promise<AsyncIterator<String>>;
+  number_of_people: () => Promise<AsyncIterator<Int>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface ActionConnection {}
+
+export interface ActionConnectionPromise
+  extends Promise<ActionConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<ActionEdge>>() => T;
+  aggregate: <T = AggregateActionPromise>() => T;
+}
+
+export interface ActionConnectionSubscription
+  extends Promise<AsyncIterator<ActionConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<ActionEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateActionSubscription>() => T;
+}
+
+export interface PageInfo {
+  hasNextPage: Boolean;
+  hasPreviousPage: Boolean;
+  startCursor?: String;
+  endCursor?: String;
+}
+
+export interface PageInfoPromise extends Promise<PageInfo>, Fragmentable {
+  hasNextPage: () => Promise<Boolean>;
+  hasPreviousPage: () => Promise<Boolean>;
+  startCursor: () => Promise<String>;
+  endCursor: () => Promise<String>;
+}
+
+export interface PageInfoSubscription
+  extends Promise<AsyncIterator<PageInfo>>,
+    Fragmentable {
+  hasNextPage: () => Promise<AsyncIterator<Boolean>>;
+  hasPreviousPage: () => Promise<AsyncIterator<Boolean>>;
+  startCursor: () => Promise<AsyncIterator<String>>;
+  endCursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface ActionEdge {
+  cursor: String;
+}
+
+export interface ActionEdgePromise extends Promise<ActionEdge>, Fragmentable {
+  node: <T = ActionPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface ActionEdgeSubscription
+  extends Promise<AsyncIterator<ActionEdge>>,
+    Fragmentable {
+  node: <T = ActionSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateAction {
+  count: Int;
+}
+
+export interface AggregateActionPromise
+  extends Promise<AggregateAction>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateActionSubscription
+  extends Promise<AsyncIterator<AggregateAction>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface ActionCategoryConnection {}
+
+export interface ActionCategoryConnectionPromise
+  extends Promise<ActionCategoryConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<ActionCategoryEdge>>() => T;
+  aggregate: <T = AggregateActionCategoryPromise>() => T;
+}
+
+export interface ActionCategoryConnectionSubscription
+  extends Promise<AsyncIterator<ActionCategoryConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<ActionCategoryEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateActionCategorySubscription>() => T;
+}
+
+export interface ActionCategoryEdge {
+  cursor: String;
+}
+
+export interface ActionCategoryEdgePromise
+  extends Promise<ActionCategoryEdge>,
+    Fragmentable {
+  node: <T = ActionCategoryPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface ActionCategoryEdgeSubscription
+  extends Promise<AsyncIterator<ActionCategoryEdge>>,
+    Fragmentable {
+  node: <T = ActionCategorySubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateActionCategory {
+  count: Int;
+}
+
+export interface AggregateActionCategoryPromise
+  extends Promise<AggregateActionCategory>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateActionCategorySubscription
+  extends Promise<AsyncIterator<AggregateActionCategory>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface CommunityEventConnection {}
+
+export interface CommunityEventConnectionPromise
+  extends Promise<CommunityEventConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<CommunityEventEdge>>() => T;
+  aggregate: <T = AggregateCommunityEventPromise>() => T;
+}
+
+export interface CommunityEventConnectionSubscription
+  extends Promise<AsyncIterator<CommunityEventConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<CommunityEventEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateCommunityEventSubscription>() => T;
+}
+
+export interface CommunityEventEdge {
+  cursor: String;
+}
+
+export interface CommunityEventEdgePromise
+  extends Promise<CommunityEventEdge>,
+    Fragmentable {
+  node: <T = CommunityEventPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface CommunityEventEdgeSubscription
+  extends Promise<AsyncIterator<CommunityEventEdge>>,
+    Fragmentable {
+  node: <T = CommunityEventSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateCommunityEvent {
+  count: Int;
+}
+
+export interface AggregateCommunityEventPromise
+  extends Promise<AggregateCommunityEvent>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateCommunityEventSubscription
+  extends Promise<AsyncIterator<AggregateCommunityEvent>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface EventActionConnection {}
+
+export interface EventActionConnectionPromise
+  extends Promise<EventActionConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<EventActionEdge>>() => T;
+  aggregate: <T = AggregateEventActionPromise>() => T;
+}
+
+export interface EventActionConnectionSubscription
+  extends Promise<AsyncIterator<EventActionConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<EventActionEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateEventActionSubscription>() => T;
+}
+
+export interface EventActionEdge {
+  cursor: String;
+}
+
+export interface EventActionEdgePromise
+  extends Promise<EventActionEdge>,
+    Fragmentable {
+  node: <T = EventActionPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface EventActionEdgeSubscription
+  extends Promise<AsyncIterator<EventActionEdge>>,
+    Fragmentable {
+  node: <T = EventActionSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateEventAction {
+  count: Int;
+}
+
+export interface AggregateEventActionPromise
+  extends Promise<AggregateEventAction>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateEventActionSubscription
+  extends Promise<AsyncIterator<AggregateEventAction>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface PetitionConnection {}
+
+export interface PetitionConnectionPromise
+  extends Promise<PetitionConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<PetitionEdge>>() => T;
+  aggregate: <T = AggregatePetitionPromise>() => T;
+}
+
+export interface PetitionConnectionSubscription
+  extends Promise<AsyncIterator<PetitionConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<PetitionEdgeSubscription>>>() => T;
+  aggregate: <T = AggregatePetitionSubscription>() => T;
+}
+
+export interface PetitionEdge {
+  cursor: String;
+}
+
+export interface PetitionEdgePromise
+  extends Promise<PetitionEdge>,
+    Fragmentable {
+  node: <T = PetitionPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface PetitionEdgeSubscription
+  extends Promise<AsyncIterator<PetitionEdge>>,
+    Fragmentable {
+  node: <T = PetitionSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregatePetition {
+  count: Int;
+}
+
+export interface AggregatePetitionPromise
+  extends Promise<AggregatePetition>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregatePetitionSubscription
+  extends Promise<AsyncIterator<AggregatePetition>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface RoleConnection {}
+
+export interface RoleConnectionPromise
+  extends Promise<RoleConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<RoleEdge>>() => T;
+  aggregate: <T = AggregateRolePromise>() => T;
+}
+
+export interface RoleConnectionSubscription
+  extends Promise<AsyncIterator<RoleConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<RoleEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateRoleSubscription>() => T;
+}
+
+export interface RoleEdge {
+  cursor: String;
+}
+
+export interface RoleEdgePromise extends Promise<RoleEdge>, Fragmentable {
+  node: <T = RolePromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface RoleEdgeSubscription
+  extends Promise<AsyncIterator<RoleEdge>>,
+    Fragmentable {
+  node: <T = RoleSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateRole {
+  count: Int;
+}
+
+export interface AggregateRolePromise
+  extends Promise<AggregateRole>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateRoleSubscription
+  extends Promise<AsyncIterator<AggregateRole>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface UserConnection {}
+
+export interface UserConnectionPromise
+  extends Promise<UserConnection>,
+    Fragmentable {
+  pageInfo: <T = PageInfoPromise>() => T;
+  edges: <T = FragmentableArray<UserEdge>>() => T;
+  aggregate: <T = AggregateUserPromise>() => T;
+}
+
+export interface UserConnectionSubscription
+  extends Promise<AsyncIterator<UserConnection>>,
+    Fragmentable {
+  pageInfo: <T = PageInfoSubscription>() => T;
+  edges: <T = Promise<AsyncIterator<UserEdgeSubscription>>>() => T;
+  aggregate: <T = AggregateUserSubscription>() => T;
+}
+
+export interface UserEdge {
+  cursor: String;
+}
+
+export interface UserEdgePromise extends Promise<UserEdge>, Fragmentable {
+  node: <T = UserPromise>() => T;
+  cursor: () => Promise<String>;
+}
+
+export interface UserEdgeSubscription
+  extends Promise<AsyncIterator<UserEdge>>,
+    Fragmentable {
+  node: <T = UserSubscription>() => T;
+  cursor: () => Promise<AsyncIterator<String>>;
+}
+
+export interface AggregateUser {
+  count: Int;
+}
+
+export interface AggregateUserPromise
+  extends Promise<AggregateUser>,
+    Fragmentable {
+  count: () => Promise<Int>;
+}
+
+export interface AggregateUserSubscription
+  extends Promise<AsyncIterator<AggregateUser>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Int>>;
+}
+
+export interface BatchPayload {
+  count: Long;
+}
+
+export interface BatchPayloadPromise
+  extends Promise<BatchPayload>,
+    Fragmentable {
+  count: () => Promise<Long>;
+}
+
+export interface BatchPayloadSubscription
+  extends Promise<AsyncIterator<BatchPayload>>,
+    Fragmentable {
+  count: () => Promise<AsyncIterator<Long>>;
+}
+
+export interface ActionSubscriptionPayload {
+  mutation: MutationType;
+  updatedFields?: String[];
+}
+
+export interface ActionSubscriptionPayloadPromise
+  extends Promise<ActionSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = ActionPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = ActionPreviousValuesPromise>() => T;
+}
+
+export interface ActionSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<ActionSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = ActionSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = ActionPreviousValuesSubscription>() => T;
+}
+
+export interface ActionPreviousValues {
+  id: ID_Output;
+  primary_image?: String;
+  active?: Boolean;
+  short_description: String;
+  action_taken_description: String;
+  schedule?: Schedule;
+  video_url?: String;
+  carbon_dioxide?: Float;
+  order?: Int;
+  water?: Float;
+  waste?: Float;
+  points?: Int;
+  external_url?: String;
+  isGame: Boolean;
+  game_title?: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface ActionPreviousValuesPromise
+  extends Promise<ActionPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  primary_image: () => Promise<String>;
+  active: () => Promise<Boolean>;
+  short_description: () => Promise<String>;
+  action_taken_description: () => Promise<String>;
+  schedule: () => Promise<Schedule>;
+  video_url: () => Promise<String>;
+  carbon_dioxide: () => Promise<Float>;
+  order: () => Promise<Int>;
+  water: () => Promise<Float>;
+  waste: () => Promise<Float>;
+  points: () => Promise<Int>;
+  external_url: () => Promise<String>;
+  isGame: () => Promise<Boolean>;
+  game_title: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface ActionPreviousValuesSubscription
+  extends Promise<AsyncIterator<ActionPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  primary_image: () => Promise<AsyncIterator<String>>;
+  active: () => Promise<AsyncIterator<Boolean>>;
+  short_description: () => Promise<AsyncIterator<String>>;
+  action_taken_description: () => Promise<AsyncIterator<String>>;
+  schedule: () => Promise<AsyncIterator<Schedule>>;
+  video_url: () => Promise<AsyncIterator<String>>;
+  carbon_dioxide: () => Promise<AsyncIterator<Float>>;
+  order: () => Promise<AsyncIterator<Int>>;
+  water: () => Promise<AsyncIterator<Float>>;
+  waste: () => Promise<AsyncIterator<Float>>;
+  points: () => Promise<AsyncIterator<Int>>;
+  external_url: () => Promise<AsyncIterator<String>>;
+  isGame: () => Promise<AsyncIterator<Boolean>>;
+  game_title: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface ActionCategorySubscriptionPayload {
+  mutation: MutationType;
+  updatedFields?: String[];
+}
+
+export interface ActionCategorySubscriptionPayloadPromise
+  extends Promise<ActionCategorySubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = ActionCategoryPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = ActionCategoryPreviousValuesPromise>() => T;
+}
+
+export interface ActionCategorySubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<ActionCategorySubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = ActionCategorySubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = ActionCategoryPreviousValuesSubscription>() => T;
+}
+
+export interface ActionCategoryPreviousValues {
+  id: ID_Output;
+  name: String;
+  primary_image?: String;
+  video_id?: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface ActionCategoryPreviousValuesPromise
+  extends Promise<ActionCategoryPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  name: () => Promise<String>;
+  primary_image: () => Promise<String>;
+  video_id: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface ActionCategoryPreviousValuesSubscription
+  extends Promise<AsyncIterator<ActionCategoryPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  name: () => Promise<AsyncIterator<String>>;
+  primary_image: () => Promise<AsyncIterator<String>>;
+  video_id: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface CommunityEventSubscriptionPayload {
+  mutation: MutationType;
+  updatedFields?: String[];
+}
+
+export interface CommunityEventSubscriptionPayloadPromise
+  extends Promise<CommunityEventSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = CommunityEventPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = CommunityEventPreviousValuesPromise>() => T;
+}
+
+export interface CommunityEventSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<CommunityEventSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = CommunityEventSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = CommunityEventPreviousValuesSubscription>() => T;
+}
+
+export interface CommunityEventPreviousValues {
+  id: ID_Output;
+  type: String;
+  number_of_people: Int;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface CommunityEventPreviousValuesPromise
+  extends Promise<CommunityEventPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  type: () => Promise<String>;
+  number_of_people: () => Promise<Int>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface CommunityEventPreviousValuesSubscription
+  extends Promise<AsyncIterator<CommunityEventPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  type: () => Promise<AsyncIterator<String>>;
+  number_of_people: () => Promise<AsyncIterator<Int>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
@@ -3895,20 +3750,149 @@ export interface EventActionSubscriptionPayloadSubscription
   previousValues: <T = EventActionPreviousValuesSubscription>() => T;
 }
 
-export interface AggregatePetition {
-  count: Int;
+export interface EventActionPreviousValues {
+  id: ID_Output;
+  took_action: Boolean;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
 }
 
-export interface AggregatePetitionPromise
-  extends Promise<AggregatePetition>,
+export interface EventActionPreviousValuesPromise
+  extends Promise<EventActionPreviousValues>,
     Fragmentable {
-  count: () => Promise<Int>;
+  id: () => Promise<ID_Output>;
+  took_action: () => Promise<Boolean>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
 }
 
-export interface AggregatePetitionSubscription
-  extends Promise<AsyncIterator<AggregatePetition>>,
+export interface EventActionPreviousValuesSubscription
+  extends Promise<AsyncIterator<EventActionPreviousValues>>,
     Fragmentable {
-  count: () => Promise<AsyncIterator<Int>>;
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  took_action: () => Promise<AsyncIterator<Boolean>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface PetitionSubscriptionPayload {
+  mutation: MutationType;
+  updatedFields?: String[];
+}
+
+export interface PetitionSubscriptionPayloadPromise
+  extends Promise<PetitionSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = PetitionPromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = PetitionPreviousValuesPromise>() => T;
+}
+
+export interface PetitionSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<PetitionSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = PetitionSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = PetitionPreviousValuesSubscription>() => T;
+}
+
+export interface PetitionPreviousValues {
+  id: ID_Output;
+  title: String;
+  active?: Boolean;
+  short_description: String;
+  body: String;
+  order?: Int;
+  primary_image?: String;
+  video_url?: String;
+  external_url?: String;
+  hasVideo: Boolean;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface PetitionPreviousValuesPromise
+  extends Promise<PetitionPreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  title: () => Promise<String>;
+  active: () => Promise<Boolean>;
+  short_description: () => Promise<String>;
+  body: () => Promise<String>;
+  order: () => Promise<Int>;
+  primary_image: () => Promise<String>;
+  video_url: () => Promise<String>;
+  external_url: () => Promise<String>;
+  hasVideo: () => Promise<Boolean>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface PetitionPreviousValuesSubscription
+  extends Promise<AsyncIterator<PetitionPreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  title: () => Promise<AsyncIterator<String>>;
+  active: () => Promise<AsyncIterator<Boolean>>;
+  short_description: () => Promise<AsyncIterator<String>>;
+  body: () => Promise<AsyncIterator<String>>;
+  order: () => Promise<AsyncIterator<Int>>;
+  primary_image: () => Promise<AsyncIterator<String>>;
+  video_url: () => Promise<AsyncIterator<String>>;
+  external_url: () => Promise<AsyncIterator<String>>;
+  hasVideo: () => Promise<AsyncIterator<Boolean>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+}
+
+export interface RoleSubscriptionPayload {
+  mutation: MutationType;
+  updatedFields?: String[];
+}
+
+export interface RoleSubscriptionPayloadPromise
+  extends Promise<RoleSubscriptionPayload>,
+    Fragmentable {
+  mutation: () => Promise<MutationType>;
+  node: <T = RolePromise>() => T;
+  updatedFields: () => Promise<String[]>;
+  previousValues: <T = RolePreviousValuesPromise>() => T;
+}
+
+export interface RoleSubscriptionPayloadSubscription
+  extends Promise<AsyncIterator<RoleSubscriptionPayload>>,
+    Fragmentable {
+  mutation: () => Promise<AsyncIterator<MutationType>>;
+  node: <T = RoleSubscription>() => T;
+  updatedFields: () => Promise<AsyncIterator<String[]>>;
+  previousValues: <T = RolePreviousValuesSubscription>() => T;
+}
+
+export interface RolePreviousValues {
+  id: ID_Output;
+  role_name: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
+
+export interface RolePreviousValuesPromise
+  extends Promise<RolePreviousValues>,
+    Fragmentable {
+  id: () => Promise<ID_Output>;
+  role_name: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
+}
+
+export interface RolePreviousValuesSubscription
+  extends Promise<AsyncIterator<RolePreviousValues>>,
+    Fragmentable {
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  role_name: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
 
 export interface UserSubscriptionPayload {
@@ -3934,59 +3918,63 @@ export interface UserSubscriptionPayloadSubscription
   previousValues: <T = UserPreviousValuesSubscription>() => T;
 }
 
-export interface CommunityEventConnection {}
+export interface UserPreviousValues {
+  id: ID_Output;
+  username?: String;
+  email?: String;
+  password: String;
+  name?: String;
+  phone?: String;
+  zipcode?: String;
+  total_points?: Int;
+  device_id?: String;
+  crew?: String;
+  crew_type?: String;
+  createdAt: DateTimeOutput;
+  updatedAt: DateTimeOutput;
+}
 
-export interface CommunityEventConnectionPromise
-  extends Promise<CommunityEventConnection>,
+export interface UserPreviousValuesPromise
+  extends Promise<UserPreviousValues>,
     Fragmentable {
-  pageInfo: <T = PageInfoPromise>() => T;
-  edges: <T = FragmentableArray<CommunityEventEdge>>() => T;
-  aggregate: <T = AggregateCommunityEventPromise>() => T;
+  id: () => Promise<ID_Output>;
+  username: () => Promise<String>;
+  email: () => Promise<String>;
+  password: () => Promise<String>;
+  name: () => Promise<String>;
+  phone: () => Promise<String>;
+  zipcode: () => Promise<String>;
+  total_points: () => Promise<Int>;
+  device_id: () => Promise<String>;
+  crew: () => Promise<String>;
+  crew_type: () => Promise<String>;
+  createdAt: () => Promise<DateTimeOutput>;
+  updatedAt: () => Promise<DateTimeOutput>;
 }
 
-export interface CommunityEventConnectionSubscription
-  extends Promise<AsyncIterator<CommunityEventConnection>>,
+export interface UserPreviousValuesSubscription
+  extends Promise<AsyncIterator<UserPreviousValues>>,
     Fragmentable {
-  pageInfo: <T = PageInfoSubscription>() => T;
-  edges: <T = Promise<AsyncIterator<CommunityEventEdgeSubscription>>>() => T;
-  aggregate: <T = AggregateCommunityEventSubscription>() => T;
+  id: () => Promise<AsyncIterator<ID_Output>>;
+  username: () => Promise<AsyncIterator<String>>;
+  email: () => Promise<AsyncIterator<String>>;
+  password: () => Promise<AsyncIterator<String>>;
+  name: () => Promise<AsyncIterator<String>>;
+  phone: () => Promise<AsyncIterator<String>>;
+  zipcode: () => Promise<AsyncIterator<String>>;
+  total_points: () => Promise<AsyncIterator<Int>>;
+  device_id: () => Promise<AsyncIterator<String>>;
+  crew: () => Promise<AsyncIterator<String>>;
+  crew_type: () => Promise<AsyncIterator<String>>;
+  createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
+  updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
-
-export interface EventActionEdge {
-  cursor: String;
-}
-
-export interface EventActionEdgePromise
-  extends Promise<EventActionEdge>,
-    Fragmentable {
-  node: <T = EventActionPromise>() => T;
-  cursor: () => Promise<String>;
-}
-
-export interface EventActionEdgeSubscription
-  extends Promise<AsyncIterator<EventActionEdge>>,
-    Fragmentable {
-  node: <T = EventActionSubscription>() => T;
-  cursor: () => Promise<AsyncIterator<String>>;
-}
-
-/*
-The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
-*/
-export type Int = number;
-
-export type Long = string;
 
 /*
 The `ID` scalar type represents a unique identifier, often used to refetch an object or as key for a cache. The ID type appears in a JSON response as a String; however, it is not intended to be human-readable. When expected as an input type, any string (such as `"4"`) or integer (such as `4`) input value will be accepted as an ID.
 */
 export type ID_Input = string | number;
 export type ID_Output = string;
-
-/*
-The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point). 
-*/
-export type Float = number;
 
 /*
 The `String` scalar type represents textual data, represented as UTF-8 character sequences. The String type is most often used by GraphQL to represent free-form human-readable text.
@@ -4007,6 +3995,18 @@ export type DateTimeOutput = string;
 The `Boolean` scalar type represents `true` or `false`.
 */
 export type Boolean = boolean;
+
+/*
+The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](http://en.wikipedia.org/wiki/IEEE_floating_point). 
+*/
+export type Float = number;
+
+/*
+The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1. 
+*/
+export type Int = number;
+
+export type Long = string;
 
 /**
  * Model Metadata
