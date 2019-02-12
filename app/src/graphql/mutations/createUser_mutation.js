@@ -1,4 +1,4 @@
-import gql from "../../../node_modules/graphql-tag";
+import gql from '../../../node_modules/graphql-tag';
 
 export const CreateUserMutation = gql`
 	mutation CreateUser(
@@ -10,17 +10,13 @@ export const CreateUserMutation = gql`
 		$role_id: ID!
 	) {
 		createUser(
-			data: { 
+			data: {
 				username: $username
 				email: $email
 				password: $password
 				name: $name
 				phone: $phone
-				role: {
-					connect: {
-						id: $role_id
-					}
-				}
+				role: { connect: { id: $role_id } }
 			}
 		) {
 			id
