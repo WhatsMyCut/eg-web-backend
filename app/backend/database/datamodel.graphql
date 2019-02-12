@@ -1,103 +1,104 @@
 type User {
-  id: ID! @unique
-  username: String @unique
-  email: String @unique
-  password: String!
-  name: String!
-  phone: String @unique
-  role: Role
-  recent_actions: [EventAction]
-  total_points: Int
-  petitions_signed: [Petition] @relation(name:"PetitionOnUser")
-  community_events : [CommunityEvent] @relation(name:"CommunityEventsOnUser")
-  device_id: String
-  crew: String
-  createdAt: DateTime!
-  updatedAt: DateTime!
+	id: ID! @unique
+	username: String @unique
+	email: String @unique
+	password: String!
+	name: String!
+	phone: String @unique
+	device_id: String @unique
+	role: Role
+	recent_actions: [EventAction]
+	total_points: Int
+	petitions_signed: [Petition] @relation(name: "PetitionOnUser")
+	community_events: [CommunityEvent] @relation(name: "CommunityEventsOnUser")
+	device_id: String
+	crew: String
+	createdAt: DateTime!
+	updatedAt: DateTime!
 }
 
 type Role {
-  id: ID! @unique
-  role_name: String!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+	id: ID! @unique
+	role_name: String!
+	createdAt: DateTime!
+	updatedAt: DateTime!
 }
 
 type EventAction {
-  id: ID! @unique
-  action: Action!
-  user: User!
-  took_action: Boolean! @default(value:false)
-  createdAt: DateTime!
-  updatedAt: DateTime!
+	id: ID! @unique
+	action: Action!
+	user: User!
+	took_action: Boolean! @default(value: false)
+	createdAt: DateTime!
+	updatedAt: DateTime!
 }
 
 type CommunityEvent {
-  id: ID!
-  type: String!
-  number_of_people: Int!
-  createdAt: DateTime!
-  updatedAt: DateTime!
+	id: ID!
+	type: String!
+	number_of_people: Int!
+	createdAt: DateTime!
+	updatedAt: DateTime!
 }
 
 type ActionCategory {
-  id: ID! @unique
-  name: String!
-  actions: [Action]
-  primary_image: String
-  video_id: String
-  createdAt: DateTime!
-  updatedAt: DateTime!
+	id: ID! @unique
+	name: String!
+	actions: [Action]
+	primary_image: String
+	video_id: String
+	createdAt: DateTime!
+	updatedAt: DateTime!
 }
 
 type Petition {
-  id: ID! @unique
-  title: String!
-  active: Boolean @default(value:false)
-  short_description: String!
-  body: String!
-  order: Int
-  primary_image: String
-  video_url: String
-  external_url: String
-  hasVideo: Boolean! @default(value:false)
-  users: [User] @relation(name:"PetitionOnUser")
-  author: User! @relation(name:"AuthorOnPetition")
-  createdAt: DateTime!
-  updatedAt: DateTime!
+	id: ID! @unique
+	title: String!
+	active: Boolean @default(value: false)
+	short_description: String!
+	body: String!
+	order: Int
+	primary_image: String
+	video_url: String
+	external_url: String
+	hasVideo: Boolean! @default(value: false)
+	users: [User] @relation(name: "PetitionOnUser")
+	author: User! @relation(name: "AuthorOnPetition")
+	createdAt: DateTime!
+	updatedAt: DateTime!
 }
 
 type Action {
-  id: ID! @unique
-  category: ActionCategory
-  primary_image: String
-  active: Boolean @default(value:false)
-  short_description: String!
-  action_taken_description: String!
-  schedule: Schedule
-  video_url: String
-  carbon_dioxide:Float
-  order: Int
-  water: Float
-  waste: Float
-  points: Int
-  external_url: String
-  isGame: Boolean! @default(value:false)
-  related_actions: [Action]
-  author: User! @relation(name:"AuthorOnAction")
-  createdAt: DateTime!
-  updatedAt: DateTime!
+	id: ID! @unique
+	category: ActionCategory
+	primary_image: String
+	active: Boolean @default(value: false)
+	short_description: String!
+	action_taken_description: String!
+	schedule: Schedule
+	video_url: String
+	carbon_dioxide: Float
+	order: Int
+	water: Float
+	waste: Float
+	points: Int
+	external_url: String
+	isGame: Boolean! @default(value: false)
+	related_actions: [Action]
+	author: User! @relation(name: "AuthorOnAction")
+	createdAt: DateTime!
+	updatedAt: DateTime!
 }
 
 enum Schedule {
-  ANYTIME
-  ONCE
-  DAILY
-  BIWEEKLY
-  WEEKLY
-  TWOWEEKS
-  MONTHLY
-  QUARTERLY
-  SEMIANNUALLY
-  ANNUALLY
+	ANYTIME
+	ONCE
+	DAILY
+	BIWEEKLY
+	WEEKLY
+	TWOWEEKS
+	MONTHLY
+	QUARTERLY
+	SEMIANNUALLY
+	ANNUALLY
 }
