@@ -24,7 +24,7 @@ type User {
 	password: String!
 	name: String!
 	phone: String @unique
-	device_id: String @unique
+	token: String
 	role: Role
 	recent_actions: [EventAction]
 	total_points: Int
