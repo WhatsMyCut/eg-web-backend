@@ -10,7 +10,7 @@ import { WebSocketLink } from 'apollo-link-ws';
 import { getFragmentDefinitions, getMainDefinition } from 'apollo-utilities';
 import { SubscriptionClient } from 'subscriptions-transport-ws';
 import { AUTH_TOKEN_NAME } from './consts';
-require('dotenv').config('../../.env');
+// require('dotenv').config('../../.env');
 
 const httpLink = new HttpLink({
   uri: 'https://eg-production.herokuapp.com/'

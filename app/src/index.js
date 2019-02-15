@@ -9,7 +9,7 @@ import { ApolloProvider } from 'react-apollo';
 import client from './Apollo';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-require('dotenv').config('../../.env');
+// require('dotenv').config('../../.env');
 
 let Application = (
   <ApolloProvider client={client}>
