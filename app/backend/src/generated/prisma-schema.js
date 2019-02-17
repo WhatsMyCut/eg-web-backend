@@ -1,5 +1,5 @@
 module.exports = {
-  typeDefs: /* GraphQL */ `type Action {
+        typeDefs: /* GraphQL */ `type Action {
   id: ID!
   category: ActionCategory
   primary_image: String
@@ -15,6 +15,7 @@ module.exports = {
   points: Int
   external_url: String
   isGame: Boolean!
+  game_title: String
   related_actions(where: ActionWhereInput, orderBy: ActionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Action!]
   author: User!
   createdAt: DateTime!
@@ -241,6 +242,7 @@ input ActionCreateInput {
   points: Int
   external_url: String
   isGame: Boolean
+  game_title: String
   related_actions: ActionCreateManyInput
   author: UserCreateOneInput!
 }
@@ -274,6 +276,7 @@ input ActionCreateWithoutCategoryInput {
   points: Int
   external_url: String
   isGame: Boolean
+  game_title: String
   related_actions: ActionCreateManyInput
   author: UserCreateOneInput!
 }
@@ -312,6 +315,8 @@ enum ActionOrderByInput {
   external_url_DESC
   isGame_ASC
   isGame_DESC
+  game_title_ASC
+  game_title_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -333,6 +338,7 @@ type ActionPreviousValues {
   points: Int
   external_url: String
   isGame: Boolean!
+  game_title: String
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -470,6 +476,20 @@ input ActionScalarWhereInput {
   external_url_not_ends_with: String
   isGame: Boolean
   isGame_not: Boolean
+  game_title: String
+  game_title_not: String
+  game_title_in: [String!]
+  game_title_not_in: [String!]
+  game_title_lt: String
+  game_title_lte: String
+  game_title_gt: String
+  game_title_gte: String
+  game_title_contains: String
+  game_title_not_contains: String
+  game_title_starts_with: String
+  game_title_not_starts_with: String
+  game_title_ends_with: String
+  game_title_not_ends_with: String
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
@@ -524,6 +544,7 @@ input ActionUpdateDataInput {
   points: Int
   external_url: String
   isGame: Boolean
+  game_title: String
   related_actions: ActionUpdateManyInput
   author: UserUpdateOneRequiredInput
 }
@@ -543,6 +564,7 @@ input ActionUpdateInput {
   points: Int
   external_url: String
   isGame: Boolean
+  game_title: String
   related_actions: ActionUpdateManyInput
   author: UserUpdateOneRequiredInput
 }
@@ -561,6 +583,7 @@ input ActionUpdateManyDataInput {
   points: Int
   external_url: String
   isGame: Boolean
+  game_title: String
 }
 
 input ActionUpdateManyInput {
@@ -569,6 +592,7 @@ input ActionUpdateManyInput {
   upsert: [ActionUpsertWithWhereUniqueNestedInput!]
   delete: [ActionWhereUniqueInput!]
   connect: [ActionWhereUniqueInput!]
+  set: [ActionWhereUniqueInput!]
   disconnect: [ActionWhereUniqueInput!]
   deleteMany: [ActionScalarWhereInput!]
   updateMany: [ActionUpdateManyWithWhereNestedInput!]
@@ -588,12 +612,14 @@ input ActionUpdateManyMutationInput {
   points: Int
   external_url: String
   isGame: Boolean
+  game_title: String
 }
 
 input ActionUpdateManyWithoutCategoryInput {
   create: [ActionCreateWithoutCategoryInput!]
   delete: [ActionWhereUniqueInput!]
   connect: [ActionWhereUniqueInput!]
+  set: [ActionWhereUniqueInput!]
   disconnect: [ActionWhereUniqueInput!]
   update: [ActionUpdateWithWhereUniqueWithoutCategoryInput!]
   upsert: [ActionUpsertWithWhereUniqueWithoutCategoryInput!]
@@ -627,6 +653,7 @@ input ActionUpdateWithoutCategoryDataInput {
   points: Int
   external_url: String
   isGame: Boolean
+  game_title: String
   related_actions: ActionUpdateManyInput
   author: UserUpdateOneRequiredInput
 }
@@ -792,6 +819,20 @@ input ActionWhereInput {
   external_url_not_ends_with: String
   isGame: Boolean
   isGame_not: Boolean
+  game_title: String
+  game_title_not: String
+  game_title_in: [String!]
+  game_title_not_in: [String!]
+  game_title_lt: String
+  game_title_lte: String
+  game_title_gt: String
+  game_title_gte: String
+  game_title_contains: String
+  game_title_not_contains: String
+  game_title_starts_with: String
+  game_title_not_starts_with: String
+  game_title_ends_with: String
+  game_title_not_ends_with: String
   related_actions_every: ActionWhereInput
   related_actions_some: ActionWhereInput
   related_actions_none: ActionWhereInput
@@ -1000,6 +1041,7 @@ input CommunityEventUpdateManyInput {
   upsert: [CommunityEventUpsertWithWhereUniqueNestedInput!]
   delete: [CommunityEventWhereUniqueInput!]
   connect: [CommunityEventWhereUniqueInput!]
+  set: [CommunityEventWhereUniqueInput!]
   disconnect: [CommunityEventWhereUniqueInput!]
   deleteMany: [CommunityEventScalarWhereInput!]
   updateMany: [CommunityEventUpdateManyWithWhereNestedInput!]
@@ -1218,6 +1260,7 @@ input EventActionUpdateManyWithoutUserInput {
   create: [EventActionCreateWithoutUserInput!]
   delete: [EventActionWhereUniqueInput!]
   connect: [EventActionWhereUniqueInput!]
+  set: [EventActionWhereUniqueInput!]
   disconnect: [EventActionWhereUniqueInput!]
   update: [EventActionUpdateWithWhereUniqueWithoutUserInput!]
   upsert: [EventActionUpsertWithWhereUniqueWithoutUserInput!]
@@ -1648,6 +1691,7 @@ input PetitionUpdateManyWithoutUsersInput {
   create: [PetitionCreateWithoutUsersInput!]
   delete: [PetitionWhereUniqueInput!]
   connect: [PetitionWhereUniqueInput!]
+  set: [PetitionWhereUniqueInput!]
   disconnect: [PetitionWhereUniqueInput!]
   update: [PetitionUpdateWithWhereUniqueWithoutUsersInput!]
   upsert: [PetitionUpsertWithWhereUniqueWithoutUsersInput!]
@@ -2020,17 +2064,17 @@ type User {
   username: String
   email: String
   password: String!
-  name: String!
+  name: String
   phone: String
-  token: String
   role: Role
-  zipcode: String
   recent_actions(where: EventActionWhereInput, orderBy: EventActionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [EventAction!]
+  zipcode: String
   total_points: Int
   petitions_signed(where: PetitionWhereInput, orderBy: PetitionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Petition!]
   community_events(where: CommunityEventWhereInput, orderBy: CommunityEventOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CommunityEvent!]
   device_id: String
   crew: String
+  crew_type: String
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -2045,17 +2089,17 @@ input UserCreateInput {
   username: String
   email: String
   password: String!
-  name: String!
+  name: String
   phone: String
-  token: String
   role: RoleCreateOneInput
-  zipcode: String
   recent_actions: EventActionCreateManyWithoutUserInput
+  zipcode: String
   total_points: Int
   petitions_signed: PetitionCreateManyWithoutUsersInput
   community_events: CommunityEventCreateManyInput
   device_id: String
   crew: String
+  crew_type: String
 }
 
 input UserCreateManyWithoutPetitions_signedInput {
@@ -2077,25 +2121,24 @@ input UserCreateWithoutPetitions_signedInput {
   username: String
   email: String
   password: String!
-  name: String!
+  name: String
   phone: String
-  token: String
   role: RoleCreateOneInput
-  zipcode: String
   recent_actions: EventActionCreateManyWithoutUserInput
+  zipcode: String
   total_points: Int
   community_events: CommunityEventCreateManyInput
   device_id: String
   crew: String
+  crew_type: String
 }
 
 input UserCreateWithoutRecent_actionsInput {
   username: String
   email: String
   password: String!
-  name: String!
+  name: String
   phone: String
-  token: String
   role: RoleCreateOneInput
   zipcode: String
   total_points: Int
@@ -2103,6 +2146,7 @@ input UserCreateWithoutRecent_actionsInput {
   community_events: CommunityEventCreateManyInput
   device_id: String
   crew: String
+  crew_type: String
 }
 
 type UserEdge {
@@ -2123,8 +2167,6 @@ enum UserOrderByInput {
   name_DESC
   phone_ASC
   phone_DESC
-  token_ASC
-  token_DESC
   zipcode_ASC
   zipcode_DESC
   total_points_ASC
@@ -2133,6 +2175,8 @@ enum UserOrderByInput {
   device_id_DESC
   crew_ASC
   crew_DESC
+  crew_type_ASC
+  crew_type_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -2144,13 +2188,13 @@ type UserPreviousValues {
   username: String
   email: String
   password: String!
-  name: String!
+  name: String
   phone: String
-  token: String
   zipcode: String
   total_points: Int
   device_id: String
   crew: String
+  crew_type: String
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -2240,20 +2284,6 @@ input UserScalarWhereInput {
   phone_not_starts_with: String
   phone_ends_with: String
   phone_not_ends_with: String
-  token: String
-  token_not: String
-  token_in: [String!]
-  token_not_in: [String!]
-  token_lt: String
-  token_lte: String
-  token_gt: String
-  token_gte: String
-  token_contains: String
-  token_not_contains: String
-  token_starts_with: String
-  token_not_starts_with: String
-  token_ends_with: String
-  token_not_ends_with: String
   zipcode: String
   zipcode_not: String
   zipcode_in: [String!]
@@ -2304,6 +2334,20 @@ input UserScalarWhereInput {
   crew_not_starts_with: String
   crew_ends_with: String
   crew_not_ends_with: String
+  crew_type: String
+  crew_type_not: String
+  crew_type_in: [String!]
+  crew_type_not_in: [String!]
+  crew_type_lt: String
+  crew_type_lte: String
+  crew_type_gt: String
+  crew_type_gte: String
+  crew_type_contains: String
+  crew_type_not_contains: String
+  crew_type_starts_with: String
+  crew_type_not_starts_with: String
+  crew_type_ends_with: String
+  crew_type_not_ends_with: String
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
@@ -2349,15 +2393,15 @@ input UserUpdateDataInput {
   password: String
   name: String
   phone: String
-  token: String
   role: RoleUpdateOneInput
-  zipcode: String
   recent_actions: EventActionUpdateManyWithoutUserInput
+  zipcode: String
   total_points: Int
   petitions_signed: PetitionUpdateManyWithoutUsersInput
   community_events: CommunityEventUpdateManyInput
   device_id: String
   crew: String
+  crew_type: String
 }
 
 input UserUpdateInput {
@@ -2366,10 +2410,9 @@ input UserUpdateInput {
   password: String
   name: String
   phone: String
-  token: String
   role: RoleUpdateOneInput
-  zipcode: String
   recent_actions: EventActionUpdateManyWithoutUserInput
+  zipcode: String
   total_points: Int
   petitions_signed: PetitionUpdateManyWithoutUsersInput
   community_events: CommunityEventUpdateManyInput
@@ -2384,7 +2427,6 @@ input UserUpdateManyDataInput {
   password: String
   name: String
   phone: String
-  token: String
   zipcode: String
   total_points: Int
   device_id: String
@@ -2398,17 +2440,18 @@ input UserUpdateManyMutationInput {
   password: String
   name: String
   phone: String
-  token: String
   zipcode: String
   total_points: Int
   device_id: String
   crew: String
+  crew_type: String
 }
 
 input UserUpdateManyWithoutPetitions_signedInput {
   create: [UserCreateWithoutPetitions_signedInput!]
   delete: [UserWhereUniqueInput!]
   connect: [UserWhereUniqueInput!]
+  set: [UserWhereUniqueInput!]
   disconnect: [UserWhereUniqueInput!]
   update: [UserUpdateWithWhereUniqueWithoutPetitions_signedInput!]
   upsert: [UserUpsertWithWhereUniqueWithoutPetitions_signedInput!]
@@ -2441,14 +2484,14 @@ input UserUpdateWithoutPetitions_signedDataInput {
   password: String
   name: String
   phone: String
-  token: String
   role: RoleUpdateOneInput
-  zipcode: String
   recent_actions: EventActionUpdateManyWithoutUserInput
+  zipcode: String
   total_points: Int
   community_events: CommunityEventUpdateManyInput
   device_id: String
   crew: String
+  crew_type: String
 }
 
 input UserUpdateWithoutRecent_actionsDataInput {
@@ -2457,7 +2500,6 @@ input UserUpdateWithoutRecent_actionsDataInput {
   password: String
   name: String
   phone: String
-  token: String
   role: RoleUpdateOneInput
   zipcode: String
   total_points: Int
@@ -2465,6 +2507,7 @@ input UserUpdateWithoutRecent_actionsDataInput {
   community_events: CommunityEventUpdateManyInput
   device_id: String
   crew: String
+  crew_type: String
 }
 
 input UserUpdateWithWhereUniqueWithoutPetitions_signedInput {
@@ -2573,21 +2616,10 @@ input UserWhereInput {
   phone_not_starts_with: String
   phone_ends_with: String
   phone_not_ends_with: String
-  token: String
-  token_not: String
-  token_in: [String!]
-  token_not_in: [String!]
-  token_lt: String
-  token_lte: String
-  token_gt: String
-  token_gte: String
-  token_contains: String
-  token_not_contains: String
-  token_starts_with: String
-  token_not_starts_with: String
-  token_ends_with: String
-  token_not_ends_with: String
   role: RoleWhereInput
+  recent_actions_every: EventActionWhereInput
+  recent_actions_some: EventActionWhereInput
+  recent_actions_none: EventActionWhereInput
   zipcode: String
   zipcode_not: String
   zipcode_in: [String!]
@@ -2602,9 +2634,6 @@ input UserWhereInput {
   zipcode_not_starts_with: String
   zipcode_ends_with: String
   zipcode_not_ends_with: String
-  recent_actions_every: EventActionWhereInput
-  recent_actions_some: EventActionWhereInput
-  recent_actions_none: EventActionWhereInput
   total_points: Int
   total_points_not: Int
   total_points_in: [Int!]
@@ -2647,6 +2676,20 @@ input UserWhereInput {
   crew_not_starts_with: String
   crew_ends_with: String
   crew_not_ends_with: String
+  crew_type: String
+  crew_type_not: String
+  crew_type_in: [String!]
+  crew_type_not_in: [String!]
+  crew_type_lt: String
+  crew_type_lte: String
+  crew_type_gt: String
+  crew_type_gte: String
+  crew_type_contains: String
+  crew_type_not_contains: String
+  crew_type_starts_with: String
+  crew_type_not_starts_with: String
+  crew_type_ends_with: String
+  crew_type_not_ends_with: String
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
@@ -2675,4 +2718,5 @@ input UserWhereUniqueInput {
   phone: String
 }
 `
-}
+      }
+    

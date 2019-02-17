@@ -43,37 +43,3 @@ exports.Prisma = prisma_lib_1.makePrismaClientClass({
   endpoint: `https://eg-production-879cf73477.herokuapp.com/`
 });
 exports.prisma = new exports.Prisma();
-var models = [
-  {
-    name: "Action",
-    embedded: false
-  },
-  {
-    name: "ActionCategory",
-    embedded: false
-  },
-  {
-    name: "CommunityEvent",
-    embedded: false
-  },
-  {
-    name: "EventAction",
-    embedded: false
-  },
-  {
-    name: "Petition",
-    embedded: false
-  },
-  {
-    name: "Role",
-    embedded: false
-  },
-  {
-    name: "Schedule",
-    embedded: false
-  },
-  {
-    name: "User",
-    embedded: false
-  }
-];
