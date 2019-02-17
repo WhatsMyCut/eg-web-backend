@@ -14,6 +14,7 @@ const ActionsQuery = {
         const id = getUserId(ctx)
 
         let queryData=`{
+            zipcode
             recent_actions(where:{action:{active:true}}, orderBy:createdAt_DESC){
                 id
                 action{
@@ -40,14 +41,20 @@ const ActionsQuery = {
 
         let myActions = await ctx.db.query.user({ where: { id } }, queryData);
         
-        console.log('my_Actions', myActions);
         let recent_actions = myActions ? myActions.recent_actions : null;
-        
+        let zipcode = myActions.zipcode;
         
         let uniqueactions = recent_actions ? await returnUniqueActions(recent_actions) : null;
-        // console.log('unique actions', uniqueactions);
-        return uniqueactions ? uniqueactions : [];
+
+        // if(zipcode){
+        //     return uniqueactions ? uniqueactions : [];
+        // }
+
+        // let actionsWithLocalMetrics = await returnLocalMetrics('80305',uniqueactions, ctx);
+
+        return uniqueactions;
     },
+
     async sectorActionsByName(parent, args, ctx, info){
         const id = getUserId(ctx)
         if(!args.name){
@@ -121,6 +128,53 @@ const ActionsQuery = {
 
         return await ctx.db.query.actionCategories({where:{name:args.name}}, actionCategoryInfo);
     },
+}
+
+
+async function returnLocalMetrics(zipcode,uniqueactions, ctx){
+    console.log('return local being called')
+    console.log('ids', zipcode);
+    let ids = uniqueactions.map(item => `"${item.action.id}"`)
+    // id_in:[${ids}], 
+    let queryData=`{
+        recent_actions(where:{action:{active:true, isGame:false}}, orderBy:createdAt_DESC){
+            id
+            action{
+                id
+                primary_image
+                active
+                short_description
+                action_taken_description
+                schedule
+                video_url
+                carbon_dioxide
+                order
+                water
+                waste
+                points
+                external_url
+                isGame
+                createdAt
+                updatedAt
+            }
+            createdAt
+        }
+    }`
+
+    let allActions = await ctx.db.query.users({where:{zipcode : zipcode}}, queryData);
+    console.log('myactions');
+    console.log(allActions[0].recent_actions);
+    let communityActions = allActions( recent_actions => {
+        return returnUniqueActions(recent_actions);
+    })
+
+
+
+    let actionswithmetrics = uniqueactions.map(item => {
+        
+    })
+
+    return allActions;
 }
 
 
