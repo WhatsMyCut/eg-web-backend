@@ -1,5 +1,5 @@
 module.exports = {
-        typeDefs: /* GraphQL */ `type Action {
+  typeDefs: /* GraphQL */ `type Action {
   id: ID!
   category: ActionCategory
   primary_image: String
@@ -343,7 +343,6 @@ type ActionPreviousValues {
   updatedAt: DateTime!
 }
 
-<<<<<<< HEAD
 input ActionScalarWhereInput {
   id: ID
   id_not: ID
@@ -512,8 +511,6 @@ input ActionScalarWhereInput {
   NOT: [ActionScalarWhereInput!]
 }
 
-=======
->>>>>>> 8a34892d0efed9e13d3fc538fc0a893dd445cc54
 type ActionSubscriptionPayload {
   mutation: MutationType!
   node: Action
@@ -572,7 +569,6 @@ input ActionUpdateInput {
   author: UserUpdateOneRequiredInput
 }
 
-<<<<<<< HEAD
 input ActionUpdateManyDataInput {
   primary_image: String
   active: Boolean
@@ -590,8 +586,6 @@ input ActionUpdateManyDataInput {
   game_title: String
 }
 
-=======
->>>>>>> 8a34892d0efed9e13d3fc538fc0a893dd445cc54
 input ActionUpdateManyInput {
   create: [ActionCreateInput!]
   update: [ActionUpdateWithWhereUniqueNestedInput!]
@@ -890,7 +884,6 @@ type BatchPayload {
 }
 
 type CommunityEvent {
-<<<<<<< HEAD
   id: ID!
   type: String!
   number_of_people: Int!
@@ -1128,8 +1121,6 @@ input CommunityEventWhereUniqueInput {
 scalar DateTime
 
 type EventAction {
-=======
->>>>>>> 8a34892d0efed9e13d3fc538fc0a893dd445cc54
   id: ID!
   type: String!
   number_of_people: Int!
@@ -2161,7 +2152,6 @@ type UserPreviousValues {
   updatedAt: DateTime!
 }
 
-<<<<<<< HEAD
 input UserScalarWhereInput {
   id: ID
   id_not: ID
@@ -2332,8 +2322,6 @@ input UserScalarWhereInput {
   NOT: [UserScalarWhereInput!]
 }
 
-=======
->>>>>>> 8a34892d0efed9e13d3fc538fc0a893dd445cc54
 type UserSubscriptionPayload {
   mutation: MutationType!
   node: User
@@ -2384,7 +2372,6 @@ input UserUpdateInput {
   device_id: String
   crew: String
   crew_type: String
-<<<<<<< HEAD
 }
 
 input UserUpdateManyDataInput {
@@ -2398,8 +2385,6 @@ input UserUpdateManyDataInput {
   device_id: String
   crew: String
   crew_type: String
-=======
->>>>>>> 8a34892d0efed9e13d3fc538fc0a893dd445cc54
 }
 
 input UserUpdateManyMutationInput {
@@ -2678,5 +2663,4 @@ input UserWhereUniqueInput {
   phone: String
 }
 `
-      }
-    
+}

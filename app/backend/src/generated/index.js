@@ -43,7 +43,6 @@ exports.Prisma = prisma_lib_1.makePrismaClientClass({
   endpoint: `https://eg-production-879cf73477.herokuapp.com/`
 });
 exports.prisma = new exports.Prisma();
-<<<<<<< HEAD
 var models = [
   {
     name: "Action",
@@ -78,5 +77,3 @@ var models = [
     embedded: false
   }
 ];
-=======
->>>>>>> 8a34892d0efed9e13d3fc538fc0a893dd445cc54
