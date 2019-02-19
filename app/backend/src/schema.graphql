@@ -10,6 +10,7 @@
 type Query {
   me: User
   myAvailableActions: [CommunityStatsEventAction]
+  getCountryStats : [CountryStats]
   sectorActionsByName(name:String!): [ActionCategoryWithCommunityStats]
   action(where: ActionWhereUniqueInput!): Action
   actions(where: ActionWhereInput, orderBy: ActionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Action]!
@@ -36,7 +37,7 @@ type Query {
 }
 
 type Mutation {
-  signup(username: String!, password: String!): AuthPayload!
+  signup(username: String!, password: String!, country:String): AuthPayload!
   login(username: String!, password: String!): AuthPayload!
   createAction(data: ActionCreateInput!): Action!
   updateAction(data: ActionUpdateInput!, where: ActionWhereUniqueInput!): Action
@@ -85,6 +86,11 @@ type Mutation {
 type AuthPayload {
 	token: String!
 	user: User!
+}
+
+type CountryStats {
+  country: String
+  points: Int
 }
 
 type CommunityStatsEventAction {

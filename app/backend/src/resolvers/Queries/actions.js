@@ -10,6 +10,42 @@ const ActionsQuery = {
     actionCategory : forwardTo('db'),
     actionCategories: forwardTo('db'),
     actionCategoriesConnection : forwardTo('db'),
+
+    async getCountryStats(parent, args, ctx, info){
+        // country: String
+        // country_name: String
+        // points: Int
+
+        let countries = await ctx.db.query.users({},`{country}`);
+        let list = countries.map(item => item.country);
+        let countries_list = [... new Set(list)];
+        console.log(countries_list);
+        // stats.forEach((item) => {
+        //     if(response.indexOf(item.user.country) == )   
+        // })
+
+
+
+        return countries_list.map(async (country) => {
+            let obj ={
+                country: country,
+                points: 0
+            }
+           await ctx.db.query.eventActions({where:{ user:{country:country},action:{active:true, isGame:false, points_gt: 0}}}, `{
+            action{
+                points
+            }
+            }`).then(res =>{
+                return res.map(item => {
+                    obj.points+= item.action.points;
+                })
+                
+            })
+
+            return obj;
+        });
+    },
+
     async myAvailableActions(parent, args, ctx, info){
         const id = getUserId(ctx)
 
@@ -25,7 +61,6 @@ const ActionsQuery = {
                     action_taken_description
                     schedule
                     video_url
-                    carbon_dioxide
                     order
                     water
                     waste
@@ -34,6 +69,9 @@ const ActionsQuery = {
                     isGame
                     createdAt
                     updatedAt
+                    related_actions{
+                        id
+                    }
                 }
                 createdAt
             }
@@ -42,17 +80,22 @@ const ActionsQuery = {
         let myActions = await ctx.db.query.user({ where: { id } }, queryData);
         
         let recent_actions = myActions ? myActions.recent_actions : null;
-        let zipcode = myActions.zipcode;
-        
         let uniqueactions = recent_actions ? await returnUniqueActions(recent_actions) : null;
-
+        if(!uniqueactions){
+            return [];
+        }
         // if(zipcode){
         //     return uniqueactions ? uniqueactions : [];
         // }
 
-        // let actionsWithLocalMetrics = await returnLocalMetrics('80305',uniqueactions, ctx);
+        return await returnLocalMetrics('80305', uniqueactions.filter(action => {
+            console.log('action stuffs');
+            if(!action.recent_actions){
+                return action;
+            }
+        }) , ctx);
 
-        return uniqueactions;
+        
     },
 
     async sectorActionsByName(parent, args, ctx, info){
@@ -129,51 +172,55 @@ const ActionsQuery = {
     },
 }
 
-
-async function returnLocalMetrics(zipcode,uniqueactions, ctx){
-    console.log('return local being called')
-    console.log('ids', zipcode);
-    let ids = uniqueactions.map(item => `"${item.action.id}"`)
+async function returnLocalMetrics(zipcode, uniqueactions, ctx){
+    let ids = uniqueactions.map(item => `${item.action.id}`)
     // id_in:[${ids}], 
     let queryData=`{
-        recent_actions(where:{action:{active:true, isGame:false}}, orderBy:createdAt_DESC){
-            id
             action{
                 id
-                primary_image
-                active
-                short_description
-                action_taken_description
-                schedule
-                video_url
                 carbon_dioxide
-                order
                 water
                 waste
                 points
-                external_url
-                isGame
-                createdAt
-                updatedAt
             }
-            createdAt
-        }
     }`
 
-    let allActions = await ctx.db.query.users({where:{zipcode : zipcode}}, queryData);
-    console.log('myactions');
-    console.log(allActions[0].recent_actions);
-    let communityActions = allActions( recent_actions => {
-        return returnUniqueActions(recent_actions);
+    let allActions = await ctx.db.query.eventActions({
+        where: { 
+            user: { 
+                zipcode : zipcode
+            },
+            action : {
+                id_in: ids,
+                active:true,
+                isGame:false
+            }
+        }
+    }, queryData);
+
+    let communityActions = allActions.map(item => {
+        return item.action
     })
 
+    uniqueactions.forEach((recent_action) =>{
+        // zero out added fields
+        recent_action.action.points_community = 0;
+        recent_action.action.waste_community =0;
+        recent_action.action.water_community = 0;
+        recent_action.action.carbon_community = 0;
 
-
-    let actionswithmetrics = uniqueactions.map(item => {
-        
+        //loop over and filter community stats to add in matching stats
+        communityActions.filter(action=>{
+            return action.id == recent_action.action.id;
+        }).map(action => {
+            // aggregate those stats onto the newly added fields
+            recent_action.action.points_community += action.points;
+            recent_action.action.waste_community += action.waste;
+            recent_action.action.water_community += action.water;
+            recent_action.action.carbon_community += action.carbon_dioxide;
+        })
     })
-
-    return allActions;
+    return uniqueactions;
 }
 
 

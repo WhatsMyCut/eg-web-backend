@@ -2075,6 +2075,9 @@ type User {
   action_reminders: Boolean
   new_highlights_notification: Boolean
   new_features_notification: Boolean
+  state: String
+  country: String
+  country_name: String
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -2105,6 +2108,9 @@ input UserCreateInput {
   action_reminders: Boolean
   new_highlights_notification: Boolean
   new_features_notification: Boolean
+  state: String
+  country: String
+  country_name: String
 }
 
 input UserCreateManyWithoutPetitions_signedInput {
@@ -2141,6 +2147,9 @@ input UserCreateWithoutPetitions_signedInput {
   action_reminders: Boolean
   new_highlights_notification: Boolean
   new_features_notification: Boolean
+  state: String
+  country: String
+  country_name: String
 }
 
 input UserCreateWithoutRecent_actionsInput {
@@ -2162,6 +2171,9 @@ input UserCreateWithoutRecent_actionsInput {
   action_reminders: Boolean
   new_highlights_notification: Boolean
   new_features_notification: Boolean
+  state: String
+  country: String
+  country_name: String
 }
 
 type UserEdge {
@@ -2202,6 +2214,12 @@ enum UserOrderByInput {
   new_highlights_notification_DESC
   new_features_notification_ASC
   new_features_notification_DESC
+  state_ASC
+  state_DESC
+  country_ASC
+  country_DESC
+  country_name_ASC
+  country_name_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -2225,6 +2243,9 @@ type UserPreviousValues {
   action_reminders: Boolean
   new_highlights_notification: Boolean
   new_features_notification: Boolean
+  state: String
+  country: String
+  country_name: String
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -2400,6 +2421,48 @@ input UserScalarWhereInput {
   new_highlights_notification_not: Boolean
   new_features_notification: Boolean
   new_features_notification_not: Boolean
+  state: String
+  state_not: String
+  state_in: [String!]
+  state_not_in: [String!]
+  state_lt: String
+  state_lte: String
+  state_gt: String
+  state_gte: String
+  state_contains: String
+  state_not_contains: String
+  state_starts_with: String
+  state_not_starts_with: String
+  state_ends_with: String
+  state_not_ends_with: String
+  country: String
+  country_not: String
+  country_in: [String!]
+  country_not_in: [String!]
+  country_lt: String
+  country_lte: String
+  country_gt: String
+  country_gte: String
+  country_contains: String
+  country_not_contains: String
+  country_starts_with: String
+  country_not_starts_with: String
+  country_ends_with: String
+  country_not_ends_with: String
+  country_name: String
+  country_name_not: String
+  country_name_in: [String!]
+  country_name_not_in: [String!]
+  country_name_lt: String
+  country_name_lte: String
+  country_name_gt: String
+  country_name_gte: String
+  country_name_contains: String
+  country_name_not_contains: String
+  country_name_starts_with: String
+  country_name_not_starts_with: String
+  country_name_ends_with: String
+  country_name_not_ends_with: String
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
@@ -2459,6 +2522,9 @@ input UserUpdateDataInput {
   action_reminders: Boolean
   new_highlights_notification: Boolean
   new_features_notification: Boolean
+  state: String
+  country: String
+  country_name: String
 }
 
 input UserUpdateInput {
@@ -2481,6 +2547,9 @@ input UserUpdateInput {
   action_reminders: Boolean
   new_highlights_notification: Boolean
   new_features_notification: Boolean
+  state: String
+  country: String
+  country_name: String
 }
 
 input UserUpdateManyDataInput {
@@ -2499,6 +2568,9 @@ input UserUpdateManyDataInput {
   action_reminders: Boolean
   new_highlights_notification: Boolean
   new_features_notification: Boolean
+  state: String
+  country: String
+  country_name: String
 }
 
 input UserUpdateManyMutationInput {
@@ -2517,6 +2589,9 @@ input UserUpdateManyMutationInput {
   action_reminders: Boolean
   new_highlights_notification: Boolean
   new_features_notification: Boolean
+  state: String
+  country: String
+  country_name: String
 }
 
 input UserUpdateManyWithoutPetitions_signedInput {
@@ -2568,6 +2643,9 @@ input UserUpdateWithoutPetitions_signedDataInput {
   action_reminders: Boolean
   new_highlights_notification: Boolean
   new_features_notification: Boolean
+  state: String
+  country: String
+  country_name: String
 }
 
 input UserUpdateWithoutRecent_actionsDataInput {
@@ -2589,6 +2667,9 @@ input UserUpdateWithoutRecent_actionsDataInput {
   action_reminders: Boolean
   new_highlights_notification: Boolean
   new_features_notification: Boolean
+  state: String
+  country: String
+  country_name: String
 }
 
 input UserUpdateWithWhereUniqueWithoutPetitions_signedInput {
@@ -2793,6 +2874,48 @@ input UserWhereInput {
   new_highlights_notification_not: Boolean
   new_features_notification: Boolean
   new_features_notification_not: Boolean
+  state: String
+  state_not: String
+  state_in: [String!]
+  state_not_in: [String!]
+  state_lt: String
+  state_lte: String
+  state_gt: String
+  state_gte: String
+  state_contains: String
+  state_not_contains: String
+  state_starts_with: String
+  state_not_starts_with: String
+  state_ends_with: String
+  state_not_ends_with: String
+  country: String
+  country_not: String
+  country_in: [String!]
+  country_not_in: [String!]
+  country_lt: String
+  country_lte: String
+  country_gt: String
+  country_gte: String
+  country_contains: String
+  country_not_contains: String
+  country_starts_with: String
+  country_not_starts_with: String
+  country_ends_with: String
+  country_not_ends_with: String
+  country_name: String
+  country_name_not: String
+  country_name_in: [String!]
+  country_name_not_in: [String!]
+  country_name_lt: String
+  country_name_lte: String
+  country_name_gt: String
+  country_name_gte: String
+  country_name_contains: String
+  country_name_not_contains: String
+  country_name_starts_with: String
+  country_name_not_starts_with: String
+  country_name_ends_with: String
+  country_name_not_ends_with: String
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]

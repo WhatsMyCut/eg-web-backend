@@ -19,6 +19,9 @@ type User {
 	action_reminders : Boolean
 	new_highlights_notification : Boolean
 	new_features_notification: Boolean
+	state: String
+	country: String @default(value:"US")
+	country_name: String @default(value:"United States")
 	createdAt: DateTime!
 	updatedAt: DateTime!
 }
