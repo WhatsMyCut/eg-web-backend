@@ -34,13 +34,13 @@ async function triggerNotification(){
   console.log('this is firing');
   let messages = usersWithTokens.map(user => {
     console.log('this is firing');
-    if (!Expo.isExpoPushToken('ExponentPushToken[Up6t5UDkF4Lto9nL5LCE9N]')) {
+    if (!Expo.isExpoPushToken(user.token)) {
       console.error(`Push token ${user.token} is not a valid Expo push token`);
       return null;
     }
     console.log('push notification message');
     return {
-      to: 'ExponentPushToken[Up6t5UDkF4Lto9nL5LCE9N]',
+      to: user.token,
       sound: 'default',
       body: 'This is a test notification',
       data: { message: 'Test Message' },
