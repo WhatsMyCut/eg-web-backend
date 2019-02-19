@@ -2067,15 +2067,20 @@ type User {
   password: String!
   name: String
   phone: String
+  token: String
   role: Role
-  recent_actions(where: EventActionWhereInput, orderBy: EventActionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [EventAction!]
   zipcode: String
+  recent_actions(where: EventActionWhereInput, orderBy: EventActionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [EventAction!]
   total_points: Int
   petitions_signed(where: PetitionWhereInput, orderBy: PetitionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Petition!]
   community_events(where: CommunityEventWhereInput, orderBy: CommunityEventOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [CommunityEvent!]
   device_id: String
-  crew: String
   crew_type: String
+  crew: String
+  push_notifications_enabled: Boolean
+  action_reminders: Boolean
+  new_highlights_notification: Boolean
+  new_features_notification: Boolean
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -2092,15 +2097,20 @@ input UserCreateInput {
   password: String!
   name: String
   phone: String
+  token: String
   role: RoleCreateOneInput
-  recent_actions: EventActionCreateManyWithoutUserInput
   zipcode: String
+  recent_actions: EventActionCreateManyWithoutUserInput
   total_points: Int
   petitions_signed: PetitionCreateManyWithoutUsersInput
   community_events: CommunityEventCreateManyInput
   device_id: String
-  crew: String
   crew_type: String
+  crew: String
+  push_notifications_enabled: Boolean
+  action_reminders: Boolean
+  new_highlights_notification: Boolean
+  new_features_notification: Boolean
 }
 
 input UserCreateManyWithoutPetitions_signedInput {
@@ -2124,14 +2134,19 @@ input UserCreateWithoutPetitions_signedInput {
   password: String!
   name: String
   phone: String
+  token: String
   role: RoleCreateOneInput
-  recent_actions: EventActionCreateManyWithoutUserInput
   zipcode: String
+  recent_actions: EventActionCreateManyWithoutUserInput
   total_points: Int
   community_events: CommunityEventCreateManyInput
   device_id: String
-  crew: String
   crew_type: String
+  crew: String
+  push_notifications_enabled: Boolean
+  action_reminders: Boolean
+  new_highlights_notification: Boolean
+  new_features_notification: Boolean
 }
 
 input UserCreateWithoutRecent_actionsInput {
@@ -2140,14 +2155,19 @@ input UserCreateWithoutRecent_actionsInput {
   password: String!
   name: String
   phone: String
+  token: String
   role: RoleCreateOneInput
   zipcode: String
   total_points: Int
   petitions_signed: PetitionCreateManyWithoutUsersInput
   community_events: CommunityEventCreateManyInput
   device_id: String
-  crew: String
   crew_type: String
+  crew: String
+  push_notifications_enabled: Boolean
+  action_reminders: Boolean
+  new_highlights_notification: Boolean
+  new_features_notification: Boolean
 }
 
 type UserEdge {
@@ -2168,16 +2188,26 @@ enum UserOrderByInput {
   name_DESC
   phone_ASC
   phone_DESC
+  token_ASC
+  token_DESC
   zipcode_ASC
   zipcode_DESC
   total_points_ASC
   total_points_DESC
   device_id_ASC
   device_id_DESC
-  crew_ASC
-  crew_DESC
   crew_type_ASC
   crew_type_DESC
+  crew_ASC
+  crew_DESC
+  push_notifications_enabled_ASC
+  push_notifications_enabled_DESC
+  action_reminders_ASC
+  action_reminders_DESC
+  new_highlights_notification_ASC
+  new_highlights_notification_DESC
+  new_features_notification_ASC
+  new_features_notification_DESC
   createdAt_ASC
   createdAt_DESC
   updatedAt_ASC
@@ -2191,11 +2221,16 @@ type UserPreviousValues {
   password: String!
   name: String
   phone: String
+  token: String
   zipcode: String
   total_points: Int
   device_id: String
-  crew: String
   crew_type: String
+  crew: String
+  push_notifications_enabled: Boolean
+  action_reminders: Boolean
+  new_highlights_notification: Boolean
+  new_features_notification: Boolean
   createdAt: DateTime!
   updatedAt: DateTime!
 }
@@ -2285,6 +2320,20 @@ input UserScalarWhereInput {
   phone_not_starts_with: String
   phone_ends_with: String
   phone_not_ends_with: String
+  token: String
+  token_not: String
+  token_in: [String!]
+  token_not_in: [String!]
+  token_lt: String
+  token_lte: String
+  token_gt: String
+  token_gte: String
+  token_contains: String
+  token_not_contains: String
+  token_starts_with: String
+  token_not_starts_with: String
+  token_ends_with: String
+  token_not_ends_with: String
   zipcode: String
   zipcode_not: String
   zipcode_in: [String!]
@@ -2321,20 +2370,6 @@ input UserScalarWhereInput {
   device_id_not_starts_with: String
   device_id_ends_with: String
   device_id_not_ends_with: String
-  crew: String
-  crew_not: String
-  crew_in: [String!]
-  crew_not_in: [String!]
-  crew_lt: String
-  crew_lte: String
-  crew_gt: String
-  crew_gte: String
-  crew_contains: String
-  crew_not_contains: String
-  crew_starts_with: String
-  crew_not_starts_with: String
-  crew_ends_with: String
-  crew_not_ends_with: String
   crew_type: String
   crew_type_not: String
   crew_type_in: [String!]
@@ -2349,6 +2384,28 @@ input UserScalarWhereInput {
   crew_type_not_starts_with: String
   crew_type_ends_with: String
   crew_type_not_ends_with: String
+  crew: String
+  crew_not: String
+  crew_in: [String!]
+  crew_not_in: [String!]
+  crew_lt: String
+  crew_lte: String
+  crew_gt: String
+  crew_gte: String
+  crew_contains: String
+  crew_not_contains: String
+  crew_starts_with: String
+  crew_not_starts_with: String
+  crew_ends_with: String
+  crew_not_ends_with: String
+  push_notifications_enabled: Boolean
+  push_notifications_enabled_not: Boolean
+  action_reminders: Boolean
+  action_reminders_not: Boolean
+  new_highlights_notification: Boolean
+  new_highlights_notification_not: Boolean
+  new_features_notification: Boolean
+  new_features_notification_not: Boolean
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]
@@ -2394,15 +2451,20 @@ input UserUpdateDataInput {
   password: String
   name: String
   phone: String
+  token: String
   role: RoleUpdateOneInput
-  recent_actions: EventActionUpdateManyWithoutUserInput
   zipcode: String
+  recent_actions: EventActionUpdateManyWithoutUserInput
   total_points: Int
   petitions_signed: PetitionUpdateManyWithoutUsersInput
   community_events: CommunityEventUpdateManyInput
   device_id: String
-  crew: String
   crew_type: String
+  crew: String
+  push_notifications_enabled: Boolean
+  action_reminders: Boolean
+  new_highlights_notification: Boolean
+  new_features_notification: Boolean
 }
 
 input UserUpdateInput {
@@ -2411,15 +2473,20 @@ input UserUpdateInput {
   password: String
   name: String
   phone: String
+  token: String
   role: RoleUpdateOneInput
-  recent_actions: EventActionUpdateManyWithoutUserInput
   zipcode: String
+  recent_actions: EventActionUpdateManyWithoutUserInput
   total_points: Int
   petitions_signed: PetitionUpdateManyWithoutUsersInput
   community_events: CommunityEventUpdateManyInput
   device_id: String
-  crew: String
   crew_type: String
+  crew: String
+  push_notifications_enabled: Boolean
+  action_reminders: Boolean
+  new_highlights_notification: Boolean
+  new_features_notification: Boolean
 }
 
 input UserUpdateManyDataInput {
@@ -2428,11 +2495,16 @@ input UserUpdateManyDataInput {
   password: String
   name: String
   phone: String
+  token: String
   zipcode: String
   total_points: Int
   device_id: String
-  crew: String
   crew_type: String
+  crew: String
+  push_notifications_enabled: Boolean
+  action_reminders: Boolean
+  new_highlights_notification: Boolean
+  new_features_notification: Boolean
 }
 
 input UserUpdateManyMutationInput {
@@ -2441,11 +2513,16 @@ input UserUpdateManyMutationInput {
   password: String
   name: String
   phone: String
+  token: String
   zipcode: String
   total_points: Int
   device_id: String
-  crew: String
   crew_type: String
+  crew: String
+  push_notifications_enabled: Boolean
+  action_reminders: Boolean
+  new_highlights_notification: Boolean
+  new_features_notification: Boolean
 }
 
 input UserUpdateManyWithoutPetitions_signedInput {
@@ -2484,14 +2561,19 @@ input UserUpdateWithoutPetitions_signedDataInput {
   password: String
   name: String
   phone: String
+  token: String
   role: RoleUpdateOneInput
-  recent_actions: EventActionUpdateManyWithoutUserInput
   zipcode: String
+  recent_actions: EventActionUpdateManyWithoutUserInput
   total_points: Int
   community_events: CommunityEventUpdateManyInput
   device_id: String
-  crew: String
   crew_type: String
+  crew: String
+  push_notifications_enabled: Boolean
+  action_reminders: Boolean
+  new_highlights_notification: Boolean
+  new_features_notification: Boolean
 }
 
 input UserUpdateWithoutRecent_actionsDataInput {
@@ -2500,14 +2582,19 @@ input UserUpdateWithoutRecent_actionsDataInput {
   password: String
   name: String
   phone: String
+  token: String
   role: RoleUpdateOneInput
   zipcode: String
   total_points: Int
   petitions_signed: PetitionUpdateManyWithoutUsersInput
   community_events: CommunityEventUpdateManyInput
   device_id: String
-  crew: String
   crew_type: String
+  crew: String
+  push_notifications_enabled: Boolean
+  action_reminders: Boolean
+  new_highlights_notification: Boolean
+  new_features_notification: Boolean
 }
 
 input UserUpdateWithWhereUniqueWithoutPetitions_signedInput {
@@ -2616,10 +2703,21 @@ input UserWhereInput {
   phone_not_starts_with: String
   phone_ends_with: String
   phone_not_ends_with: String
+  token: String
+  token_not: String
+  token_in: [String!]
+  token_not_in: [String!]
+  token_lt: String
+  token_lte: String
+  token_gt: String
+  token_gte: String
+  token_contains: String
+  token_not_contains: String
+  token_starts_with: String
+  token_not_starts_with: String
+  token_ends_with: String
+  token_not_ends_with: String
   role: RoleWhereInput
-  recent_actions_every: EventActionWhereInput
-  recent_actions_some: EventActionWhereInput
-  recent_actions_none: EventActionWhereInput
   zipcode: String
   zipcode_not: String
   zipcode_in: [String!]
@@ -2634,6 +2732,9 @@ input UserWhereInput {
   zipcode_not_starts_with: String
   zipcode_ends_with: String
   zipcode_not_ends_with: String
+  recent_actions_every: EventActionWhereInput
+  recent_actions_some: EventActionWhereInput
+  recent_actions_none: EventActionWhereInput
   total_points: Int
   total_points_not: Int
   total_points_in: [Int!]
@@ -2662,20 +2763,6 @@ input UserWhereInput {
   device_id_not_starts_with: String
   device_id_ends_with: String
   device_id_not_ends_with: String
-  crew: String
-  crew_not: String
-  crew_in: [String!]
-  crew_not_in: [String!]
-  crew_lt: String
-  crew_lte: String
-  crew_gt: String
-  crew_gte: String
-  crew_contains: String
-  crew_not_contains: String
-  crew_starts_with: String
-  crew_not_starts_with: String
-  crew_ends_with: String
-  crew_not_ends_with: String
   crew_type: String
   crew_type_not: String
   crew_type_in: [String!]
@@ -2690,6 +2777,28 @@ input UserWhereInput {
   crew_type_not_starts_with: String
   crew_type_ends_with: String
   crew_type_not_ends_with: String
+  crew: String
+  crew_not: String
+  crew_in: [String!]
+  crew_not_in: [String!]
+  crew_lt: String
+  crew_lte: String
+  crew_gt: String
+  crew_gte: String
+  crew_contains: String
+  crew_not_contains: String
+  crew_starts_with: String
+  crew_not_starts_with: String
+  crew_ends_with: String
+  crew_not_ends_with: String
+  push_notifications_enabled: Boolean
+  push_notifications_enabled_not: Boolean
+  action_reminders: Boolean
+  action_reminders_not: Boolean
+  new_highlights_notification: Boolean
+  new_highlights_notification_not: Boolean
+  new_features_notification: Boolean
+  new_features_notification_not: Boolean
   createdAt: DateTime
   createdAt_not: DateTime
   createdAt_in: [DateTime!]

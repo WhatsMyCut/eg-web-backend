@@ -3,21 +3,22 @@ type User {
 	username: String @unique
 	email: String @unique
 	password: String!
-	name: String!
+	name: String
 	phone: String @unique
 	token: String
 	role: Role
-  zipcode: String
+  	zipcode: String
 	recent_actions: [EventAction]
 	total_points: Int
 	petitions_signed: [Petition] @relation(name: "PetitionOnUser")
 	community_events: [CommunityEvent] @relation(name: "CommunityEventsOnUser")
 	device_id: String
+	crew_type: String
 	crew: String
-  push_notifications_enabled: Boolean
-  action_reminders : Boolean
-  new_highlights_notification : Boolean
-  new_features_notification: Boolean
+	push_notifications_enabled: Boolean
+	action_reminders : Boolean
+	new_highlights_notification : Boolean
+	new_features_notification: Boolean
 	createdAt: DateTime!
 	updatedAt: DateTime!
 }
@@ -39,7 +40,7 @@ type EventAction {
 }
 
 type CommunityEvent {
-	id: ID!
+	id: ID! @unique
 	type: String!
 	number_of_people: Int!
 	createdAt: DateTime!
@@ -89,6 +90,7 @@ type Action {
 	points: Int
 	external_url: String
 	isGame: Boolean! @default(value: false)
+	game_title: String
 	related_actions: [Action]
 	author: User! @relation(name: "AuthorOnAction")
 	createdAt: DateTime!

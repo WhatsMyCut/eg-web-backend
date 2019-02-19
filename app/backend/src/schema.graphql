@@ -9,13 +9,13 @@
 
 type Query {
   me: User
-  myAvailableActions: [EventAction]
-  sectorActionsByName(name:String!): [ActionCategory]
+  myAvailableActions: [CommunityStatsEventAction]
+  sectorActionsByName(name:String!): [ActionCategoryWithCommunityStats]
   action(where: ActionWhereUniqueInput!): Action
   actions(where: ActionWhereInput, orderBy: ActionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Action]!
   actionsConnection(where: ActionWhereInput, orderBy: ActionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ActionConnection!
-  actionCategory(where: ActionCategoryWhereUniqueInput!): ActionCategory
-  actionCategories(where: ActionCategoryWhereInput, orderBy: ActionCategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ActionCategory]!
+  actionCategory(where: ActionCategoryWhereUniqueInput!): ActionCategoryWithCommunityStats
+  actionCategories(where: ActionCategoryWhereInput, orderBy: ActionCategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [ActionCategoryWithCommunityStats]!
   actionCategoriesConnection(where: ActionCategoryWhereInput, orderBy: ActionCategoryOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): ActionCategoryConnection!
   eventAction(where: EventActionWhereUniqueInput!): EventAction
   eventActions(where: EventActionWhereInput, orderBy: EventActionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [EventAction]!
@@ -85,4 +85,54 @@ type Mutation {
 type AuthPayload {
 	token: String!
 	user: User!
+}
+
+type CommunityStatsEventAction {
+	id: ID!
+	action: CommunityStatsAction!
+	user: User!
+	took_action: Boolean!
+	createdAt: DateTime!
+	updatedAt: DateTime!
+}
+
+type ActionCategoryWithCommunityStats {
+	id: ID!
+	name: String!
+	actions: [CommunityStatsAction]
+	primary_image: String
+	video_id: String
+	createdAt: DateTime!
+	updatedAt: DateTime!
+}
+
+type RankingStats {
+  points: Float
+}
+
+
+type CommunityStatsAction {
+	id: ID!
+	category: ActionCategory
+	primary_image: String
+	active: Boolean
+	short_description: String!
+	action_taken_description: String!
+	schedule: Schedule
+	video_url: String
+	carbon_dioxide: Float
+	order: Int
+	water: Float
+	waste: Float
+  points: Int
+  carbon_community: Float
+	water_community: Float
+	waste_community: Float
+	points_community: Int
+	external_url: String
+	isGame: Boolean!
+	related_actions: [Action]
+	author: User!
+	createdAt: DateTime!
+	updatedAt: DateTime!
 }

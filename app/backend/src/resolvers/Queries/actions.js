@@ -125,8 +125,7 @@ const ActionsQuery = {
                 }
             }
         `
-
-        return await ctx.db.query.actionCategories({where:{name:args.name}}, actionCategoryInfo);
+        return await ctx.db.query.actionCategories({where:{name:args.name}}, actionCategoryInfo)
     },
 }
 
