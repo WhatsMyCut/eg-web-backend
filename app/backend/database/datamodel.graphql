@@ -33,7 +33,7 @@ type Role {
 type EventAction {
   id: ID! @unique
   action: Action!
-  user: User! @relation(name:"EventActionToUser" )
+  user: User!
   took_action: Boolean! @default(value:false)
   createdAt: DateTime!
   updatedAt: DateTime!
