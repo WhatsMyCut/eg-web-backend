@@ -31,12 +31,12 @@ type Role {
 }
 
 type EventAction {
-	id: ID! @unique
-	action: Action!
-	user: User!
-	took_action: Boolean! @default(value: false)
-	createdAt: DateTime!
-	updatedAt: DateTime!
+  id: ID! @unique
+  action: Action!
+  user: User! @relation(name:"EventActionToUser" )
+  took_action: Boolean! @default(value:false)
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 type CommunityEvent {
@@ -75,26 +75,26 @@ type Petition {
 }
 
 type Action {
-	id: ID! @unique
-	category: ActionCategory
-	primary_image: String
-	active: Boolean @default(value: false)
-	short_description: String!
-	action_taken_description: String!
-	schedule: Schedule
-	video_url: String
-	carbon_dioxide: Float
-	order: Int
-	water: Float
-	waste: Float
-	points: Int
-	external_url: String
-	isGame: Boolean! @default(value: false)
-	game_title: String
-	related_actions: [Action]
-	author: User! @relation(name: "AuthorOnAction")
-	createdAt: DateTime!
-	updatedAt: DateTime!
+  id: ID! @unique
+  category: ActionCategory
+  primary_image: String
+  active: Boolean @default(value:false)
+  short_description: String!
+  action_taken_description: String!
+  schedule: Schedule
+  video_url: String
+  carbon_dioxide:Float @default(value:0.0)
+  order: Int
+  water: Float @default(value:0.0)
+  waste: Float @default(value:0.0)
+  points: Int @default(value: 0)
+  external_url: String
+  isGame: Boolean! @default(value:false)
+  game_title: String
+  related_actions: [Action]
+  author: User! @relation(name:"AuthorOnAction")
+  createdAt: DateTime!
+  updatedAt: DateTime!
 }
 
 enum Schedule {
