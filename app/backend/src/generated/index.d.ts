@@ -507,6 +507,12 @@ export type UserOrderByInput =
   | "new_highlights_notification_DESC"
   | "new_features_notification_ASC"
   | "new_features_notification_DESC"
+  | "state_ASC"
+  | "state_DESC"
+  | "country_ASC"
+  | "country_DESC"
+  | "country_name_ASC"
+  | "country_name_DESC"
   | "createdAt_ASC"
   | "createdAt_DESC"
   | "updatedAt_ASC"
@@ -890,6 +896,9 @@ export interface UserUpdateManyMutationInput {
   action_reminders?: Boolean;
   new_highlights_notification?: Boolean;
   new_features_notification?: Boolean;
+  state?: String;
+  country?: String;
+  country_name?: String;
 }
 
 export interface ActionCategoryUpsertWithoutActionsInput {
@@ -951,6 +960,9 @@ export interface UserUpdateManyDataInput {
   action_reminders?: Boolean;
   new_highlights_notification?: Boolean;
   new_features_notification?: Boolean;
+  state?: String;
+  country?: String;
+  country_name?: String;
 }
 
 export interface ActionUpdateDataInput {
@@ -1144,6 +1156,48 @@ export interface UserScalarWhereInput {
   new_highlights_notification_not?: Boolean;
   new_features_notification?: Boolean;
   new_features_notification_not?: Boolean;
+  state?: String;
+  state_not?: String;
+  state_in?: String[] | String;
+  state_not_in?: String[] | String;
+  state_lt?: String;
+  state_lte?: String;
+  state_gt?: String;
+  state_gte?: String;
+  state_contains?: String;
+  state_not_contains?: String;
+  state_starts_with?: String;
+  state_not_starts_with?: String;
+  state_ends_with?: String;
+  state_not_ends_with?: String;
+  country?: String;
+  country_not?: String;
+  country_in?: String[] | String;
+  country_not_in?: String[] | String;
+  country_lt?: String;
+  country_lte?: String;
+  country_gt?: String;
+  country_gte?: String;
+  country_contains?: String;
+  country_not_contains?: String;
+  country_starts_with?: String;
+  country_not_starts_with?: String;
+  country_ends_with?: String;
+  country_not_ends_with?: String;
+  country_name?: String;
+  country_name_not?: String;
+  country_name_in?: String[] | String;
+  country_name_not_in?: String[] | String;
+  country_name_lt?: String;
+  country_name_lte?: String;
+  country_name_gt?: String;
+  country_name_gte?: String;
+  country_name_contains?: String;
+  country_name_not_contains?: String;
+  country_name_starts_with?: String;
+  country_name_not_starts_with?: String;
+  country_name_ends_with?: String;
+  country_name_not_ends_with?: String;
   createdAt?: DateTimeInput;
   createdAt_not?: DateTimeInput;
   createdAt_in?: DateTimeInput[] | DateTimeInput;
@@ -1196,6 +1250,9 @@ export interface UserUpdateDataInput {
   action_reminders?: Boolean;
   new_highlights_notification?: Boolean;
   new_features_notification?: Boolean;
+  state?: String;
+  country?: String;
+  country_name?: String;
 }
 
 export interface UserUpdateWithWhereUniqueWithoutPetitions_signedInput {
@@ -1239,6 +1296,9 @@ export interface UserCreateWithoutPetitions_signedInput {
   action_reminders?: Boolean;
   new_highlights_notification?: Boolean;
   new_features_notification?: Boolean;
+  state?: String;
+  country?: String;
+  country_name?: String;
 }
 
 export interface RoleUpsertNestedInput {
@@ -1320,6 +1380,9 @@ export interface UserCreateWithoutRecent_actionsInput {
   action_reminders?: Boolean;
   new_highlights_notification?: Boolean;
   new_features_notification?: Boolean;
+  state?: String;
+  country?: String;
+  country_name?: String;
 }
 
 export interface ActionUpsertNestedInput {
@@ -1582,6 +1645,48 @@ export interface UserWhereInput {
   new_highlights_notification_not?: Boolean;
   new_features_notification?: Boolean;
   new_features_notification_not?: Boolean;
+  state?: String;
+  state_not?: String;
+  state_in?: String[] | String;
+  state_not_in?: String[] | String;
+  state_lt?: String;
+  state_lte?: String;
+  state_gt?: String;
+  state_gte?: String;
+  state_contains?: String;
+  state_not_contains?: String;
+  state_starts_with?: String;
+  state_not_starts_with?: String;
+  state_ends_with?: String;
+  state_not_ends_with?: String;
+  country?: String;
+  country_not?: String;
+  country_in?: String[] | String;
+  country_not_in?: String[] | String;
+  country_lt?: String;
+  country_lte?: String;
+  country_gt?: String;
+  country_gte?: String;
+  country_contains?: String;
+  country_not_contains?: String;
+  country_starts_with?: String;
+  country_not_starts_with?: String;
+  country_ends_with?: String;
+  country_not_ends_with?: String;
+  country_name?: String;
+  country_name_not?: String;
+  country_name_in?: String[] | String;
+  country_name_not_in?: String[] | String;
+  country_name_lt?: String;
+  country_name_lte?: String;
+  country_name_gt?: String;
+  country_name_gte?: String;
+  country_name_contains?: String;
+  country_name_not_contains?: String;
+  country_name_starts_with?: String;
+  country_name_not_starts_with?: String;
+  country_name_ends_with?: String;
+  country_name_not_ends_with?: String;
   createdAt?: DateTimeInput;
   createdAt_not?: DateTimeInput;
   createdAt_in?: DateTimeInput[] | DateTimeInput;
@@ -1986,6 +2091,9 @@ export interface UserUpdateInput {
   action_reminders?: Boolean;
   new_highlights_notification?: Boolean;
   new_features_notification?: Boolean;
+  state?: String;
+  country?: String;
+  country_name?: String;
 }
 
 export interface PetitionUpdateManyDataInput {
@@ -2188,6 +2296,9 @@ export interface UserCreateInput {
   action_reminders?: Boolean;
   new_highlights_notification?: Boolean;
   new_features_notification?: Boolean;
+  state?: String;
+  country?: String;
+  country_name?: String;
 }
 
 export interface ActionUpsertWithWhereUniqueNestedInput {
@@ -2476,6 +2587,9 @@ export interface UserUpdateWithoutPetitions_signedDataInput {
   action_reminders?: Boolean;
   new_highlights_notification?: Boolean;
   new_features_notification?: Boolean;
+  state?: String;
+  country?: String;
+  country_name?: String;
 }
 
 export interface ActionUpdateManyMutationInput {
@@ -2582,6 +2696,9 @@ export interface UserUpdateWithoutRecent_actionsDataInput {
   action_reminders?: Boolean;
   new_highlights_notification?: Boolean;
   new_features_notification?: Boolean;
+  state?: String;
+  country?: String;
+  country_name?: String;
 }
 
 export interface ActionUpdateWithWhereUniqueWithoutCategoryInput {
@@ -2846,6 +2963,9 @@ export interface UserPreviousValues {
   action_reminders?: Boolean;
   new_highlights_notification?: Boolean;
   new_features_notification?: Boolean;
+  state?: String;
+  country?: String;
+  country_name?: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
@@ -2869,6 +2989,9 @@ export interface UserPreviousValuesPromise
   action_reminders: () => Promise<Boolean>;
   new_highlights_notification: () => Promise<Boolean>;
   new_features_notification: () => Promise<Boolean>;
+  state: () => Promise<String>;
+  country: () => Promise<String>;
+  country_name: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -2892,6 +3015,9 @@ export interface UserPreviousValuesSubscription
   action_reminders: () => Promise<AsyncIterator<Boolean>>;
   new_highlights_notification: () => Promise<AsyncIterator<Boolean>>;
   new_features_notification: () => Promise<AsyncIterator<Boolean>>;
+  state: () => Promise<AsyncIterator<String>>;
+  country: () => Promise<AsyncIterator<String>>;
+  country_name: () => Promise<AsyncIterator<String>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
@@ -3780,6 +3906,9 @@ export interface User {
   action_reminders?: Boolean;
   new_highlights_notification?: Boolean;
   new_features_notification?: Boolean;
+  state?: String;
+  country?: String;
+  country_name?: String;
   createdAt: DateTimeOutput;
   updatedAt: DateTimeOutput;
 }
@@ -3835,6 +3964,9 @@ export interface UserPromise extends Promise<User>, Fragmentable {
   action_reminders: () => Promise<Boolean>;
   new_highlights_notification: () => Promise<Boolean>;
   new_features_notification: () => Promise<Boolean>;
+  state: () => Promise<String>;
+  country: () => Promise<String>;
+  country_name: () => Promise<String>;
   createdAt: () => Promise<DateTimeOutput>;
   updatedAt: () => Promise<DateTimeOutput>;
 }
@@ -3892,6 +4024,9 @@ export interface UserSubscription
   action_reminders: () => Promise<AsyncIterator<Boolean>>;
   new_highlights_notification: () => Promise<AsyncIterator<Boolean>>;
   new_features_notification: () => Promise<AsyncIterator<Boolean>>;
+  state: () => Promise<AsyncIterator<String>>;
+  country: () => Promise<AsyncIterator<String>>;
+  country_name: () => Promise<AsyncIterator<String>>;
   createdAt: () => Promise<AsyncIterator<DateTimeOutput>>;
   updatedAt: () => Promise<AsyncIterator<DateTimeOutput>>;
 }
