@@ -11,6 +11,7 @@ type Query {
   me: User
   myAvailableActions: [CommunityStatsEventAction]
   getCountryStats : [CountryStats]
+  getStateStats : [StateStats]
   sectorActionsByName(name:String!): [ActionCategoryWithCommunityStats]
   action(where: ActionWhereUniqueInput!): Action
   actions(where: ActionWhereInput, orderBy: ActionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Action]!
@@ -88,6 +89,11 @@ type AuthPayload {
 	user: User!
 }
 
+type StateStats {
+  state: String
+  points: Int
+}
+
 type CountryStats {
   country: String
   points: Int
@@ -127,6 +133,7 @@ type CommunityStatsAction {
 	schedule: Schedule
 	video_url: String
 	carbon_dioxide: Float
+  game_title: String
 	order: Int
 	water: Float
 	waste: Float

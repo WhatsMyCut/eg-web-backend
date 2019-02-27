@@ -25,25 +25,87 @@ const ActionsQuery = {
         // })
 
 
-
         return countries_list.map(async (country) => {
             let obj ={
                 country: country,
                 points: 0
             }
-           await ctx.db.query.eventActions({where:{ user:{country:country},action:{active:true, isGame:false, points_gt: 0}}}, `{
-            action{
+
+           await ctx.db.query.eventActions({
+               where:{ 
+                   user:{
+                       country:country
+                    },
+                    action:{
+                        active:true, 
+                        isGame:false, 
+                        points_gt: 0
+                    }
+                }
+            }, `{
+            action {
                 points
             }
             }`).then(res =>{
                 return res.map(item => {
                     obj.points+= item.action.points;
                 })
-                
             })
-
             return obj;
-        });
+        }).sort(async (a,b) => {
+            await a;
+            await b;
+            return a.points < b.points;
+        })
+
+    },
+    async getStateStats(parent, args, ctx, info){
+        // country: String
+        // country_name: String
+        // points: Int
+
+        let states = await ctx.db.query.users({},`{state}`);
+        let list = states.map(item => item.state);
+        let states_list = [... new Set(list)];
+        console.log(states_list);
+        // stats.forEach((item) => {
+        //     if(response.indexOf(item.user.country) == )   
+        // })
+
+
+        return states_list.map(async (state) => {
+            let obj ={
+                state: state,
+                points: 0
+            }
+
+           await ctx.db.query.eventActions({
+               where:{ 
+                   user:{
+                       state:state
+                    },
+                    action:{
+                        active:true, 
+                        isGame:false, 
+                        points_gt: 0
+                    }
+                }
+            }, `{
+            action {
+                points
+            }
+            }`).then(res =>{
+                return res.map(item => {
+                    obj.points+= item.action.points;
+                })
+            })
+            return obj;
+        }).sort(async (a,b) => {
+            await a;
+            await b;
+            return a.points < b.points;
+        })
+
     },
 
     async myAvailableActions(parent, args, ctx, info){
