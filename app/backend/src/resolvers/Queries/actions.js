@@ -34,6 +34,11 @@ const ActionsQuery = {
                 }
             }).sort((a,b) => {
                 return b.total_points - a.total_points;
+            }).map((user, index)=> {
+                return {
+                    ...user,
+                    rank: index+1
+                }
             })
         })
     },  

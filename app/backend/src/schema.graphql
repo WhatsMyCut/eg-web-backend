@@ -101,6 +101,7 @@ type UserStats {
   state: String
   crew: String
   name: String
+  rank: Int
 }
 
 type CountryStats {
