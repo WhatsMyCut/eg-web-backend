@@ -10,8 +10,9 @@
 type Query {
   me: User
   myAvailableActions: [CommunityStatsEventAction]
-  getCountryStats : [CountryStats]
-  getStateStats : [StateStats]
+  getCountryStats: [CountryStats]
+  getUserRanks: [UserStats]
+  getStateStats: [StateStats]
   sectorActionsByName(name:String!): [ActionCategoryWithCommunityStats]
   action(where: ActionWhereUniqueInput!): Action
   actions(where: ActionWhereInput, orderBy: ActionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Action]!
@@ -92,6 +93,15 @@ type AuthPayload {
 type StateStats {
   state: String
   points: Int
+}
+
+type UserStats {
+  total_points: Int
+  country: String
+  state: String
+  crew: String
+  name: String
+  rank: Int
 }
 
 type CountryStats {
