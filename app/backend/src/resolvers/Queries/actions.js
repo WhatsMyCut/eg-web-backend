@@ -137,7 +137,7 @@ const ActionsQuery = {
 
         let queryData=`{
             zipcode
-            recent_actions(where:{action:{active:true}}, orderBy:createdAt_DESC){
+            recent_actions(where:{action:{active:true, related_actions_every:{id:null}}}, orderBy:createdAt_DESC){
                 id
                 action{
                     id
@@ -175,11 +175,7 @@ const ActionsQuery = {
             return uniqueactions;
         }
 
-        return await returnLocalMetrics(myActions.zipcode, uniqueactions.filter(action => {
-            if(!action.recent_actions){
-                return action;
-            }
-        }), ctx);
+        return await returnLocalMetrics(myActions.zipcode, uniqueactions, ctx);
 
         
     },
