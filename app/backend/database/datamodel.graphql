@@ -6,6 +6,7 @@ type User {
 	name: String
 	phone: String @unique
 	token: String
+	photo: String
 	role: Role
   	zipcode: String
 	recent_actions: [EventAction]
@@ -16,8 +17,8 @@ type User {
 	crew_type: String
 	crew: String
 	push_notifications_enabled: Boolean
-	action_reminders : Boolean
-	new_highlights_notification : Boolean
+	action_reminders: Boolean
+	new_highlights_notification: Boolean
 	new_features_notification: Boolean
 	state: String
 	country: String @default(value:"US")
