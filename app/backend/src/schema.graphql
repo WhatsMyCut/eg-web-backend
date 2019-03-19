@@ -39,7 +39,7 @@ type Query {
 }
 
 type Mutation {
-  signup(username: String!, password: String!, country:String): AuthPayload!
+  signup(username: String!, password: String!, country:String, country_name: String, token: String, state: String, zipcode: String): AuthPayload!
   login(username: String!, password: String!): AuthPayload!
   createAction(data: ActionCreateInput!): Action!
   updateAction(data: ActionUpdateInput!, where: ActionWhereUniqueInput!): Action
@@ -89,6 +89,7 @@ type AuthPayload {
 	token: String!
 	user: User!
 }
+
 
 type StateStats {
   state: String

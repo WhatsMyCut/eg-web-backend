@@ -5,7 +5,6 @@ endpoint: https://eg-production-879cf73477.herokuapp.com/
 # The file containing the definition of your data model.
 datamodel: datamodel.graphql
 
-
 # Seed your service with initial data based on `seed.graphql`.
 # seed:
 #   import: seed.graphql

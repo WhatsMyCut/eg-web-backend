@@ -450,6 +450,8 @@ export type UserOrderByInput =
   | "phone_DESC"
   | "token_ASC"
   | "token_DESC"
+  | "photo_ASC"
+  | "photo_DESC"
   | "zipcode_ASC"
   | "zipcode_DESC"
   | "total_points_ASC"
@@ -874,6 +876,20 @@ export interface UserWhereInput {
   token_not_starts_with?: String;
   token_ends_with?: String;
   token_not_ends_with?: String;
+  photo?: String;
+  photo_not?: String;
+  photo_in?: String[] | String;
+  photo_not_in?: String[] | String;
+  photo_lt?: String;
+  photo_lte?: String;
+  photo_gt?: String;
+  photo_gte?: String;
+  photo_contains?: String;
+  photo_not_contains?: String;
+  photo_starts_with?: String;
+  photo_not_starts_with?: String;
+  photo_ends_with?: String;
+  photo_not_ends_with?: String;
   role?: RoleWhereInput;
   zipcode?: String;
   zipcode_not?: String;
@@ -1378,6 +1394,7 @@ export interface UserCreateInput {
   name?: String;
   phone?: String;
   token?: String;
+  photo?: String;
   role?: RoleCreateOneInput;
   zipcode?: String;
   recent_actions?: EventActionCreateManyWithoutUserInput;
@@ -1547,6 +1564,7 @@ export interface UserUpdateDataInput {
   name?: String;
   phone?: String;
   token?: String;
+  photo?: String;
   role?: RoleUpdateOneInput;
   zipcode?: String;
   recent_actions?: EventActionUpdateManyWithoutUserInput;
@@ -2317,6 +2335,7 @@ export interface UserCreateWithoutRecent_actionsInput {
   name?: String;
   phone?: String;
   token?: String;
+  photo?: String;
   role?: RoleCreateOneInput;
   zipcode?: String;
   total_points?: Int;
@@ -2354,6 +2373,7 @@ export interface UserUpdateWithoutRecent_actionsDataInput {
   name?: String;
   phone?: String;
   token?: String;
+  photo?: String;
   role?: RoleUpdateOneInput;
   zipcode?: String;
   total_points?: Int;
@@ -2408,6 +2428,7 @@ export interface UserCreateWithoutPetitions_signedInput {
   name?: String;
   phone?: String;
   token?: String;
+  photo?: String;
   role?: RoleCreateOneInput;
   zipcode?: String;
   recent_actions?: EventActionCreateManyWithoutUserInput;
@@ -2471,6 +2492,7 @@ export interface UserUpdateWithoutPetitions_signedDataInput {
   name?: String;
   phone?: String;
   token?: String;
+  photo?: String;
   role?: RoleUpdateOneInput;
   zipcode?: String;
   recent_actions?: EventActionUpdateManyWithoutUserInput;
@@ -2593,6 +2615,20 @@ export interface UserScalarWhereInput {
   token_not_starts_with?: String;
   token_ends_with?: String;
   token_not_ends_with?: String;
+  photo?: String;
+  photo_not?: String;
+  photo_in?: String[] | String;
+  photo_not_in?: String[] | String;
+  photo_lt?: String;
+  photo_lte?: String;
+  photo_gt?: String;
+  photo_gte?: String;
+  photo_contains?: String;
+  photo_not_contains?: String;
+  photo_starts_with?: String;
+  photo_not_starts_with?: String;
+  photo_ends_with?: String;
+  photo_not_ends_with?: String;
   zipcode?: String;
   zipcode_not?: String;
   zipcode_in?: String[] | String;
@@ -2740,6 +2776,7 @@ export interface UserUpdateManyDataInput {
   name?: String;
   phone?: String;
   token?: String;
+  photo?: String;
   zipcode?: String;
   total_points?: Int;
   device_id?: String;
@@ -2781,6 +2818,7 @@ export interface UserUpdateInput {
   name?: String;
   phone?: String;
   token?: String;
+  photo?: String;
   role?: RoleUpdateOneInput;
   zipcode?: String;
   recent_actions?: EventActionUpdateManyWithoutUserInput;
@@ -2806,6 +2844,7 @@ export interface UserUpdateManyMutationInput {
   name?: String;
   phone?: String;
   token?: String;
+  photo?: String;
   zipcode?: String;
   total_points?: Int;
   device_id?: String;
@@ -3054,6 +3093,7 @@ export interface User {
   name?: String;
   phone?: String;
   token?: String;
+  photo?: String;
   zipcode?: String;
   total_points?: Int;
   device_id?: String;
@@ -3078,6 +3118,7 @@ export interface UserPromise extends Promise<User>, Fragmentable {
   name: () => Promise<String>;
   phone: () => Promise<String>;
   token: () => Promise<String>;
+  photo: () => Promise<String>;
   role: <T = RolePromise>() => T;
   zipcode: () => Promise<String>;
   recent_actions: <T = FragmentableArray<EventAction>>(args?: {
@@ -3132,6 +3173,7 @@ export interface UserSubscription
   name: () => Promise<AsyncIterator<String>>;
   phone: () => Promise<AsyncIterator<String>>;
   token: () => Promise<AsyncIterator<String>>;
+  photo: () => Promise<AsyncIterator<String>>;
   role: <T = RoleSubscription>() => T;
   zipcode: () => Promise<AsyncIterator<String>>;
   recent_actions: <T = Promise<AsyncIterator<EventActionSubscription>>>(args?: {
@@ -4153,6 +4195,7 @@ export interface UserPreviousValues {
   name?: String;
   phone?: String;
   token?: String;
+  photo?: String;
   zipcode?: String;
   total_points?: Int;
   device_id?: String;
@@ -4179,6 +4222,7 @@ export interface UserPreviousValuesPromise
   name: () => Promise<String>;
   phone: () => Promise<String>;
   token: () => Promise<String>;
+  photo: () => Promise<String>;
   zipcode: () => Promise<String>;
   total_points: () => Promise<Int>;
   device_id: () => Promise<String>;
@@ -4205,6 +4249,7 @@ export interface UserPreviousValuesSubscription
   name: () => Promise<AsyncIterator<String>>;
   phone: () => Promise<AsyncIterator<String>>;
   token: () => Promise<AsyncIterator<String>>;
+  photo: () => Promise<AsyncIterator<String>>;
   zipcode: () => Promise<AsyncIterator<String>>;
   total_points: () => Promise<AsyncIterator<Int>>;
   device_id: () => Promise<AsyncIterator<String>>;

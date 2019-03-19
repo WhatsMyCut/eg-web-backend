@@ -137,7 +137,7 @@ const ActionsQuery = {
 
         let queryData=`{
             zipcode
-            recent_actions(where:{action:{active:true}}, orderBy:createdAt_DESC){
+            recent_actions(where:{action:{active:true, related_actions_every:{id:null}}}, orderBy:createdAt_DESC){
                 id
                 action{
                     id
@@ -150,6 +150,7 @@ const ActionsQuery = {
                     order
                     water
                     waste
+                    carbon_dioxide
                     points
                     external_url
                     isGame
@@ -175,11 +176,8 @@ const ActionsQuery = {
             return uniqueactions;
         }
 
-        return await returnLocalMetrics(myActions.zipcode, uniqueactions.filter(action => {
-            if(!action.recent_actions){
-                return action;
-            }
-        }), ctx);
+
+        return await returnLocalMetrics(myActions.zipcode, uniqueactions, ctx);
 
         
     },
@@ -304,6 +302,7 @@ async function returnLocalSectorMetrics(zipcode, sectorActions, ctx){
 
 async function returnLocalMetrics(zipcode, uniqueactions, ctx){
     let ids = uniqueactions.map(item => `${item.action.id}`)
+    console.log('inside of return local metrics');
     // id_in:[${ids}], 
     let queryData=`{
             action{
@@ -334,6 +333,7 @@ async function returnLocalMetrics(zipcode, uniqueactions, ctx){
 
     uniqueactions.forEach((recent_action) =>{
         // zero out added fields
+        console.log('unique actions', recent_action);
         recent_action.action.points_community = 0;
         recent_action.action.waste_community =0;
         recent_action.action.water_community = 0;
