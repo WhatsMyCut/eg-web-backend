@@ -12,6 +12,7 @@ const ActionsQuery = {
     actionCategoriesConnection : forwardTo('db'),
     async getUserRanks(parent, args, ctx, info){
           let queryData = `{
+              id
               total_points
               name
               community_events{
@@ -26,6 +27,7 @@ const ActionsQuery = {
         return await ctx.db.query.users({where:{name_not:null}, orderBy:someEnum},queryData).then(data =>{
             return data.map(user =>{
                 return {
+                    id: user.id,
                     total_points: user.total_points + (user.community_events.length*100),
                     country: user.country,
                     state: user.state,
