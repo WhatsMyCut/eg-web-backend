@@ -23,20 +23,20 @@ let pn = new PushNotification(db);
 
 
 
-// const dailyJobs = new CronJob('30 * * * * *', function() {
-// 	const d = new Date();
-//   console.log('Every Day', d);
-//   pn.sendActionReminder();
-// });
-
-// dailyJobs.start();
-
-const dailyJobs = new CronJob('00 00 00 1 * *', function() {
+const dailyJobs = new CronJob('30 * * * * *', function() {
 	const d = new Date();
+  console.log('Every Day', d);
   pn.sendActionReminder();
 });
 
 dailyJobs.start();
+
+// const dailyJobs = new CronJob('00 00 00 1 * *', function() {
+// 	const d = new Date();
+//   pn.sendActionReminder();
+// });
+
+// dailyJobs.start();
 
 
 

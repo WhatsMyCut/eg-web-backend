@@ -97,6 +97,7 @@ type StateStats {
 }
 
 type UserStats {
+  id: ID!
   total_points: Int
   country: String
   state: String

@@ -12,6 +12,7 @@ const ActionsQuery = {
     actionCategoriesConnection : forwardTo('db'),
     async getUserRanks(parent, args, ctx, info){
           let queryData = `{
+              id
               total_points
               name
               community_events{
@@ -26,6 +27,7 @@ const ActionsQuery = {
         return await ctx.db.query.users({where:{name_not:null}, orderBy:someEnum},queryData).then(data =>{
             return data.map(user =>{
                 return {
+                    id: user.id,
                     total_points: user.total_points + (user.community_events.length*100),
                     country: user.country,
                     state: user.state,
@@ -133,11 +135,12 @@ const ActionsQuery = {
     },
 
     async myAvailableActions(parent, args, ctx, info){
+        console.log('this is being called');
         const id = getUserId(ctx)
 
         let queryData=`{
             zipcode
-            recent_actions(where:{action:{active:true, related_actions_every:{id:null}}}, orderBy:createdAt_DESC){
+            recent_actions(where:{action:{active:true}}, orderBy:createdAt_DESC){
                 id
                 action{
                     id
@@ -154,10 +157,13 @@ const ActionsQuery = {
                     points
                     external_url
                     isGame
+                    game_title
                     createdAt
                     updatedAt
                     related_actions{
                         id
+                        primary_image
+                        short_description
                     }
                 }
                 createdAt
@@ -168,6 +174,8 @@ const ActionsQuery = {
         
         let recent_actions = myActions ? myActions.recent_actions : null;
         let uniqueactions = recent_actions ? await returnUniqueActions(recent_actions) : null;
+        console.log('this is being fired')
+        console.log('unique actions', uniqueactions);
         if(!uniqueactions){
             return [];
         }
@@ -414,6 +422,7 @@ async function returnUniqueActions(recent_actions){
     }
 
     let mostRecentActions = ids.map( async (id) => {
+        console.log('indexMap[id].action', indexMap[id].action);
         return {id:indexMap[id].id , action : indexMap[id].action, createdAt:indexMap[id].createdAt };
     })
     return Promise.all(mostRecentActions)

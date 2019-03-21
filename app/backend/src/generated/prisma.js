@@ -2068,6 +2068,7 @@ type User {
   name: String
   phone: String
   token: String
+  photo: String
   role: Role
   zipcode: String
   recent_actions(where: EventActionWhereInput, orderBy: EventActionOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [EventAction!]
@@ -2101,6 +2102,7 @@ input UserCreateInput {
   name: String
   phone: String
   token: String
+  photo: String
   role: RoleCreateOneInput
   zipcode: String
   recent_actions: EventActionCreateManyWithoutUserInput
@@ -2141,6 +2143,7 @@ input UserCreateWithoutPetitions_signedInput {
   name: String
   phone: String
   token: String
+  photo: String
   role: RoleCreateOneInput
   zipcode: String
   recent_actions: EventActionCreateManyWithoutUserInput
@@ -2165,6 +2168,7 @@ input UserCreateWithoutRecent_actionsInput {
   name: String
   phone: String
   token: String
+  photo: String
   role: RoleCreateOneInput
   zipcode: String
   total_points: Int
@@ -2202,6 +2206,8 @@ enum UserOrderByInput {
   phone_DESC
   token_ASC
   token_DESC
+  photo_ASC
+  photo_DESC
   zipcode_ASC
   zipcode_DESC
   total_points_ASC
@@ -2240,6 +2246,7 @@ type UserPreviousValues {
   name: String
   phone: String
   token: String
+  photo: String
   zipcode: String
   total_points: Int
   device_id: String
@@ -2355,6 +2362,20 @@ input UserScalarWhereInput {
   token_not_starts_with: String
   token_ends_with: String
   token_not_ends_with: String
+  photo: String
+  photo_not: String
+  photo_in: [String!]
+  photo_not_in: [String!]
+  photo_lt: String
+  photo_lte: String
+  photo_gt: String
+  photo_gte: String
+  photo_contains: String
+  photo_not_contains: String
+  photo_starts_with: String
+  photo_not_starts_with: String
+  photo_ends_with: String
+  photo_not_ends_with: String
   zipcode: String
   zipcode_not: String
   zipcode_in: [String!]
@@ -2515,6 +2536,7 @@ input UserUpdateDataInput {
   name: String
   phone: String
   token: String
+  photo: String
   role: RoleUpdateOneInput
   zipcode: String
   recent_actions: EventActionUpdateManyWithoutUserInput
@@ -2540,6 +2562,7 @@ input UserUpdateInput {
   name: String
   phone: String
   token: String
+  photo: String
   role: RoleUpdateOneInput
   zipcode: String
   recent_actions: EventActionUpdateManyWithoutUserInput
@@ -2565,6 +2588,7 @@ input UserUpdateManyDataInput {
   name: String
   phone: String
   token: String
+  photo: String
   zipcode: String
   total_points: Int
   device_id: String
@@ -2586,6 +2610,7 @@ input UserUpdateManyMutationInput {
   name: String
   phone: String
   token: String
+  photo: String
   zipcode: String
   total_points: Int
   device_id: String
@@ -2637,6 +2662,7 @@ input UserUpdateWithoutPetitions_signedDataInput {
   name: String
   phone: String
   token: String
+  photo: String
   role: RoleUpdateOneInput
   zipcode: String
   recent_actions: EventActionUpdateManyWithoutUserInput
@@ -2661,6 +2687,7 @@ input UserUpdateWithoutRecent_actionsDataInput {
   name: String
   phone: String
   token: String
+  photo: String
   role: RoleUpdateOneInput
   zipcode: String
   total_points: Int
@@ -2798,6 +2825,20 @@ input UserWhereInput {
   token_not_starts_with: String
   token_ends_with: String
   token_not_ends_with: String
+  photo: String
+  photo_not: String
+  photo_in: [String!]
+  photo_not_in: [String!]
+  photo_lt: String
+  photo_lte: String
+  photo_gt: String
+  photo_gte: String
+  photo_contains: String
+  photo_not_contains: String
+  photo_starts_with: String
+  photo_not_starts_with: String
+  photo_ends_with: String
+  photo_not_ends_with: String
   role: RoleWhereInput
   zipcode: String
   zipcode_not: String

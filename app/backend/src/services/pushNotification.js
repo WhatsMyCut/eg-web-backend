@@ -16,11 +16,12 @@ class PushNotification {
                     action_reminders:true 
                 }
             }
-            let usersWithTokens = await db.query.users(whereCondition, `{ name token}`);
+            let usersWithTokens = await this.db.query.users(whereCondition, `{ name token}`);
             let messages = usersWithTokens.map(user => {
                 if (!Expo.isExpoPushToken(user.token)) {
                     return null;
                 }
+                console.log('user', user);                
                 return {
                     to: user.token,
                     sound: 'default',
@@ -32,12 +33,12 @@ class PushNotification {
                 }
             })
 
-            let chunks = expo.chunkPushNotifications(messages);
+            let chunks = this.expo.chunkPushNotifications(messages);
             let tickets = [];
 
             for (let chunk of chunks) {
                 try {
-                let ticketChunk = await expo.sendPushNotificationsAsync(chunk);
+                let ticketChunk = await this.expo.sendPushNotificationsAsync(chunk);
                 console.log(ticketChunk);
                 tickets.push(...ticketChunk);
                 // NOTE: If a ticket contains an error code in ticket.details.error, you
